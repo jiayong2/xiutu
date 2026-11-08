@@ -1,0 +1,619 @@
+{
+  "id": "prototype_mvp1",
+  "npc_month_gain": 10,
+  "npc_migration_chance": 0.1,
+  "npc_initial_age": 25,
+  "npc_lifespan": 100,
+  "npc_initial_wealth": 200,
+  "npc_mortal_base": {"hp":60,"mp":0,"attack":4,"defense":2,"speed":6},
+  "npc_cultivator_base": {"hp":120,"mp":40,"attack":20,"defense":8,"speed":12},
+  "price_min": 0.9,
+  "price_max": 1.1,
+  "sect_join_realm": 2,
+  "sect_donation": 10,
+  "sect_contribution": 1,
+  "warehouse_capacity": 99,
+  "cave_upgrade_cost": 200,
+  "cave_upgrade_iron": 5,
+  "town_travel_days": 1,
+  "outskirts_routes": [
+    {"id":"stone_path","name":"青石山道","outcomes":[1,3,4],"herbs":["herb_morning_dew","herb_spirit_grass"]},
+    {"id":"blackwind_woods","name":"黑风林","outcomes":[0,3,4],"herbs":["herb_spirit_grass","herb_morning_dew","herb_calm_leaf"]},
+    {"id":"spirit_creek","name":"灵溪谷","outcomes":[0,3,4],"herbs":["herb_spirit_grass","herb_morning_dew","herb_calm_leaf"]},
+    {"id":"rocky_slope","name":"乱石坡","encounter":{"monster_id":"monster_iron_lizard","chance":25},"mining":[{"item_id":"material_ordinary_iron_ore","chance":100}]},
+    {"id":"abandoned_mine","name":"废弃矿洞","encounter":{"monster_id":"monster_cave_bat","chance":25},"mining":[{"item_id":"material_ordinary_iron_ore","chance":100},{"item_id":"material_spirit_iron","chance":20}]},
+    {"id":"mist_woods","name":"幽雾林","outcomes":[2,3,4],"herbs":["herb_fire_tip"]}
+  ],
+  "npcs": [
+    {
+      "id": "npc_qin_shoushan",
+      "name": "秦守山",
+      "profile": {"rank": "凡人", "personality": "稳重"},
+      "realm": 0,
+      "location": "town_qinglan"
+    },
+    {
+      "id": "npc_liu_qinghe",
+      "name": "柳青禾",
+      "profile": {"rank": "凡人", "personality": "精明随和"},
+      "realm": 0,
+      "location": "town_qinglan"
+    },
+    {
+      "id": "npc_zhao_shanhe",
+      "name": "赵山河",
+      "profile": {"rank": "凡人", "personality": "直爽"},
+      "realm": 0,
+      "location": "town_qinglan"
+    },
+    {
+      "id": "npc_lin_zhaoxi",
+      "name": "林照溪",
+      "realm": 2,
+      "location": "town_qinglan",
+      "role": "采药散修",
+      "realm_known": true,
+      "greeting": "林照溪：我常在青岚山外围采药。山路湿滑，入山前记得备好补给。",
+      "profile": {
+        "rank": "良才",
+        "personality": "沉静谨慎",
+        "origin": "青岚镇",
+        "race": "人族",
+        "root": "木",
+        "body_realm": "通脉一层",
+        "base": {"hp": 98, "mp": 33, "attack": 6, "defense": 4, "speed": 10},
+        "resources": {"hp": 92, "mp": 28, "blood": 66},
+        "foundation": {"qi_sea": 14, "meridians": 13, "bones": 12, "physique": 14},
+        "innate_fortune": [
+          {"name": "木息亲和", "quality": "上品", "bonuses": {"mp": 2}},
+          {"name": "草木辨香", "quality": "良品", "bonuses": {"hp": 2}},
+          {"name": "心性沉静", "quality": "良品", "bonuses": {"defense": 1}},
+          {"name": "耳目敏锐", "quality": "上品", "bonuses": {"dodge": 0.03}}
+        ],
+        "acquired_fortune": [
+          {"name": "山径识途", "quality": "凡品", "bonuses": {"speed": 1}},
+          {"name": "青岚药缘", "quality": "良品", "bonuses": {"mp": 1}},
+          {"name": "经年采药", "quality": "良品", "bonuses": {"attack": 1}},
+          {"name": "勤修吐纳", "quality": "上品", "bonuses": {"speed": 1}}
+        ],
+        "loadout": {
+          "techniques": {"technique_qi_flow": 1},
+          "equipment": {"weapon": "equip_iron_sword", "armor": "equip_cloth_robe"}
+        },
+        "spells": [
+          "skill_spirit_bolt",
+          "skill_wood_heal"
+        ],
+        "contacts": {
+          "npc_liu_qinghe": "药材往来",
+          "npc_qin_shoushan": "镇中旧识"
+        },
+        "history": [
+          [
+            "幼年",
+            "在青岚镇长大，随家人辨识草药。"
+          ],
+          [
+            "初入修途",
+            "研习引气诀，开始独自采药。"
+          ],
+          [
+            "近年",
+            "把采来的药草送到柳青禾的杂货铺。"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "npc_shen_yunzhao",
+      "name": "沈云昭",
+      "realm": 19,
+      "location": "town_qinglan",
+      "role": "游历散修",
+      "realm_known": true,
+      "greeting": "沈云昭：我途经青岚，在此歇脚。山路难行，出门前多备些丹药。",
+      "profile": {
+        "rank": "天骄",
+        "personality": "沉着果决",
+        "origin": "青岚镇",
+        "race": "人族",
+        "root": "木、火",
+        "base": {
+          "hp": 780,
+          "mp": 360,
+          "blood": 300,
+          "attack": 104,
+          "defense": 68,
+          "speed": 48
+        },
+        "resources": {
+          "hp": 780,
+          "mp": 360,
+          "blood": 300
+        },
+        "foundation": {
+          "qi_sea": 86,
+          "meridians": 80,
+          "bones": 55,
+          "physique": 60
+        },
+        "innate_fortune": [
+          {
+            "name": "木息亲和",
+            "quality": "上品",
+            "bonuses": {
+              "mp": 18
+            }
+          },
+          {
+            "name": "草木辨香",
+            "quality": "良品",
+            "bonuses": {
+              "hp": 12
+            }
+          },
+          {
+            "name": "心性沉静",
+            "quality": "良品",
+            "bonuses": {
+              "defense": 8
+            }
+          },
+          {
+            "name": "耳目敏锐",
+            "quality": "上品",
+            "bonuses": {
+              "dodge": 0.05
+            }
+          },
+          {
+            "name": "灵脉通明",
+            "quality": "地品",
+            "bonuses": {
+              "mp": 20
+            }
+          },
+          {
+            "name": "天生剑骨",
+            "quality": "天品",
+            "bonuses": {
+              "attack": 14
+            }
+          }
+        ],
+        "acquired_fortune": [
+          {
+            "name": "山径识途",
+            "quality": "凡品",
+            "bonuses": {
+              "speed": 5
+            }
+          },
+          {
+            "name": "青岚药缘",
+            "quality": "良品",
+            "bonuses": {
+              "mp": 6
+            }
+          },
+          {
+            "name": "经年采药",
+            "quality": "良品",
+            "bonuses": {
+              "attack": 5
+            }
+          },
+          {
+            "name": "勤修吐纳",
+            "quality": "上品",
+            "bonuses": {
+              "speed": 5
+            }
+          },
+          {
+            "name": "丹成气固",
+            "quality": "玄品",
+            "bonuses": {
+              "defense": 12
+            }
+          },
+          {
+            "name": "百炼归元",
+            "quality": "地品",
+            "bonuses": {
+              "hp": 70
+            }
+          }
+        ],
+        "loadout": {
+          "techniques": {
+            "technique_green_wood": 5,
+            "technique_fire_breath": 5
+          },
+          "equipment": {
+            "weapon": "equip_v1_mountain_sword",
+            "head": "equip_v1_purple_cloud_crown",
+            "armor": "equip_v1_tortoise_armor",
+            "wrist": "equip_v1_mountain_bracers",
+            "waist": "equip_v1_earth_jade_belt",
+            "shoes": "equip_v1_cloud_boots",
+            "necklace": "equip_v1_void_pendant",
+            "ring": "equip_v1_five_elements_ring"
+          }
+        },
+        "spells": [
+          "skill_spirit_bolt",
+          "skill_wood_heal"
+        ]
+      }
+    },
+    {
+      "id": "npc_yunxi_keeper",
+      "name": "宁丹青",
+      "role": "炼丹师",
+      "identity_from_catalog": true,
+      "realm": 2,
+      "location": "town_yunxi"
+    },
+    {
+      "id": "npc_shen_baicao",
+      "name": "沈百草",
+      "role": "药铺掌柜",
+      "location": "town_qinglan",
+      "realm": 0,
+      "stationary": true,
+      "seed_on_restore": true
+    },
+    {
+      "id": "npc_old_chen",
+      "name": "老陈",
+      "role": "铁匠",
+      "location": "town_qinglan",
+      "realm": 0,
+      "stationary": true,
+      "seed_on_restore": true
+    },
+    {
+      "id": "npc_zhou_innkeeper",
+      "name": "周掌柜",
+      "role": "客栈掌柜",
+      "location": "town_qinglan",
+      "realm": 0,
+      "stationary": true,
+      "seed_on_restore": true
+    },
+    {
+      "id": "npc_jiang_wangshu",
+      "name": "姜望舒",
+      "role": "年轻散修",
+      "location": "town_qinglan",
+      "realm": 1,
+      "stationary": false,
+      "seed_on_restore": true
+    },
+    {
+      "id": "npc_su_wanjin",
+      "name": "苏万金",
+      "role": "商人",
+      "location": "town_yunxi",
+      "realm": 0,
+      "stationary": true,
+      "seed_on_restore": true
+    },
+    {
+      "id": "npc_tie_wufeng",
+      "name": "铁无锋",
+      "realm": 5,
+      "role": "炼器师",
+      "location": "town_yunxi",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false
+    },
+    {
+      "id": "npc_lu_zhifu",
+      "name": "陆知符",
+      "realm": 5,
+      "role": "符箓师",
+      "location": "town_yunxi",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false
+    },
+    {
+      "id": "npc_xie_yunlou",
+      "name": "谢云楼",
+      "realm": 6,
+      "role": "拍卖师",
+      "location": "town_yunxi",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false
+    },
+    {
+      "id": "npc_shen_qianqiu",
+      "name": "沈千秋",
+      "realm": 10,
+      "role": "城主",
+      "location": "town_yunxi",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false
+    },
+    {
+      "id": "npc_gu_qingyue",
+      "name": "顾清月",
+      "realm": 4,
+      "role": "商会修士",
+      "location": "town_yunxi",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false
+    },
+    {
+      "id": "npc_lin_xuance",
+      "name": "林玄策",
+      "realm": 6,
+      "role": "散修",
+      "location": "town_yunxi",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false
+    },
+    {
+      "id": "npc_ye_wuchen",
+      "name": "叶无尘",
+      "realm": 7,
+      "role": "游历剑修",
+      "location": "town_yunxi",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false
+    },
+    {
+      "id": "npc_xu_qingshan",
+      "name": "许青山",
+      "realm": 3,
+      "role": "散修猎人",
+      "location": "area_qinglan_outskirts",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "profile": {
+        "origin": "黑风林"
+      }
+    },
+    {
+      "id": "npc_luo_xiaoman",
+      "name": "罗小满",
+      "realm": 1,
+      "role": "采药人",
+      "location": "area_qinglan_outskirts",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "profile": {
+        "origin": "黑风林"
+      }
+    },
+    {
+      "id": "npc_han_shi",
+      "name": "韩石",
+      "realm": 2,
+      "role": "矿工首领",
+      "location": "area_qinglan_outskirts",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "profile": {
+        "origin": "废弃矿洞"
+      }
+    },
+    {
+      "id": "npc_feng_tiesheng",
+      "name": "冯铁生",
+      "realm": 1,
+      "role": "矿工",
+      "location": "area_qinglan_outskirts",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "profile": {
+        "origin": "废弃矿洞"
+      }
+    },
+    {
+      "id": "npc_lu_xingzhou",
+      "name": "陆行舟",
+      "realm": 4,
+      "role": "游历散修",
+      "location": "area_qinglan_outskirts",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "profile": {
+        "origin": "幽雾林"
+      }
+    },
+    {
+      "id": "npc_fang_lie",
+      "name": "方烈",
+      "realm": 5,
+      "role": "劫修",
+      "location": "area_qinglan_outskirts",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "profile": {
+        "origin": "幽雾林"
+      }
+    },
+    {
+      "id": "npc_yin_wuchang",
+      "name": "阴无常",
+      "realm": 6,
+      "role": "血炼修士",
+      "location": "area_qinglan_outskirts",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "profile": {
+        "origin": "幽雾林"
+      }
+    },
+    {
+      "id": "npc_gu_changfeng",
+      "name": "顾长风",
+      "realm": 19,
+      "role": "掌门",
+      "location": "sect_qingyue_gate",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "sect": "sect_qingyue",
+      "sect_area": "core",
+      "profile": {
+        "sect": "青岳宗"
+      }
+    },
+    {
+      "id": "npc_zhou_xuan",
+      "name": "周玄",
+      "realm": 10,
+      "role": "外门长老",
+      "location": "sect_qingyue_gate",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "sect": "sect_qingyue",
+      "sect_area": "outer",
+      "profile": {
+        "sect": "青岳宗"
+      }
+    },
+    {
+      "id": "npc_xuan_qingzi",
+      "name": "玄清子",
+      "realm": 10,
+      "role": "传功长老",
+      "location": "sect_qingyue_gate",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "sect": "sect_qingyue",
+      "sect_area": "outer",
+      "profile": {
+        "sect": "青岳宗"
+      }
+    },
+    {
+      "id": "npc_han_ming",
+      "name": "韩明",
+      "realm": 5,
+      "role": "任务堂执事",
+      "location": "sect_qingyue_gate",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "sect": "sect_qingyue",
+      "sect_area": "outer",
+      "profile": {
+        "sect": "青岳宗"
+      }
+    },
+    {
+      "id": "npc_ling_xiao",
+      "name": "凌霄",
+      "realm": 10,
+      "role": "内门弟子",
+      "location": "sect_qingyue_gate",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "sect": "sect_qingyue",
+      "sect_area": "inner",
+      "profile": {
+        "sect": "青岳宗"
+      }
+    },
+    {
+      "id": "npc_chen_yuan",
+      "name": "陈远",
+      "realm": 2,
+      "role": "外门弟子",
+      "location": "sect_qingyue_gate",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "sect": "sect_qingyue",
+      "sect_area": "outer",
+      "profile": {
+        "sect": "青岳宗"
+      }
+    },
+    {
+      "id": "npc_li_heng",
+      "name": "李衡",
+      "realm": 2,
+      "role": "守山弟子",
+      "location": "sect_qingyue_gate",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "sect": "sect_qingyue",
+      "sect_area": "outer",
+      "profile": {
+        "sect": "青岳宗"
+      }
+    },
+    {
+      "id": "npc_qingyue_supply",
+      "name": "宗门供给执事",
+      "realm": 4,
+      "role": "供给执事",
+      "location": "sect_qingyue_gate",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "sect": "sect_qingyue",
+      "sect_area": "outer",
+      "profile": {
+        "sect": "青岳宗"
+      }
+    },
+    {
+      "id": "npc_qingyue_treasury",
+      "name": "宗门宝库执事",
+      "realm": 5,
+      "role": "宝库执事",
+      "location": "sect_qingyue_gate",
+      "stationary": true,
+      "seed_on_restore": true,
+      "realm_known": false,
+      "sect": "sect_qingyue",
+      "sect_area": "outer",
+      "profile": {
+        "sect": "青岳宗"
+      }
+    }
+  ],
+  "sects": [
+    {
+      "id": "sect_qingyue",
+      "name": "青岳宗",
+      "residence": {
+        "location_id": "sect_qingyue_gate",
+        "name": "青岳山 · 山门",
+        "travel_hours": 12
+      }
+    },
+    {
+      "id": "sect_baicao",
+      "name": "百草谷"
+    },
+    {
+      "id": "sect_chiyang",
+      "name": "赤阳门"
+    }
+  ]
+}

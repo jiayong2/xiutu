@@ -1,0 +1,155 @@
+[
+  {
+    "id": "monster_gray_wolf",
+    "name": "灰牙野狼",
+    "hp": 65,
+    "mp": 0,
+    "attack": 14,
+    "defense": 4,
+    "speed": 9,
+    "special_every": 0,
+    "special_multiplier": 1,
+    "money": [
+      10,
+      16
+    ],
+    "drops": [
+      [
+        "material_wolf_fang",
+        1,
+        1
+      ],
+      [
+        "material_wolf_hide",
+        1,
+        0.4
+      ]
+    ]
+  },
+  {
+    "id": "monster_mountain_boar",
+    "name": "山林獠猪",
+    "hp": 95,
+    "mp": 0,
+    "attack": 17,
+    "defense": 7,
+    "speed": 6,
+    "special_every": 3,
+    "special_multiplier": 1.3,
+    "money": [
+      14,
+      20
+    ],
+    "drops": [
+      [
+        "material_boar_tusk",
+        1,
+        1
+      ],
+      [
+        "herb_spirit_grass",
+        1,
+        0.3
+      ]
+    ]
+  },
+  {
+    "id": "monster_green_fox",
+    "name": "青尾灵狐",
+    "hp": 70,
+    "mp": 20,
+    "attack": 19,
+    "defense": 5,
+    "speed": 15,
+    "special_every": 2,
+    "special_multiplier": 1.2,
+    "money": [
+      18,
+      26
+    ],
+    "drops": [
+      [
+        "material_fox_tail",
+        1,
+        1
+      ],
+      [
+        "herb_calm_leaf",
+        1,
+        0.4
+      ]
+    ]
+  },
+  {
+    "id": "monster_wolf_leader",
+    "name": "灰牙狼首",
+    "hp": 160,
+    "mp": 0,
+    "attack": 25,
+    "defense": 10,
+    "speed": 13,
+    "special_every": 3,
+    "special_multiplier": 1.4,
+    "money": [
+      45,
+      60
+    ],
+    "drops": [
+      [
+        "material_wolf_fang",
+        2,
+        1
+      ],
+      [
+        "material_wolf_hide",
+        2,
+        1
+      ]
+    ]
+  },
+  {
+    "id": "monster_iron_lizard",
+    "name": "铁甲蜥",
+    "hp": 95,
+    "mp": 0,
+    "attack": 17,
+    "defense": 7,
+    "speed": 6,
+    "special_every": 3,
+    "special_multiplier": 1.3,
+    "money": [
+      14,
+      20
+    ],
+    "drops": [
+      [
+        "material_iron_scale",
+        1,
+        0.75,
+        3
+      ]
+    ]
+  },
+  {
+    "id": "monster_cave_bat",
+    "name": "阴翼蝠",
+    "hp": 70,
+    "mp": 20,
+    "attack": 19,
+    "defense": 5,
+    "speed": 15,
+    "special_every": 2,
+    "special_multiplier": 1.2,
+    "money": [
+      18,
+      26
+    ],
+    "drops": [
+      [
+        "material_bat_membrane",
+        1,
+        0.7
+      ]
+    ]
+  }
+]

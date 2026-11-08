@@ -1,0 +1,359 @@
+[
+  {
+    "id": "quest_qinglan_001",
+    "name": "青岚山妖兽异动",
+    "previous": "",
+    "realm": 1,
+    "target": "npc_qin_shoushan",
+    "required_item": "",
+    "money": 30,
+    "rewards": {
+      "item_healing_powder": 1
+    },
+    "description": "青岚山外围频繁出现妖兽踪迹，已有采药人受伤。青岚镇巡守秦守山正在招募修士调查异常。",
+    "quest_id": "quest_qinglan_001",
+    "title": "青岚山妖兽异动",
+    "quest_type": "公开委托",
+    "giver_npc_id": "npc_qin_shoushan",
+    "recommended_realm": 1,
+    "requirements": {
+      "previous_quest_id": "",
+      "min_realm": 1
+    },
+    "completion_mode": "REPORT_NPC",
+    "serial": true,
+    "objectives": [
+      {
+        "objective_id": "ask_disturbance",
+        "description": "与秦守山交谈，选择“询问青岚山异动”",
+        "objective_type": "TALK_OPTION",
+        "target_id": "npc_qin_shoushan",
+        "target_location_id": "town_qinglan",
+        "required_count": 1,
+        "completion_condition": {
+          "option_id": "ask_qinglan_disturbance",
+          "label": "询问青岚山异动",
+          "response": "秦守山：请带上凝血散，前往青岚山外围辨认妖兽踪迹，再回来向我报告。"
+        },
+        "hint": "前往青岚镇，打开秦守山对话并选择“询问青岚山异动”"
+      },
+      {
+        "objective_id": "prepare_healing",
+        "description": "背包持有至少1份凝血散（不消耗）",
+        "objective_type": "ITEM_POSSESSION",
+        "target_id": "item_healing_powder",
+        "target_location_id": "",
+        "required_count": 1,
+        "completion_condition": {},
+        "hint": "检查背包；不足时可在青岚杂货铺购买凝血散"
+      },
+      {
+        "objective_id": "investigate_tracks",
+        "description": "前往青岚山外围，调查妖兽踪迹",
+        "objective_type": "COMPLETE_EVENT",
+        "target_id": "event_beast_tracks",
+        "target_location_id": "area_qinglan_outskirts",
+        "required_count": 1,
+        "completion_condition": {
+          "option_id": "inspect_tracks"
+        },
+        "hint": "打开青岚山外围地点，选择“调查妖兽踪迹”并辨认足迹"
+      },
+      {
+        "objective_id": "report_tracks",
+        "description": "返回青岚镇，向秦守山报告调查结果",
+        "objective_type": "REPORT_NPC",
+        "target_id": "npc_qin_shoushan",
+        "target_location_id": "town_qinglan",
+        "required_count": 1,
+        "completion_condition": {
+          "option_id": "report_quest_qinglan_001",
+          "label": "报告调查结果"
+        },
+        "hint": "前往秦守山对话，选择“报告调查结果”"
+      }
+    ]
+  },
+  {
+    "id": "quest_qinglan_002",
+    "name": "青岚除患",
+    "previous": "quest_qinglan_001",
+    "realm": 1,
+    "target": "monster_gray_wolf",
+    "required_item": "material_wolf_fang",
+    "money": 80,
+    "rewards": {
+      "book_technique_iron_body": 1
+    },
+    "description": "北山小道出现了灰牙野狼。带回一枚狼牙，证明你已能独自应付低阶妖兽。切记先备好伤药。",
+    "quest_id": "quest_qinglan_002",
+    "title": "青岚除患",
+    "quest_type": "公开委托",
+    "giver_npc_id": "npc_qin_shoushan",
+    "recommended_realm": 1,
+    "requirements": {
+      "previous_quest_id": "quest_qinglan_001",
+      "min_realm": 1
+    },
+    "completion_mode": "ITEM_DELIVERY",
+    "serial": true,
+    "objectives": [
+      {
+        "objective_id": "kill_gray_wolf",
+        "description": "在青岚山外围击败灰牙野狼",
+        "objective_type": "KILL_ENEMY",
+        "target_id": "monster_gray_wolf",
+        "target_location_id": "area_qinglan_outskirts",
+        "required_count": 1,
+        "completion_condition": {},
+        "hint": "前往青岚山外围探索，战胜灰牙野狼"
+      },
+      {
+        "objective_id": "deliver_fang",
+        "description": "向青岚镇秦守山交付1枚灰狼牙",
+        "objective_type": "ITEM_DELIVERY",
+        "target_id": "material_wolf_fang",
+        "target_location_id": "town_qinglan",
+        "required_count": 1,
+        "completion_condition": {
+          "npc_id": "npc_qin_shoushan"
+        },
+        "hint": "带着灰狼牙返回秦守山，选择“交付青岚除患”"
+      }
+    ]
+  },
+  {
+    "id": "quest_qinglan_003",
+    "name": "狼首伏诛",
+    "previous": "quest_qinglan_002",
+    "realm": 2,
+    "target": "monster_wolf_leader",
+    "required_item": "",
+    "money": 200,
+    "rewards": {
+      "pill_qi_gathering": 1
+    },
+    "description": "狼群背后还有一只狼首。待你修至炼气二层，再去挑战。此去凶险，量力而行。",
+    "quest_id": "quest_qinglan_003",
+    "title": "狼首伏诛",
+    "quest_type": "公开委托",
+    "giver_npc_id": "npc_qin_shoushan",
+    "recommended_realm": 2,
+    "requirements": {
+      "previous_quest_id": "quest_qinglan_002",
+      "min_realm": 2
+    },
+    "completion_mode": "REPORT_NPC",
+    "serial": true,
+    "objectives": [
+      {
+        "objective_id": "kill_leader",
+        "description": "在青岚山外围击败狼首",
+        "objective_type": "KILL_ENEMY",
+        "target_id": "monster_wolf_leader",
+        "target_location_id": "area_qinglan_outskirts",
+        "required_count": 1,
+        "completion_condition": {},
+        "hint": "前往青岚山外围，选择狼首挑战；建议备好补给"
+      },
+      {
+        "objective_id": "report_leader",
+        "description": "向秦守山报告狼首伏诛",
+        "objective_type": "REPORT_NPC",
+        "target_id": "npc_qin_shoushan",
+        "target_location_id": "town_qinglan",
+        "required_count": 1,
+        "completion_condition": {
+          "option_id": "report_quest_qinglan_003",
+          "label": "报告狼首伏诛"
+        },
+        "hint": "返回青岚镇向秦守山报告"
+      }
+    ]
+  },
+  {
+    "id": "quest_test_collect_001",
+    "name": "药铺缺药",
+    "previous": "",
+    "realm": 0,
+    "target": "npc_shen_baicao",
+    "required_item": "",
+    "money": 30,
+    "rewards": {},
+    "description": "百草药铺近日青灵草紧缺，沈百草正在为此发愁。他希望你能帮忙寻来三株青灵草，以供药铺日常使用。",
+    "quest_id": "quest_test_collect_001",
+    "title": "药铺缺药",
+    "quest_type": "普通委托",
+    "giver_npc_id": "npc_shen_baicao",
+    "recommended_realm": 0,
+    "requirements": {
+      "previous_quest_id": "",
+      "min_realm": 0
+    },
+    "completion_mode": "ITEM_DELIVERY",
+    "serial": true,
+    "fail_on_giver_death": false,
+    "delivery_shop_id": "shop_qinglan_baicao",
+    "objectives": [
+      {
+        "objective_id": "deliver_herb",
+        "description": "向沈百草提交青灵草 ×3",
+        "objective_type": "ITEM_DELIVERY",
+        "target_id": "herb_spirit_grass",
+        "target_location_id": "town_qinglan",
+        "required_count": 3,
+        "completion_condition": {
+          "npc_id": "npc_shen_baicao"
+        },
+        "hint": "前往青岚山外围 · 青石山道，探索时有机会采集青灵草。"
+      }
+    ],
+    "delivery_dialogue": {
+      "AVAILABLE": {
+        "line": "唉，最近来买药的修士多了不少，偏偏铺里的青灵草快用完了。小友若有空，可否替老夫寻三株回来？",
+        "options": [
+          {
+            "id": "use",
+            "label": "青灵草有什么用？",
+            "response": "青灵草性温，蕴有一丝灵气，是炼制聚气丹的常用药材。平日来买它的散修可不少。",
+            "kind": "reply",
+            "follow": "hide_self"
+          },
+          {
+            "id": "where",
+            "label": "哪里能找到青灵草？",
+            "response": "青石山道、黑风林和灵溪谷都有此草。若是不想冒险，直接买来交给老夫也行。",
+            "kind": "reply",
+            "follow": "hide_self"
+          },
+          {
+            "id": "accept",
+            "label": "好，我替你去寻。",
+            "response": "有劳小友。三株青灵草，凑齐后直接来铺里找老夫便是。事成之后，老夫付你三十灵石。",
+            "kind": "accept",
+            "follow": "close"
+          },
+          {
+            "id": "refuse",
+            "label": "我还有别的事。",
+            "response": "无妨，山路多险，小友自当以修行为重。若是改了主意，再来找老夫便是。",
+            "kind": "reply",
+            "follow": "close"
+          }
+        ]
+      },
+      "ACTIVE": {
+        "line": "小友回来了？青灵草可寻到了？",
+        "options": [
+          {
+            "id": "short",
+            "label": "还差一些。",
+            "response": "无妨，老夫不急这一时。山里妖兽不少，还是小心为上。",
+            "kind": "reply",
+            "follow": "close"
+          },
+          {
+            "id": "ask_again",
+            "label": "我想再问问哪里能找到。",
+            "response": "青石山道、黑风林和灵溪谷都能寻到。若是急用，其他药铺也有出售。",
+            "kind": "reply",
+            "follow": "close"
+          }
+        ]
+      },
+      "READY_TO_TURN_IN": {
+        "line": "小友回来了？青灵草可寻到了？",
+        "options": [
+          {
+            "id": "deliver",
+            "label": "三株青灵草都在这里。",
+            "response": "不错，药性保存得很好。这三十灵石你收下，日后若还有药材委托，老夫再请你帮忙。",
+            "kind": "delivery",
+            "follow": ""
+          },
+          {
+            "id": "keep",
+            "label": "我还想留着这些药草。",
+            "response": "无妨，药草既在小友手中，自然由你做主。想好了再来找老夫便是。",
+            "kind": "reply",
+            "follow": "close"
+          }
+        ]
+      },
+      "COMPLETED": {
+        "line": "上次多亏小友送来的青灵草，铺里的丹药总算没耽误炼制。",
+        "options": []
+      }
+    }
+  },
+  {
+    "id": "quest_test_kill_001",
+    "name": "清剿山狼",
+    "previous": "",
+    "realm": 0,
+    "target": "monster_gray_wolf",
+    "required_item": "",
+    "money": 25,
+    "rewards": {},
+    "description": "近来青岚山外围时有山狼出没，往来山道的行商与散修屡受惊扰。青岚镇特发布委托，招募修士前往清剿三只山狼，以保山道安宁。",
+    "quest_id": "quest_test_kill_001",
+    "title": "清剿山狼",
+    "quest_type": "普通委托",
+    "giver_npc_id": "",
+    "recommended_realm": 0,
+    "requirements": {
+      "previous_quest_id": "",
+      "min_realm": 0
+    },
+    "completion_mode": "BOARD",
+    "repeatable": true,
+    "repeat_interval_days": 3,
+    "objectives": [
+      {
+        "objective_id": "kill_wolves",
+        "description": "击败灰牙野狼 ×3",
+        "objective_type": "KILL_ENEMY",
+        "target_id": "monster_gray_wolf",
+        "target_location_id": "area_qinglan_outskirts",
+        "required_count": 3,
+        "completion_condition": {},
+        "hint": "青岚山外围 · 直接探索时有机会遭遇灰牙野狼。"
+      }
+    ]
+  },
+  {
+    "id": "quest_test_collect_002",
+    "name": "青灵草征集",
+    "previous": "",
+    "realm": 0,
+    "target": "herb_spirit_grass",
+    "required_item": "",
+    "money": 50,
+    "rewards": {},
+    "description": "青岚镇近日往来修士增多，各家药铺所需的青灵草也随之增加。镇中现公开征集五株青灵草，凡能按数交付者，均可领取相应报酬。",
+    "quest_id": "quest_test_collect_002",
+    "title": "青灵草征集",
+    "quest_type": "普通委托",
+    "giver_npc_id": "",
+    "recommended_realm": 0,
+    "requirements": {
+      "previous_quest_id": "",
+      "min_realm": 0
+    },
+    "completion_mode": "BOARD",
+    "repeatable": true,
+    "repeat_interval_days": 3,
+    "objectives": [
+      {
+        "objective_id": "deliver_spirit_grass",
+        "description": "向青岚镇公告栏提交青灵草 ×5",
+        "objective_type": "ITEM_DELIVERY",
+        "target_id": "herb_spirit_grass",
+        "target_location_id": "town_qinglan",
+        "required_count": 5,
+        "completion_condition": {},
+        "hint": "青岚山外围 · 青石山道，探索时有机会采集青灵草。黑风林和灵溪谷也可采集，青岚镇 · 百草药铺有售。"
+      }
+    ]
+  }
+]

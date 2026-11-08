@@ -1,0 +1,121 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Theme" path="res://ui/technique/spell_theme.tres" id="1"]
+
+[node name="SpellResult" type="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.067, 0.106, 0.133, 0.62)
+
+[node name="Dialog" type="PanelContainer" parent="."]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -395.0
+offset_right = 380.0
+offset_bottom = 395.0
+
+[node name="Layout" type="VBoxContainer" parent="Dialog"]
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Dialog/Layout"]
+text = "✓ 法术修炼完成"
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+
+[node name="ResultsScroll" type="ScrollContainer" parent="Dialog/Layout"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="Dialog/Layout/ResultsScroll"]
+theme_override_constants/separation = 14
+size_flags_horizontal = 3
+
+[node name="SpellPanel" type="PanelContainer" parent="Dialog/Layout/ResultsScroll/Content"]
+theme_type_variation = &"WashPanel"
+
+[node name="Text" type="VBoxContainer" parent="Dialog/Layout/ResultsScroll/Content/SpellPanel"]
+theme_override_constants/separation = 9
+
+[node name="SpellName" type="Label" parent="Dialog/Layout/ResultsScroll/Content/SpellPanel/Text"]
+text = "灵气弹"
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="LevelChange" type="Label" parent="Dialog/Layout/ResultsScroll/Content/SpellPanel/Text"]
+text = "Lv.1 → Lv.2 · 略有小成"
+theme_override_font_sizes/font_size = 27
+horizontal_alignment = 1
+
+[node name="Totals" type="GridContainer" parent="Dialog/Layout/ResultsScroll/Content"]
+columns = 2
+theme_override_constants/v_separation = 6
+
+[node name="DurationTitle" type="Label" parent="Dialog/Layout/ResultsScroll/Content/Totals"]
+text = "修炼时间"
+theme_type_variation = &"Secondary"
+size_flags_horizontal = 3
+
+[node name="DurationValue" type="Label" parent="Dialog/Layout/ResultsScroll/Content/Totals"]
+text = "10日"
+horizontal_alignment = 2
+
+[node name="GainTitle" type="Label" parent="Dialog/Layout/ResultsScroll/Content/Totals"]
+text = "熟练度增加"
+theme_type_variation = &"Secondary"
+size_flags_horizontal = 3
+
+[node name="GainValue" type="Label" parent="Dialog/Layout/ResultsScroll/Content/Totals"]
+text = "+80"
+horizontal_alignment = 2
+
+[node name="CostTitle" type="Label" parent="Dialog/Layout/ResultsScroll/Content/Totals"]
+text = "灵石消耗"
+theme_type_variation = &"Secondary"
+size_flags_horizontal = 3
+
+[node name="CostValue" type="Label" parent="Dialog/Layout/ResultsScroll/Content/Totals"]
+text = "0"
+horizontal_alignment = 2
+
+
+[node name="ChangesPanel" type="PanelContainer" parent="Dialog/Layout/ResultsScroll/Content"]
+theme_type_variation = &"GoldPanel"
+
+[node name="Changes" type="RichTextLabel" parent="Dialog/Layout/ResultsScroll/Content/ChangesPanel"]
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+text = "法术精进\n伤害倍率 110% → 120%"
+
+[node name="RemainingPanel" type="PanelContainer" parent="Dialog/Layout"]
+theme_type_variation = &"WashPanel"
+
+[node name="Remaining" type="RichTextLabel" parent="Dialog/Layout/RemainingPanel"]
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+text = "当前熟练度\nLv.2 · 15/100"
+
+[node name="Confirm" type="Button" parent="Dialog/Layout"]
+text = "确定"
+custom_minimum_size = Vector2(0, 60)
+theme_type_variation = &"Primary"

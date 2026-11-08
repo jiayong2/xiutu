@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="Script" path="res://ui/battle/turn_order_bar.gd" id="1"]
+[sub_resource type="StyleBoxFlat" id="TrackStyle"]
+bg_color = Color(0.173,0.271,0.318,1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+[node name="TurnOrder" type="Control"]
+offset_right = 900.0
+offset_bottom = 72.0
+script = ExtResource("1")
+[node name="Track" type="Panel" parent="."]
+offset_right = 200.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("TrackStyle")
+[node name="PreviewEnemy" type="Button" parent="Track"]
+offset_left = 72.0
+offset_top = 12.0
+offset_right = 120.0
+offset_bottom = 60.0
+text = "敌"
+mouse_filter = 2
+[node name="PreviewAlly" type="Button" parent="Track"]
+offset_left = 136.0
+offset_top = 12.0
+offset_right = 184.0
+offset_bottom = 60.0
+text = "我"
+mouse_filter = 2
+[node name="CurrentMarker" type="Label" parent="."]
+offset_left = 212.0
+offset_right = 354.0
+offset_bottom = 72.0
+text = "◀ 行动中"
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.929,0.812,0.510,1)
+theme_override_font_sizes/font_size = 22
+[node name="Overflow" type="Button" parent="."]
+visible = false
+offset_left = 358.0
+offset_top = 12.0
+offset_right = 454.0
+offset_bottom = 60.0
+text = "全部队列"

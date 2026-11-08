@@ -1,0 +1,72 @@
+{
+  "sect_qingyue": [
+    {
+      "id": "outer",
+      "name": "外门区域",
+      "heading": "建筑一览",
+      "restriction": "",
+      "cards": [
+        {"id": "affairs", "name": "事务殿", "description": "宗门任务 · 事务交付"},
+        {"id": "library", "name": "外门藏经阁", "description": "外门功法 · 法术研习"},
+        {"id": "treasury", "name": "宗门宝库", "description": "贡献兑换 · 基础资源"},
+        {"id": "arena", "name": "演武场", "description": "同门切磋 · 晋升考核"},
+        {"id": "quarters", "name": "弟子居所", "description": "休息 · 修炼 · 同门交流"},
+        {"id": "alchemy", "name": "炼丹房", "description": "委托炼丹 · 丹道事务"},
+        {"id": "garden", "name": "药园", "description": "灵草种植 · 日常采集"},
+        {"id": "lecture", "name": "外门讲道堂", "description": "听道 · 修炼指点"},
+        {"id": "gate", "name": "山门", "description": "接待来客 · 进出宗门", "entry": "gate"}
+      ]
+    },
+    {
+      "id": "inner",
+      "name": "内门区域",
+      "heading": "内门建筑",
+      "restriction": "需要内门弟子身份或临时通行许可。当前尚无正式职级及许可数据。",
+      "cards": [
+        {"id": "affairs", "name": "内门事务殿", "description": "内门委托 · 高阶宗门事务"},
+        {"id": "library", "name": "内门藏经阁", "description": "高阶功法 · 法术传承"},
+        {"id": "treasury", "name": "内门宝库", "description": "稀有丹药 · 法器兑换"},
+        {"id": "instruction", "name": "传功殿", "description": "长老传道 · 功法指点"},
+        {"id": "cavern", "name": "聚灵洞府", "description": "闭关修炼 · 灵气增益"},
+        {"id": "arena", "name": "内门演武场", "description": "同门切磋 · 排名挑战"},
+        {"id": "quarters", "name": "内门弟子居", "description": "居所修炼 · 同门往来"},
+        {"id": "alchemy", "name": "炼丹殿", "description": "高阶炼丹 · 丹道委托"},
+        {"id": "beasts", "name": "灵兽苑", "description": "灵兽培养 · 宗门驯养"}
+      ]
+    },
+    {
+      "id": "core",
+      "name": "宗门核心区",
+      "heading": "宗门核心建筑",
+      "restriction": "需要核心区身份或授权。当前尚无正式职级及许可数据。",
+      "cards": [
+        {"id": "master", "name": "宗主殿", "description": "拜见宗主 · 宗门主线"},
+        {"id": "council", "name": "长老议事堂", "description": "宗门决策 · 势力事务"},
+        {"id": "inheritance", "name": "传承秘殿", "description": "宗门绝学 · 核心传承"},
+        {"id": "quarters", "name": "真传弟子居", "description": "专属洞府 · 真传往来"},
+        {"id": "ancestral", "name": "祖师殿", "description": "宗门历史 · 祖师传承"},
+        {"id": "cavern", "name": "高级聚灵洞府", "description": "高浓度灵气 · 深度闭关"},
+        {"id": "vault", "name": "宗门秘库", "description": "珍稀资源 · 特殊兑换"},
+        {"id": "formation", "name": "护宗大阵中枢", "description": "宗门防护 · 阵法事务"},
+        {"id": "assembly", "name": "宗门议事台", "description": "重要事件 · 宗门大会"}
+      ]
+    },
+    {
+      "id": "back_mountain",
+      "name": "后山禁地",
+      "heading": "禁地探索区域",
+      "restriction": "需要后山专项许可。当前尚无正式许可或探索解锁数据。",
+      "cards": [
+        {"id": "cavern", "name": "祖师闭关洞府", "description": "闭关遗迹 · 特殊传承"},
+        {"id": "seal", "name": "镇妖封印台", "description": "封印检查 · 妖兽异动"},
+        {"id": "vein", "name": "古灵脉", "description": "灵脉探索 · 灵气异动"},
+        {"id": "cliff", "name": "试剑崖", "description": "剑意感悟 · 特殊试炼"},
+        {"id": "rift", "name": "秘境裂隙", "description": "限时秘境 · 随机事件"},
+        {"id": "valley", "name": "古药谷", "description": "稀有灵植 · 特殊采集"},
+        {"id": "pool", "name": "寒潭", "description": "淬体修炼 · 隐藏机缘"},
+        {"id": "ruins", "name": "废弃洞府", "description": "洞府探索 · 遗留线索"},
+        {"id": "depths", "name": "宗门禁制深处", "description": "未知区域 · 主线事件", "entry": "undiscovered"}
+      ]
+    }
+  ]
+}

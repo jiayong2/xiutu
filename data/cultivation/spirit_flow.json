@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "rate_scale": 10000,
+  "default_root_quality": "ordinary",
+  "default_aptitude": 20,
+  "root_absorption_hourly": {
+    "ordinary": 65000,
+    "fine": 80000,
+    "superior": 100000,
+    "heavenly": 125000
+  },
+  "qi_channel_per_meridian": 3500,
+  "qi_refinement_per_spirituality": 500,
+  "body_absorption_base": 45000,
+  "body_absorption_per_constitution": 1000,
+  "body_channel_per_bone": 3500,
+  "body_channel_per_physique": 500,
+  "affinity_refinement_bonus": 10000,
+  "quality_channel_bonus": {"base": 0, "middle": 5000, "high": 12500},
+  "qi_per_cultivation": 2,
+  "draw_hourly": {"natural": 11575, "practice": 25463, "retreat": 50927},
+  "qi_per_nurture": 1,
+  "nurture_share": {"refinement": 500, "balance": 1000, "nurture": 2000},
+  "locations": {"town_qinglan": "town", "town_yunxi": "rich", "area_qinglan_outskirts": "sparse", "cave_qinglan": "cave"},
+  "stone_points": 50,
+  "formation_hourly": 7500,
+  "concentration_thresholds": [500, 2000, 5500, 7000, 8500, 9500],
+  "environments": {
+    "town": {"capacity": 240, "baseline": 120, "recovery_hourly": 70000, "diffusion_hourly": 20000, "access": 10000, "surrounding": 300},
+    "cave": {"capacity": 240, "baseline": 140, "recovery_hourly": 80000, "diffusion_hourly": 20000, "access": 11000, "surrounding": 400},
+    "advanced_cave": {"capacity": 320, "baseline": 185, "recovery_hourly": 85000, "diffusion_hourly": 20000, "access": 11500, "surrounding": 500},
+    "sparse": {"capacity": 200, "baseline": 35, "recovery_hourly": 8000, "diffusion_hourly": 10000, "access": 6000, "surrounding": 100},
+    "rich": {"capacity": 380, "baseline": 280, "recovery_hourly": 110000, "diffusion_hourly": 26000, "access": 14500, "surrounding": 600},
+    "starved": {"capacity": 150, "baseline": 10, "recovery_hourly": 1000, "diffusion_hourly": 9000, "access": 3500, "surrounding": 10}
+  },
+  "techniques": {
+    "technique_qi_flow": {"element": "", "hourly": 60000, "hourly_step": 2500, "loss": 2000},
+    "technique_green_wood": {"element": "木", "hourly": 70000, "hourly_step": 3500, "loss": 1500},
+    "technique_fire_breath": {"element": "火", "hourly": 72000, "hourly_step": 3500, "loss": 1800},
+    "technique_iron_body": {"element": "", "hourly": 65000, "hourly_step": 3500, "loss": 2000}
+  }
+}

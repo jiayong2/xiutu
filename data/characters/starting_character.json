@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "origin_qinglan_rogue",
+  "test_name": "无名散修",
+  "origin_id": "origin_qinglan_rogue",
+  "realm_id": "qi_1",
+  "location_id": "town_qinglan",
+  "age": 18,
+  "lifespan": 100,
+  "hp": 120,
+  "mp": 40,
+  "attack": 20,
+  "defense": 8,
+  "speed": 12,
+  "cultivation": 0,
+  "cultivation_required": 100,
+  "spirit_stones": 120
+}

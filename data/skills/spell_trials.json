@@ -1,0 +1,10 @@
+[
+{"id":"skill_metal_edge","name":"金刃术","element":"金","description":"凝金成刃，留下可供后续金系攻击利用的剑痕。","rarity":"凡品","mp":6,"cd":0,"target":"enemy","levels":[{"power":1,"status":"sword_mark","armor_bonus":0.1},{"power":1.1},{"self_status":"sword_intent"},{"power":1.25},{"mark_pierce":0.15}],"trial":true},
+{"id":"skill_wood_vine","name":"青藤术","element":"木","description":"以青藤缠击敌人，积累中毒。","rarity":"凡品","mp":6,"cd":0,"target":"enemy","levels":[{"power":0.85,"status":"poison"},{"power":0.95},{"extra_poison":1},{"power":1.1},{"poison_echo":3}],"trial":true},
+{"id":"skill_water_spirit_arrow","name":"水灵箭","element":"水","description":"凝水成箭，给敌人施加潮湿。","rarity":"凡品","mp":5,"cd":0,"target":"enemy","levels":[{"power":0.9,"status":"wet"},{"power":1},{"wet_mana":2},{"power":1.15},{"wet_bonus":0.2}],"trial":true},
+{"id":"skill_fire_ember","name":"赤炎术","element":"火","description":"挥出赤炎，积累灼烧并借火蓄势。","rarity":"凡品","mp":7,"cd":0,"target":"enemy","levels":[{"power":0.95,"status":"burn"},{"power":1.05},{"burn_intent":1},{"power":1.2},{"extra_burn":2}],"trial":true},
+{"id":"skill_earth_rock_armor","name":"岩甲术","element":"土","description":"以岩盾吸收直接攻击伤害。","rarity":"凡品","mp":8,"cd":2,"target":"self","levels":[{"shield":0.8},{"shield":0.95},{"reduction":0.1},{"shield":1.1},{"rebound":0.3}],"trial":true},
+{"id":"skill_wind_blade","name":"风刃术","element":"风","description":"以风刃连续斩击敌人。","rarity":"凡品","mp":7,"cd":0,"target":"enemy","levels":[{"power":0.55,"hits":2},{"power":0.6},{"extra_hit":0.2},{"power":0.7},{"extra_hit_status":"wind_force"}],"trial":true},
+{"id":"skill_thunder_palm","name":"掌心雷","element":"雷","description":"掌中引雷，积累雷印。","rarity":"凡品","mp":7,"cd":0,"target":"enemy","levels":[{"power":1.05,"status":"thunder_mark"},{"power":1.15},{"mark_crit":0.1},{"power":1.3},{"crit_mark":1}],"trial":true},
+{"id":"skill_ice_cone","name":"冰锥术","element":"冰","description":"发出冰锥并积累寒意。","rarity":"凡品","mp":6,"cd":0,"target":"enemy","levels":[{"power":0.95,"status":"chill"},{"power":1.05},{"wet_chill":1},{"power":1.2},{"chill_bonus":0.05}],"trial":true}
+]

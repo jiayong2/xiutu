@@ -1,0 +1,867 @@
+[gd_scene load_steps=14 format=3]
+[ext_resource type="Script" path="res://ui/sect/sect_page.gd" id="1"]
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.96, 0.98, 0.96, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.58, 0.73, 0.67, 1)
+
+[sub_resource type="StyleBoxFlat" id="HeaderPanel"]
+bg_color = Color(0.64, 0.79, 0.73, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="Band"]
+bg_color = Color(0.81, 0.89, 0.85, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="Normal"]
+bg_color = Color(0.89, 0.94, 0.91, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="Hover"]
+bg_color = Color(0.77, 0.88, 0.83, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="Pressed"]
+bg_color = Color(0.69, 0.83, 0.77, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="Disabled"]
+bg_color = Color(0.85, 0.90, 0.87, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="Focus"]
+bg_color = Color(0.36, 0.55, 0.47, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.36, 0.55, 0.47, 1)
+
+[sub_resource type="StyleBoxFlat" id="Primary"]
+bg_color = Color(0.22, 0.49, 0.40, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="PrimaryHover"]
+bg_color = Color(0.19, 0.43, 0.35, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="PrimaryPressed"]
+bg_color = Color(0.16, 0.38, 0.31, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 24
+Label/colors/font_color = Color(0.18, 0.32, 0.27, 1)
+Button/colors/font_color = Color(0.17, 0.33, 0.27, 1)
+Button/colors/font_hover_color = Color(0.17, 0.33, 0.27, 1)
+Button/colors/font_pressed_color = Color(0.17, 0.33, 0.27, 1)
+Button/colors/font_focus_color = Color(0.17, 0.33, 0.27, 1)
+Button/colors/font_disabled_color = Color(0.31, 0.42, 0.38, 1)
+Button/styles/normal = SubResource("Normal")
+Button/styles/hover = SubResource("Hover")
+Button/styles/pressed = SubResource("Pressed")
+Button/styles/disabled = SubResource("Disabled")
+Button/styles/focus = SubResource("Focus")
+Button/styles/hover_pressed = SubResource("Pressed")
+PrimaryButton/base_type = &"Button"
+PrimaryButton/colors/font_color = Color(1, 1, 1, 1)
+PrimaryButton/colors/font_hover_color = Color(1, 1, 1, 1)
+PrimaryButton/colors/font_pressed_color = Color(1, 1, 1, 1)
+PrimaryButton/colors/font_focus_color = Color(1, 1, 1, 1)
+PrimaryButton/styles/normal = SubResource("Primary")
+PrimaryButton/styles/hover = SubResource("PrimaryHover")
+PrimaryButton/styles/pressed = SubResource("PrimaryPressed")
+PrimaryButton/styles/hover_pressed = SubResource("PrimaryPressed")
+
+[node name="SectPage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme")
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.92, 0.96, 0.94, 1)
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Layout" type="VBoxContainer" parent="./Margin"]
+theme_override_constants/separation = 12
+
+[node name="Header" type="PanelContainer" parent="Margin/Layout"]
+theme_override_styles/panel = SubResource("HeaderPanel")
+
+[node name="Row" type="HBoxContainer" parent="Margin/Layout/Header"]
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Margin/Layout/Header/Row"]
+text = "宗门"
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 34
+
+[node name="SectLocation" type="Label" parent="Margin/Layout/Header/Row"]
+text = "宗门所在地待开放"
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+
+[node name="CurrentLocation" type="Label" parent="Margin/Layout/Header/Row"]
+text = "当前位置"
+text_overrun_behavior = 3
+size_flags_horizontal = 3
+
+[node name="SectMap" type="Button" parent="Margin/Layout/Header/Row"]
+text = "宗门地图"
+custom_minimum_size = Vector2(144, 48)
+disabled = true
+tooltip_text = "宗门驻地尚未加入世界地图"
+
+[node name="Back" type="Button" parent="Margin/Layout/Header/Row"]
+text = "返回地点"
+custom_minimum_size = Vector2(144, 48)
+
+[node name="StatusBar" type="HBoxContainer" parent="./Margin/Layout"]
+theme_override_constants/separation = 8
+
+[node name="MemberRankPanel" type="PanelContainer" parent="./Margin/Layout/StatusBar"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Band")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/StatusBar/MemberRankPanel"]
+theme_override_constants/separation = 8
+
+
+[node name="MemberRankHeading" type="Label" parent="./Margin/Layout/StatusBar/MemberRankPanel/Body"]
+text = "宗门身份"
+autowrap_mode = 3
+
+
+[node name="MemberRank" type="Label" parent="./Margin/Layout/StatusBar/MemberRankPanel/Body"]
+text = "未开放"
+autowrap_mode = 3
+
+
+[node name="ContributionPanel" type="PanelContainer" parent="./Margin/Layout/StatusBar"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Band")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/StatusBar/ContributionPanel"]
+theme_override_constants/separation = 8
+
+
+[node name="ContributionHeading" type="Label" parent="./Margin/Layout/StatusBar/ContributionPanel/Body"]
+text = "当前贡献"
+autowrap_mode = 3
+
+
+[node name="Contribution" type="Label" parent="./Margin/Layout/StatusBar/ContributionPanel/Body"]
+text = "未开放"
+autowrap_mode = 3
+
+
+[node name="SectLevelPanel" type="PanelContainer" parent="./Margin/Layout/StatusBar"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Band")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/StatusBar/SectLevelPanel"]
+theme_override_constants/separation = 8
+
+
+[node name="SectLevelHeading" type="Label" parent="./Margin/Layout/StatusBar/SectLevelPanel/Body"]
+text = "宗门等级"
+autowrap_mode = 3
+
+
+[node name="SectLevel" type="Label" parent="./Margin/Layout/StatusBar/SectLevelPanel/Body"]
+text = "未开放"
+autowrap_mode = 3
+
+
+[node name="SalaryStatusPanel" type="PanelContainer" parent="./Margin/Layout/StatusBar"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Band")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/StatusBar/SalaryStatusPanel"]
+theme_override_constants/separation = 8
+
+
+[node name="SalaryStatusHeading" type="Label" parent="./Margin/Layout/StatusBar/SalaryStatusPanel/Body"]
+text = "俸禄状态"
+autowrap_mode = 3
+
+
+[node name="SalaryStatus" type="Label" parent="./Margin/Layout/StatusBar/SalaryStatusPanel/Body"]
+text = "未开放"
+autowrap_mode = 3
+
+
+[node name="ResidencePanel" type="PanelContainer" parent="Margin/Layout"]
+theme_override_styles/panel = SubResource("Band")
+
+[node name="Row" type="HBoxContainer" parent="Margin/Layout/ResidencePanel"]
+theme_override_constants/separation = 20
+
+[node name="Info" type="VBoxContainer" parent="Margin/Layout/ResidencePanel/Row"]
+size_flags_horizontal = 3
+
+[node name="ResidenceTitle" type="Label" parent="Margin/Layout/ResidencePanel/Row/Info"]
+text = "宗门驻地"
+theme_override_font_sizes/font_size = 28
+
+[node name="ResidenceText" type="Label" parent="Margin/Layout/ResidencePanel/Row/Info"]
+text = "驻地、通行状态和旅行信息"
+autowrap_mode = 3
+
+[node name="VisitSect" type="Button" parent="Margin/Layout/ResidencePanel/Row"]
+text = "驻地尚未开放"
+custom_minimum_size = Vector2(300, 64)
+size_flags_vertical = 4
+disabled = true
+theme_type_variation = &"PrimaryButton"
+theme_override_font_sizes/font_size = 27
+tooltip_text = "宗门驻地尚未加入世界地图"
+
+[node name="SelectionPage" type="HBoxContainer" parent="./Margin/Layout"]
+visible = false
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="SectListPanel" type="PanelContainer" parent="./Margin/Layout/SelectionPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/SelectionPage/SectListPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="SectListTitle" type="Label" parent="./Margin/Layout/SelectionPage/SectListPanel/Body"]
+text = "宗门列表"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="SectListScroll" type="ScrollContainer" parent="./Margin/Layout/SelectionPage/SectListPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SectList" type="VBoxContainer" parent="./Margin/Layout/SelectionPage/SectListPanel/Body/SectListScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="IntroductionPanel" type="PanelContainer" parent="./Margin/Layout/SelectionPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.45
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/SelectionPage/IntroductionPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="SectName" type="Label" parent="./Margin/Layout/SelectionPage/IntroductionPanel/Body"]
+text = "请选择宗门"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="ScenePlaceholder" type="ColorRect" parent="./Margin/Layout/SelectionPage/IntroductionPanel/Body"]
+custom_minimum_size = Vector2(0,240)
+color = Color(0.34,0.45,0.50,1)
+
+[node name="SceneLabel" type="Label" parent="./Margin/Layout/SelectionPage/IntroductionPanel/Body/ScenePlaceholder"]
+text = "宗门场景占位"
+autowrap_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IntroductionScroll" type="ScrollContainer" parent="./Margin/Layout/SelectionPage/IntroductionPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Introduction" type="Label" parent="./Margin/Layout/SelectionPage/IntroductionPanel/Body/IntroductionScroll"]
+text = "暂无宗门背景、特色与修炼方向数据"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="JoinPanel" type="PanelContainer" parent="./Margin/Layout/SelectionPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/SelectionPage/JoinPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="JoinTitle" type="Label" parent="./Margin/Layout/SelectionPage/JoinPanel/Body"]
+text = "入门条件"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="JoinScroll" type="ScrollContainer" parent="./Margin/Layout/SelectionPage/JoinPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="JoinConditions" type="Label" parent="./Margin/Layout/SelectionPage/JoinPanel/Body/JoinScroll"]
+text = "读取真实条件"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="JoinReason" type="Label" parent="./Margin/Layout/SelectionPage/JoinPanel/Body"]
+text = ""
+autowrap_mode = 3
+
+
+[node name="Join" type="Button" parent="./Margin/Layout/SelectionPage/JoinPanel/Body"]
+text = "申请加入"
+custom_minimum_size = Vector2(0,56)
+
+
+[node name="InternalPage" type="VBoxContainer" parent="./Margin/Layout"]
+theme_override_constants/separation = 16
+size_flags_vertical = 3
+
+[node name="Tabs" type="GridContainer" parent="./Margin/Layout/InternalPage"]
+columns = 6
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="OverviewTab" type="Button" parent="./Margin/Layout/InternalPage/Tabs"]
+text = "宗门总览"
+custom_minimum_size = Vector2(0,56)
+size_flags_horizontal = 3
+
+[node name="MissionTab" type="Button" parent="./Margin/Layout/InternalPage/Tabs"]
+text = "宗门事务"
+custom_minimum_size = Vector2(0,56)
+size_flags_horizontal = 3
+
+[node name="LibraryTab" type="Button" parent="./Margin/Layout/InternalPage/Tabs"]
+text = "藏经阁"
+custom_minimum_size = Vector2(0,56)
+size_flags_horizontal = 3
+
+[node name="TreasuryTab" type="Button" parent="./Margin/Layout/InternalPage/Tabs"]
+text = "宗门宝库"
+custom_minimum_size = Vector2(0,56)
+size_flags_horizontal = 3
+
+[node name="RankTab" type="Button" parent="./Margin/Layout/InternalPage/Tabs"]
+text = "职位与试炼"
+custom_minimum_size = Vector2(0,56)
+size_flags_horizontal = 3
+
+[node name="NpcTab" type="Button" parent="./Margin/Layout/InternalPage/Tabs"]
+text = "宗门人物"
+custom_minimum_size = Vector2(0,56)
+size_flags_horizontal = 3
+
+[node name="SectContent" type="Control" parent="./Margin/Layout/InternalPage"]
+size_flags_vertical = 3
+
+[node name="OverviewPage" type="GridContainer" parent="./Margin/Layout/InternalPage/SectContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+
+[node name="SummaryPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage/SummaryPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="SummaryTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage/SummaryPanel/Body"]
+text = "宗门概况"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="SummaryScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage/SummaryPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SummaryText" type="Label" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage/SummaryPanel/Body/SummaryScroll"]
+text = "读取真实信息"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="Details" type="Button" parent="Margin/Layout/InternalPage/SectContent/OverviewPage/SummaryPanel/Body"]
+text = "查看宗门详情"
+custom_minimum_size = Vector2(0, 56)
+
+[node name="SalaryPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage/SalaryPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="SalaryTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage/SalaryPanel/Body"]
+text = "我的身份与俸禄"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="SalaryScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage/SalaryPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SalaryText" type="Label" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage/SalaryPanel/Body/SalaryScroll"]
+theme_override_font_sizes/font_size = 22
+text = "读取真实信息"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="ClaimSalary" type="Button" parent="./Margin/Layout/InternalPage/SectContent/OverviewPage/SalaryPanel/Body"]
+text = "领取俸禄"
+custom_minimum_size = Vector2(0,56)
+disabled = true
+
+[node name="MissionPage" type="HBoxContainer" parent="./Margin/Layout/InternalPage/SectContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+theme_override_constants/separation = 16
+
+[node name="MissionListPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/MissionPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/MissionPage/MissionListPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="MissionListTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/MissionPage/MissionListPanel/Body"]
+text = "宗门事务"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="MissionListScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/MissionPage/MissionListPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MissionList" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/MissionPage/MissionListPanel/Body/MissionListScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="MissionDetailPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/MissionPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/MissionPage/MissionDetailPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="MissionDetailTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/MissionPage/MissionDetailPanel/Body"]
+text = "事务详情"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="MissionDetailScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/MissionPage/MissionDetailPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MissionDetail" type="Label" parent="./Margin/Layout/InternalPage/SectContent/MissionPage/MissionDetailPanel/Body/MissionDetailScroll"]
+text = "暂无已定义内容"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="MissionAction" type="Button" parent="./Margin/Layout/InternalPage/SectContent/MissionPage/MissionDetailPanel/Body"]
+text = "接取 / 提交"
+custom_minimum_size = Vector2(0,56)
+disabled = true
+
+[node name="LibraryPage" type="HBoxContainer" parent="./Margin/Layout/InternalPage/SectContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+theme_override_constants/separation = 16
+
+[node name="LibraryListPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage/LibraryListPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="LibraryListTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage/LibraryListPanel/Body"]
+text = "秘籍分类与网格"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="LibraryListScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage/LibraryListPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LibraryList" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage/LibraryListPanel/Body/LibraryListScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="LibraryDetailPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage/LibraryDetailPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="LibraryDetailTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage/LibraryDetailPanel/Body"]
+text = "秘籍详情"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="LibraryDetailScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage/LibraryDetailPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LibraryDetail" type="Label" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage/LibraryDetailPanel/Body/LibraryDetailScroll"]
+text = "暂无已定义内容"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="LibraryAction" type="Button" parent="./Margin/Layout/InternalPage/SectContent/LibraryPage/LibraryDetailPanel/Body"]
+text = "兑换秘籍"
+custom_minimum_size = Vector2(0,56)
+disabled = true
+
+[node name="TreasuryPage" type="HBoxContainer" parent="./Margin/Layout/InternalPage/SectContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+theme_override_constants/separation = 16
+
+[node name="TreasuryListPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage/TreasuryListPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="TreasuryListTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage/TreasuryListPanel/Body"]
+text = "宝库物品"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="TreasuryListScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage/TreasuryListPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="TreasuryList" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage/TreasuryListPanel/Body/TreasuryListScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="TreasuryDetailPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage/TreasuryDetailPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="TreasuryDetailTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage/TreasuryDetailPanel/Body"]
+text = "兑换详情"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="TreasuryDetailScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage/TreasuryDetailPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="TreasuryDetail" type="Label" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage/TreasuryDetailPanel/Body/TreasuryDetailScroll"]
+text = "暂无已定义内容"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="TreasuryAction" type="Button" parent="./Margin/Layout/InternalPage/SectContent/TreasuryPage/TreasuryDetailPanel/Body"]
+text = "确认兑换"
+custom_minimum_size = Vector2(0,56)
+disabled = true
+
+[node name="RankPage" type="HBoxContainer" parent="./Margin/Layout/InternalPage/SectContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+theme_override_constants/separation = 16
+
+[node name="RankListPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/RankPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/RankPage/RankListPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="RankListTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/RankPage/RankListPanel/Body"]
+text = "职位列表"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="RankListScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/RankPage/RankListPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="RankList" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/RankPage/RankListPanel/Body/RankListScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="RankDetailPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/RankPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/RankPage/RankDetailPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="RankDetailTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/RankPage/RankDetailPanel/Body"]
+text = "晋升条件与试炼"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="RankDetailScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/RankPage/RankDetailPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="RankDetail" type="Label" parent="./Margin/Layout/InternalPage/SectContent/RankPage/RankDetailPanel/Body/RankDetailScroll"]
+text = "暂无已定义内容"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="RankAction" type="Button" parent="./Margin/Layout/InternalPage/SectContent/RankPage/RankDetailPanel/Body"]
+text = "申请晋升"
+custom_minimum_size = Vector2(0,56)
+disabled = true
+
+[node name="NpcPage" type="HBoxContainer" parent="./Margin/Layout/InternalPage/SectContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+theme_override_constants/separation = 16
+
+[node name="NpcListPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/NpcPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/NpcPage/NpcListPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="NpcListTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/NpcPage/NpcListPanel/Body"]
+text = "宗门人物"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="NpcListScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/NpcPage/NpcListPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="NpcList" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/NpcPage/NpcListPanel/Body/NpcListScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="NpcDetailPanel" type="PanelContainer" parent="./Margin/Layout/InternalPage/SectContent/NpcPage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/InternalPage/SectContent/NpcPage/NpcDetailPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="NpcDetailTitle" type="Label" parent="./Margin/Layout/InternalPage/SectContent/NpcPage/NpcDetailPanel/Body"]
+text = "人物详情"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="NpcDetailScroll" type="ScrollContainer" parent="./Margin/Layout/InternalPage/SectContent/NpcPage/NpcDetailPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="NpcDetail" type="Label" parent="./Margin/Layout/InternalPage/SectContent/NpcPage/NpcDetailPanel/Body/NpcDetailScroll"]
+text = "暂无已定义内容"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="NpcAction" type="Button" parent="./Margin/Layout/InternalPage/SectContent/NpcPage/NpcDetailPanel/Body"]
+text = "对话"
+custom_minimum_size = Vector2(0,56)
+disabled = true
+
+[node name="Footer" type="PanelContainer" parent="Margin/Layout/InternalPage"]
+theme_override_styles/panel = SubResource("Band")
+
+[node name="Row" type="HBoxContainer" parent="Margin/Layout/InternalPage/Footer"]
+theme_override_constants/separation = 12
+
+[node name="MissionSummaryText" type="Label" parent="Margin/Layout/InternalPage/Footer/Row"]
+text = "当前宗门 · 事务尚未开放"
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+
+[node name="EnterMissions" type="Button" parent="Margin/Layout/InternalPage/Footer/Row"]
+text = "我的事务"
+custom_minimum_size = Vector2(144, 48)
+
+[node name="Donate" type="Button" parent="Margin/Layout/InternalPage/Footer/Row"]
+text = "捐献灵石"
+custom_minimum_size = Vector2(144, 48)
+theme_type_variation = &"PrimaryButton"
+
+[node name="DonateMaterials" type="Button" parent="Margin/Layout/InternalPage/Footer/Row"]
+text = "捐献材料"
+custom_minimum_size = Vector2(144, 48)
+disabled = true
+tooltip_text = "材料捐献尚未开放"
+
+[node name="Close" type="Button" parent="Margin/Layout/InternalPage/Footer/Row"]
+text = "关闭界面"
+custom_minimum_size = Vector2(144, 48)
+
+[node name="Message" type="Label" parent="./Margin/Layout"]
+text = ""
+autowrap_mode = 3
+
+
+[node name="PreviewSect0" type="Button" parent="./Margin/Layout/SelectionPage/SectListPanel/Body/SectListScroll/SectList"]
+text = "青岳宗"
+custom_minimum_size = Vector2(0,88)
+
+[node name="PreviewSect1" type="Button" parent="./Margin/Layout/SelectionPage/SectListPanel/Body/SectListScroll/SectList"]
+text = "百草谷"
+custom_minimum_size = Vector2(0,88)
+
+[node name="PreviewSect2" type="Button" parent="./Margin/Layout/SelectionPage/SectListPanel/Body/SectListScroll/SectList"]
+text = "赤阳门"
+custom_minimum_size = Vector2(0,88)
+
+[node name="DetailsDialog" type="AcceptDialog" parent="."]
+title = "宗门详情"
+size = Vector2i(640, 250)
+
+[node name="DonationDialog" type="ConfirmationDialog" parent="."]
+title = "捐献灵石"
+size = Vector2i(600, 200)
+ok_button_text = "确认捐献"

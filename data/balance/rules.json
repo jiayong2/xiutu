@@ -1,0 +1,86 @@
+{
+  "id": "rules_v01",
+  "roots": [
+    "金",
+    "木",
+    "水",
+    "火",
+    "土",
+    "风",
+    "雷",
+    "冰"
+  ],
+  "initial_items": {
+    "item_healing_powder": 2,
+    "item_aura_powder": 1
+  },
+  "initial_techniques": {
+    "technique_qi_flow": 1
+  },
+  "initial_spells": {
+    "skill_spirit_bolt": 1
+  },
+  "initial_equipment": "equip_green_wood_sword",
+  "equipment_growth_percent": [0, 3, 6, 9, 12, 15],
+  "equipment_overrealm_factor": 0.5,
+  "qi_equipment_set": ["equip_v1_green_edge_sword","equip_v1_clear_mind_crown","equip_v1_green_wood_robe","equip_v1_thunder_bracers","equip_v1_spirit_belt","equip_v1_gale_boots","equip_v1_clear_mind_pendant","equip_v1_renewal_ring"],
+  "start_hour": 8,
+  "days_year": 360,
+  "hours_day": 24,
+  "crit_chance": 0.05,
+  "crit_multiplier": 1.5,
+  "direct_defense_coefficient": 5,
+  "escape_chance": 0.7,
+  "defeat_loss": 0.1,
+  "defeat_restore": 0.3,
+  "battle_hours": 2,
+  "exploration_hours": 4,
+  "inn_cost": 10,
+  "inn_days": 1,
+  "pill_gain": 40,
+  "burn_damage": 5,
+  "status_turns": 2,
+  "status_chance": 0.3,
+  "initial_slots": 3,
+  "plot_count": 4,
+  "foundation_chance": 0.8,
+  "foundation_days": 10,
+  "foundation_loss": 200,
+  "formation_start": 30,
+  "formation_upkeep": 10,
+  "exploration_weights": [
+    35,
+    20,
+    10,
+    25,
+    10
+  ],
+  "rest_hp": 15,
+  "rest_mp": 10,
+  "technique_upgrade": {
+    "凡品": [
+      [
+        80,
+        40
+      ],
+      [
+        160,
+        80
+      ]
+    ],
+    "黄阶": [
+      [
+        150,
+        60
+      ],
+      [
+        300,
+        120
+      ]
+    ]
+  },
+  "spell_upgrade": [
+    100,
+    200
+  ]
+}

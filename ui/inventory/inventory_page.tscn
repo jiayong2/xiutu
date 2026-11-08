@@ -1,0 +1,182 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="Script" path="res://ui/inventory/inventory_page.gd" id="1"]
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.19,0.26,0.30,1)
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+
+[node name="InventoryPage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Layout" type="VBoxContainer" parent="./Margin"]
+theme_override_constants/separation = 16
+
+[node name="Header" type="HBoxContainer" parent="./Margin/Layout"]
+theme_override_constants/separation = 32
+
+[node name="Title" type="Label" parent="./Margin/Layout/Header"]
+text = "背包"
+autowrap_mode = 3
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+
+[node name="Wallet" type="Label" parent="./Margin/Layout/Header"]
+text = "灵石：120"
+autowrap_mode = 0
+custom_minimum_size = Vector2(220,0)
+vertical_alignment = 1
+
+
+[node name="Back" type="Button" parent="./Margin/Layout/Header"]
+text = "返回"
+custom_minimum_size = Vector2(160,64)
+
+[node name="MainContent" type="HBoxContainer" parent="./Margin/Layout"]
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="CategoryPanel" type="PanelContainer" parent="./Margin/Layout/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/MainContent/CategoryPanel"]
+theme_override_constants/separation = 16
+
+[node name="CategoryPanelTitle" type="Label" parent="./Margin/Layout/MainContent/CategoryPanel/Body"]
+text = "物品分类"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="CategoryScroll" type="ScrollContainer" parent="./Margin/Layout/MainContent/CategoryPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CategoryList" type="VBoxContainer" parent="./Margin/Layout/MainContent/CategoryPanel/Body/CategoryScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Category0" type="Button" parent="./Margin/Layout/MainContent/CategoryPanel/Body/CategoryScroll/CategoryList"]
+text = "全部"
+custom_minimum_size = Vector2(0,64)
+
+[node name="Category1" type="Button" parent="./Margin/Layout/MainContent/CategoryPanel/Body/CategoryScroll/CategoryList"]
+text = "丹药"
+custom_minimum_size = Vector2(0,64)
+
+[node name="Category2" type="Button" parent="./Margin/Layout/MainContent/CategoryPanel/Body/CategoryScroll/CategoryList"]
+text = "功法"
+custom_minimum_size = Vector2(0,64)
+
+[node name="Category3" type="Button" parent="./Margin/Layout/MainContent/CategoryPanel/Body/CategoryScroll/CategoryList"]
+text = "法术"
+custom_minimum_size = Vector2(0,64)
+
+[node name="Category4" type="Button" parent="./Margin/Layout/MainContent/CategoryPanel/Body/CategoryScroll/CategoryList"]
+text = "装备"
+custom_minimum_size = Vector2(0,64)
+
+[node name="Category5" type="Button" parent="./Margin/Layout/MainContent/CategoryPanel/Body/CategoryScroll/CategoryList"]
+text = "材料"
+custom_minimum_size = Vector2(0,64)
+
+[node name="Category6" type="Button" parent="./Margin/Layout/MainContent/CategoryPanel/Body/CategoryScroll/CategoryList"]
+text = "任务物品"
+custom_minimum_size = Vector2(0,64)
+
+[node name="ItemPanel" type="PanelContainer" parent="./Margin/Layout/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.55
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/MainContent/ItemPanel"]
+theme_override_constants/separation = 16
+
+[node name="ItemPanelTitle" type="Label" parent="./Margin/Layout/MainContent/ItemPanel/Body"]
+text = "物品栏"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="ItemScroll" type="ScrollContainer" parent="./Margin/Layout/MainContent/ItemPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ItemGrid" type="GridContainer" parent="./Margin/Layout/MainContent/ItemPanel/Body/ItemScroll"]
+columns = 6
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="Preview0" type="Button" parent="./Margin/Layout/MainContent/ItemPanel/Body/ItemScroll/ItemGrid"]
+text = "凝血散\n×2"
+custom_minimum_size = Vector2(144,152)
+
+[node name="Preview1" type="Button" parent="./Margin/Layout/MainContent/ItemPanel/Body/ItemScroll/ItemGrid"]
+text = "回灵散\n×1"
+custom_minimum_size = Vector2(144,152)
+
+[node name="DetailPanel" type="PanelContainer" parent="./Margin/Layout/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/MainContent/DetailPanel"]
+theme_override_constants/separation = 16
+
+[node name="DetailPanelTitle" type="Label" parent="./Margin/Layout/MainContent/DetailPanel/Body"]
+text = "物品详情"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="Icon" type="ColorRect" parent="./Margin/Layout/MainContent/DetailPanel/Body"]
+custom_minimum_size = Vector2(0,144)
+color = Color(0.5,0.62,0.67,1)
+
+[node name="ItemName" type="Label" parent="./Margin/Layout/MainContent/DetailPanel/Body"]
+text = "请选择物品"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="ItemType" type="Label" parent="./Margin/Layout/MainContent/DetailPanel/Body"]
+text = ""
+autowrap_mode = 3
+
+
+[node name="ItemQuantity" type="Label" parent="./Margin/Layout/MainContent/DetailPanel/Body"]
+text = ""
+autowrap_mode = 3
+
+
+[node name="DescriptionScroll" type="ScrollContainer" parent="./Margin/Layout/MainContent/DetailPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Description" type="Label" parent="./Margin/Layout/MainContent/DetailPanel/Body/DescriptionScroll"]
+text = "点击物品查看详情"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="Reason" type="Label" parent="./Margin/Layout/MainContent/DetailPanel/Body"]
+text = ""
+autowrap_mode = 3
+
+
+[node name="Action" type="Button" parent="./Margin/Layout/MainContent/DetailPanel/Body"]
+text = "使用"
+custom_minimum_size = Vector2(0,64)
+
+[node name="Message" type="Label" parent="./Margin/Layout"]
+text = ""
+autowrap_mode = 3
+

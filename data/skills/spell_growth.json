@@ -1,0 +1,141 @@
+{
+  "max_days": 10,
+  "per_level": 100,
+  "battle_gain": 1,
+  "methods": {
+    "quiet": {
+      "name": "静心修炼",
+      "gain": 8,
+      "cost": 0
+    },
+    "stones": {
+      "name": "灵石辅助",
+      "gain": 12,
+      "cost": 5
+    }
+  },
+  "affix_cost": 100,
+  "affixes": {
+    "pierce": {
+      "name": "穿灵",
+      "effect": "本次攻击无视目标%s防御",
+      "role": "damage",
+      "value": 0.1
+    },
+    "mana": {
+      "name": "回气",
+      "effect": "造成生命伤害后恢复%d点灵力",
+      "role": "heal",
+      "value": 1
+    },
+    "focus": {
+      "name": "凝气",
+      "effect": "施法后使下一次攻击法术伤害提高%s",
+      "role": "combo",
+      "value": 0.1
+    },
+    "burn": {
+      "name": "附炎",
+      "effect": "命中后施加%d层灼烧",
+      "role": "control",
+      "value": 1
+    }
+  },
+  "statuses": {
+    "enemy_shield": {"name":"护盾","max":1,"turns":2,"value":0},
+    "control_resistance": {"name":"封脉抗性","max":1,"turns":2,"value":0},
+    "corrosion": {"name":"腐蚀","max":1,"turns":2,"value":0.3},
+    "spring": {"name":"灵泉","max":1,"turns":3,"value":0},
+    "vulnerability": {"name":"易伤","max":1,"turns":2,"value":0.1},
+    "shock": {"name":"震荡","max":1,"turns":2,"value":0.15},
+    "wind_step": {"name":"疾风","max":1,"turns":2,"value":0},
+    "slow": {"name":"迟缓","max":1,"turns":2,"value":0},
+    "seal": {"name":"封脉","max":1,"turns":1,"value":0},
+    "weak_attack": {"name":"攻势衰减","max":1,"turns":2,"value":0},
+    "life": {"name":"生机","max":1,"turns":2,"value":0},
+    "discount": {"name":"纳元减耗","max":1,"turns":2,"value":0},
+    "stand": {"name":"坚守","max":1,"turns":2,"value":0},
+    "wind_ready": {"name":"御风","max":1,"turns":2,"value":0},
+    "electrified": {"name":"感电","max":1,"turns":2,"value":0.1},
+    "thunder_force": {"name":"雷势","max":1,"turns":2,"value":0.1},
+    "thunder_echo": {"name":"引雷","max":1,"turns":2,"value":0},
+    "ice_armor": {"name":"冰甲","max":1,"turns":2,"value":0},
+    "ice_vulnerability": {"name":"碎冰易伤","max":1,"turns":2,"value":0.2},
+    "sword_mark": {
+      "name": "剑痕",
+      "max": 3,
+      "turns": 2,
+      "value": 0.05
+    },
+    "sword_intent": {
+      "name": "剑意",
+      "max": 3,
+      "turns": 2,
+      "value": 0.05
+    },
+    "poison": {
+      "name": "中毒",
+      "max": 5,
+      "turns": 2,
+      "value": 0.05
+    },
+    "wet": {
+      "name": "潮湿",
+      "max": 1,
+      "turns": 2,
+      "value": 0.1
+    },
+    "burn": {
+      "name": "灼烧",
+      "max": 5,
+      "turns": 2,
+      "value": 0.05
+    },
+    "flame_force": {
+      "name": "炎势",
+      "max": 3,
+      "turns": 2,
+      "value": 0.05
+    },
+    "rock_shield": {
+      "name": "岩盾",
+      "max": 1,
+      "turns": 2,
+      "value": 0
+    },
+    "wind_force": {
+      "name": "风势",
+      "max": 3,
+      "turns": 2,
+      "value": 0.05
+    },
+    "thunder_mark": {
+      "name": "雷印",
+      "max": 5,
+      "turns": 2,
+      "value": 0
+    },
+    "chill": {
+      "name": "寒意",
+      "max": 3,
+      "turns": 2,
+      "value": 0.05
+    },
+    "armor_break": {
+      "name": "破甲",
+      "max": 4,
+      "turns": 2,
+      "value": 0.05
+    },
+    "focus": {
+      "name": "凝气",
+      "max": 1,
+      "turns": 2,
+      "value": 0.1
+    }
+  },
+  "shield_cap": 0.5,
+  "reduction_cap": 0.6,
+  "dodge_cap": 0.5,
+  "control": {"normal": 1.0, "elite": 0.6, "boss": 0.25, "resistance_gain": 0.2, "resistance_turns": 2, "monster_ranks": {"monster_wolf_leader":"boss"}}
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "technique_qi_flow",
+    "cultivation_route": "qi",
+    "name": "引气诀",
+    "rarity": "凡品",
+    "hp": 0,
+    "defense": 0,
+    "attack": 0,
+    "fire": 0,
+    "hp_step": 0,
+    "defense_step": 0,
+    "attack_step": 0,
+    "fire_step": 0,
+    "buy_price": 60
+  },
+  {
+    "id": "technique_iron_body",
+    "cultivation_route": "body",
+    "name": "铁骨功",
+    "rarity": "凡品",
+    "hp": 20,
+    "defense": 2,
+    "attack": 0,
+    "fire": 0,
+    "hp_step": 10,
+    "defense_step": 1,
+    "attack_step": 0,
+    "fire_step": 0,
+    "buy_price": 120
+  },
+  {
+    "id": "technique_green_wood",
+    "cultivation_route": "qi",
+    "name": "青木长生诀",
+    "rarity": "黄阶",
+    "hp": 30,
+    "defense": 0,
+    "attack": 0,
+    "fire": 0,
+    "hp_step": 15,
+    "defense_step": 0,
+    "attack_step": 0,
+    "fire_step": 0,
+    "buy_price": 220
+  },
+  {
+    "id": "technique_fire_breath",
+    "cultivation_route": "qi",
+    "name": "赤炎吐纳诀",
+    "rarity": "黄阶",
+    "hp": 0,
+    "defense": 0,
+    "attack": 2,
+    "fire": 0.15,
+    "hp_step": 0,
+    "defense_step": 0,
+    "attack_step": 1,
+    "fire_step": 0.05,
+    "buy_price": 180
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "body_max_level": 81,
+  "body_required": 100,
+  "attribute_start": 20,
+  "attribute_cap": 30,
+  "attribute_cap_per_breakthrough": 1,
+  "extra_cap_per_new_tier": 2,
+  "major_foundation_gap": 2,
+  "character_foundation": {
+    "initial_aptitude": 20, "initial_blood": 80, "mp_per_qi_sea": 1,
+    "hp_per_physique": 2, "blood_per_physique": 2,
+    "attack_per_bone": 1, "bones_per_defense": 2, "spell_bps_per_meridian": 10
+  },
+  "nurture_per_point": 12,
+  "mental": {
+    "initial": {"spirit_sea": 10, "soul": 10},
+    "npc_first_tier_step": {"spirit_sea": 5, "soul": 3},
+    "attack_weights": {"spirit_sea": 0.4, "soul": 0.6},
+    "defense_weights": {"spirit_sea": 0.3, "soul": 0.7},
+    "base_chance": 50,
+    "difference_scale": 1.5,
+    "min_chance": 5,
+    "max_chance": 95,
+    "tier_modifier": 15,
+    "modifier_cap": 30,
+    "personality_modifier": {"cautious": 10, "competitive": -10, "resentful": -10},
+    "mood_modifier": {"hesitate": 10, "guarded": -10}
+  },
+  "breakthrough_quality": {
+    "qi": {"middle_score": 28, "high_score": 34},
+    "body": {"middle_score": 39, "high_score": 41},
+    "per_extra_technique_level": 1
+  }
+}

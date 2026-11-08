@@ -1,0 +1,232 @@
+[gd_scene load_steps=7 format=3]
+[ext_resource type="Script" path="res://ui/world/world_page.gd" id="controller"]
+[ext_resource type="Script" path="res://ui/world/map_routes.gd" id="routes"]
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.18,0.28,0.32,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+[sub_resource type="StyleBoxFlat" id="Inset"]
+bg_color = Color(0.23,0.35,0.40,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+[sub_resource type="StyleBoxFlat" id="Button"]
+bg_color = Color(0.29,0.42,0.47,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 24
+PanelContainer/styles/panel = SubResource("Panel")
+Button/styles/normal = SubResource("Button")
+Button/styles/hover = SubResource("Inset")
+Button/styles/pressed = SubResource("Inset")
+[node name="WorldMap" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme")
+script = ExtResource("controller")
+mode = "world"
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_bottom = 24
+[node name="Column" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 20
+[node name="Header" type="PanelContainer" parent="Margin/Column"]
+
+[node name="HeaderRow" type="HBoxContainer" parent="Margin/Column/Header"]
+theme_override_constants/separation = 24
+[node name="PageTitle" type="Label" parent="Margin/Column/Header/HeaderRow"]
+text = "世界地图"
+theme_override_font_sizes/font_size = 32
+size_flags_horizontal = 3
+[node name="GameTime" type="Label" parent="Margin/Column/Header/HeaderRow"]
+text = "玄灵历1年1月1日 · 08:00"
+theme_override_font_sizes/font_size = 22
+vertical_alignment = 1
+[node name="Back" type="Button" parent="Margin/Column/Header/HeaderRow"]
+text = "返回当前地点"
+custom_minimum_size = Vector2(0,64)
+
+[node name="Body" type="HBoxContainer" parent="Margin/Column"]
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+[node name="IndexPanel" type="PanelContainer" parent="Margin/Column/Body"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.16
+[node name="Column" type="VBoxContainer" parent="Margin/Column/Body/IndexPanel"]
+theme_override_constants/separation = 20
+[node name="IndexTitle" type="Label" parent="Margin/Column/Body/IndexPanel/Column"]
+text = "地点索引"
+theme_override_font_sizes/font_size = 28
+
+[node name="IndexScroll" type="ScrollContainer" parent="Margin/Column/Body/IndexPanel/Column"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+[node name="IndexList" type="VBoxContainer" parent="Margin/Column/Body/IndexPanel/Column/IndexScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+[node name="Index_town_qinglan" type="Button" parent="Margin/Column/Body/IndexPanel/Column/IndexScroll/IndexList"]
+text = "青岚镇"
+custom_minimum_size = Vector2(0,64)
+clip_text = true
+[node name="Index_cave_qinglan" type="Button" parent="Margin/Column/Body/IndexPanel/Column/IndexScroll/IndexList"]
+text = "青岚小洞府"
+custom_minimum_size = Vector2(0,64)
+clip_text = true
+[node name="Index_area_qinglan_outskirts" type="Button" parent="Margin/Column/Body/IndexPanel/Column/IndexScroll/IndexList"]
+text = "青岚山外围"
+custom_minimum_size = Vector2(0,64)
+clip_text = true
+[node name="Index_town_yunxi" type="Button" parent="Margin/Column/Body/IndexPanel/Column/IndexScroll/IndexList"]
+text = "云溪城"
+custom_minimum_size = Vector2(0,64)
+clip_text = true
+[node name="Index_sect_qingyue_gate" type="Button" parent="Margin/Column/Body/IndexPanel/Column/IndexScroll/IndexList"]
+text = "青岳山 · 山门"
+custom_minimum_size = Vector2(0,64)
+clip_text = true
+[node name="CenterPanel" type="PanelContainer" parent="Margin/Column/Body"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.60
+[node name="Column" type="VBoxContainer" parent="Margin/Column/Body/CenterPanel"]
+theme_override_constants/separation = 20
+[node name="CenterTitle" type="Label" parent="Margin/Column/Body/CenterPanel/Column"]
+text = "地图区域"
+theme_override_font_sizes/font_size = 28
+
+[node name="CanvasPanel" type="PanelContainer" parent="Margin/Column/Body/CenterPanel/Column"]
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Inset")
+[node name="Canvas" type="Control" parent="Margin/Column/Body/CenterPanel/Column/CanvasPanel"]
+
+[node name="Routes" type="Control" parent="Margin/Column/Body/CenterPanel/Column/CanvasPanel/Canvas"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("routes")
+[node name="town_qinglan" type="Button" parent="Margin/Column/Body/CenterPanel/Column/CanvasPanel/Canvas"]
+text = "青岚镇"
+anchor_left = 0.12
+anchor_right = 0.12
+anchor_top = 0.86
+anchor_bottom = 0.86
+offset_left = -80.0
+offset_right = 80.0
+offset_top = -40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2(160,80)
+[node name="cave_qinglan" type="Button" parent="Margin/Column/Body/CenterPanel/Column/CanvasPanel/Canvas"]
+text = "青岚小洞府"
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.13
+anchor_bottom = 0.13
+offset_left = -80.0
+offset_right = 80.0
+offset_top = -40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2(160,80)
+[node name="area_qinglan_outskirts" type="Button" parent="Margin/Column/Body/CenterPanel/Column/CanvasPanel/Canvas"]
+text = "青岚山外围"
+anchor_left = 0.14
+anchor_right = 0.14
+anchor_top = 0.32
+anchor_bottom = 0.32
+offset_left = -80.0
+offset_right = 80.0
+offset_top = -40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2(160,80)
+[node name="town_yunxi" type="Button" parent="Margin/Column/Body/CenterPanel/Column/CanvasPanel/Canvas"]
+text = "云溪城"
+anchor_left = 0.84
+anchor_right = 0.84
+anchor_top = 0.86
+anchor_bottom = 0.86
+offset_left = -80.0
+offset_right = 80.0
+offset_top = -40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2(160,80)
+[node name="sect_qingyue_gate" type="Button" parent="Margin/Column/Body/CenterPanel/Column/CanvasPanel/Canvas"]
+text = "青岳山 · 山门"
+anchor_left = 0.70
+anchor_right = 0.70
+anchor_top = 0.43
+anchor_bottom = 0.43
+offset_left = -106.0
+offset_right = 106.0
+offset_top = -40.0
+offset_bottom = 40.0
+custom_minimum_size = Vector2(212,80)
+[node name="RightPanel" type="PanelContainer" parent="Margin/Column/Body"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.24
+[node name="Column" type="VBoxContainer" parent="Margin/Column/Body/RightPanel"]
+theme_override_constants/separation = 20
+[node name="RightTitle" type="Label" parent="Margin/Column/Body/RightPanel/Column"]
+text = "地点详情"
+theme_override_font_sizes/font_size = 28
+
+[node name="PlaceName" type="Label" parent="Margin/Column/Body/RightPanel/Column"]
+text = "青岚镇"
+theme_override_font_sizes/font_size = 40
+
+[node name="PlaceDescription" type="Label" parent="Margin/Column/Body/RightPanel/Column"]
+text = "当前地点详情"
+theme_override_font_sizes/font_size = 24
+custom_minimum_size = Vector2(0,96)
+autowrap_mode = 3
+[node name="Separator" type="HSeparator" parent="Margin/Column/Body/RightPanel/Column"]
+
+[node name="Aura" type="Label" parent="Margin/Column/Body/RightPanel/Column"]
+text = "灵气平常"
+theme_override_font_sizes/font_size = 24
+
+[node name="Environment" type="Label" parent="Margin/Column/Body/RightPanel/Column"]
+text = "环境：安全"
+theme_override_font_sizes/font_size = 24
+
+[node name="UnlockStatus" type="Label" parent="Margin/Column/Body/RightPanel/Column"]
+text = "已开放"
+theme_override_font_sizes/font_size = 22
+
+[node name="TravelCondition" type="Label" parent="Margin/Column/Body/RightPanel/Column"]
+text = "已在此处，进入场景"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+custom_minimum_size = Vector2(0,64)
+[node name="Spacer" type="Control" parent="Margin/Column/Body/RightPanel/Column"]
+size_flags_vertical = 3
+[node name="Enter" type="Button" parent="Margin/Column/Body/RightPanel/Column"]
+text = "进入当前地点"
+custom_minimum_size = Vector2(0,64)
+
+[node name="Footer" type="PanelContainer" parent="Margin/Column"]
+
+[node name="Status" type="Label" parent="Margin/Column/Footer"]
+text = "选择地点查看详情；移动按现有时间规则执行"
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+custom_minimum_size = Vector2(0,32)

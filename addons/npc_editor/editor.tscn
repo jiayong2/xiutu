@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/npc_editor/editor.gd" id="1"]
+
+[node name="NpcEditor" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1")
+
+[node name="Frame" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Frame"]
+layout_mode = 2
+
+[node name="Heading" type="Label" parent="Frame/Header"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "仙途  /  NPC 初始定义"
+
+[node name="SelectSave" type="Button" parent="Frame/Header"]
+layout_mode = 2
+text = "选择存档"
+
+[node name="SaveChanges" type="Button" parent="Frame/Header"]
+layout_mode = 2
+disabled = true
+text = "保存"
+
+[node name="SaveStatus" type="Label" parent="Frame/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+text = "尚未选择存档"
+
+[node name="Columns" type="HBoxContainer" parent="Frame"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Roster" type="VBoxContainer" parent="Frame/Columns"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Search" type="LineEdit" parent="Frame/Columns/Roster"]
+layout_mode = 2
+placeholder_text = "搜索 NPC"
+
+[node name="RankFilter" type="OptionButton" parent="Frame/Columns/Roster"]
+layout_mode = 2
+
+[node name="Characters" type="ItemList" parent="Frame/Columns/Roster"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="New" type="Button" parent="Frame/Columns/Roster"]
+layout_mode = 2
+text = "新建"
+
+[node name="Random" type="Button" parent="Frame/Columns/Roster"]
+layout_mode = 2
+text = "随机生成人物"
+
+[node name="Copy" type="Button" parent="Frame/Columns/Roster"]
+layout_mode = 2
+text = "复制当前"
+
+[node name="Tabs" type="TabContainer" parent="Frame/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewScroll" type="ScrollContainer" parent="Frame/Columns"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Preview" type="VBoxContainer" parent="Frame/Columns/PreviewScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Frame/Columns/PreviewScroll/Preview"]
+layout_mode = 2
+text = "人物预览"
+
+[node name="Footer" type="HBoxContainer" parent="Frame"]
+layout_mode = 2
+
+[node name="Save" type="Button" parent="Frame/Footer"]
+layout_mode = 2
+text = "保存定义"
+
+[node name="Revert" type="Button" parent="Frame/Footer"]
+layout_mode = 2
+text = "撤销未保存修改"
+
+[node name="Reload" type="Button" parent="Frame/Footer"]
+layout_mode = 2
+text = "从磁盘载入"
+
+[node name="Status" type="Label" parent="Frame/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 3

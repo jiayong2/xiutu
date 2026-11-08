@@ -1,0 +1,23 @@
+[
+  {
+    "id": "recipe_qi_gathering",
+    "name": "聚气丹",
+    "materials": {
+      "herb_spirit_grass": 2
+    },
+    "cost": 10,
+    "days": 1,
+    "output": "pill_qi_gathering"
+  },
+  {
+    "id": "recipe_healing",
+    "name": "回春丹",
+    "materials": {
+      "herb_morning_dew": 2,
+      "herb_calm_leaf": 1
+    },
+    "cost": 12,
+    "days": 1,
+    "output": "pill_healing"
+  }
+]

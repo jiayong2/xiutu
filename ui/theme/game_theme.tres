@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/source_han_sans_cn/SourceHanSansCN-Regular.otf" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/source_han_sans_cn/SourceHanSansCN-Bold.otf" id="2"]
+
+[resource]
+default_font = ExtResource("1")
+RichTextLabel/fonts/normal_font = ExtResource("1")
+RichTextLabel/fonts/bold_font = ExtResource("2")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2")

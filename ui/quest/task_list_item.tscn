@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[node name="TaskListItem" type="Button"]
+custom_minimum_size = Vector2(0, 96)
+size_flags_horizontal = 3
+theme_type_variation = &"TaskRow"
+text = "任务名称
+任务类型 · 任务状态"
+alignment = 0
+text_overrun_behavior = 3
+
+[node name="Caption" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -8.0
+mouse_filter = 2
+bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+theme_override_font_sizes/normal_font_size = 17
+text = "[color=#274D46][b][font_size=21]任务名称[/font_size][/b][/color]
+[color=#547970]任务类型[/color] · [color=#2879A5]任务状态[/color]"

@@ -1,0 +1,309 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://ui/shop/shop_page.gd" id="Controller"]
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.18,0.255,0.294,1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3,0.4,0.44,1)
+
+[sub_resource type="StyleBoxFlat" id="Button"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.30,0.46,0.43,1)
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 18
+Button/styles/normal = SubResource("Button")
+
+[node name="ShopPage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("Controller")
+theme = SubResource("Theme")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.094,0.137,0.169,1)
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Column" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 16
+
+
+[node name="Header" type="HBoxContainer" parent="Margin/Column"]
+theme_override_constants/separation = 16
+
+
+[node name="ShopName" type="Label" parent="Margin/Column/Header"]
+text = "青岚杂货铺"
+theme_override_font_sizes/font_size = 28
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="Wallet" type="Label" parent="Margin/Column/Header"]
+text = "灵石 120"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 0
+
+custom_minimum_size = Vector2(200,0)
+
+[node name="Back" type="Button" parent="Margin/Column/Header"]
+text = "返回地点"
+custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(160,48)
+
+[node name="Tabs" type="HBoxContainer" parent="Margin/Column"]
+theme_override_constants/separation = 16
+
+
+[node name="Buy" type="Button" parent="Margin/Column/Tabs"]
+text = "购买"
+custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(160,48)
+
+[node name="Sell" type="Button" parent="Margin/Column/Tabs"]
+text = "出售"
+custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(160,48)
+
+[node name="PricingHint" type="Label" parent="Margin/Column/Tabs"]
+text = "购买价随供需变化；出售按固定基价"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+size_flags_horizontal = 3
+horizontal_alignment = 2
+
+[node name="MainContent" type="HBoxContainer" parent="Margin/Column"]
+theme_override_constants/separation = 16
+size_flags_vertical = 3
+
+[node name="CategoryPanel" type="PanelContainer" parent="Margin/Column/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 15.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="CategoryColumn" type="VBoxContainer" parent="Margin/Column/MainContent/CategoryPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="CategoryTitle" type="Label" parent="Margin/Column/MainContent/CategoryPanel/CategoryColumn"]
+text = "商品分类"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+
+[node name="CategoryScroll" type="ScrollContainer" parent="Margin/Column/MainContent/CategoryPanel/CategoryColumn"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Categories" type="VBoxContainer" parent="Margin/Column/MainContent/CategoryPanel/CategoryColumn/CategoryScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="PreviewAll" type="Button" parent="Margin/Column/MainContent/CategoryPanel/CategoryColumn/CategoryScroll/Categories"]
+text = "全部"
+custom_minimum_size = Vector2(0, 48)
+
+
+[node name="PreviewCategory" type="Button" parent="Margin/Column/MainContent/CategoryPanel/CategoryColumn/CategoryScroll/Categories"]
+text = "消耗品"
+custom_minimum_size = Vector2(0, 48)
+
+
+[node name="ItemListPanel" type="PanelContainer" parent="Margin/Column/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 50.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="ListColumn" type="VBoxContainer" parent="Margin/Column/MainContent/ItemListPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="ListHeader" type="HBoxContainer" parent="Margin/Column/MainContent/ItemListPanel/ListColumn"]
+theme_override_constants/separation = 16
+
+
+[node name="IconHeading" type="Label" parent="Margin/Column/MainContent/ItemListPanel/ListColumn/ListHeader"]
+text = ""
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+custom_minimum_size = Vector2(40,0)
+
+[node name="NameHeading" type="Label" parent="Margin/Column/MainContent/ItemListPanel/ListColumn/ListHeader"]
+text = "商品名称"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="PriceHeading" type="Label" parent="Margin/Column/MainContent/ItemListPanel/ListColumn/ListHeader"]
+text = "单价"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+custom_minimum_size = Vector2(112,0)
+
+[node name="CountHeading" type="Label" parent="Margin/Column/MainContent/ItemListPanel/ListColumn/ListHeader"]
+text = "库存"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+custom_minimum_size = Vector2(112,0)
+
+[node name="ItemScroll" type="ScrollContainer" parent="Margin/Column/MainContent/ItemListPanel/ListColumn"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ItemList" type="VBoxContainer" parent="Margin/Column/MainContent/ItemListPanel/ListColumn/ItemScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="PreviewItem" type="Button" parent="Margin/Column/MainContent/ItemListPanel/ListColumn/ItemScroll/ItemList"]
+text = "□  凝血散                                   20         10"
+custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(0,64)
+
+[node name="ItemDetailPanel" type="PanelContainer" parent="Margin/Column/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 35.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="DetailColumn" type="VBoxContainer" parent="Margin/Column/MainContent/ItemDetailPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="DetailTitle" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn"]
+text = "商品详情"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+
+[node name="IconPlaceholder" type="PanelContainer" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="IconText" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/IconPlaceholder"]
+text = "物品图标占位"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+custom_minimum_size = Vector2(0,112)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DetailScroll" type="ScrollContainer" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Information" type="VBoxContainer" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/DetailScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="ItemName" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/DetailScroll/Information"]
+text = "凝血散"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+
+[node name="ItemType" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/DetailScroll/Information"]
+text = "消耗品"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+
+[node name="Description" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/DetailScroll/Information"]
+text = "战斗或非战斗恢复 HP 40"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+
+[node name="Effect" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/DetailScroll/Information"]
+text = "恢复生命 40"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+
+[node name="UnitPrice" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/DetailScroll/Information"]
+text = "单价：20 灵石"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+
+[node name="Holding" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/DetailScroll/Information"]
+text = "库存：10 · 持有：2"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+
+[node name="Reason" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn"]
+text = "请选择商品"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+
+
+[node name="QuantitySelector" type="HBoxContainer" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn"]
+theme_override_constants/separation = 16
+
+
+[node name="QuantityHeading" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/QuantitySelector"]
+text = "数量"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="Minus" type="Button" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/QuantitySelector"]
+text = "−"
+custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(48,48)
+
+[node name="Quantity" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/QuantitySelector"]
+text = "1"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 0
+custom_minimum_size = Vector2(48,0)
+horizontal_alignment = 1
+
+
+[node name="Plus" type="Button" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/QuantitySelector"]
+text = "+"
+custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(48,48)
+
+[node name="Maximum" type="Button" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn/QuantitySelector"]
+text = "最大"
+custom_minimum_size = Vector2(0, 48)
+custom_minimum_size = Vector2(80,48)
+
+[node name="Total" type="Label" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn"]
+text = "总价：20 灵石"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+
+[node name="Confirm" type="Button" parent="Margin/Column/MainContent/ItemDetailPanel/DetailColumn"]
+text = "确认购买"
+custom_minimum_size = Vector2(0, 48)
+
+
+[node name="Status" type="Label" parent="Margin/Column"]
+text = "选择商品查看详情"
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3
+

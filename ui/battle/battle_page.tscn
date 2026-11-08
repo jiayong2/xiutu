@@ -1,0 +1,159 @@
+[gd_scene load_steps=4 format=3]
+[ext_resource type="Script" path="res://ui/battle/battle_page.gd" id="1"]
+[ext_resource type="PackedScene" path="res://ui/battle/unit_view.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://ui/battle/turn_order_bar.tscn" id="3"]
+[node name="BattlePage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.094,0.137,0.169,1)
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+[node name="Layout" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 12
+[node name="Header" type="HBoxContainer" parent="Margin/Layout"]
+custom_minimum_size = Vector2(0,48)
+[node name="Title" type="Label" parent="Margin/Layout/Header"]
+text = "青岚山外围 · 战斗"
+size_flags_horizontal = 3
+[node name="Round" type="Label" parent="Margin/Layout/Header"]
+text = "第 1 回合"
+[node name="TurnScroll" type="Control" parent="Margin/Layout"]
+custom_minimum_size = Vector2(0,72)
+[node name="TurnOrder" parent="Margin/Layout/TurnScroll" instance=ExtResource("3")]
+[node name="Battlefield" type="HBoxContainer" parent="Margin/Layout"]
+size_flags_vertical = 3
+[node name="AllyFormation" type="Control" parent="Margin/Layout/Battlefield"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.42
+[node name="EffectLayer" type="Control" parent="Margin/Layout/Battlefield"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.16
+[node name="EnemyFormation" type="Control" parent="Margin/Layout/Battlefield"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.42
+[node name="BottomArea" type="HBoxContainer" parent="Margin/Layout"]
+custom_minimum_size = Vector2(0,238)
+theme_override_constants/separation = 16
+[node name="Actions" type="PanelContainer" parent="Margin/Layout/BottomArea"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.65
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/BottomArea/Actions"]
+theme_override_constants/separation = 12
+[node name="LogPanel" type="PanelContainer" parent="Margin/Layout/BottomArea"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/BottomArea/LogPanel"]
+theme_override_constants/separation = 12
+[node name="ActionHeader" type="HBoxContainer" parent="Margin/Layout/BottomArea/Actions/Body"]
+theme_override_constants/separation = 12
+
+[node name="ActionTitle" type="Label" parent="Margin/Layout/BottomArea/Actions/Body/ActionHeader"]
+text = "战斗操作"
+size_flags_horizontal = 3
+[node name="Auto" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/ActionHeader"]
+text = "自动 关"
+[node name="Skip" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/ActionHeader"]
+text = "跳过动画"
+visible = false
+[node name="Speed" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/ActionHeader"]
+text = "×1"
+[node name="BasicActions" type="HBoxContainer" parent="Margin/Layout/BottomArea/Actions/Body"]
+theme_override_constants/separation = 12
+
+[node name="Attack" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/BasicActions"]
+text = "攻击"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,56)
+[node name="Defend" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/BasicActions"]
+text = "防御"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,56)
+[node name="Item" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/BasicActions"]
+text = "道具"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,56)
+[node name="Escape" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/BasicActions"]
+text = "逃跑"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,56)
+[node name="Skills" type="GridContainer" parent="Margin/Layout/BottomArea/Actions/Body"]
+
+columns = 6
+[node name="Skill0" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/Skills"]
+text = "未装备"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,76)
+[node name="Skill1" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/Skills"]
+text = "未装备"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,76)
+[node name="Skill2" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/Skills"]
+text = "未装备"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,76)
+[node name="Skill3" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/Skills"]
+text = "未装备"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,76)
+[node name="Skill4" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/Skills"]
+text = "未装备"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,76)
+[node name="Skill5" type="Button" parent="Margin/Layout/BottomArea/Actions/Body/Skills"]
+text = "展开"
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,76)
+[node name="LogTitle" type="Label" parent="Margin/Layout/BottomArea/LogPanel/Body"]
+text = "战斗日志"
+[node name="Log" type="RichTextLabel" parent="Margin/Layout/BottomArea/LogPanel/Body"]
+size_flags_vertical = 3
+text = "战斗准备"
+bbcode_enabled = true
+scroll_following = true
+
+[node name="PreviewUnit" parent="Margin/Layout/Battlefield/AllyFormation" instance=ExtResource("2")]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_right = 98.0
+offset_top = -140.0
+offset_bottom = 140.0
+
+[node name="blood" parent="Margin/Layout/Battlefield/AllyFormation/PreviewUnit" index="5"]
+visible = true
+
+[node name="PreviewUnit" parent="Margin/Layout/Battlefield/EnemyFormation" instance=ExtResource("2")]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_right = 98.0
+offset_top = -140.0
+offset_bottom = 140.0
+
+[node name="Begin" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -36.0
+offset_right = 120.0
+offset_bottom = 36.0
+text = "开始战斗"
+theme_override_font_sizes/font_size = 28
+
+[editable path="Margin/Layout/Battlefield/AllyFormation/PreviewUnit"]

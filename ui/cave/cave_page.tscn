@@ -1,0 +1,689 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="Script" path="res://ui/cave/cave_page.gd" id="1"]
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.19,0.26,0.30,1)
+content_margin_left = 24.0
+content_margin_right = 24.0
+content_margin_top = 24.0
+content_margin_bottom = 24.0
+
+[node name="CavePage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Layout" type="VBoxContainer" parent="./Margin"]
+theme_override_constants/separation = 16
+
+
+[node name="Header" type="HBoxContainer" parent="./Margin/Layout"]
+
+
+[node name="Title" type="Label" parent="./Margin/Layout/Header"]
+text = "洞府"
+autowrap_mode = 3
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 36
+
+[node name="Back" type="Button" parent="./Margin/Layout/Header"]
+text = "返回地点"
+custom_minimum_size = Vector2(0,48)
+custom_minimum_size = Vector2(160,64)
+
+[node name="Tabs" type="HBoxContainer" parent="./Margin/Layout"]
+theme_override_constants/separation = 16
+
+[node name="OverviewTab" type="Button" parent="./Margin/Layout/Tabs"]
+text = "洞府总览"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,72)
+
+[node name="RetreatTab" type="Button" parent="./Margin/Layout/Tabs"]
+text = "修炼室"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,72)
+
+[node name="FieldsTab" type="Button" parent="./Margin/Layout/Tabs"]
+text = "灵田"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,72)
+
+[node name="AlchemyTab" type="Button" parent="./Margin/Layout/Tabs"]
+text = "炼丹房"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0,72)
+
+[node name="PageContent" type="Control" parent="./Margin/Layout"]
+size_flags_vertical = 3
+
+[node name="Overview" type="VBoxContainer" parent="./Margin/Layout/PageContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+visible = true
+
+[node name="Summary" type="Label" parent="./Margin/Layout/PageContent/Overview"]
+text = "洞府等级 · 灵田数量 · 修炼状态 · 炼丹状态"
+autowrap_mode = 3
+
+
+[node name="Facilities" type="GridContainer" parent="./Margin/Layout/PageContent/Overview"]
+columns = 2
+size_flags_vertical = 3
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+
+[node name="RetreatCard" type="PanelContainer" parent="./Margin/Layout/PageContent/Overview/Facilities"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Overview/Facilities/RetreatCard"]
+theme_override_constants/separation = 16
+
+
+[node name="RetreatCardTitle" type="Label" parent="./Margin/Layout/PageContent/Overview/Facilities/RetreatCard/Body"]
+text = "修炼室"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="RetreatCardText" type="Label" parent="./Margin/Layout/PageContent/Overview/Facilities/RetreatCard/Body"]
+text = "状态读取现有系统"
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="RetreatCardEnter" type="Button" parent="./Margin/Layout/PageContent/Overview/Facilities/RetreatCard/Body"]
+text = "进入修炼室"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="FieldsCard" type="PanelContainer" parent="./Margin/Layout/PageContent/Overview/Facilities"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Overview/Facilities/FieldsCard"]
+theme_override_constants/separation = 16
+
+
+[node name="FieldsCardTitle" type="Label" parent="./Margin/Layout/PageContent/Overview/Facilities/FieldsCard/Body"]
+text = "灵田"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="FieldsCardText" type="Label" parent="./Margin/Layout/PageContent/Overview/Facilities/FieldsCard/Body"]
+text = "状态读取现有系统"
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="FieldsCardEnter" type="Button" parent="./Margin/Layout/PageContent/Overview/Facilities/FieldsCard/Body"]
+text = "进入灵田"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="AlchemyCard" type="PanelContainer" parent="./Margin/Layout/PageContent/Overview/Facilities"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Overview/Facilities/AlchemyCard"]
+theme_override_constants/separation = 16
+
+
+[node name="AlchemyCardTitle" type="Label" parent="./Margin/Layout/PageContent/Overview/Facilities/AlchemyCard/Body"]
+text = "炼丹房"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="AlchemyCardText" type="Label" parent="./Margin/Layout/PageContent/Overview/Facilities/AlchemyCard/Body"]
+text = "状态读取现有系统"
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="AlchemyCardEnter" type="Button" parent="./Margin/Layout/PageContent/Overview/Facilities/AlchemyCard/Body"]
+text = "进入炼丹房"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="OtherCard" type="PanelContainer" parent="./Margin/Layout/PageContent/Overview/Facilities"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Overview/Facilities/OtherCard"]
+theme_override_constants/separation = 16
+
+
+[node name="OtherCardTitle" type="Label" parent="./Margin/Layout/PageContent/Overview/Facilities/OtherCard/Body"]
+text = "已有设施"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="OtherCardText" type="Label" parent="./Margin/Layout/PageContent/Overview/Facilities/OtherCard/Body"]
+text = "状态读取现有系统"
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="Formation" type="Button" parent="./Margin/Layout/PageContent/Overview/Facilities/OtherCard/Body"]
+text = "聚灵阵"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="UpgradeCave" type="Button" parent="./Margin/Layout/PageContent/Overview/Facilities/OtherCard/Body"]
+text = "洞府升级"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="Warehouse" type="Button" parent="./Margin/Layout/PageContent/Overview/Facilities/OtherCard/Body"]
+text = "打开仓库"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="Activity" type="Label" parent="./Margin/Layout/PageContent/Overview"]
+text = "当前暂无洞府动态"
+autowrap_mode = 3
+
+
+[node name="Retreat" type="HBoxContainer" parent="./Margin/Layout/PageContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+visible = false
+
+[node name="CurrentPanel" type="PanelContainer" parent="./Margin/Layout/PageContent/Retreat"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="CurrentTitle" type="Label" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel/Body"]
+text = "当前修炼"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="RetreatRoute" type="OptionButton" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel/Body"]
+custom_minimum_size = Vector2(0, 40)
+selected = 0
+item_count = 2
+popup/item_0/text = "法修闭关"
+popup/item_0/id = 0
+popup/item_1/text = "体修闭关"
+popup/item_1/id = 1
+
+[node name="CurrentScroll" type="ScrollContainer" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CurrentInfo" type="VBoxContainer" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel/Body/CurrentScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="CurrentRealm" type="Label" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel/Body/CurrentScroll/CurrentInfo"]
+text = "当前境界"
+autowrap_mode = 3
+
+
+[node name="CurrentCultivation" type="Label" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel/Body/CurrentScroll/CurrentInfo"]
+text = "修为"
+autowrap_mode = 3
+
+
+[node name="CultivationProgress" type="ProgressBar" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel/Body/CurrentScroll/CurrentInfo"]
+custom_minimum_size = Vector2(0,16)
+show_percentage = false
+
+[node name="Efficiency" type="Label" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel/Body/CurrentScroll/CurrentInfo"]
+text = "修炼效率"
+autowrap_mode = 3
+
+
+[node name="Promote" type="Button" parent="./Margin/Layout/PageContent/Retreat/CurrentPanel/Body"]
+text = "晋升 / 筑基"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="TimePanel" type="PanelContainer" parent="./Margin/Layout/PageContent/Retreat"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.34
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Retreat/TimePanel"]
+theme_override_constants/separation = 16
+
+
+[node name="TimeTitle" type="Label" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body"]
+text = "闭关时间设置"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="Selectors" type="HBoxContainer" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body"]
+theme_override_constants/separation = 16
+
+[node name="YearsColumn" type="VBoxContainer" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="YearsLabel" type="Label" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/YearsColumn"]
+text = "年"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="YearsPlus" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/YearsColumn"]
+text = "+"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="Years" type="SpinBox" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/YearsColumn"]
+min_value = 0.0
+max_value = 10000.0
+allow_greater = true
+custom_minimum_size = Vector2(0,64)
+size_flags_horizontal = 3
+
+[node name="YearsMinus" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/YearsColumn"]
+text = "−"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="MonthsColumn" type="VBoxContainer" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="MonthsLabel" type="Label" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/MonthsColumn"]
+text = "月"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="MonthsPlus" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/MonthsColumn"]
+text = "+"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="Months" type="SpinBox" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/MonthsColumn"]
+min_value = 0.0
+max_value = 10000.0
+allow_greater = true
+custom_minimum_size = Vector2(0,64)
+size_flags_horizontal = 3
+
+[node name="MonthsMinus" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/MonthsColumn"]
+text = "−"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="DaysColumn" type="VBoxContainer" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="DaysLabel" type="Label" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/DaysColumn"]
+text = "天"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="DaysPlus" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/DaysColumn"]
+text = "+"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="Days" type="SpinBox" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/DaysColumn"]
+min_value = 0.0
+max_value = 10000.0
+allow_greater = true
+custom_minimum_size = Vector2(0,64)
+size_flags_horizontal = 3
+
+[node name="DaysMinus" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/Selectors/DaysColumn"]
+text = "−"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="QuickHeading" type="Label" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body"]
+text = "快捷选择"
+autowrap_mode = 3
+
+
+[node name="QuickButtons" type="GridContainer" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body"]
+columns = 3
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+
+[node name="OneDay" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/QuickButtons"]
+text = "1天"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+
+[node name="TenDays" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/QuickButtons"]
+text = "10天"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+
+[node name="OneMonth" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/QuickButtons"]
+text = "1月"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+
+[node name="ThreeMonths" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/QuickButtons"]
+text = "3月"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+
+[node name="OneYear" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/QuickButtons"]
+text = "1年"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+
+[node name="TenYears" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body/QuickButtons"]
+text = "10年"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+
+[node name="TimeSpacer" type="Control" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body"]
+size_flags_vertical = 3
+
+[node name="RetreatReason" type="Label" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body"]
+text = ""
+autowrap_mode = 3
+
+
+[node name="TargetRetreat" type="CheckButton" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body"]
+text = "修炼至当前境界圆满（达标立即出关）"
+[node name="StartRetreat" type="Button" parent="./Margin/Layout/PageContent/Retreat/TimePanel/Body"]
+text = "开始闭关"
+custom_minimum_size = Vector2(0,48)
+custom_minimum_size = Vector2(0,72)
+
+[node name="PreviewPanel" type="PanelContainer" parent="./Margin/Layout/PageContent/Retreat"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Retreat/PreviewPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="PreviewTitle" type="Label" parent="./Margin/Layout/PageContent/Retreat/PreviewPanel/Body"]
+text = "闭关收益预览"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="Duration" type="Label" parent="./Margin/Layout/PageContent/Retreat/PreviewPanel/Body"]
+text = "0 年 0 月 0 天"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 32
+
+[node name="PreviewScroll" type="ScrollContainer" parent="./Margin/Layout/PageContent/Retreat/PreviewPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PreviewBody" type="VBoxContainer" parent="./Margin/Layout/PageContent/Retreat/PreviewPanel/Body/PreviewScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="Preview" type="Label" parent="./Margin/Layout/PageContent/Retreat/PreviewPanel/Body/PreviewScroll/PreviewBody"]
+text = "待计算"
+autowrap_mode = 3
+
+
+[node name="Fields" type="HBoxContainer" parent="./Margin/Layout/PageContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+visible = false
+
+[node name="FieldPanel" type="PanelContainer" parent="./Margin/Layout/PageContent/Fields"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.42
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Fields/FieldPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="FieldsHeading" type="Label" parent="./Margin/Layout/PageContent/Fields/FieldPanel/Body"]
+text = "灵田区域"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="PlotScroll" type="ScrollContainer" parent="./Margin/Layout/PageContent/Fields/FieldPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PlotGrid" type="GridContainer" parent="./Margin/Layout/PageContent/Fields/FieldPanel/Body/PlotScroll"]
+columns = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+
+[node name="ManagementPanel" type="PanelContainer" parent="./Margin/Layout/PageContent/Fields"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.33
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Fields/ManagementPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="ManagementTitle" type="Label" parent="./Margin/Layout/PageContent/Fields/ManagementPanel/Body"]
+text = "灵田管理"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="FieldInfoScroll" type="ScrollContainer" parent="./Margin/Layout/PageContent/Fields/ManagementPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="FieldInfo" type="VBoxContainer" parent="./Margin/Layout/PageContent/Fields/ManagementPanel/Body/FieldInfoScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="FieldDescription" type="Label" parent="./Margin/Layout/PageContent/Fields/ManagementPanel/Body/FieldInfoScroll/FieldInfo"]
+text = "请选择灵田"
+autowrap_mode = 3
+
+
+[node name="Growth" type="ProgressBar" parent="./Margin/Layout/PageContent/Fields/ManagementPanel/Body/FieldInfoScroll/FieldInfo"]
+show_percentage = true
+custom_minimum_size = Vector2(0,20)
+
+[node name="SelectedSeed" type="Label" parent="./Margin/Layout/PageContent/Fields/ManagementPanel/Body/FieldInfoScroll/FieldInfo"]
+text = "已选种子：无"
+autowrap_mode = 3
+
+
+[node name="FieldReason" type="Label" parent="./Margin/Layout/PageContent/Fields/ManagementPanel/Body"]
+text = ""
+autowrap_mode = 3
+
+
+[node name="FieldAction" type="Button" parent="./Margin/Layout/PageContent/Fields/ManagementPanel/Body"]
+text = "播种"
+custom_minimum_size = Vector2(0,48)
+custom_minimum_size = Vector2(0,72)
+
+[node name="SeedPanel" type="PanelContainer" parent="./Margin/Layout/PageContent/Fields"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Fields/SeedPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="SeedHeading" type="Label" parent="./Margin/Layout/PageContent/Fields/SeedPanel/Body"]
+text = "种子背包"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="SeedScroll" type="ScrollContainer" parent="./Margin/Layout/PageContent/Fields/SeedPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SeedList" type="VBoxContainer" parent="./Margin/Layout/PageContent/Fields/SeedPanel/Body/SeedScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="Alchemy" type="HBoxContainer" parent="./Margin/Layout/PageContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+visible = false
+
+[node name="FurnacePanel" type="PanelContainer" parent="./Margin/Layout/PageContent/Alchemy"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Alchemy/FurnacePanel"]
+theme_override_constants/separation = 16
+
+
+[node name="FurnaceTitle" type="Label" parent="./Margin/Layout/PageContent/Alchemy/FurnacePanel/Body"]
+text = "炼丹房"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="Furnace" type="ColorRect" parent="./Margin/Layout/PageContent/Alchemy/FurnacePanel/Body"]
+size_flags_vertical = 3
+color = Color(0.3,0.4,0.44,1)
+
+[node name="FurnaceLabel" type="Label" parent="./Margin/Layout/PageContent/Alchemy/FurnacePanel/Body/Furnace"]
+text = "丹炉矩形占位"
+autowrap_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AlchemyState" type="Label" parent="./Margin/Layout/PageContent/Alchemy/FurnacePanel/Body"]
+text = "当前空闲"
+autowrap_mode = 3
+
+
+[node name="AlchemyManagement" type="PanelContainer" parent="./Margin/Layout/PageContent/Alchemy"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/Alchemy/AlchemyManagement"]
+theme_override_constants/separation = 16
+
+
+[node name="RecipesHeading" type="Label" parent="./Margin/Layout/PageContent/Alchemy/AlchemyManagement/Body"]
+text = "炼丹管理"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="RecipeScroll" type="ScrollContainer" parent="./Margin/Layout/PageContent/Alchemy/AlchemyManagement/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="RecipeBody" type="VBoxContainer" parent="./Margin/Layout/PageContent/Alchemy/AlchemyManagement/Body/RecipeScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="Recipes" type="VBoxContainer" parent="./Margin/Layout/PageContent/Alchemy/AlchemyManagement/Body/RecipeScroll/RecipeBody"]
+theme_override_constants/separation = 16
+
+
+[node name="RecipeDetail" type="Label" parent="./Margin/Layout/PageContent/Alchemy/AlchemyManagement/Body/RecipeScroll/RecipeBody"]
+text = "请选择丹方"
+autowrap_mode = 3
+
+
+[node name="CraftReason" type="Label" parent="./Margin/Layout/PageContent/Alchemy/AlchemyManagement/Body"]
+text = ""
+autowrap_mode = 3
+
+
+[node name="Craft" type="Button" parent="./Margin/Layout/PageContent/Alchemy/AlchemyManagement/Body"]
+text = "炼制"
+custom_minimum_size = Vector2(0,48)
+custom_minimum_size = Vector2(0,72)
+
+[node name="WarehousePage" type="HBoxContainer" parent="./Margin/Layout/PageContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 16
+visible = false
+
+[node name="WarehousePanel" type="PanelContainer" parent="./Margin/Layout/PageContent/WarehousePage"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="Body" type="VBoxContainer" parent="./Margin/Layout/PageContent/WarehousePage/WarehousePanel"]
+theme_override_constants/separation = 16
+
+
+[node name="WarehouseTitle" type="Label" parent="./Margin/Layout/PageContent/WarehousePage/WarehousePanel/Body"]
+text = "洞府仓库"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 28
+
+[node name="WarehouseScroll" type="ScrollContainer" parent="./Margin/Layout/PageContent/WarehousePage/WarehousePanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="WarehouseList" type="VBoxContainer" parent="./Margin/Layout/PageContent/WarehousePage/WarehousePanel/Body/WarehouseScroll"]
+theme_override_constants/separation = 16
+size_flags_horizontal = 3
+
+[node name="WarehouseBack" type="Button" parent="./Margin/Layout/PageContent/WarehousePage/WarehousePanel/Body"]
+text = "返回洞府总览"
+custom_minimum_size = Vector2(0,48)
+
+
+[node name="Message" type="Label" parent="./Margin/Layout"]
+text = ""
+autowrap_mode = 3
+
+
+[node name="PreviewPlot0" type="Button" parent="./Margin/Layout/PageContent/Fields/FieldPanel/Body/PlotScroll/PlotGrid"]
+custom_minimum_size = Vector2(0,240)
+size_flags_horizontal = 3
+text = "灵田 1\n空闲"
+
+[node name="PreviewPlot1" type="Button" parent="./Margin/Layout/PageContent/Fields/FieldPanel/Body/PlotScroll/PlotGrid"]
+custom_minimum_size = Vector2(0,240)
+size_flags_horizontal = 3
+text = "灵田 2\n空闲"
+
+[node name="PreviewPlot2" type="Button" parent="./Margin/Layout/PageContent/Fields/FieldPanel/Body/PlotScroll/PlotGrid"]
+custom_minimum_size = Vector2(0,240)
+size_flags_horizontal = 3
+text = "灵田 3\n空闲"
+
+[node name="PreviewPlot3" type="Button" parent="./Margin/Layout/PageContent/Fields/FieldPanel/Body/PlotScroll/PlotGrid"]
+custom_minimum_size = Vector2(0,240)
+size_flags_horizontal = 3
+text = "灵田 4\n空闲"

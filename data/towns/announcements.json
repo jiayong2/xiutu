@@ -1,0 +1,37 @@
+[
+  {
+    "id": "notice_qinglan_001",
+    "town_id": "town_qinglan",
+    "category": "bounty",
+    "quest_id": "quest_qinglan_001",
+    "location_id": "area_qinglan_outskirts"
+  },
+  {
+    "id": "notice_qinglan_002",
+    "town_id": "town_qinglan",
+    "category": "bounty",
+    "quest_id": "quest_qinglan_002",
+    "location_id": "area_qinglan_outskirts"
+  },
+  {
+    "id": "notice_qinglan_003",
+    "town_id": "town_qinglan",
+    "category": "bounty",
+    "quest_id": "quest_qinglan_003",
+    "location_id": "area_qinglan_outskirts"
+  },
+  {
+    "id": "notice_qinglan_test_kill_001",
+    "town_id": "town_qinglan",
+    "category": "bounty",
+    "quest_id": "quest_test_kill_001",
+    "location_id": "area_qinglan_outskirts"
+  },
+  {
+    "id": "notice_qinglan_test_collect_002",
+    "town_id": "town_qinglan",
+    "category": "purchase",
+    "quest_id": "quest_test_collect_002",
+    "location_id": "area_qinglan_outskirts"
+  }
+]

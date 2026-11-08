@@ -1,0 +1,69 @@
+{
+  "id": "auction_rules_v1",
+  "max_price": 100000000,
+  "minimum_bps": 1000,
+  "quick_bps": 2000,
+  "opening_bids": 2,
+  "log_limit": 90,
+  "participant_limit": 40,
+  "lot_limit": 40,
+  "personalities": {
+    "cautious": {
+      "value_bps": 9200,
+      "chance_bps": 7500,
+      "resistance": 4,
+      "grudge": 1
+    },
+    "competitive": {
+      "value_bps": 10800,
+      "chance_bps": 9200,
+      "resistance": 9,
+      "grudge": 1
+    },
+    "rational": {
+      "value_bps": 10000,
+      "chance_bps": 8800,
+      "resistance": 7,
+      "grudge": 1
+    },
+    "wealthy": {
+      "value_bps": 11600,
+      "chance_bps": 9200,
+      "resistance": 6,
+      "grudge": 1
+    },
+    "resentful": {
+      "value_bps": 10200,
+      "chance_bps": 8200,
+      "resistance": 10,
+      "grudge": 2
+    }
+  },
+  "interest_bonus_bps": 2600,
+  "disinterest_bps": 3500,
+  "anger_bonus_bps": 1000,
+  "cautious_exit_bps": 9000,
+  "base_interaction_bps": {
+    "threat": 4300,
+    "provoke": 6500,
+    "persuade": 5200,
+    "bribe": 7300,
+    "pressure": 5500
+  },
+  "realm_step_bps": 230,
+  "pressure_contribution_bps": 70,
+  "relationship_step_bps": 30,
+  "warning_bps": 2400,
+  "counter_styles": ["competitive", "resentful"],
+  "spirit_exit_headroom_bps": 1700,
+  "relation": {
+    "threat": -8,
+    "provoke": -6,
+    "spirit": -4,
+    "pressure": -5,
+    "persuade": 1,
+    "bribe": 3,
+    "rivalry": -2,
+    "yield": 2
+  }
+}

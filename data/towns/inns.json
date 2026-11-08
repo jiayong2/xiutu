@@ -1,0 +1,44 @@
+[
+  {
+    "id": "inn_qinglan",
+    "name": "悦来客栈",
+    "location": "town_qinglan",
+    "inn_type": "普通客栈",
+    "description": "供往来旅客休息的客栈。",
+    "scene_description": "客栈设有休息区域，可在此住宿恢复状态。",
+    "owner_npc_id": "npc_zhou_innkeeper",
+    "available_rooms": [
+      {
+        "id": "room_existing",
+        "name": "客房（现有方案）",
+        "available": true,
+        "action": "inn"
+      }
+    ],
+    "menu_items": [],
+    "rumor_source": "world_news",
+    "npc_list": [],
+    "observation": "客栈设有供旅客歇脚的区域。住宿会按现有规则推进世界时间并恢复生命与灵力。"
+  },
+  {
+    "id": "inn_yunxi",
+    "name": "云溪客栈",
+    "location": "town_yunxi",
+    "inn_type": "普通客栈",
+    "description": "供往来旅客休息的客栈。",
+    "scene_description": "客栈设有休息区域，可在此住宿恢复状态。",
+    "owner_npc_id": "",
+    "available_rooms": [
+      {
+        "id": "room_existing",
+        "name": "客房（现有方案）",
+        "available": true,
+        "action": "inn"
+      }
+    ],
+    "menu_items": [],
+    "rumor_source": "world_news",
+    "npc_list": [],
+    "observation": "客栈设有供旅客歇脚的区域。住宿会按现有规则推进世界时间并恢复生命与灵力。"
+  }
+]

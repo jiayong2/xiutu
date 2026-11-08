@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3]
+
+[sub_resource type="StyleBoxFlat" id="BloodTrack"]
+bg_color = Color(0.239, 0.337, 0.376, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="BloodFill"]
+bg_color = Color(0.8, 0.6, 0.4, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+[node name="UnitView" type="VBoxContainer"]
+offset_right = 196.0
+offset_bottom = 280.0
+theme_override_constants/separation = 5
+[node name="StatusContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0,28)
+alignment = 1
+[node name="Square" type="Button" parent="."]
+custom_minimum_size = Vector2(180,180)
+size_flags_horizontal = 4
+text = "单位"
+[node name="NameLabel" type="Label" parent="."]
+text = "单位名称"
+horizontal_alignment = 1
+[node name="hp" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0,12)
+value = 80.0
+show_percentage = false
+[node name="mp" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0,12)
+value = 60.0
+show_percentage = false
+[node name="blood" type="ProgressBar" parent="."]
+visible = false
+custom_minimum_size = Vector2(0,12)
+tooltip_text = "气血 80 / 80"
+theme_override_styles/background = SubResource("BloodTrack")
+theme_override_styles/fill = SubResource("BloodFill")
+max_value = 80.0
+value = 80.0
+show_percentage = false

@@ -1,0 +1,298 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://ui/world/world_page.gd" id="controller"]
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.26, 0.33, 0.37, 1)
+
+[sub_resource type="StyleBoxFlat" id="Center"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.31, 0.40, 0.45, 1)
+
+[sub_resource type="StyleBoxFlat" id="Inset"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.38, 0.49, 0.54, 1)
+
+[sub_resource type="StyleBoxFlat" id="Button"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.46, 0.59, 0.55, 1)
+
+[sub_resource type="StyleBoxFlat" id="Building"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.63, 0.71, 0.75, 1)
+
+[sub_resource type="StyleBoxFlat" id="Disabled"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.37, 0.42, 0.45, 1)
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 22
+Button/styles/normal = SubResource("Button")
+Button/styles/hover = SubResource("Inset")
+Button/styles/pressed = SubResource("Center")
+Button/styles/disabled = SubResource("Disabled")
+
+[node name="LocationScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme")
+script = ExtResource("controller")
+mode = "location"
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.12, 0.17, 0.20, 1)
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Column" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 16
+theme_override_constants/separation = 24
+
+[node name="Header" type="PanelContainer" parent="Margin/Column"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="HeaderRow" type="HBoxContainer" parent="Margin/Column/Header"]
+custom_minimum_size = Vector2(0, 64)
+theme_override_constants/separation = 24
+
+[node name="PageTitle" type="Label" parent="Margin/Column/Header/HeaderRow"]
+theme_override_font_sizes/font_size = 28
+text = "青岚镇 · 地点场景"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="GameTime" type="Label" parent="Margin/Column/Header/HeaderRow"]
+theme_override_font_sizes/font_size = 22
+text = "玄灵历1年1月1日 08:00"
+autowrap_mode = 0
+
+custom_minimum_size = Vector2(400, 0)
+
+[node name="Back" type="Button" parent="Margin/Column/Header/HeaderRow"]
+custom_minimum_size = Vector2(160, 64)
+text = "世界地图"
+
+[node name="Body" type="HBoxContainer" parent="Margin/Column"]
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="CharacterPanel" type="PanelContainer" parent="Margin/Column/Body"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 16.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="CharacterColumn" type="VBoxContainer" parent="Margin/Column/Body/CharacterPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="CharacterTitle" type="Label" parent="Margin/Column/Body/CharacterPanel/CharacterColumn"]
+theme_override_font_sizes/font_size = 28
+text = "人物状态"
+autowrap_mode = 3
+
+
+[node name="Identity" type="Label" parent="Margin/Column/Body/CharacterPanel/CharacterColumn"]
+theme_override_font_sizes/font_size = 22
+text = "无名散修 · 炼气一层"
+autowrap_mode = 3
+
+
+[node name="Vitals" type="Label" parent="Margin/Column/Body/CharacterPanel/CharacterColumn"]
+theme_override_font_sizes/font_size = 22
+text = "生命 120 / 120\n灵力 40 / 40"
+autowrap_mode = 3
+
+
+[node name="Progress" type="Label" parent="Margin/Column/Body/CharacterPanel/CharacterColumn"]
+theme_override_font_sizes/font_size = 22
+text = "修为 0 / 100"
+autowrap_mode = 3
+
+
+[node name="CurrentPlace" type="Label" parent="Margin/Column/Body/CharacterPanel/CharacterColumn"]
+theme_override_font_sizes/font_size = 22
+text = "青岚镇"
+autowrap_mode = 3
+
+
+[node name="Wallet" type="Label" parent="Margin/Column/Body/CharacterPanel/CharacterColumn"]
+theme_override_font_sizes/font_size = 22
+text = "灵石 120"
+autowrap_mode = 3
+
+
+[node name="NearbyTitle" type="Label" parent="Margin/Column/Body/CharacterPanel/CharacterColumn"]
+theme_override_font_sizes/font_size = 24
+text = "附近人物"
+autowrap_mode = 3
+
+
+[node name="Nearby" type="VBoxContainer" parent="Margin/Column/Body/CharacterPanel/CharacterColumn"]
+theme_override_constants/separation = 16
+
+
+[node name="Npc0" type="Button" parent="Margin/Column/Body/CharacterPanel/CharacterColumn/Nearby"]
+custom_minimum_size = Vector2(0, 64)
+text = "秦守山"
+
+
+[node name="Npc1" type="Button" parent="Margin/Column/Body/CharacterPanel/CharacterColumn/Nearby"]
+custom_minimum_size = Vector2(0, 64)
+text = "柳青禾"
+
+
+[node name="Npc2" type="Button" parent="Margin/Column/Body/CharacterPanel/CharacterColumn/Nearby"]
+custom_minimum_size = Vector2(0, 64)
+text = "赵山河"
+
+
+[node name="Npc3" type="Button" parent="Margin/Column/Body/CharacterPanel/CharacterColumn/Nearby"]
+custom_minimum_size = Vector2(0, 64)
+text = "附近人物"
+
+
+[node name="CenterPanel" type="PanelContainer" parent="Margin/Column/Body"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 68.0
+theme_override_styles/panel = SubResource("Center")
+
+[node name="CenterColumn" type="VBoxContainer" parent="Margin/Column/Body/CenterPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="CenterTitle" type="Label" parent="Margin/Column/Body/CenterPanel/CenterColumn"]
+theme_override_font_sizes/font_size = 28
+text = "青岚镇场景占位"
+autowrap_mode = 3
+
+
+[node name="CanvasPanel" type="PanelContainer" parent="Margin/Column/Body/CenterPanel/CenterColumn"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.0
+theme_override_styles/panel = SubResource("Inset")
+
+[node name="Canvas" type="Control" parent="Margin/Column/Body/CenterPanel/CenterColumn/CanvasPanel"]
+custom_minimum_size = Vector2(0, 400)
+
+[node name="BuildingGrid" type="GridContainer" parent="Margin/Column/Body/CenterPanel/CenterColumn/CanvasPanel/Canvas"]
+anchor_left = 0.02
+anchor_right = 0.98
+anchor_top = 0.24
+anchor_bottom = 0.78
+columns = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+
+[node name="Building0" type="Button" parent="Margin/Column/Body/CenterPanel/CenterColumn/CanvasPanel/Canvas/BuildingGrid"]
+custom_minimum_size = Vector2(0, 64)
+text = "青岚杂货铺"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("Building")
+theme_override_colors/font_color = Color(0.1,0.2,0.25,1)
+
+[node name="Building1" type="Button" parent="Margin/Column/Body/CenterPanel/CenterColumn/CanvasPanel/Canvas/BuildingGrid"]
+custom_minimum_size = Vector2(0, 64)
+text = "青岚术法铺"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("Building")
+theme_override_colors/font_color = Color(0.1,0.2,0.25,1)
+
+[node name="Building2" type="Button" parent="Margin/Column/Body/CenterPanel/CenterColumn/CanvasPanel/Canvas/BuildingGrid"]
+custom_minimum_size = Vector2(0, 64)
+text = "客栈"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("Building")
+theme_override_colors/font_color = Color(0.1,0.2,0.25,1)
+
+[node name="Building3" type="Button" parent="Margin/Column/Body/CenterPanel/CenterColumn/CanvasPanel/Canvas/BuildingGrid"]
+custom_minimum_size = Vector2(0, 64)
+text = "场景空白区域"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("Building")
+theme_override_colors/font_color = Color(0.1,0.2,0.25,1)
+
+[node name="RightPanel" type="PanelContainer" parent="Margin/Column/Body"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 16.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="RightColumn" type="VBoxContainer" parent="Margin/Column/Body/RightPanel"]
+theme_override_constants/separation = 16
+
+
+[node name="RightTitle" type="Label" parent="Margin/Column/Body/RightPanel/RightColumn"]
+theme_override_font_sizes/font_size = 28
+text = "地点操作"
+autowrap_mode = 3
+
+
+[node name="ViewPlace" type="Button" parent="Margin/Column/Body/RightPanel/RightColumn"]
+custom_minimum_size = Vector2(0, 64)
+text = "查看地点"
+
+
+[node name="Activity" type="Button" parent="Margin/Column/Body/RightPanel/RightColumn"]
+custom_minimum_size = Vector2(0, 64)
+text = "客栈休息"
+
+
+[node name="Tasks" type="Button" parent="Margin/Column/Body/RightPanel/RightColumn"]
+custom_minimum_size = Vector2(0, 64)
+text = "任务入口"
+
+
+[node name="Other" type="Button" parent="Margin/Column/Body/RightPanel/RightColumn"]
+custom_minimum_size = Vector2(0, 64)
+text = "返回主界面"
+
+
+[node name="LocationHint" type="Label" parent="Margin/Column/Body/RightPanel/RightColumn"]
+theme_override_font_sizes/font_size = 18
+text = "选择建筑或附近人物进行交互。"
+autowrap_mode = 3
+
+
+[node name="Status" type="Label" parent="Margin/Column"]
+theme_override_font_sizes/font_size = 18
+text = "选择地点、建筑或人物进行交互"
+autowrap_mode = 3
+

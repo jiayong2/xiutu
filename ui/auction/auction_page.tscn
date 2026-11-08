@@ -1,0 +1,412 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Theme" path="res://ui/auction/auction_theme.tres" id="1"]
+[ext_resource type="Script" path="res://ui/auction/auction_page.gd" id="2"]
+
+[node name="AuctionPage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1")
+script = ExtResource("2")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.773, 0.875, 0.835, 1)
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Layout" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 12
+
+[node name="TitleBar" type="PanelContainer" parent="Margin/Layout"]
+theme_type_variation = &"HeaderPanel"
+
+[node name="Header" type="HBoxContainer" parent="Margin/Layout/TitleBar"]
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Margin/Layout/TitleBar/Header"]
+text = "云溪城拍卖会"
+theme_override_font_sizes/font_size = 44
+size_flags_horizontal = 3
+
+[node name="Count" type="Label" parent="Margin/Layout/TitleBar/Header"]
+text = "第 1 / 3 件"
+theme_override_font_sizes/font_size = 26
+
+[node name="Wallet" type="Label" parent="Margin/Layout/TitleBar/Header"]
+text = "可用灵石 120"
+theme_override_font_sizes/font_size = 26
+theme_type_variation = &"Amount"
+
+[node name="Close" type="Button" parent="Margin/Layout/TitleBar/Header"]
+text = "关闭"
+custom_minimum_size = Vector2(100, 49)
+
+[node name="Columns" type="HBoxContainer" parent="Margin/Layout"]
+theme_override_constants/separation = 12
+size_flags_vertical = 3
+
+[node name="Participants" type="PanelContainer" parent="Margin/Layout/Columns"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 24
+
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/Columns/Participants"]
+theme_override_constants/separation = 12
+
+[node name="Heading" type="PanelContainer" parent="Margin/Layout/Columns/Participants/Body"]
+theme_type_variation = &"HeaderPanel"
+
+[node name="ParticipantHeading" type="Label" parent="Margin/Layout/Columns/Participants/Body/Heading"]
+text = "在场修士"
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="ParticipantScroll" type="ScrollContainer" parent="Margin/Layout/Columns/Participants/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ParticipantsList" type="VBoxContainer" parent="Margin/Layout/Columns/Participants/Body/ParticipantScroll"]
+theme_override_constants/separation = 12
+size_flags_horizontal = 3
+
+[node name="PreviewParticipant" type="Button" parent="Margin/Layout/Columns/Participants/Body/ParticipantScroll/ParticipantsList"]
+text = "▣　柳青禾\n炼气二层 · 观望"
+custom_minimum_size = Vector2(0, 90)
+
+[node name="ParticipantHint" type="Label" parent="Margin/Layout/Columns/Participants/Body"]
+text = "选择一名修士作为互动目标"
+theme_type_variation = &"Muted"
+autowrap_mode = 3
+
+[node name="Core" type="PanelContainer" parent="Margin/Layout/Columns"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 46
+
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/Columns/Core"]
+theme_override_constants/separation = 12
+
+[node name="CoreScroll" type="ScrollContainer" parent="Margin/Layout/Columns/Core/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="AuctionBody" type="VBoxContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll"]
+theme_override_constants/separation = 12
+size_flags_horizontal = 3
+
+[node name="Host" type="HBoxContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody"]
+theme_override_constants/separation = 12
+
+[node name="HostPortrait" type="PanelContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Host"]
+theme_type_variation = &"AvatarPanel"
+custom_minimum_size = Vector2(118, 118)
+size_flags_vertical = 0
+
+[node name="HostGlyph" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Host/HostPortrait"]
+text = "主持人"
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostImage" type="TextureRect" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Host/HostPortrait"]
+visible = false
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+
+[node name="HostPanel" type="PanelContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Host"]
+theme_type_variation = &"SubPanel"
+size_flags_horizontal = 3
+
+[node name="HostInfo" type="VBoxContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Host/HostPanel"]
+theme_override_constants/separation = 6
+
+[node name="HostName" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Host/HostPanel/HostInfo"]
+text = "拍卖师 · 云溪拍卖师"
+theme_override_font_sizes/font_size = 28
+autowrap_mode = 3
+
+[node name="HostCall" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Host/HostPanel/HostInfo"]
+text = "还有道友愿意出价吗？"
+theme_type_variation = &"Muted"
+autowrap_mode = 3
+
+[node name="LotPanel" type="PanelContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody"]
+theme_type_variation = &"SubPanel"
+
+[node name="Lot" type="HBoxContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/LotPanel"]
+theme_override_constants/separation = 16
+
+[node name="LotIcon" type="PanelContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/LotPanel/Lot"]
+theme_type_variation = &"AvatarPanel"
+custom_minimum_size = Vector2(84, 84)
+size_flags_vertical = 4
+
+[node name="LotGlyph" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/LotPanel/Lot/LotIcon"]
+text = "拍品"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LotInfo" type="VBoxContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/LotPanel/Lot"]
+theme_override_constants/separation = 4
+size_flags_horizontal = 3
+
+[node name="LotName" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/LotPanel/Lot/LotInfo"]
+text = "回春丹 ×1"
+theme_override_font_sizes/font_size = 31
+autowrap_mode = 3
+
+[node name="LotMeta" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/LotPanel/Lot/LotInfo"]
+text = "凡品 · 丹药 · 常见"
+theme_type_variation = &"Muted"
+autowrap_mode = 3
+
+[node name="LotEffect" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/LotPanel/Lot/LotInfo"]
+text = "恢复生命"
+autowrap_mode = 3
+
+[node name="Price" type="VBoxContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody"]
+theme_override_constants/separation = 6
+
+[node name="PriceHeader" type="HBoxContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Price"]
+theme_override_constants/separation = 12
+
+[node name="PriceFooter" type="HBoxContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Price"]
+theme_override_constants/separation = 12
+
+[node name="PriceLabel" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Price/PriceHeader"]
+text = "当前最高出价"
+theme_override_font_sizes/font_size = 27
+size_flags_horizontal = 3
+
+[node name="PriceValue" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Price/PriceHeader"]
+text = "30 灵石"
+theme_override_font_sizes/font_size = 39
+theme_type_variation = &"Amount"
+
+[node name="Leader" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Price/PriceFooter"]
+text = "竞价者　柳青禾"
+theme_type_variation = &"Muted"
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+
+[node name="MinRaise" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Price/PriceFooter"]
+text = "最低加价 3"
+theme_type_variation = &"Muted"
+
+[node name="Available" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Price/PriceFooter"]
+text = "可用灵石 120"
+theme_type_variation = &"Muted"
+
+[node name="Lobby" type="VBoxContainer" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody"]
+theme_override_constants/separation = 12
+
+[node name="LobbyInfo" type="Label" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Lobby"]
+text = "在举办期内可入场。"
+autowrap_mode = 3
+
+[node name="Anonymous" type="CheckButton" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Lobby"]
+text = "匿名竞拍"
+
+[node name="BoxEntry" type="CheckButton" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Lobby"]
+text = "选择雅间"
+
+[node name="Enter" type="Button" parent="Margin/Layout/Columns/Core/Body/CoreScroll/AuctionBody/Lobby"]
+text = "入场"
+custom_minimum_size = Vector2(0, 49)
+theme_type_variation = &"Primary"
+
+[node name="Modes" type="HBoxContainer" parent="Margin/Layout/Columns/Core/Body"]
+theme_override_constants/separation = 12
+
+[node name="Standard" type="Button" parent="Margin/Layout/Columns/Core/Body/Modes"]
+text = "+10%"
+custom_minimum_size = Vector2(0, 49)
+size_flags_horizontal = 3
+
+[node name="Quick" type="Button" parent="Margin/Layout/Columns/Core/Body/Modes"]
+text = "+20%"
+custom_minimum_size = Vector2(0, 49)
+size_flags_horizontal = 3
+
+[node name="Custom" type="Button" parent="Margin/Layout/Columns/Core/Body/Modes"]
+text = "自定义"
+custom_minimum_size = Vector2(0, 49)
+size_flags_horizontal = 3
+
+[node name="QuoteRow" type="HBoxContainer" parent="Margin/Layout/Columns/Core/Body"]
+theme_override_constants/separation = 12
+
+[node name="Quote" type="Label" parent="Margin/Layout/Columns/Core/Body/QuoteRow"]
+text = "本次出价 33 灵石"
+theme_type_variation = &"Amount"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="CustomInput" type="LineEdit" parent="Margin/Layout/Columns/Core/Body/QuoteRow"]
+visible = false
+max_length = 9
+placeholder_text = "输入总出价"
+custom_minimum_size = Vector2(200, 48)
+
+[node name="Watch" type="Button" parent="Margin/Layout/Columns/Core/Body/QuoteRow"]
+text = "观望一轮"
+custom_minimum_size = Vector2(160, 46)
+
+[node name="RoundActions" type="HBoxContainer" parent="Margin/Layout/Columns/Core/Body"]
+theme_override_constants/separation = 12
+
+[node name="Next" type="Button" parent="Margin/Layout/Columns/Core/Body/RoundActions"]
+text = "下一件拍品"
+custom_minimum_size = Vector2(0, 46)
+theme_type_variation = &"Primary"
+size_flags_horizontal = 3
+
+[node name="Notice" type="Label" parent="Margin/Layout/Columns/Core/Body"]
+text = ""
+theme_type_variation = &"Muted"
+autowrap_mode = 3
+
+[node name="BidActions" type="HBoxContainer" parent="Margin/Layout/Columns/Core/Body"]
+theme_override_constants/separation = 12
+
+[node name="Bid" type="Button" parent="Margin/Layout/Columns/Core/Body/BidActions"]
+text = "出价竞拍"
+custom_minimum_size = Vector2(0, 66)
+theme_type_variation = &"Primary"
+size_flags_horizontal = 3
+
+[node name="Pass" type="Button" parent="Margin/Layout/Columns/Core/Body/BidActions"]
+text = "放弃竞拍"
+custom_minimum_size = Vector2(0, 66)
+size_flags_horizontal = 3
+
+[node name="Interaction" type="PanelContainer" parent="Margin/Layout/Columns"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 28
+
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/Columns/Interaction"]
+theme_override_constants/separation = 12
+
+[node name="Heading" type="PanelContainer" parent="Margin/Layout/Columns/Interaction/Body"]
+theme_type_variation = &"HeaderPanel"
+
+[node name="InteractionHeading" type="Label" parent="Margin/Layout/Columns/Interaction/Body/Heading"]
+text = "竞拍互动"
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="InteractionScroll" type="ScrollContainer" parent="Margin/Layout/Columns/Interaction/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="InteractionList" type="VBoxContainer" parent="Margin/Layout/Columns/Interaction/Body/InteractionScroll"]
+theme_override_constants/separation = 11
+size_flags_horizontal = 3
+
+[node name="Spirit" type="Button" parent="Margin/Layout/Columns/Interaction/Body/InteractionScroll/InteractionList"]
+text = "神识威慑\n以识海、神魂与目标交锋"
+custom_minimum_size = Vector2(0, 82)
+theme_override_font_sizes/font_size = 22
+alignment = 0
+
+[node name="Threat" type="Button" parent="Margin/Layout/Columns/Interaction/Body/InteractionScroll/InteractionList"]
+text = "言语威胁\n警告目标退出后续竞价"
+custom_minimum_size = Vector2(0, 82)
+theme_override_font_sizes/font_size = 22
+alignment = 0
+
+[node name="Provoke" type="Button" parent="Margin/Layout/Columns/Interaction/Body/InteractionScroll/InteractionList"]
+text = "出言挑衅\n可能激怒对方并抬高出价意愿"
+custom_minimum_size = Vector2(0, 82)
+theme_override_font_sizes/font_size = 22
+alignment = 0
+
+[node name="Whisper" type="Button" parent="Margin/Layout/Columns/Interaction/Body/InteractionScroll/InteractionList"]
+text = "私下传音\n选择劝退或收买"
+custom_minimum_size = Vector2(0, 82)
+theme_override_font_sizes/font_size = 22
+alignment = 0
+
+[node name="Pressure" type="Button" parent="Margin/Layout/Columns/Interaction/Body/InteractionScroll/InteractionList"]
+text = "以势压人\n借助宗门身份与贡献施压"
+custom_minimum_size = Vector2(0, 82)
+theme_override_font_sizes/font_size = 22
+alignment = 0
+
+[node name="InteractionHint" type="Label" parent="Margin/Layout/Columns/Interaction/Body"]
+text = "请先选择在场修士。"
+theme_type_variation = &"Muted"
+autowrap_mode = 3
+
+[node name="Activity" type="PanelContainer" parent="Margin/Layout"]
+custom_minimum_size = Vector2(0, 177)
+
+[node name="ActivityBody" type="VBoxContainer" parent="Margin/Layout/Activity"]
+theme_override_constants/separation = 4
+
+[node name="ActivityHeader" type="HBoxContainer" parent="Margin/Layout/Activity/ActivityBody"]
+theme_override_constants/separation = 12
+
+[node name="ActivityTitle" type="Label" parent="Margin/Layout/Activity/ActivityBody/ActivityHeader"]
+text = "竞拍动态"
+theme_override_font_sizes/font_size = 28
+size_flags_horizontal = 3
+
+[node name="Phase" type="Label" parent="Margin/Layout/Activity/ActivityBody/ActivityHeader"]
+text = "竞价阶段"
+theme_type_variation = &"Muted"
+
+[node name="ActivityLog" type="RichTextLabel" parent="Margin/Layout/Activity/ActivityBody"]
+bbcode_enabled = true
+theme_override_font_sizes/normal_font_size = 22
+size_flags_vertical = 3
+scroll_following = true
+text = "拍卖师介绍拍品。"
+
+[node name="Footer" type="HBoxContainer" parent="Margin/Layout"]
+theme_override_constants/separation = 12
+
+[node name="Rules" type="Button" parent="Margin/Layout/Footer"]
+text = "拍卖规则"
+custom_minimum_size = Vector2(130, 42)
+
+[node name="History" type="Button" parent="Margin/Layout/Footer"]
+text = "成交记录"
+custom_minimum_size = Vector2(130, 42)
+
+[node name="Venue" type="Label" parent="Margin/Layout/Footer"]
+text = "小型 · 云溪城"
+theme_type_variation = &"Muted"
+size_flags_horizontal = 3
+horizontal_alignment = 2
+
+[node name="ResultDialog" type="AcceptDialog" parent="."]
+visible = false
+theme = ExtResource("1")
+
+[node name="InfoDialog" type="AcceptDialog" parent="."]
+visible = false
+theme = ExtResource("1")
+
+[node name="InfoText" type="RichTextLabel" parent="InfoDialog"]
+custom_minimum_size = Vector2(640, 265)
+selection_enabled = true
+theme = ExtResource("1")
+
+[node name="WhisperDialog" type="ConfirmationDialog" parent="."]
+visible = false
+theme = ExtResource("1")

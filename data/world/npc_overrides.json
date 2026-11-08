@@ -1,0 +1,249 @@
+{
+  "npc_8dd8ad157c09adc2f0d980b7": {
+    "age": 25.0,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 0.0,
+    "equipment_instances": {
+      "gear_20a6cc25b9a08fade1eff898": "equip_v1_iron_fine_sword",
+      "gear_384fd285d4f98894349aa98b": "equip_v1_straw_sandals",
+      "gear_42c1e6a42f72a14d4f0bb471": "equip_v1_spirit_belt",
+      "gear_491574b1b8e4be623ec141c8": "equip_v1_iron_ring",
+      "gear_4cb0a424351499a48ce915b0": "equip_cloth_robe",
+      "gear_5e8f9bc9a0739260c59f15a3": "equip_v1_clear_mind_pendant",
+      "gear_bb949138e0a6e2eef1bd7b6c": "equip_v1_clear_mind_crown",
+      "gear_cec5713473368c3692424904": "equip_v1_mountain_bracers"
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+      "armor": "gear_4cb0a424351499a48ce915b0",
+      "head": "gear_bb949138e0a6e2eef1bd7b6c",
+      "necklace": "gear_5e8f9bc9a0739260c59f15a3",
+      "ring": "gear_491574b1b8e4be623ec141c8",
+      "shoes": "gear_384fd285d4f98894349aa98b",
+      "waist": "gear_42c1e6a42f72a14d4f0bb471",
+      "weapon": "gear_20a6cc25b9a08fade1eff898",
+      "wrist": "gear_cec5713473368c3692424904"
+    },
+    "fortune_ids": [
+      "fortune_039",
+      "fortune_093",
+      "fortune_077",
+      "fortune_067",
+      "fortune_024",
+      "fortune_037",
+      "fortune_046"
+    ],
+    "id": "npc_8dd8ad157c09adc2f0d980b7",
+    "initial_age": 25.0,
+    "inventory": {
+
+    },
+    "location": "town_qinglan",
+    "name": "萧炎",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 20.0,
+        "defense": 8.0,
+        "hp": 120.0,
+        "mp": 40.0,
+        "speed": 12.0
+      },
+      "body_realm": "通脉一层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 100.0,
+        "meridians": 100.0,
+        "physique": 100.0,
+        "qi_sea": 100.0,
+        "soul": 100.0,
+        "spirit_sea": 100.0
+      },
+      "gender": "男",
+      "innate_fortune": [],
+      "rank": "天骄",
+      "root": "金",
+      "sect": "",
+      "stat_originals": {
+
+      },
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 23.0,
+    "relations": {
+
+    },
+    "spell_mastery": {
+      "skill_thunder_summon": 0.0
+    },
+    "spell_slots": [
+      "skill_thunder_summon",
+      "skill_earth_quake",
+      "skill_water_return_to_sea",
+      "skill_wind_feathers"
+    ],
+    "spells": {
+      "skill_earth_quake": 5.0,
+      "skill_thunder_summon": 5.0,
+      "skill_water_return_to_sea": 5.0,
+      "skill_wind_feathers": 5.0
+    },
+    "technique_slots": [
+      "technique_qi_flow"
+    ],
+    "techniques": {
+      "technique_fire_breath": 1.0,
+      "technique_green_wood": 1.0,
+      "technique_qi_flow": 3.0
+    }
+  },
+  "npc_qingyue_supply": {
+    "age": 25.0,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 0.0,
+    "equipment_instances": {
+
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+
+    },
+    "fortune_ids": [],
+    "id": "npc_qingyue_supply",
+    "initial_age": 25.0,
+    "inventory": {
+
+    },
+    "location": "sect_qingyue_gate",
+    "name": "宗门供给执事",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 20.0,
+        "defense": 8.0,
+        "hp": 120.0,
+        "mp": 40.0,
+        "speed": 12.0
+      },
+      "contacts": {
+
+      },
+      "foundation": {
+
+      },
+      "gender": "男",
+      "innate_fortune": [],
+      "rank": "普通",
+      "sect": "青岳宗",
+      "stat_originals": {
+
+      },
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 4.0,
+    "realm_known": false,
+    "relations": {
+
+    },
+    "role": "供给执事",
+    "sect": "sect_qingyue",
+    "sect_area": "outer",
+    "seed_on_restore": true,
+    "spell_mastery": {
+
+    },
+    "spell_slots": [],
+    "spells": {
+
+    },
+    "stationary": true,
+    "technique_slots": [],
+    "techniques": {
+
+    }
+  },
+  "npc_zhou_xuan": {
+    "age": 25.0,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 0.0,
+    "equipment_instances": {
+
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+
+    },
+    "fortune_ids": [
+      "fortune_012",
+      "fortune_039",
+      "fortune_028"
+    ],
+    "id": "npc_zhou_xuan",
+    "initial_age": 25.0,
+    "inventory": {
+
+    },
+    "location": "sect_qingyue_gate",
+    "name": "周玄",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+
+      },
+      "contacts": {
+
+      },
+      "foundation": {
+
+      },
+      "innate_fortune": [],
+      "rank": "普通",
+      "sect": "青岳宗",
+      "stat_originals": {
+
+      },
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 10.0,
+    "realm_known": false,
+    "relations": {
+
+    },
+    "role": "外门长老",
+    "sect": "sect_qingyue",
+    "sect_area": "outer",
+    "seed_on_restore": true,
+    "spell_mastery": {
+
+    },
+    "spell_slots": [],
+    "spells": {
+
+    },
+    "stationary": true,
+    "technique_slots": [],
+    "techniques": {
+
+    }
+  }
+}

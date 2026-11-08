@@ -1,0 +1,241 @@
+[
+  {
+    "id": "artifact_gold_shuttle",
+    "name": "金光梭",
+    "tier": "法宝",
+    "quality": "中品",
+    "element": "metal",
+    "recommended_realm": [
+      1
+    ],
+    "power": {
+      "element_damage": 6
+    },
+    "ability": {
+      "id": "artifact_gold_shuttle_ability",
+      "name": "金光穿刺",
+      "target": "enemy",
+      "mana": 8,
+      "cooldown": 3,
+      "actions": 1,
+      "effects": {
+        "damage": 18,
+        "defense_ignore": 10
+      }
+    },
+    "refine_field": "damage",
+    "refine_level": 0,
+    "refine_max": 5,
+    "value": 260,
+    "description": "梭形法宝，出手迅疾，专破护体。"
+  },
+  {
+    "id": "artifact_wood_orb",
+    "name": "青木灵珠",
+    "tier": "法宝",
+    "quality": "中品",
+    "element": "wood",
+    "recommended_realm": [
+      1
+    ],
+    "power": {
+      "healing": 6
+    },
+    "ability": {
+      "id": "artifact_wood_orb_ability",
+      "name": "木灵回元",
+      "target": "ally",
+      "mana": 8,
+      "cooldown": 3,
+      "actions": 1,
+      "effects": {
+        "heal": 18
+      }
+    },
+    "refine_field": "heal",
+    "refine_level": 0,
+    "refine_max": 5,
+    "value": 250,
+    "description": "灵珠柔和，可引木灵之气疗伤。"
+  },
+  {
+    "id": "artifact_water_orb",
+    "name": "沧澜珠",
+    "tier": "法宝",
+    "quality": "上品",
+    "element": "water",
+    "recommended_realm": [
+      1
+    ],
+    "power": {
+      "element_damage": 5
+    },
+    "ability": {
+      "id": "artifact_water_orb_ability",
+      "name": "沧澜净息",
+      "target": "self",
+      "mana": 10,
+      "cooldown": 4,
+      "actions": 1,
+      "effects": {
+        "heal": 6,
+        "cleanse_layers": 1
+      }
+    },
+    "refine_field": "heal",
+    "refine_level": 0,
+    "refine_max": 5,
+    "value": 320,
+    "description": "珠中水意绵长，能洗去部分秽扰。"
+  },
+  {
+    "id": "artifact_flame_gourd",
+    "name": "赤炎葫芦",
+    "tier": "法宝",
+    "quality": "上品",
+    "element": "fire",
+    "recommended_realm": [
+      1
+    ],
+    "power": {
+      "element_damage": 8
+    },
+    "ability": {
+      "id": "artifact_flame_gourd_ability",
+      "name": "赤炎焚身",
+      "target": "enemy",
+      "mana": 10,
+      "cooldown": 3,
+      "actions": 1,
+      "effects": {
+        "damage": 14,
+        "burn_layers": 2
+      }
+    },
+    "refine_field": "damage",
+    "refine_level": 0,
+    "refine_max": 5,
+    "value": 450,
+    "description": "以赤炎灵铜炼制，葫中封有一缕地火。"
+  },
+  {
+    "id": "artifact_earth_seal",
+    "name": "玄土印",
+    "tier": "法宝",
+    "quality": "中品",
+    "element": "earth",
+    "recommended_realm": [
+      1
+    ],
+    "power": {
+      "shield": 8
+    },
+    "ability": {
+      "id": "artifact_earth_seal_ability",
+      "name": "厚土守御",
+      "target": "self",
+      "mana": 10,
+      "cooldown": 4,
+      "actions": 1,
+      "effects": {
+        "shield": 20
+      }
+    },
+    "refine_field": "shield",
+    "refine_level": 0,
+    "refine_max": 5,
+    "value": 280,
+    "description": "小印沉稳，擅长凝结护体土气。"
+  },
+  {
+    "id": "artifact_wind_feather",
+    "name": "逐风羽",
+    "tier": "法宝",
+    "quality": "上品",
+    "element": "wind",
+    "recommended_realm": [
+      1
+    ],
+    "power": {
+      "speed": 3
+    },
+    "ability": {
+      "id": "artifact_wind_feather_ability",
+      "name": "风影轻身",
+      "target": "self",
+      "mana": 0,
+      "cooldown": 0,
+      "actions": 0,
+      "effects": {
+        "first_hit_dodge": 15,
+        "duration": 1
+      }
+    },
+    "refine_field": "first_hit_dodge",
+    "refine_level": 0,
+    "refine_max": 5,
+    "value": 350,
+    "description": "羽形法宝轻盈灵动，适合身法流派。"
+  },
+  {
+    "id": "artifact_thunder_banner",
+    "name": "引雷幡",
+    "tier": "法宝",
+    "quality": "极品",
+    "element": "thunder",
+    "recommended_realm": [
+      2
+    ],
+    "power": {
+      "element_damage": 10
+    },
+    "ability": {
+      "id": "artifact_thunder_banner_ability",
+      "name": "引雷轰击",
+      "target": "enemy",
+      "mana": 15,
+      "cooldown": 4,
+      "actions": 1,
+      "effects": {
+        "damage": 28,
+        "chilled_bonus": 30
+      }
+    },
+    "refine_field": "damage",
+    "refine_level": 0,
+    "refine_max": 5,
+    "value": 1800,
+    "description": "幡面刻有引雷法纹，爆发凌厉。"
+  },
+  {
+    "id": "artifact_frost_mirror",
+    "name": "寒霜镜",
+    "tier": "法宝",
+    "quality": "上品",
+    "element": "ice",
+    "recommended_realm": [
+      1,
+      2
+    ],
+    "power": {
+      "element_damage": 8
+    },
+    "ability": {
+      "id": "artifact_frost_mirror_ability",
+      "name": "霜镜凝寒",
+      "target": "enemy",
+      "mana": 12,
+      "cooldown": 3,
+      "actions": 1,
+      "effects": {
+        "damage": 20,
+        "chill_layers": 2
+      }
+    },
+    "refine_field": "damage",
+    "refine_level": 0,
+    "refine_max": 5,
+    "value": 520,
+    "description": "镜面寒气内敛，可冻结敌势。"
+  }
+]

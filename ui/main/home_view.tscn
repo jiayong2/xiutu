@@ -1,0 +1,378 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://ui/main/nearby_npc_card.tscn" id="nearby_card"]
+[ext_resource type="Script" path="res://ui/main/home_view.gd" id="1"]
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.18,0.28,0.32,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+[sub_resource type="StyleBoxFlat" id="Button"]
+bg_color = Color(0.27,0.39,0.44,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+[sub_resource type="StyleBoxFlat" id="Accent"]
+bg_color = Color(0.43,0.59,0.52,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+[sub_resource type="StyleBoxFlat" id="DetailPanel"]
+bg_color = Color(0.13,0.22,0.26,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="CultivationFill"]
+bg_color = Color(0.56,0.72,0.67,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 22
+PanelContainer/styles/panel = SubResource("Panel")
+Button/styles/normal = SubResource("Button")
+Button/styles/hover = SubResource("Accent")
+Button/styles/pressed = SubResource("Accent")
+Button/styles/disabled = SubResource("Button")
+[node name="HomeView" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme")
+script = ExtResource("1")
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+[node name="Layout" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 16
+[node name="Header" type="PanelContainer" parent="Margin/Layout"]
+custom_minimum_size = Vector2(0,84)
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/Header"]
+theme_override_constants/separation = 16
+[node name="Row" type="HBoxContainer" parent="Margin/Layout/Header/Body"]
+
+[node name="Left" type="VBoxContainer" parent="Margin/Layout/Header/Body/Row"]
+size_flags_horizontal = 3
+[node name="WorldMap" type="Button" parent="Margin/Layout/Header/Body/Row"]
+custom_minimum_size = Vector2(480, 44)
+size_flags_vertical = 4
+text = "青岚镇 · 灵气平常"
+tooltip_text = "打开世界地图"
+clip_text = true
+
+[node name="Right" type="VBoxContainer" parent="Margin/Layout/Header/Body/Row"]
+size_flags_horizontal = 3
+
+[node name="Identity" type="Label" parent="Margin/Layout/Header/Body/Row/Left"]
+text = "无名散修 · 炼气一层"
+theme_override_font_sizes/font_size = 28
+
+[node name="LocationDate" type="Label" parent="Margin/Layout/Header/Body/Row/Left"]
+text = "当前地点：青岚镇"
+theme_override_font_sizes/font_size = 20
+
+[node name="Wallet" type="Label" parent="Margin/Layout/Header/Body/Row/Right"]
+text = "灵石 120"
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+[node name="WorldTime" type="Label" parent="Margin/Layout/Header/Body/Row/Right"]
+text = "玄灵历1年1月1日 · 08:00"
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 2
+[node name="MainContent" type="HBoxContainer" parent="Margin/Layout"]
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+[node name="LeftPanel" type="VBoxContainer" parent="Margin/Layout/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+theme_override_constants/separation = 16
+[node name="CurrentTaskCard" type="PanelContainer" parent="Margin/Layout/MainContent/LeftPanel"]
+custom_minimum_size = Vector2(0,220)
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/MainContent/LeftPanel/CurrentTaskCard"]
+theme_override_constants/separation = 16
+[node name="TaskTitle" type="Label" parent="Margin/Layout/MainContent/LeftPanel/CurrentTaskCard/Body"]
+text = "当前任务"
+theme_override_font_sizes/font_size = 28
+
+[node name="TaskOpen" type="Button" parent="Margin/Layout/MainContent/LeftPanel/CurrentTaskCard/Body"]
+text = "暂无追踪任务"
+custom_minimum_size = Vector2(0,36)
+size_flags_horizontal = 3
+[node name="TaskHint" type="Label" parent="Margin/Layout/MainContent/LeftPanel/CurrentTaskCard/Body"]
+custom_minimum_size = Vector2(0,56)
+text = "选择任务进行追踪"
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+max_lines_visible = 2
+text_overrun_behavior = 3
+[node name="TaskProgress" type="Label" parent="Margin/Layout/MainContent/LeftPanel/CurrentTaskCard/Body"]
+text = ""
+theme_override_font_sizes/font_size = 20
+
+[node name="BuildingPanel" type="PanelContainer" parent="Margin/Layout/MainContent/LeftPanel"]
+size_flags_vertical = 3
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/MainContent/LeftPanel/BuildingPanel"]
+theme_override_constants/separation = 16
+[node name="BuildingTitle" type="Label" parent="Margin/Layout/MainContent/LeftPanel/BuildingPanel/Body"]
+text = "地点建筑"
+theme_override_font_sizes/font_size = 28
+
+[node name="BuildingScroll" type="ScrollContainer" parent="Margin/Layout/MainContent/LeftPanel/BuildingPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+[node name="Buildings" type="VBoxContainer" parent="Margin/Layout/MainContent/LeftPanel/BuildingPanel/Body/BuildingScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+[node name="PreviewBuilding" type="Button" parent="Margin/Layout/MainContent/LeftPanel/BuildingPanel/Body/BuildingScroll/Buildings"]
+text = "地点设施"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+[node name="BuildingHint" type="Label" parent="Margin/Layout/MainContent/LeftPanel/BuildingPanel/Body"]
+text = "点击建筑进入专属界面"
+theme_override_font_sizes/font_size = 18
+
+[node name="CultivationCard" type="PanelContainer" parent="Margin/Layout/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/MainContent/CultivationCard"]
+theme_override_constants/separation = 10
+[node name="RouteTabs" type="HBoxContainer" parent="Margin/Layout/MainContent/CultivationCard/Body"]
+theme_override_constants/separation = 12
+
+[node name="SpellPath" type="Button" parent="Margin/Layout/MainContent/CultivationCard/Body/RouteTabs"]
+custom_minimum_size = Vector2(150, 48)
+theme_override_styles/normal = SubResource("Accent")
+text = "法修"
+
+[node name="BodyPath" type="Button" parent="Margin/Layout/MainContent/CultivationCard/Body/RouteTabs"]
+custom_minimum_size = Vector2(150, 48)
+text = "体修"
+tooltip_text = "体修通过主动淬体或洞府闭关提升"
+
+[node name="ReleaseStone" type="Button" parent="Margin/Layout/MainContent/CultivationCard/Body/RouteTabs"]
+custom_minimum_size = Vector2(150, 48)
+text = "释放灵石"
+tooltip_text = "消耗一块灵石，向当前地点释放灵气"
+
+[node name="CultivationScene" type="HBoxContainer" parent="Margin/Layout/MainContent/CultivationCard/Body"]
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="CharacterPlaceholder" type="ColorRect" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene"]
+custom_minimum_size = Vector2(0, 280)
+size_flags_horizontal = 3
+color = Color(0.48,0.62,0.67,1)
+
+[node name="CharacterText" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CharacterPlaceholder"]
+text = "修炼人物立绘"
+theme_override_font_sizes/font_size = 28
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CultivationDetails" type="PanelContainer" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("DetailPanel")
+
+[node name="Details" type="VBoxContainer" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails"]
+theme_override_constants/separation = 10
+
+[node name="TechniqueTitle" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details"]
+text = "当前功法"
+
+[node name="CurrentTechnique" type="Button" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details"]
+custom_minimum_size = Vector2(0, 48)
+text = "暂无已装备功法"
+alignment = 0
+clip_text = true
+
+[node name="FocusTitle" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details"]
+text = "修炼倾向"
+theme_override_font_sizes/font_size = 20
+
+[node name="FocusRow" type="HBoxContainer" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details"]
+theme_override_constants/separation = 8
+
+
+[node name="Refinement" type="Button" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details/FocusRow"]
+custom_minimum_size = Vector2(0, 44)
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "精进修为"
+
+[node name="Balance" type="Button" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details/FocusRow"]
+custom_minimum_size = Vector2(0, 44)
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "均衡修炼"
+
+[node name="Nurture" type="Button" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details/FocusRow"]
+custom_minimum_size = Vector2(0, 44)
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "温养根基"
+
+[node name="GrowthCard0" type="PanelContainer" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details"]
+size_flags_vertical = 3
+
+[node name="GrowthBody" type="VBoxContainer" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details/GrowthCard0"]
+alignment = 1
+
+[node name="GrowthValue0" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details/GrowthCard0/GrowthBody"]
+text = "气海    —"
+
+[node name="GrowthProgress0" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details/GrowthCard0/GrowthBody"]
+theme_override_font_sizes/font_size = 18
+text = "温养积累：—"
+
+[node name="GrowthCard1" type="PanelContainer" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details"]
+size_flags_vertical = 3
+
+[node name="GrowthBody" type="VBoxContainer" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details/GrowthCard1"]
+alignment = 1
+
+[node name="GrowthValue1" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details/GrowthCard1/GrowthBody"]
+text = "经脉    —"
+
+[node name="GrowthProgress1" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details/GrowthCard1/GrowthBody"]
+theme_override_font_sizes/font_size = 18
+text = "温养积累：—"
+
+[node name="CultivationStatus" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/CultivationScene/CultivationDetails/Details"]
+theme_override_font_sizes/font_size = 18
+text = "在线自动吐纳"
+
+[node name="ProgressRow" type="HBoxContainer" parent="Margin/Layout/MainContent/CultivationCard/Body"]
+
+[node name="ProgressTitle" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/ProgressRow"]
+text = "修为进度"
+theme_override_font_sizes/font_size = 22
+size_flags_horizontal = 3
+[node name="ProgressValue" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/ProgressRow"]
+text = "0 / 100"
+theme_override_font_sizes/font_size = 22
+
+[node name="CultivationProgress" type="ProgressBar" parent="Margin/Layout/MainContent/CultivationCard/Body"]
+custom_minimum_size = Vector2(0,18)
+theme_override_styles/fill = SubResource("CultivationFill")
+show_percentage = false
+[node name="Rates" type="HBoxContainer" parent="Margin/Layout/MainContent/CultivationCard/Body"]
+
+[node name="LocationAura" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/Rates"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "自然吐纳 —"
+text_overrun_behavior = 3
+
+[node name="NurtureRate" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body/Rates"]
+theme_override_font_sizes/font_size = 18
+text = "根基温养：—"
+
+[node name="Actions" type="HBoxContainer" parent="Margin/Layout/MainContent/CultivationCard/Body"]
+theme_override_constants/separation = 16
+[node name="Practice" type="Button" parent="Margin/Layout/MainContent/CultivationCard/Body/Actions"]
+theme_override_styles/normal = SubResource("Accent")
+text = "修炼"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+[node name="Promote" type="Button" parent="Margin/Layout/MainContent/CultivationCard/Body/Actions"]
+text = "突破"
+custom_minimum_size = Vector2(0,48)
+size_flags_horizontal = 3
+[node name="CultivationHint" type="Label" parent="Margin/Layout/MainContent/CultivationCard/Body"]
+theme_override_font_sizes/font_size = 18
+text = "在安全地点可主动修炼。"
+
+[node name="RightPanel" type="VBoxContainer" parent="Margin/Layout/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+theme_override_constants/separation = 16
+[node name="NearbyNpcPanel" type="PanelContainer" parent="Margin/Layout/MainContent/RightPanel"]
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/MainContent/RightPanel/NearbyNpcPanel"]
+theme_override_constants/separation = 16
+[node name="NpcTitle" type="Label" parent="Margin/Layout/MainContent/RightPanel/NearbyNpcPanel/Body"]
+text = "附近人物"
+theme_override_font_sizes/font_size = 28
+
+[node name="NpcScroll" type="ScrollContainer" parent="Margin/Layout/MainContent/RightPanel/NearbyNpcPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+[node name="Npcs" type="VBoxContainer" parent="Margin/Layout/MainContent/RightPanel/NearbyNpcPanel/Body/NpcScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+[node name="PreviewNpc" parent="Margin/Layout/MainContent/RightPanel/NearbyNpcPanel/Body/NpcScroll/Npcs" instance=ExtResource("nearby_card")]
+[node name="WorldMessagePanel" type="PanelContainer" parent="Margin/Layout/MainContent/RightPanel"]
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/MainContent/RightPanel/WorldMessagePanel"]
+theme_override_constants/separation = 16
+[node name="NewsTitle" type="Label" parent="Margin/Layout/MainContent/RightPanel/WorldMessagePanel/Body"]
+text = "世界消息"
+theme_override_font_sizes/font_size = 28
+
+[node name="MessageScroll" type="ScrollContainer" parent="Margin/Layout/MainContent/RightPanel/WorldMessagePanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+[node name="Messages" type="VBoxContainer" parent="Margin/Layout/MainContent/RightPanel/WorldMessagePanel/Body/MessageScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+[node name="PreviewNews" type="Label" parent="Margin/Layout/MainContent/RightPanel/WorldMessagePanel/Body/MessageScroll/Messages"]
+text = "暂无世界消息"
+theme_override_font_sizes/font_size = 20
+
+[node name="BottomNavigation" type="HBoxContainer" parent="Margin/Layout"]
+theme_override_constants/separation = 16
+[node name="Nav_Character" type="Button" parent="Margin/Layout/BottomNavigation"]
+text = "角色"
+custom_minimum_size = Vector2(0,60)
+size_flags_horizontal = 3
+metadata/destination = "角色"
+[node name="Nav_Inventory" type="Button" parent="Margin/Layout/BottomNavigation"]
+text = "背包"
+custom_minimum_size = Vector2(0,60)
+size_flags_horizontal = 3
+metadata/destination = "背包"
+[node name="Nav_Technique" type="Button" parent="Margin/Layout/BottomNavigation"]
+text = "功法"
+custom_minimum_size = Vector2(0,60)
+size_flags_horizontal = 3
+metadata/destination = "功法"
+[node name="Nav_Quest" type="Button" parent="Margin/Layout/BottomNavigation"]
+text = "任务"
+custom_minimum_size = Vector2(0,60)
+size_flags_horizontal = 3
+metadata/destination = "任务"
+[node name="Nav_World" type="Button" parent="Margin/Layout/BottomNavigation"]
+text = "天下"
+custom_minimum_size = Vector2(0,60)
+size_flags_horizontal = 3
+metadata/destination = "天下"

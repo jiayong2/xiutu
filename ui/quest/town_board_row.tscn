@@ -1,0 +1,81 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://ui/quest/town_board_theme.tres" id="1"]
+
+[node name="TownBoardRow" type="Button"]
+custom_minimum_size = Vector2(0, 82)
+theme = ExtResource("1")
+theme_type_variation = &"BoardRow"
+toggle_mode = true
+
+[node name="RowMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1
+anchor_bottom = 1
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 14
+offset_top = 8
+offset_right = -14
+offset_bottom = -8
+mouse_filter = 2
+
+[node name="Line" type="HBoxContainer" parent="RowMargin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TypePanel" type="PanelContainer" parent="RowMargin/Line"]
+layout_mode = 2
+theme_type_variation = &"Tag"
+mouse_filter = 2
+size_flags_vertical = 4
+
+[node name="Category" type="Label" parent="RowMargin/Line/TypePanel"]
+layout_mode = 2
+theme_type_variation = &"BoardMuted"
+text = "悬赏委托"
+mouse_filter = 2
+
+[node name="RowText" type="VBoxContainer" parent="RowMargin/Line"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="RowTitle" type="Label" parent="RowMargin/Line/RowText"]
+layout_mode = 2
+theme_type_variation = &"RowTitle"
+text = "榜文标题"
+mouse_filter = 2
+text_overrun_behavior = 3
+
+[node name="RowTime" type="Label" parent="RowMargin/Line/RowText"]
+layout_mode = 2
+theme_type_variation = &"BoardMuted"
+text = "长期有效"
+mouse_filter = 2
+text_overrun_behavior = 3
+
+[node name="RowSummary" type="VBoxContainer" parent="RowMargin/Line"]
+layout_mode = 2
+mouse_filter = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+custom_minimum_size = Vector2(225, 0)
+
+[node name="RowReward" type="Label" parent="RowMargin/Line/RowSummary"]
+layout_mode = 2
+theme_type_variation = &"BoardReward"
+text = "报酬摘要"
+mouse_filter = 2
+text_overrun_behavior = 3
+horizontal_alignment = 2
+
+[node name="RowStatus" type="Label" parent="RowMargin/Line/RowSummary"]
+layout_mode = 2
+theme_type_variation = &"StatusAvailable"
+text = "可接取"
+mouse_filter = 2
+horizontal_alignment = 2

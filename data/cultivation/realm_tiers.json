@@ -1,0 +1,11 @@
+[
+  {"id":"tier_1","qi":"炼气","body":"通脉","lifespan":100,"qi_start":100,"qi_step":0,"body_start":100,"body_step":0,"qi_growth":[0,0,0,0,0],"qi_materials":{},"body_materials":{}},
+  {"id":"tier_2","qi":"筑基","body":"锻骨","lifespan":150,"qi_start":1200,"qi_step":200,"body_start":150,"body_step":50,"qi_growth":[22,10,5,3,2],"qi_materials":{"pill_foundation":1},"body_materials":{"pill_healing":1,"material_spirit_iron":3}},
+  {"id":"tier_3","qi":"金丹","body":"炼脏","lifespan":300,"qi_start":3200,"qi_step":400,"body_start":650,"body_step":100,"qi_growth":[36,16,8,5,3],"qi_materials":{"pill_qi_gathering":2,"herb_calm_leaf":5},"body_materials":{"pill_healing":2,"material_spirit_iron":5}},
+  {"id":"tier_4","qi":"元婴","body":"金身","lifespan":600,"qi_start":7000,"qi_step":750,"body_start":1650,"body_step":200,"qi_growth":[54,24,12,8,4],"qi_materials":{"pill_qi_gathering":4,"herb_calm_leaf":8},"body_materials":{"pill_healing":4,"material_spirit_iron":8}},
+  {"id":"tier_5","qi":"化神","body":"不灭","lifespan":1200,"qi_start":14000,"qi_step":1500,"body_start":3600,"body_step":400,"qi_growth":[74,32,17,11,5],"qi_materials":{"pill_qi_gathering":6,"herb_calm_leaf":12},"body_materials":{"pill_healing":6,"material_spirit_iron":12}},
+  {"id":"tier_6","qi":"炼虚","body":"破虚","lifespan":2500,"qi_start":28000,"qi_step":3000,"body_start":7600,"body_step":800,"qi_growth":[96,42,23,15,6],"qi_materials":{"pill_qi_gathering":8,"herb_calm_leaf":18},"body_materials":{"pill_healing":8,"material_spirit_iron":18}},
+  {"id":"tier_7","qi":"合体","body":"法相","lifespan":5000,"qi_start":56000,"qi_step":5500,"body_start":15500,"body_step":1600,"qi_growth":[122,54,30,20,7],"qi_materials":{"pill_qi_gathering":12,"herb_calm_leaf":25},"body_materials":{"pill_healing":12,"material_spirit_iron":25}},
+  {"id":"tier_8","qi":"大乘","body":"圣体","lifespan":10000,"qi_start":110000,"qi_step":9500,"body_start":31000,"body_step":3200,"qi_growth":[152,68,38,26,8],"qi_materials":{"pill_qi_gathering":16,"herb_calm_leaf":35},"body_materials":{"pill_healing":16,"material_spirit_iron":35}},
+  {"id":"tier_9","qi":"渡劫","body":"渡劫","lifespan":12000,"qi_start":200000,"qi_step":16000,"body_start":62000,"body_step":6400,"qi_growth":[190,84,47,33,9],"qi_materials":{"pill_qi_gathering":24,"herb_calm_leaf":50},"body_materials":{"pill_healing":24,"material_spirit_iron":50}}
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "id": "shop_qinglan_general",
+    "name": "青岚杂货铺",
+    "npc_id": "npc_liu_qinghe",
+    "location": "town_qinglan",
+    "stock": {
+      "item_healing_powder": 10,
+      "item_aura_powder": 10,
+      "seed_spirit_grass": 10,
+      "seed_morning_dew": 10,
+      "seed_fire_tip": 10,
+      "seed_calm_leaf": 10,
+      "equip_green_wood_sword": 2,
+      "equip_cloth_robe": 2
+    },
+    "restock": true,
+    "shop_type": "普通商铺",
+    "description": "经营补给、灵草种子、基础装备及日常修炼杂物。",
+    "environment": "货架上陈列着补给、种子和基础装备。",
+    "announcement": "普通库存按现有规则每月补充；特殊商品遵循原规则。"
+  },
+  {
+    "id": "shop_qinglan_spells",
+    "name": "青岚术法铺",
+    "npc_id": "npc_zhao_shanhe",
+    "location": "town_qinglan",
+    "stock": {
+      "book_skill_fire_bolt": 1,
+      "book_skill_water_arrow": 1,
+      "book_skill_wood_heal": 1,
+      "book_skill_earth_guard": 1,
+      "equip_iron_sword": 1,
+      "book_technique_fire_breath": 1
+    },
+    "restock": false,
+    "shop_type": "普通商铺",
+    "description": "经营法术秘籍与基础兵器。",
+    "environment": "货架上陈列着秘籍与兵器。",
+    "announcement": "本店库存不自动补充，数量以交易页面为准。"
+  },
+  {
+    "id": "shop_yunxi",
+    "name": "云溪药阁",
+    "npc_id": "npc_yunxi_keeper",
+    "location": "town_yunxi",
+    "stock": {
+      "herb_spirit_grass": 20,
+      "herb_morning_dew": 20,
+      "herb_fire_tip": 20,
+      "herb_calm_leaf": 20,
+      "pill_qi_gathering": 5,
+      "pill_healing": 5,
+      "book_technique_green_wood": 1,
+      "pill_foundation": 1,
+      "material_spirit_iron": 10
+    },
+    "restock": true,
+    "shop_type": "普通商铺",
+    "description": "经营灵草、丹药、秘籍与修炼材料。",
+    "environment": "货架上陈列着灵草、丹药和修炼材料。",
+    "announcement": "普通库存按现有规则每月补充；特殊商品遵循原规则。"
+  },
+  {
+    "id": "shop_qinglan_baicao",
+    "name": "百草药铺",
+    "npc_id": "npc_shen_baicao",
+    "location": "town_qinglan",
+    "stock": {
+      "item_healing_powder": 10,
+      "item_aura_powder": 10,
+      "pill_healing": 5,
+      "pill_mana_restore": 5,
+      "herb_spirit_grass": 10,
+      "herb_morning_dew": 10,
+      "herb_calm_leaf": 5,
+      "herb_fire_tip": 5
+    },
+    "restock": true,
+    "seed_on_restore": true,
+    "shop_type": "药铺",
+    "description": "经营恢复丹药与灵草。",
+    "environment": "经营恢复丹药与灵草。",
+    "announcement": "常备商品按现有月度规则补货。"
+  },
+  {
+    "id": "shop_qinglan_blacksmith",
+    "name": "老陈铁铺",
+    "npc_id": "npc_old_chen",
+    "location": "town_qinglan",
+    "stock": {
+      "equip_iron_sword": 1,
+      "equip_green_wood_sword": 2,
+      "equip_wolf_fang_blade": 2,
+      "equip_wolf_armor": 2,
+      "equip_v1_iron_bracers": 2,
+      "material_ordinary_iron_ore": 10
+    },
+    "restock": true,
+    "seed_on_restore": true,
+    "shop_type": "铁铺",
+    "description": "经营基础兵器、防具与铁矿。",
+    "environment": "经营基础兵器、防具与铁矿。",
+    "announcement": "常备商品按现有月度规则补货。"
+  },
+  {
+    "id": "shop_yunxi_wanbao",
+    "name": "万宝阁",
+    "npc_id": "npc_su_wanjin",
+    "location": "town_yunxi",
+    "stock": {
+      "equip_green_wood_sword": 2,
+      "equip_wolf_fang_blade": 2,
+      "equip_v1_iron_bracers": 2,
+      "equip_wolf_armor": 2
+    },
+    "restock": true,
+    "seed_on_restore": true,
+    "shop_type": "装备铺",
+    "description": "经营兵器与防具。",
+    "environment": "经营兵器与防具。",
+    "announcement": "常备商品按现有月度规则补货。"
+  },
+  {
+    "id": "shop_yunxi_market",
+    "name": "云溪坊市",
+    "npc_id": "npc_gu_qingyue",
+    "location": "town_yunxi",
+    "stock": {
+      "herb_spirit_grass": 10,
+      "herb_morning_dew": 10,
+      "herb_fire_tip": 5,
+      "herb_calm_leaf": 5,
+      "material_ordinary_iron_ore": 10,
+      "material_spirit_iron": 5,
+      "material_wolf_fang": 5,
+      "material_wolf_hide": 5,
+      "material_iron_scale": 5,
+      "material_bat_membrane": 5
+    },
+    "restock": true,
+    "seed_on_restore": true,
+    "shop_type": "坊市",
+    "description": "由商会集中登记灵草、矿石与妖兽材料的摊货。",
+    "environment": "由商会集中登记灵草、矿石与妖兽材料的摊货。",
+    "announcement": "常备商品按现有月度规则补货。"
+  },
+  {
+    "id": "shop_yunxi_bailian",
+    "name": "百炼坊",
+    "npc_id": "npc_tie_wufeng",
+    "location": "town_yunxi",
+    "stock": {
+      "material_ordinary_iron_ore": 10,
+      "material_spirit_iron": 5,
+      "equip_wolf_fang_blade": 2,
+      "equip_v1_iron_bracers": 2
+    },
+    "restock": true,
+    "seed_on_restore": true,
+    "shop_type": "炼器铺",
+    "description": "当前经营矿料和已完成的兵器、防具。",
+    "environment": "当前经营矿料和已完成的兵器、防具。",
+    "announcement": "常备商品按现有月度规则补货。"
+  }
+]

@@ -1,0 +1,94 @@
+[
+  {
+    "id": "auction_yunxi",
+    "name": "云溪城拍卖会",
+    "location": "town_yunxi",
+    "host": {
+      "name": "谢云楼",
+      "portrait": ""
+    },
+    "schedule": {
+      "first_day": 0,
+      "period_days": 7,
+      "duration_days": 3
+    },
+    "scale": "小型",
+    "entry": {
+      "min_realm": 1,
+      "fee": 0,
+      "anonymous": true,
+      "box_fee": -1
+    },
+    "commission_bps": 500,
+    "round_limit": 32,
+    "interaction_limit": 3,
+    "warning_limit": 2,
+    "bribe": 12,
+    "participants": [
+      {
+        "id": "npc_yunxi_keeper",
+        "style": "rational",
+        "interest": [
+          "丹药",
+          "药材"
+        ],
+        "budget_bps": 9000
+      },
+      {
+        "id": "npc_qin_shoushan",
+        "style": "competitive",
+        "interest": [
+          "装备"
+        ],
+        "budget_bps": 9000
+      },
+      {
+        "id": "npc_liu_qinghe",
+        "style": "cautious",
+        "interest": [
+          "丹药",
+          "材料"
+        ],
+        "budget_bps": 7500
+      },
+      {
+        "id": "npc_zhao_shanhe",
+        "style": "resentful",
+        "interest": [
+          "装备",
+          "材料"
+        ],
+        "budget_bps": 8500
+      }
+    ],
+    "lots": [
+      {
+        "item": "pill_healing",
+        "quantity": 1,
+        "start": 30,
+        "quality": "凡品",
+        "category": "丹药",
+        "rarity": "常见",
+        "value": 65
+      },
+      {
+        "item": "material_spirit_iron",
+        "quantity": 2,
+        "start": 50,
+        "quality": "凡品",
+        "category": "材料",
+        "rarity": "少见",
+        "value": 90
+      },
+      {
+        "item": "equip_iron_sword",
+        "quantity": 1,
+        "start": 95,
+        "quality": "凡品",
+        "category": "装备",
+        "rarity": "少见",
+        "value": 170
+      }
+    ]
+  }
+]

@@ -1,0 +1,180 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://ui/world/world_page.gd" id="controller"]
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.26, 0.33, 0.37, 1)
+
+[sub_resource type="StyleBoxFlat" id="Center"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.31, 0.40, 0.45, 1)
+
+[sub_resource type="StyleBoxFlat" id="Inset"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.38, 0.49, 0.54, 1)
+
+[sub_resource type="StyleBoxFlat" id="Button"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.46, 0.59, 0.55, 1)
+
+[sub_resource type="StyleBoxFlat" id="Building"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.63, 0.71, 0.75, 1)
+
+[sub_resource type="StyleBoxFlat" id="Disabled"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.37, 0.42, 0.45, 1)
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 22
+Button/styles/normal = SubResource("Button")
+Button/styles/hover = SubResource("Inset")
+Button/styles/pressed = SubResource("Center")
+Button/styles/disabled = SubResource("Disabled")
+
+[node name="NpcDialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme")
+script = ExtResource("controller")
+mode = "npc"
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.12, 0.17, 0.20, 1)
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Column" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 16
+theme_override_constants/separation = 24
+
+[node name="Header" type="PanelContainer" parent="Margin/Column"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="HeaderRow" type="HBoxContainer" parent="Margin/Column/Header"]
+custom_minimum_size = Vector2(0, 64)
+theme_override_constants/separation = 24
+
+[node name="PageTitle" type="Label" parent="Margin/Column/Header/HeaderRow"]
+theme_override_font_sizes/font_size = 28
+text = "人物交互 · 秦守山"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="GameTime" type="Label" parent="Margin/Column/Header/HeaderRow"]
+theme_override_font_sizes/font_size = 22
+text = "玄灵历1年1月1日 08:00"
+autowrap_mode = 0
+
+custom_minimum_size = Vector2(400, 0)
+
+[node name="Back" type="Button" parent="Margin/Column/Header/HeaderRow"]
+custom_minimum_size = Vector2(160, 64)
+text = "返回场景"
+
+[node name="Body" type="HBoxContainer" parent="Margin/Column"]
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="Portrait" type="PanelContainer" parent="Margin/Column/Body"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 40.0
+theme_override_styles/panel = SubResource("Inset")
+
+[node name="PortraitText" type="Label" parent="Margin/Column/Body/Portrait"]
+theme_override_font_sizes/font_size = 24
+text = "NPC 立绘矩形占位"
+autowrap_mode = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialoguePanel" type="PanelContainer" parent="Margin/Column/Body"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 60.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="DialogueColumn" type="VBoxContainer" parent="Margin/Column/Body/DialoguePanel"]
+theme_override_constants/separation = 16
+
+
+[node name="NpcIdentity" type="Label" parent="Margin/Column/Body/DialoguePanel/DialogueColumn"]
+theme_override_font_sizes/font_size = 28
+text = "秦守山 · 青岚镇巡守"
+autowrap_mode = 3
+
+
+[node name="TextPanel" type="PanelContainer" parent="Margin/Column/Body/DialoguePanel/DialogueColumn"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.0
+theme_override_styles/panel = SubResource("Inset")
+
+[node name="DialogueScroll" type="ScrollContainer" parent="Margin/Column/Body/DialoguePanel/DialogueColumn/TextPanel"]
+horizontal_scroll_mode = 0
+
+[node name="DialogueText" type="Label" parent="Margin/Column/Body/DialoguePanel/DialogueColumn/TextPanel/DialogueScroll"]
+theme_override_font_sizes/font_size = 22
+text = "点击「交谈」开始对话。"
+autowrap_mode = 3
+size_flags_horizontal = 3
+
+[node name="Options" type="HBoxContainer" parent="Margin/Column/Body/DialoguePanel/DialogueColumn"]
+theme_override_constants/separation = 16
+
+[node name="Talk" type="Button" parent="Margin/Column/Body/DialoguePanel/DialogueColumn/Options"]
+custom_minimum_size = Vector2(0, 64)
+text = "交谈"
+size_flags_horizontal = 3
+
+[node name="Tasks" type="Button" parent="Margin/Column/Body/DialoguePanel/DialogueColumn/Options"]
+custom_minimum_size = Vector2(0, 64)
+text = "任务"
+size_flags_horizontal = 3
+
+[node name="End" type="Button" parent="Margin/Column/Body/DialoguePanel/DialogueColumn/Options"]
+custom_minimum_size = Vector2(0, 64)
+text = "结束对话"
+size_flags_horizontal = 3
+
+[node name="Status" type="Label" parent="Margin/Column"]
+theme_override_font_sizes/font_size = 18
+text = "选择地点、建筑或人物进行交互"
+autowrap_mode = 3
+
+
+[node name="QuestOptions" type="VBoxContainer" parent="Margin/Column/Body/DialoguePanel/DialogueColumn"]
+theme_override_constants/separation = 8

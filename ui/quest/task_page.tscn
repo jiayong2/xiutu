@@ -1,0 +1,473 @@
+[gd_scene load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://ui/quest/task_page.gd" id="1_controller"]
+[ext_resource type="PackedScene" path="res://ui/quest/task_list_item.tscn" id="2_item"]
+
+[ext_resource type="FontFile" path="res://assets/fonts/source_han_sans_cn/SourceHanSansCN-Bold.otf" id="3_bold"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1j6m"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.71764706, 0.78823529, 0.75686275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbsiw"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0.27843137, 0.59215686, 0.52549020, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yg120"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.36078431, 0.61176471, 0.55294118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwamk"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.29411765, 0.53333333, 0.48235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0m6vw"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.23921569, 0.47450980, 0.42745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="Filter"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.90980392, 0.94509804, 0.92549020, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65490196, 0.78039216, 0.74509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="FilterHover"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.86666667, 0.92156863, 0.90196078, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65490196, 0.78039216, 0.74509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="Row"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.90980392, 0.94509804, 0.92549020, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65490196, 0.78039216, 0.74509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="RowHover"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.86666667, 0.92156863, 0.90196078, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65490196, 0.78039216, 0.74509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="SelectedItem"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.76470588, 0.88235294, 0.83921569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.27843137, 0.59215686, 0.52549020, 1)
+
+[sub_resource type="StyleBoxFlat" id="SelectedHover"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.72549020, 0.85882353, 0.81176471, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.27843137, 0.59215686, 0.52549020, 1)
+
+[sub_resource type="Theme" id="Theme_u5ati"]
+default_font_size = 18
+Button/font_sizes/font_size = 19
+Button/colors/font_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+Button/colors/font_focus_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+Button/colors/font_hover_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+Button/colors/font_pressed_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+Button/colors/font_hover_pressed_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+Button/colors/font_disabled_color = Color(0.38039216, 0.48627451, 0.45098039, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_x1j6m")
+Button/styles/focus = SubResource("StyleBoxFlat_dbsiw")
+Button/styles/hover = SubResource("StyleBoxFlat_yg120")
+Button/styles/normal = SubResource("StyleBoxFlat_kwamk")
+Button/styles/pressed = SubResource("StyleBoxFlat_0m6vw")
+TaskFilter/base_type = &"Button"
+TaskFilter/colors/font_color = Color(0.25490196, 0.41176471, 0.37254902, 1)
+TaskFilter/colors/font_focus_color = Color(0.25490196, 0.41176471, 0.37254902, 1)
+TaskFilter/colors/font_hover_color = Color(0.25490196, 0.41176471, 0.37254902, 1)
+TaskFilter/colors/font_pressed_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+TaskFilter/colors/font_hover_pressed_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+TaskFilter/styles/normal = SubResource("Filter")
+TaskFilter/styles/hover = SubResource("FilterHover")
+TaskFilter/styles/pressed = SubResource("StyleBoxFlat_0m6vw")
+TaskFilter/styles/hover_pressed = SubResource("StyleBoxFlat_0m6vw")
+TaskFilterSelected/base_type = &"Button"
+TaskFilterSelected/colors/font_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+TaskFilterSelected/colors/font_focus_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+TaskFilterSelected/colors/font_hover_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+TaskFilterSelected/colors/font_pressed_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+TaskFilterSelected/colors/font_hover_pressed_color = Color(1.00000000, 1.00000000, 1.00000000, 1)
+TaskFilterSelected/styles/normal = SubResource("StyleBoxFlat_kwamk")
+TaskFilterSelected/styles/hover = SubResource("StyleBoxFlat_yg120")
+TaskFilterSelected/styles/pressed = SubResource("StyleBoxFlat_0m6vw")
+TaskFilterSelected/styles/hover_pressed = SubResource("StyleBoxFlat_0m6vw")
+TaskRow/base_type = &"Button"
+TaskRow/colors/font_color = Color(0, 0, 0, 0)
+TaskRow/colors/font_focus_color = Color(0, 0, 0, 0)
+TaskRow/colors/font_hover_color = Color(0, 0, 0, 0)
+TaskRow/colors/font_pressed_color = Color(0, 0, 0, 0)
+TaskRow/colors/font_hover_pressed_color = Color(0, 0, 0, 0)
+TaskRow/styles/normal = SubResource("Row")
+TaskRow/styles/hover = SubResource("RowHover")
+TaskRow/styles/pressed = SubResource("SelectedItem")
+TaskRow/styles/hover_pressed = SubResource("SelectedItem")
+TaskRowSelected/base_type = &"TaskRow"
+TaskRowSelected/colors/font_color = Color(0, 0, 0, 0)
+TaskRowSelected/colors/font_focus_color = Color(0, 0, 0, 0)
+TaskRowSelected/colors/font_hover_color = Color(0, 0, 0, 0)
+TaskRowSelected/colors/font_pressed_color = Color(0, 0, 0, 0)
+TaskRowSelected/colors/font_hover_pressed_color = Color(0, 0, 0, 0)
+TaskRowSelected/styles/normal = SubResource("SelectedItem")
+TaskRowSelected/styles/hover = SubResource("SelectedHover")
+TaskRowSelected/styles/pressed = SubResource("SelectedItem")
+TaskRowSelected/styles/hover_pressed = SubResource("SelectedItem")
+Label/colors/font_color = Color(0.27058824, 0.40784314, 0.38823529, 1)
+RichTextLabel/colors/default_color = Color(0.27058824, 0.40784314, 0.38823529, 1)
+RichTextLabel/fonts/bold_font = ExtResource("3_bold")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_absr7"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.92941176, 0.95686275, 0.94117647, 1)
+border_color = Color(0.65490196, 0.78039216, 0.74509804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="TaskPage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme_u5ati")
+script = ExtResource("1_controller")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.86666667, 0.92156863, 0.90196078, 1)
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Column" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Header" type="HBoxContainer" parent="Margin/Column"]
+layout_mode = 2
+
+[node name="PageTitle" type="Label" parent="Margin/Column/Header"]
+theme_override_colors/font_color = Color(0.15294118, 0.30196078, 0.27450980, 1)
+theme_override_fonts/font = ExtResource("3_bold")
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "任务"
+autowrap_mode = 3
+
+[node name="Back" type="Button" parent="Margin/Column/Header"]
+theme_type_variation = &"TaskFilter"
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+text = "返回"
+
+[node name="Filters" type="HBoxContainer" parent="Margin/Column"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="全部" type="Button" parent="Margin/Column/Filters"]
+theme_type_variation = &"TaskFilter"
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+text = "全部"
+
+[node name="进行中" type="Button" parent="Margin/Column/Filters"]
+theme_type_variation = &"TaskFilter"
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+text = "进行中"
+
+[node name="已完成" type="Button" parent="Margin/Column/Filters"]
+theme_type_variation = &"TaskFilter"
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+text = "已完成"
+
+[node name="Content" type="HBoxContainer" parent="Margin/Column"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="TaskListPanel" type="PanelContainer" parent="Margin/Column/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_absr7")
+
+[node name="ListColumn" type="VBoxContainer" parent="Margin/Column/Content/TaskListPanel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ListTitle" type="Label" parent="Margin/Column/Content/TaskListPanel/ListColumn"]
+theme_override_colors/font_color = Color(0.18039216, 0.39215686, 0.34901961, 1)
+theme_override_fonts/font = ExtResource("3_bold")
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "任务列表"
+autowrap_mode = 3
+
+[node name="ListScroll" type="ScrollContainer" parent="Margin/Column/Content/TaskListPanel/ListColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="TaskList" type="VBoxContainer" parent="Margin/Column/Content/TaskListPanel/ListColumn/ListScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="quest_qinglan_001" parent="Margin/Column/Content/TaskListPanel/ListColumn/ListScroll/TaskList" instance=ExtResource("2_item")]
+text = "青岚山妖兽异动
+公开委托 · 进行中"
+theme_type_variation = &"TaskRowSelected"
+
+[node name="quest_qinglan_002" parent="Margin/Column/Content/TaskListPanel/ListColumn/ListScroll/TaskList" instance=ExtResource("2_item")]
+text = "青岚除患
+公开委托 · 已完成"
+
+[node name="quest_qinglan_003" parent="Margin/Column/Content/TaskListPanel/ListColumn/ListScroll/TaskList" instance=ExtResource("2_item")]
+text = "狼首伏诛
+公开委托 · 进行中"
+
+[node name="TaskDetailPanel" type="PanelContainer" parent="Margin/Column/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 68.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_absr7")
+
+[node name="Details" type="VBoxContainer" parent="Margin/Column/Content/TaskDetailPanel"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TitleRow" type="HBoxContainer" parent="Margin/Column/Content/TaskDetailPanel/Details"]
+layout_mode = 2
+
+[node name="TaskTitle" type="RichTextLabel" parent="Margin/Column/Content/TaskDetailPanel/Details/TitleRow"]
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+mouse_filter = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/bold_font_size = 27
+text = "[color=#274D46][b]青岚山妖兽异动[/b][/color]"
+autowrap_mode = 3
+
+[node name="TaskType" type="RichTextLabel" parent="Margin/Column/Content/TaskDetailPanel/Details/TitleRow"]
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+mouse_filter = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 17
+text = "公开委托"
+autowrap_mode = 0
+custom_minimum_size = Vector2(300, 0)
+
+[node name="DetailScroll" type="ScrollContainer" parent="Margin/Column/Content/TaskDetailPanel/Details"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Body" type="VBoxContainer" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="DescriptionHeading" type="Label" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+theme_override_colors/font_color = Color(0.18039216, 0.39215686, 0.34901961, 1)
+theme_override_fonts/font = ExtResource("3_bold")
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "任务描述"
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+theme_override_colors/font_color = Color(0.27058824, 0.40784314, 0.38823529, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "青岚山近来妖兽出没。若你要独自在这条仙路上行走，先学会查看委托、整理补给。去准备好，再回来领差事。"
+autowrap_mode = 3
+
+[node name="ObjectiveHeading" type="Label" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+theme_override_colors/font_color = Color(0.18039216, 0.39215686, 0.34901961, 1)
+theme_override_fonts/font = ExtResource("3_bold")
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "任务目标与进度"
+autowrap_mode = 3
+
+[node name="Objective" type="RichTextLabel" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+mouse_filter = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "与秦守山对话一次
+完成进度 0 / 1"
+autowrap_mode = 3
+
+[node name="ClueHeading" type="Label" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+theme_override_colors/font_color = Color(0.18039216, 0.39215686, 0.34901961, 1)
+theme_override_fonts/font = ExtResource("3_bold")
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "获取线索"
+autowrap_mode = 3
+
+[node name="Clue" type="Label" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+theme_override_colors/font_color = Color(0.27058824, 0.40784314, 0.38823529, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "前往青岚山外围 · 青石山道，探索时有机会采集青灵草。"
+autowrap_mode = 3
+
+[node name="RelatedHeading" type="Label" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+theme_override_colors/font_color = Color(0.18039216, 0.39215686, 0.34901961, 1)
+theme_override_fonts/font = ExtResource("3_bold")
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "相关人物与地点"
+autowrap_mode = 3
+
+[node name="Related" type="Label" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+theme_override_colors/font_color = Color(0.27058824, 0.40784314, 0.38823529, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "秦守山 · 青岚镇"
+autowrap_mode = 3
+
+[node name="RewardsHeading" type="Label" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+theme_override_colors/font_color = Color(0.18039216, 0.39215686, 0.34901961, 1)
+theme_override_fonts/font = ExtResource("3_bold")
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "任务奖励"
+autowrap_mode = 3
+
+[node name="Rewards" type="RichTextLabel" parent="Margin/Column/Content/TaskDetailPanel/Details/DetailScroll/Body"]
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+mouse_filter = 2
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 19
+text = "灵石 [color=#B77724]×30[/color]
+凝血散 [color=#B77724]×1[/color]"
+autowrap_mode = 3
+
+[node name="ActionReason" type="Label" parent="Margin/Column/Content/TaskDetailPanel/Details"]
+theme_override_colors/font_color = Color(0.42745098, 0.53333333, 0.50196078, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "接取后与秦守山交谈"
+autowrap_mode = 3
+
+[node name="ActionBar" type="HBoxContainer" parent="Margin/Column/Content/TaskDetailPanel/Details"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Guide" type="Button" parent="Margin/Column/Content/TaskDetailPanel/Details/ActionBar"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+text = "任务引导"
+
+[node name="Talk" type="Button" parent="Margin/Column/Content/TaskDetailPanel/Details/ActionBar"]
+visible = false
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+text = "与秦守山对话"
+
+[node name="Primary" type="Button" parent="Margin/Column/Content/TaskDetailPanel/Details/ActionBar"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+text = "接取任务"
+
+[node name="Status" type="Label" parent="Margin/Column"]
+theme_override_colors/font_color = Color(0.42745098, 0.53333333, 0.50196078, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "任务日志 · 选择左侧任务查看详情"
+autowrap_mode = 3
+
+[node name="Track" type="Button" parent="Margin/Column/Content/TaskDetailPanel/Details/ActionBar"]
+custom_minimum_size = Vector2(0,48)
+text = "追踪任务"
+
+[node name="Abandon" type="Button" parent="Margin/Column/Content/TaskDetailPanel/Details/ActionBar"]
+custom_minimum_size = Vector2(0,48)
+text = "暂时放弃"

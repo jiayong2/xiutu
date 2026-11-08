@@ -1,0 +1,6 @@
+[gd_scene format=3]
+[node name="Entry" type="Button"]
+custom_minimum_size = Vector2(0,112)
+size_flags_horizontal = 3
+text = "空槽"
+text_overrun_behavior = 3

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "event_beast_tracks",
+    "name": "妖兽踪迹",
+    "location_id": "area_qinglan_outskirts",
+    "description": "草丛被压倒，泥地上留下了成群的爪印。辨认这些踪迹，确认妖兽的活动方向。",
+    "options": [
+      {
+        "id": "inspect_tracks",
+        "label": "辨认足迹并记录方向",
+        "result": "你辨认出成群妖兽沿北山小道活动的痕迹，并记录了足迹与活动方向。可返回青岚镇向秦守山报告。",
+        "hours": 4
+      }
+    ]
+  }
+]

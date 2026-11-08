@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="StyleBoxFlat" id="Card"]
+bg_color = Color(0.96, 0.98, 0.96, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.57, 0.72, 0.65, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 22.0
+content_margin_top = 12.0
+content_margin_right = 22.0
+content_margin_bottom = 12.0
+
+[node name="ResidenceCard" type="PanelContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 132)
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Body" type="VBoxContainer" parent="."]
+theme_override_constants/separation = 6
+
+[node name="Row" type="HBoxContainer" parent="Body"]
+theme_override_constants/separation = 12
+
+[node name="CardName" type="Label" parent="Body/Row"]
+text = "建筑名称"
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+theme_override_font_sizes/font_size = 30
+
+[node name="CardAction" type="Button" parent="Body/Row"]
+text = "尚未开放"
+custom_minimum_size = Vector2(0, 54)
+theme_override_font_sizes/font_size = 20
+
+[node name="CardDescription" type="Label" parent="Body"]
+text = "功能说明"
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.31, 0.45, 0.39, 1)
+theme_override_font_sizes/font_size = 22

@@ -1,0 +1,208 @@
+[gd_scene load_steps=6 format=3]
+[ext_resource type="Script" path="res://ui/shop/shop_home.gd" id="1"]
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.18,0.28,0.32,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+[sub_resource type="StyleBoxFlat" id="Button"]
+bg_color = Color(0.27,0.39,0.44,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+[sub_resource type="StyleBoxFlat" id="Accent"]
+bg_color = Color(0.43,0.59,0.52,1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 22
+PanelContainer/styles/panel = SubResource("Panel")
+Button/styles/normal = SubResource("Button")
+Button/styles/hover = SubResource("Accent")
+Button/styles/pressed = SubResource("Accent")
+Button/styles/disabled = SubResource("Button")
+[node name="ShopHome" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme")
+script = ExtResource("1")
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+[node name="Layout" type="VBoxContainer" parent="Margin"]
+theme_override_constants/separation = 20
+[node name="Header" type="PanelContainer" parent="Margin/Layout"]
+
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/Header"]
+theme_override_constants/separation = 16
+[node name="Row" type="HBoxContainer" parent="Margin/Layout/Header/Body"]
+
+[node name="Left" type="VBoxContainer" parent="Margin/Layout/Header/Body/Row"]
+size_flags_horizontal = 3
+[node name="Right" type="VBoxContainer" parent="Margin/Layout/Header/Body/Row"]
+
+[node name="Identity" type="Label" parent="Margin/Layout/Header/Body/Row/Left"]
+text = "角色 · 境界"
+theme_override_font_sizes/font_size = 28
+
+[node name="Location" type="Label" parent="Margin/Layout/Header/Body/Row/Left"]
+text = "当前位置：城镇 · 店铺"
+theme_override_font_sizes/font_size = 22
+
+[node name="Wallet" type="Label" parent="Margin/Layout/Header/Body/Row/Right"]
+text = "灵石"
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+[node name="WorldTime" type="Label" parent="Margin/Layout/Header/Body/Row/Right"]
+text = "游戏时间"
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 2
+[node name="MainContent" type="HBoxContainer" parent="Margin/Layout"]
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+[node name="ShopInfo" type="PanelContainer" parent="Margin/Layout/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/MainContent/ShopInfo"]
+theme_override_constants/separation = 16
+[node name="InfoTitle" type="Label" parent="Margin/Layout/MainContent/ShopInfo/Body"]
+text = "店铺信息"
+theme_override_font_sizes/font_size = 32
+
+[node name="ShopName" type="Label" parent="Margin/Layout/MainContent/ShopInfo/Body"]
+text = "店铺名称"
+theme_override_font_sizes/font_size = 26
+
+[node name="ShopState" type="Label" parent="Margin/Layout/MainContent/ShopInfo/Body"]
+text = "普通商铺"
+theme_override_font_sizes/font_size = 22
+
+[node name="Introduction" type="Label" parent="Margin/Layout/MainContent/ShopInfo/Body"]
+text = "店铺介绍"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+custom_minimum_size = Vector2(0,100)
+[node name="Announcement" type="Label" parent="Margin/Layout/MainContent/ShopInfo/Body"]
+text = "店铺公告"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+custom_minimum_size = Vector2(0,100)
+[node name="LeftSpacer" type="Control" parent="Margin/Layout/MainContent/ShopInfo/Body"]
+size_flags_vertical = 3
+[node name="Back" type="Button" parent="Margin/Layout/MainContent/ShopInfo/Body"]
+text = "返回地点"
+custom_minimum_size = Vector2(0,56)
+size_flags_horizontal = 3
+[node name="ShopCenter" type="PanelContainer" parent="Margin/Layout/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/MainContent/ShopCenter"]
+theme_override_constants/separation = 16
+[node name="CenterTitle" type="Label" parent="Margin/Layout/MainContent/ShopCenter/Body"]
+text = "店铺名称"
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+[node name="SceneCenter" type="CenterContainer" parent="Margin/Layout/MainContent/ShopCenter/Body"]
+size_flags_vertical = 3
+[node name="ScenePlaceholder" type="ColorRect" parent="Margin/Layout/MainContent/ShopCenter/Body/SceneCenter"]
+custom_minimum_size = Vector2(320,280)
+color = Color(0.48,0.62,0.67,1)
+[node name="SceneText" type="Label" parent="Margin/Layout/MainContent/ShopCenter/Body/SceneCenter/ScenePlaceholder"]
+text = "店铺场景"
+theme_override_font_sizes/font_size = 32
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+[node name="Environment" type="Label" parent="Margin/Layout/MainContent/ShopCenter/Body"]
+text = "环境描述"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+custom_minimum_size = Vector2(0,64)
+[node name="ActionTitle" type="Label" parent="Margin/Layout/MainContent/ShopCenter/Body"]
+text = "店内行动"
+theme_override_font_sizes/font_size = 28
+
+[node name="Actions" type="GridContainer" parent="Margin/Layout/MainContent/ShopCenter/Body"]
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+[node name="Buy" type="Button" parent="Margin/Layout/MainContent/ShopCenter/Body/Actions"]
+text = "购买"
+custom_minimum_size = Vector2(0,64)
+size_flags_horizontal = 3
+[node name="Sell" type="Button" parent="Margin/Layout/MainContent/ShopCenter/Body/Actions"]
+text = "出售"
+custom_minimum_size = Vector2(0,64)
+size_flags_horizontal = 3
+[node name="KeeperTalk" type="Button" parent="Margin/Layout/MainContent/ShopCenter/Body/Actions"]
+text = "与掌柜交谈"
+custom_minimum_size = Vector2(0,64)
+size_flags_horizontal = 3
+[node name="Observe" type="Button" parent="Margin/Layout/MainContent/ShopCenter/Body/Actions"]
+text = "观察店铺"
+custom_minimum_size = Vector2(0,64)
+size_flags_horizontal = 3
+[node name="RightColumn" type="VBoxContainer" parent="Margin/Layout/MainContent"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+theme_override_constants/separation = 16
+[node name="NearbyPanel" type="PanelContainer" parent="Margin/Layout/MainContent/RightColumn"]
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/MainContent/RightColumn/NearbyPanel"]
+theme_override_constants/separation = 16
+[node name="NpcTitle" type="Label" parent="Margin/Layout/MainContent/RightColumn/NearbyPanel/Body"]
+text = "附近人物"
+theme_override_font_sizes/font_size = 28
+
+[node name="NpcScroll" type="ScrollContainer" parent="Margin/Layout/MainContent/RightColumn/NearbyPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+[node name="Npcs" type="VBoxContainer" parent="Margin/Layout/MainContent/RightColumn/NearbyPanel/Body/NpcScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+[node name="NpcInfo" type="Label" parent="Margin/Layout/MainContent/RightColumn/NearbyPanel/Body"]
+text = "选择人物查看信息"
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+custom_minimum_size = Vector2(0,56)
+[node name="NpcTalk" type="Button" parent="Margin/Layout/MainContent/RightColumn/NearbyPanel/Body"]
+text = "交谈"
+custom_minimum_size = Vector2(0,56)
+size_flags_horizontal = 3
+[node name="NewsPanel" type="PanelContainer" parent="Margin/Layout/MainContent/RightColumn"]
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+[node name="Body" type="VBoxContainer" parent="Margin/Layout/MainContent/RightColumn/NewsPanel"]
+theme_override_constants/separation = 16
+[node name="NewsTitle" type="Label" parent="Margin/Layout/MainContent/RightColumn/NewsPanel/Body"]
+text = "世界消息"
+theme_override_font_sizes/font_size = 28
+
+[node name="MessageScroll" type="ScrollContainer" parent="Margin/Layout/MainContent/RightColumn/NewsPanel/Body"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+[node name="Messages" type="VBoxContainer" parent="Margin/Layout/MainContent/RightColumn/NewsPanel/Body/MessageScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
