@@ -34,7 +34,7 @@ project/assembly_name="xiantu"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/npc_editor/plugin.cfg")
+enabled=PackedStringArray("res://addons/exploration_map/plugin.cfg", "res://addons/npc_editor/plugin.cfg")
 
 [gui]
 

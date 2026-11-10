@@ -1,0 +1,823 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://ui/item_editor/item_editor.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="Base"]
+bg_color = Color(0.039, 0.078, 0.078, 1)
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxFlat" id="Pane"]
+bg_color = Color(0.067, 0.145, 0.137, 1)
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Header"]
+bg_color = Color(0.098, 0.196, 0.184, 1)
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Button"]
+bg_color = Color(0.125, 0.251, 0.231, 1)
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="Hover"]
+bg_color = Color(0.18, 0.33, 0.30, 1)
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="Active"]
+bg_color = Color(0.25, 0.46, 0.40, 1)
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="Input"]
+bg_color = Color(0.106, 0.216, 0.204, 1)
+content_margin_left = 9.0
+content_margin_top = 7.0
+content_margin_right = 9.0
+content_margin_bottom = 7.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="Focus"]
+bg_color = Color(0.106, 0.216, 0.204, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38, 0.69, 0.58, 1)
+content_margin_left = 9.0
+content_margin_top = 7.0
+content_margin_right = 9.0
+content_margin_bottom = 7.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="TreeFocus"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38, 0.69, 0.58, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 19
+Label/colors/font_color = Color(0.82, 0.93, 0.89, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.35)
+Button/colors/font_color = Color(0.82, 0.93, 0.89, 1)
+Button/colors/font_hover_color = Color(0.95, 1, 0.97, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.48, 0.58, 0.55, 1)
+Button/styles/normal = SubResource("Button")
+Button/styles/hover = SubResource("Hover")
+Button/styles/pressed = SubResource("Active")
+Button/styles/disabled = SubResource("Button")
+Button/styles/focus = SubResource("Focus")
+OptionButton/colors/font_color = Color(0.82, 0.93, 0.89, 1)
+OptionButton/styles/normal = SubResource("Input")
+OptionButton/styles/hover = SubResource("Hover")
+OptionButton/styles/pressed = SubResource("Active")
+OptionButton/styles/focus = SubResource("Focus")
+LineEdit/colors/font_color = Color(0.9, 0.97, 0.94, 1)
+LineEdit/colors/font_uneditable_color = Color(0.58, 0.69, 0.66, 1)
+LineEdit/styles/normal = SubResource("Input")
+LineEdit/styles/focus = SubResource("Focus")
+LineEdit/styles/read_only = SubResource("Input")
+TextEdit/colors/font_color = Color(0.88, 0.96, 0.92, 1)
+TextEdit/styles/normal = SubResource("Input")
+TextEdit/styles/focus = SubResource("Focus")
+TextEdit/styles/read_only = SubResource("Input")
+Tree/colors/font_color = Color(0.82, 0.93, 0.89, 1)
+Tree/colors/font_selected_color = Color(1, 1, 1, 1)
+Tree/colors/guide_color = Color(0.19, 0.34, 0.31, 1)
+Tree/styles/panel = SubResource("Input")
+Tree/styles/focus = SubResource("TreeFocus")
+Tree/styles/selected = SubResource("Active")
+Tree/styles/selected_focus = SubResource("Active")
+Tree/constants/item_margin = 4
+Tree/constants/icon_max_width = 22
+CheckBox/colors/font_color = Color(0.82, 0.93, 0.89, 1)
+CheckBox/colors/font_disabled_color = Color(0.62, 0.72, 0.69, 1)
+SpinBox/colors/font_color = Color(0.9, 0.97, 0.94, 1)
+TabContainer/styles/panel = SubResource("Pane")
+TabContainer/styles/tab_selected = SubResource("Active")
+TabContainer/styles/tab_unselected = SubResource("Button")
+TabContainer/styles/tab_hovered = SubResource("Hover")
+TabContainer/styles/tab_focus = SubResource("Focus")
+TabContainer/colors/font_selected_color = Color(1, 1, 1, 1)
+TabContainer/colors/font_unselected_color = Color(0.68, 0.82, 0.78, 1)
+TabContainer/colors/font_hovered_color = Color(1, 1, 1, 1)
+TabBar/styles/tab_selected = SubResource("Active")
+TabBar/styles/tab_unselected = SubResource("Button")
+TabBar/styles/tab_hovered = SubResource("Hover")
+TabBar/styles/tab_focus = SubResource("Focus")
+TabBar/colors/font_selected_color = Color(1, 1, 1, 1)
+TabBar/colors/font_unselected_color = Color(0.68, 0.82, 0.78, 1)
+VBoxContainer/constants/separation = 8
+HBoxContainer/constants/separation = 8
+GridContainer/constants/h_separation = 12
+GridContainer/constants/v_separation = 8
+HSeparator/constants/separation = 8
+
+[node name="ItemEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme")
+script = ExtResource("1")
+
+[node name="Window" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Base")
+
+[node name="Root" type="VBoxContainer" parent="Window"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Window/Root/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "仙途 · 物品数据库管理器"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 28
+
+[node name="Check" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "检查数据"
+
+[node name="Export" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+tooltip_text = "第一阶段暂未启用导入/导出"
+text = "导入 / 导出"
+
+[node name="Close" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "关闭"
+
+[node name="Stats" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+
+[node name="TotalPanel" type="PanelContainer" parent="Window/Root/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Header")
+
+[node name="Body" type="VBoxContainer" parent="Window/Root/Stats/TotalPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/Root/Stats/TotalPanel/Body"]
+layout_mode = 2
+text = "物品总数"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="TotalValue" type="Label" parent="Window/Root/Stats/TotalPanel/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+theme_override_font_sizes/font_size = 28
+
+[node name="TypePanel" type="PanelContainer" parent="Window/Root/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "左侧分类数量（不含“全部物品”）"
+theme_override_styles/panel = SubResource("Header")
+
+[node name="Body" type="VBoxContainer" parent="Window/Root/Stats/TypePanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/Root/Stats/TypePanel/Body"]
+layout_mode = 2
+text = "分类数量"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="TypeValue" type="Label" parent="Window/Root/Stats/TypePanel/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+theme_override_font_sizes/font_size = 28
+
+[node name="UnusedPanel" type="PanelContainer" parent="Window/Root/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Header")
+
+[node name="Body" type="VBoxContainer" parent="Window/Root/Stats/UnusedPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/Root/Stats/UnusedPanel/Body"]
+layout_mode = 2
+text = "未引用"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="UnusedValue" type="Label" parent="Window/Root/Stats/UnusedPanel/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+theme_override_font_sizes/font_size = 28
+
+[node name="IssuePanel" type="PanelContainer" parent="Window/Root/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Header")
+
+[node name="Body" type="VBoxContainer" parent="Window/Root/Stats/IssuePanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/Root/Stats/IssuePanel/Body"]
+layout_mode = 2
+text = "数据问题"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="IssueValue" type="Label" parent="Window/Root/Stats/IssuePanel/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+theme_override_colors/font_color = Color(0.95, 0.8, 0.48, 1)
+theme_override_font_sizes/font_size = 28
+
+[node name="Body" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="LeftPanel" type="PanelContainer" parent="Window/Root/Body"]
+layout_mode = 2
+custom_minimum_size = Vector2(240, 0)
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="LeftBody" type="VBoxContainer" parent="Window/Root/Body/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Heading" type="Label" parent="Window/Root/Body/LeftPanel/LeftBody"]
+layout_mode = 2
+text = "物品分类"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="CategoryScroll" type="ScrollContainer" parent="Window/Root/Body/LeftPanel/LeftBody"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CategoryList" type="VBoxContainer" parent="Window/Root/Body/LeftPanel/LeftBody/CategoryScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CategoryNote" type="Label" parent="Window/Root/Body/LeftPanel/LeftBody"]
+layout_mode = 2
+text = "分类来自现有 type 字段；任务物品为交叉筛选。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="ArtifactNote" type="Label" parent="Window/Root/Body/LeftPanel/LeftBody"]
+layout_mode = 2
+text = "独立法宝表 artifacts.json 不并入本表。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="CenterPanel" type="PanelContainer" parent="Window/Root/Body"]
+layout_mode = 2
+custom_minimum_size = Vector2(650, 0)
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="CenterBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ListHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody"]
+layout_mode = 2
+
+[node name="Heading" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/ListHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "物品列表"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="New" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/ListHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "＋ 新建物品"
+
+[node name="Search" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "搜索名称 / ID / 分类"
+
+[node name="Filters" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody"]
+layout_mode = 2
+
+[node name="QualityFilter" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Filters"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="StatusFilter" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Filters"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="SortFilter" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Filters"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="Tree" type="Tree" parent="Window/Root/Body/CenterPanel/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+column_titles_visible = true
+hide_root = true
+select_mode = 0
+
+[node name="ListCount" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "显示 0 件"
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="RightPanel" type="PanelContainer" parent="Window/Root/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="RightBody" type="VBoxContainer" parent="Window/Root/Body/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RightHeader" type="HBoxContainer" parent="Window/Root/Body/RightPanel/RightBody"]
+layout_mode = 2
+
+[node name="EditTitle" type="Label" parent="Window/Root/Body/RightPanel/RightBody/RightHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "编辑物品 · 未选择"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+text_overrun_behavior = 3
+
+[node name="Copy" type="Button" parent="Window/Root/Body/RightPanel/RightBody/RightHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制"
+
+[node name="Delete" type="Button" parent="Window/Root/Body/RightPanel/RightBody/RightHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除"
+theme_override_colors/font_color = Color(0.92, 0.56, 0.52, 1)
+
+[node name="Tabs" type="TabContainer" parent="Window/Root/Body/RightPanel/RightBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="BasicTab" type="ScrollContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="BasicBody" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Identity" type="HBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody"]
+layout_mode = 2
+
+[node name="IconPanel" type="Control" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/Identity"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="IconRect" type="ColorRect" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/Identity/IconPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29, 0.53, 0.47, 1)
+
+[node name="IconText" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/Identity/IconPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "矩形\n占位"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.08, 0.16, 0.14, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Meta" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/Identity"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MetaName" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/Identity/Meta"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择物品"
+theme_override_colors/font_color = Color(0.9, 0.97, 0.94, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="MetaId" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/Identity/Meta"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "物品 ID · —"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 17
+
+[node name="MetaNote" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/Identity/Meta"]
+layout_mode = 2
+text = "图标使用矩形占位，不引入外部美术资源。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="FieldGrid" type="GridContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody"]
+layout_mode = 2
+columns = 2
+
+[node name="IdLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+layout_mode = 2
+custom_minimum_size = Vector2(120, 0)
+text = "物品 ID"
+
+[node name="ItemId" type="LineEdit" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "小写英文 ID"
+
+[node name="NameLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+layout_mode = 2
+text = "物品名称"
+
+[node name="ItemName" type="LineEdit" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "物品名称"
+
+[node name="TypeLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+layout_mode = 2
+text = "一级分类"
+
+[node name="ItemType" type="OptionButton" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="SubtypeLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+layout_mode = 2
+text = "二级分类"
+
+[node name="ItemSubtype" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "现有数据未定义（预留扩展）"
+theme_override_colors/font_color = Color(0.68, 0.8, 0.76, 1)
+theme_override_font_sizes/font_size = 17
+
+[node name="RarityLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+layout_mode = 2
+text = "物品品质"
+
+[node name="ItemRarity" type="OptionButton" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="BuyLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+layout_mode = 2
+text = "购买价格"
+
+[node name="BuyPrice" type="SpinBox" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 99999999.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="SellLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+layout_mode = 2
+text = "出售价格"
+
+[node name="SellPrice" type="SpinBox" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 99999999.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="StackLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+layout_mode = 2
+text = "最大堆叠"
+
+[node name="StackLimit" type="SpinBox" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/FieldGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 9999.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="DescriptionLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody"]
+layout_mode = 2
+text = "物品描述"
+
+[node name="Description" type="TextEdit" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="UsageTitle" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody"]
+layout_mode = 2
+text = "使用与交易（只读推导）"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="UsageRow" type="GridContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody"]
+layout_mode = 2
+columns = 3
+
+[node name="Tradeable" type="CheckBox" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/UsageRow"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+tooltip_text = "现有数据没有独立开关；按出售价格是否大于 0 推导。"
+text = "可交易"
+
+[node name="Discardable" type="CheckBox" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/UsageRow"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+tooltip_text = "现有背包系统未提供丢弃开关，本阶段不写入新字段。"
+text = "可丢弃"
+
+[node name="Usable" type="CheckBox" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody/UsageRow"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+tooltip_text = "按现有 use_effect 与特殊丹药逻辑推导，只读展示。"
+text = "可使用"
+
+[node name="FormNote" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/BasicTab/BasicBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "已保存物品的 ID 只读。修改模板不会改变玩家持有数量。可交易/可使用按现有逻辑只读推导；现有系统没有可丢弃开关。商店价格读取物品基础价格与城镇价格系数，不存在会被覆盖的商店独立单价。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="EffectsTab" type="ScrollContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="EffectsPage" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/EffectsTab"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EffectsBody" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/EffectsTab/EffectsPage"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EffectsNote" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/EffectsTab/EffectsPage"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "第二阶段预留：复用现有 use_effect 与 equipment.json 结构。本页只读展示，不创建新战斗属性或状态效果。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="SourcesTab" type="ScrollContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="SourcesPage" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/SourcesTab"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SourcesBody" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/SourcesTab/SourcesPage"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SourcesNote" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/SourcesTab/SourcesPage"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "引用来自项目真实配置与当前运行快照。商店、怪物、任务编辑器的跳转能力预留，本阶段不提供无效按钮。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="RefsTab" type="ScrollContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="RefsPage" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/RefsTab"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RefsSummary" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/RefsTab/RefsPage"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择物品"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="RefsBody" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/RefsTab/RefsPage"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RefsNote" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/RefsTab/RefsPage"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除保护依据当前载入配置与运行快照；历史存档未逐个枚举。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="PreviewTab" type="ScrollContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="PreviewBody" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightBody/Tabs/PreviewTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewTitle" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/PreviewTab/PreviewBody"]
+layout_mode = 2
+text = "物品测试（第四阶段，未接入）"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+
+[node name="PreviewItem" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/PreviewTab/PreviewBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "当前未选择物品"
+theme_override_colors/font_color = Color(0.9, 0.97, 0.94, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="PreviewText" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Tabs/PreviewTab/PreviewBody"]
+layout_mode = 2
+text = "计划流程：选择物品 → 输入数量 → 校验堆叠规则 → 添加到测试角色背包 → 查看背包显示 → 验证使用效果。
+
+物品模板和玩家背包实例严格分离：本管理器只修改模板，不会直接改写玩家持有数量或正式存档。
+
+本阶段仅预留接口，不提供不能工作的按钮。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.82, 0.78, 1)
+theme_override_font_sizes/font_size = 17
+
+[node name="Footer" type="HBoxContainer" parent="Window/Root/Body/RightPanel/RightBody"]
+layout_mode = 2
+
+[node name="DirtyLabel" type="Label" parent="Window/Root/Body/RightPanel/RightBody/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "无未保存修改"
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Reset" type="Button" parent="Window/Root/Body/RightPanel/RightBody/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重置修改"
+
+[node name="Save" type="Button" parent="Window/Root/Body/RightPanel/RightBody/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存修改"
+
+[node name="Status" type="Label" parent="Window/Root"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "正在载入物品数据…"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.8, 0.76, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="MessageDialog" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+title = "提示"
+size = Vector2i(720, 360)
+visible = false
+dialog_autowrap = true
+ok_button_text = "知道了"
+theme = SubResource("Theme")
+
+[node name="UnsavedDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "未保存的修改"
+size = Vector2i(600, 240)
+visible = false
+dialog_autowrap = true
+ok_button_text = "保存并继续"
+cancel_button_text = "取消"
+theme = SubResource("Theme")
+
+[node name="DeleteDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "确认删除"
+size = Vector2i(600, 240)
+visible = false
+dialog_autowrap = true
+ok_button_text = "确认删除"
+cancel_button_text = "取消"
+theme = SubResource("Theme")

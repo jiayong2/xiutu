@@ -29,6 +29,10 @@ func use(p: Dictionary, id: String, data: Dictionary, stats: Dictionary, day: in
 		var learned: Dictionary = p.techniques if data.techniques.has(effect.learn) else p.spells
 		if learned.has(effect.learn):
 			return "已经学会，不可重复学习"
+		if data.techniques.has(effect.learn):
+			var minimum := int(data.techniques[effect.learn].get("realm_min", 0))
+			if minimum > 0 and int(p.get("realm", 1)) < minimum:
+				return "境界不足，无法学习"
 		learned[effect.learn] = 1
 	elif id == "pill_qi_gathering":
 		if p.realm > 9 or p.last_pill_day == day:

@@ -4,6 +4,7 @@ extends PanelContainer
 const Model := preload("res://core/npc_definitions.gd")
 const Catalog := preload("res://core/content_catalog.gd")
 const Picker := preload("res://addons/npc_editor/resource_picker.gd")
+const GenerationPage := preload("res://addons/npc_editor/generation_page.gd")
 const Cultivation := preload("res://gameplay/cultivation/cultivation_system.gd")
 const Saves := preload("res://core/save_service.gd")
 const RANKS := Model.Character.NPC_RANKS
@@ -30,6 +31,8 @@ var selected_save := ""
 var queued_drafts := {}
 var save_roster := {}
 var selected_save_checksum := ""
+var generation: GenerationPage
+var batch_open := false
 
 func _ready() -> void:
 	if Engine.is_editor_hint() and get_parent() != EditorInterface.get_editor_main_screen():
@@ -62,6 +65,9 @@ func _ready() -> void:
 	$Frame/Footer/Reload.pressed.connect(_reload)
 	$Frame/Header/SelectSave.pressed.connect(_choose_target_save)
 	$Frame/Header/SaveChanges.pressed.connect(_apply_to_selected_save)
+	$Frame/Header/Batch.pressed.connect(toggle_batch)
+	generation = $Frame/Generation
+	generation.committed.connect(_on_batch_committed)
 	status = $Frame/Footer/Status
 	picker = Picker.new()
 	picker.theme = theme
@@ -71,9 +77,11 @@ func _ready() -> void:
 
 func _fit_controls() -> void:
 	var font_size := clampi(roundi(size.x * 36.0 / 1920.0), 18, 36)
+	if batch_open:
+		font_size = 18
 	if theme.default_font_size != font_size:
 		theme.default_font_size = font_size
-	$Frame/Header/Heading.add_theme_font_size_override("font_size", font_size * 4 / 3)
+	$Frame/Header/Heading.add_theme_font_size_override("font_size", 32 if batch_open else font_size * 4 / 3)
 
 func _theme() -> Theme:
 	var result := Theme.new()
@@ -105,6 +113,49 @@ func _style(fill: Color, border: Color) -> StyleBoxFlat:
 	for side in [SIDE_LEFT,SIDE_TOP,SIDE_RIGHT,SIDE_BOTTOM]:
 		box.set_content_margin(side, 6)
 	return box
+
+func toggle_batch() -> void:
+	set_batch_open(not batch_open)
+
+func set_batch_open(open: bool) -> void:
+	if open == batch_open:
+		if open and is_instance_valid(generation):
+			generation.overrides = saved
+		return
+	if open and not _guard():
+		return
+	batch_open = open
+	var header: HBoxContainer = $Frame/Header
+	var heading: Label = $Frame/Header/Heading
+	var save_status: Label = $Frame/Header/SaveStatus
+	heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL if open else Control.SIZE_FILL
+	save_status.size_flags_horizontal = Control.SIZE_FILL if open else Control.SIZE_EXPAND_FILL
+	save_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT if open else HORIZONTAL_ALIGNMENT_LEFT
+	save_status.custom_minimum_size.x = 185 if open else 0
+	header.move_child($Frame/Header/Batch, 4 if open else 1)
+	header.move_child(save_status, 1 if open else 4)
+	for button in [$Frame/Header/Batch, $Frame/Header/SelectSave, $Frame/Header/SaveChanges]:
+		button.custom_minimum_size.y = 48 if open else 0
+	$Frame/Columns.visible = not open
+	$Frame/Footer.visible = not open
+	generation.visible = open
+	$Frame/Header/Batch.text = "返回人物" if open else "批量生成"
+	$Frame/Header/Heading.text = "仙途  /  NPC 批量生成" if open else "仙途  /  NPC 初始定义"
+	_fit_controls()
+	if open:
+		if generation.form == null:
+			generation.setup(data, saved)
+		else:
+			generation.overrides = saved
+
+func _on_batch_committed(rows: Dictionary, ids: Array) -> void:
+	saved = rows
+	data.npc_overrides = rows
+	set_batch_open(false)
+	if not ids.is_empty() and saved.has(ids[0]):
+		_open(saved[ids[0]])
+	else:
+		_refresh_roster()
 
 func is_dirty() -> bool:
 	return not draft.is_empty() and draft != clean
@@ -212,6 +263,15 @@ func _select(index: int) -> void:
 	if _guard():
 		var roster := _visible_roster()
 		_open(roster.get(id,queued_drafts.get(id,{})))
+
+func focus_npc(id: String) -> void:
+	if not ready_to_edit:
+		return
+	for index in roster_list.item_count:
+		if str(roster_list.get_item_metadata(index)) == id:
+			roster_list.select(index)
+			_select(index)
+			return
 
 func _new() -> void:
 	if ready_to_edit and _guard():

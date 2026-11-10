@@ -12,6 +12,13 @@ var debug_npc_picker: ItemList
 var debug_npc_import: Button
 var debug_npc_sync: Button
 var debug_npc_status: Label
+var legend_editor: Control
+var item_editor: Control
+var monster_editor: Control
+var skill_editor: Control
+var content_manager: Control
+var npc_editor_overlay: Control
+var exploration_map_test: Control
 var spirit_flow_trial: AcceptDialog
 var content: Control
 var page := "主菜单"
@@ -77,6 +84,27 @@ func _ready() -> void:
 	trial_button.pressed.connect(_open_spirit_flow_trial)
 	debug_body.add_child(trial_button)
 	if OS.is_debug_build():
+		var catalog_button := Button.new()
+		catalog_button.text = "内容管理中心"
+		catalog_button.pressed.connect(_open_content_manager)
+		debug_body.add_child(catalog_button)
+		if OS.has_feature("editor"):
+			var legend_button := Button.new()
+			legend_button.text = "地图图例与掉落配置"
+			legend_button.pressed.connect(_open_legend_editor)
+			debug_body.add_child(legend_button)
+			var item_button := Button.new()
+			item_button.text = "物品数据库管理器"
+			item_button.pressed.connect(_open_item_editor)
+			debug_body.add_child(item_button)
+			var monster_button := Button.new()
+			monster_button.text = "妖兽编辑器"
+			monster_button.pressed.connect(_open_monster_editor)
+			debug_body.add_child(monster_button)
+			var skill_button := Button.new()
+			skill_button.text = "功法·法术编辑器"
+			skill_button.pressed.connect(_open_skill_editor)
+			debug_body.add_child(skill_button)
 		var npc_heading := Label.new()
 		npc_heading.text = "NPC 编辑器已保存的人物"
 		debug_body.add_child(npc_heading)
@@ -98,6 +126,14 @@ func _ready() -> void:
 		debug_npc_sync.text = "同步装备与气运"
 		debug_npc_sync.pressed.connect(_import_debug_npc.bind(true))
 		npc_row.add_child(debug_npc_sync)
+		var chen_battle := Button.new()
+		chen_battle.text = "测试战斗 · 陈远"
+		chen_battle.pressed.connect(_start_npc_test_battle.bind("npc_chen_yuan"))
+		npc_row.add_child(chen_battle)
+		var meng_battle := Button.new()
+		meng_battle.text = "测试战斗 · 孟钧光"
+		meng_battle.pressed.connect(_start_npc_test_battle.bind("npc_108088301ababcbd3e25e84b"))
+		npc_row.add_child(meng_battle)
 		debug_npc_status = Label.new()
 		debug_npc_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		debug_body.add_child(debug_npc_status)
@@ -292,6 +328,7 @@ func _home(s: Dictionary) -> void:
 	home.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	home.navigate.connect(_navigate)
 	home.action_requested.connect(_command)
+	home.exploration_map_requested.connect(_open_exploration_map_test)
 	home.npc_requested.connect(open_npc_interaction)
 	home.shop_requested.connect(func(id: String):_open_shop(id))
 	home.auction_requested.connect(func(id: String): selected_auction=id; _navigate("拍卖会"))
@@ -532,6 +569,41 @@ func _quest_status(value: String) -> String:
 	return {"ACTIVE":"进行中","COMPLETED":"已完成"}.get(value,value)
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if is_instance_valid(exploration_map_test) and exploration_map_test.visible:
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+			_close_exploration_map_test()
+		get_viewport().set_input_as_handled()
+		return
+	if is_instance_valid(skill_editor):
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+			skill_editor.request_close()
+		get_viewport().set_input_as_handled()
+		return
+	if is_instance_valid(content_manager):
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+			content_manager.request_close()
+		get_viewport().set_input_as_handled()
+		return
+	if is_instance_valid(npc_editor_overlay):
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+			_close_npc_editor_overlay()
+		get_viewport().set_input_as_handled()
+		return
+	if is_instance_valid(monster_editor):
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+			monster_editor.request_close()
+		get_viewport().set_input_as_handled()
+		return
+	if is_instance_valid(item_editor):
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+			item_editor.request_close()
+		get_viewport().set_input_as_handled()
+		return
+	if is_instance_valid(legend_editor):
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+			legend_editor.request_close()
+		get_viewport().set_input_as_handled()
+		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode==KEY_ESCAPE:
 		if retreat_overlay!=null and is_instance_valid(retreat_overlay):
 			retreat_overlay.close()
@@ -554,6 +626,235 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F1:
 		toggle_debug()
 		get_viewport().set_input_as_handled()
+
+func _open_exploration_map_test(map_id: String) -> void:
+	if is_instance_valid(exploration_map_test):
+		return
+	var state: Dictionary = GameManager.operations.snapshot()
+	if state.is_empty() or not state.get("battle", {}).is_empty():
+		return
+	var result: Dictionary = GameManager.request("exploration_enter", {"map_id": map_id})
+	if not result.success:
+		message = result.message
+		_schedule_refresh()
+		return
+	exploration_map_test = preload("res://ui/exploration/map_test.tscn").instantiate()
+	exploration_map_test.runtime_state = GameManager.operations.exploration_snapshot
+	exploration_map_test.runtime_request = GameManager.request
+	exploration_map_test.save_game = GameManager.save_game
+	exploration_map_test.closed.connect(_close_exploration_map_test)
+	exploration_map_test.encounter_started.connect(_show_exploration_battle)
+	add_child(exploration_map_test)
+
+func _close_exploration_map_test() -> void:
+	var result: Dictionary = GameManager.request("exploration_leave")
+	if not result.success:
+		exploration_map_test.get_node("%Status").text = result.message
+		return
+	_free_exploration_map_test()
+
+func _free_exploration_map_test() -> void:
+	exploration_map_test.queue_free()
+	exploration_map_test = null
+
+func _show_exploration_battle() -> void:
+	exploration_map_test.hide()
+	_navigate("战斗")
+
+func _open_legend_editor() -> void:
+	if not OS.has_feature("editor") or is_instance_valid(legend_editor):
+		return
+	legend_editor = preload("res://ui/exploration/legend_editor.tscn").instantiate()
+	legend_editor.catalog = GameManager.catalog.tables
+	legend_editor.closed.connect(_close_legend_editor)
+	debug_panel.hide()
+	add_child(legend_editor)
+
+func _close_legend_editor() -> void:
+	legend_editor.queue_free()
+	legend_editor = null
+	debug_panel.show()
+
+func _open_content_manager() -> void:
+	if not OS.is_debug_build() or is_instance_valid(content_manager):
+		return
+	content_manager = preload("res://ui/content_manager/content_manager.tscn").instantiate()
+	if GameManager.catalog != null:
+		content_manager.catalog = GameManager.catalog.tables
+	content_manager.closed.connect(_close_content_manager)
+	content_manager.editor_requested.connect(_open_editor_from_catalog)
+	debug_panel.hide()
+	add_child(content_manager)
+
+func _close_content_manager() -> void:
+	if is_instance_valid(content_manager):
+		content_manager.queue_free()
+	content_manager = null
+	debug_panel.show()
+
+func _open_editor_from_catalog(kind: String, id: String) -> void:
+	match kind:
+		"item":
+			_open_item_editor()
+			if is_instance_valid(item_editor) and item_editor.has_method("focus_item"):
+				item_editor.focus_item(id)
+			if is_instance_valid(content_manager):
+				content_manager.hide()
+		"monster":
+			_open_monster_editor()
+			if is_instance_valid(monster_editor) and monster_editor.has_method("focus_monster"):
+				monster_editor.focus_monster(id)
+			if is_instance_valid(content_manager):
+				content_manager.hide()
+		"technique", "spell":
+			_open_skill_editor(kind, id)
+			if is_instance_valid(content_manager):
+				content_manager.hide()
+		"npc":
+			_open_npc_editor_overlay(id)
+
+func _open_npc_editor_overlay(id: String) -> void:
+	if is_instance_valid(npc_editor_overlay):
+		return
+	npc_editor_overlay = preload("res://addons/npc_editor/editor.tscn").instantiate()
+	npc_editor_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	if is_instance_valid(content_manager):
+		content_manager.hide()
+	debug_panel.hide()
+	add_child(npc_editor_overlay)
+	if npc_editor_overlay.has_method("focus_npc"):
+		npc_editor_overlay.call_deferred("focus_npc", id)
+
+func _close_npc_editor_overlay() -> void:
+	if is_instance_valid(npc_editor_overlay):
+		npc_editor_overlay.queue_free()
+	npc_editor_overlay = null
+	if is_instance_valid(content_manager):
+		content_manager.show()
+	else:
+		debug_panel.show()
+
+func _open_skill_editor(kind: String = "", id: String = "") -> void:
+	if not OS.has_feature("editor"):
+		return
+	if is_instance_valid(skill_editor):
+		if not kind.is_empty():
+			skill_editor.focus_entry(kind, id)
+		return
+	if not GameManager.boot_ok:
+		message = "配置未通过启动校验，不能打开功法·法术编辑器"
+		_refresh()
+		return
+	var state: Dictionary = GameManager.operations.snapshot()
+	if not state.is_empty() and not state.get("battle", {}).is_empty():
+		message = "战斗进行中，暂不能打开功法·法术编辑器"
+		_refresh()
+		return
+	skill_editor = preload("res://ui/skill_editor/skill_editor.tscn").instantiate()
+	skill_editor.catalog = GameManager.catalog.tables
+	skill_editor.runtime = state
+	skill_editor.propagate_to_game = true
+	skill_editor.closed.connect(_close_skill_editor)
+	debug_panel.hide()
+	add_child(skill_editor)
+	if not kind.is_empty():
+		skill_editor.focus_entry(kind, id)
+
+func _close_skill_editor() -> void:
+	if is_instance_valid(skill_editor):
+		skill_editor.queue_free()
+	skill_editor = null
+	if is_instance_valid(content_manager):
+		content_manager.show()
+	else:
+		debug_panel.show()
+	_schedule_refresh()
+
+func _open_item_editor() -> void:
+	if not OS.has_feature("editor") or is_instance_valid(item_editor):
+		return
+	if not GameManager.boot_ok:
+		message = "配置未通过启动校验，不能打开物品管理器"
+		_refresh()
+		return
+	var state: Dictionary = GameManager.operations.snapshot()
+	if not state.is_empty() and not state.get("battle", {}).is_empty():
+		message = "战斗进行中，暂不能打开物品管理器"
+		_refresh()
+		return
+	item_editor = preload("res://ui/item_editor/item_editor.tscn").instantiate()
+	item_editor.catalog = GameManager.catalog.tables
+	item_editor.runtime = state
+	item_editor.data_path = preload("res://core/items/item_database.gd").PATH
+	item_editor.propagate_to_game = true
+	item_editor.closed.connect(_close_item_editor)
+	debug_panel.hide()
+	add_child(item_editor)
+
+func _close_item_editor() -> void:
+	item_editor.queue_free()
+	item_editor = null
+	if is_instance_valid(content_manager):
+		content_manager.show()
+	else:
+		debug_panel.show()
+	_schedule_refresh()
+
+func _open_monster_editor() -> void:
+	if not OS.has_feature("editor") or is_instance_valid(monster_editor):
+		return
+	if not GameManager.boot_ok:
+		message = "配置未通过启动校验，不能打开妖兽编辑器"
+		_refresh()
+		return
+	var state: Dictionary = GameManager.operations.snapshot()
+	if not state.is_empty() and not state.get("battle", {}).is_empty():
+		message = "战斗进行中，暂不能打开妖兽编辑器"
+		_refresh()
+		return
+	monster_editor = preload("res://ui/monster_editor/monster_editor.tscn").instantiate()
+	monster_editor.catalog = GameManager.catalog.tables
+	monster_editor.runtime = state
+	monster_editor.data_path = preload("res://core/monsters/monster_database.gd").PATH
+	monster_editor.skills_data_path = preload("res://core/monsters/monster_database.gd").SKILLS_PATH
+	monster_editor.propagate_to_game = true
+	monster_editor.closed.connect(_close_monster_editor)
+	monster_editor.test_battle_requested.connect(_start_monster_test_battle)
+	debug_panel.hide()
+	add_child(monster_editor)
+
+func _close_monster_editor() -> void:
+	if is_instance_valid(monster_editor):
+		monster_editor.queue_free()
+	monster_editor = null
+	if is_instance_valid(content_manager):
+		content_manager.show()
+	else:
+		debug_panel.show()
+	_schedule_refresh()
+
+func _start_npc_test_battle(npc_id: String) -> void:
+	var result: Dictionary = GameManager.request("debug_start_npc_battle", {"npc_id": npc_id})
+	if not result.success:
+		if debug_npc_status != null:
+			debug_npc_status.text = result.message
+		return
+	debug_panel.hide()
+	page = "战斗"
+	message = result.message
+	_schedule_refresh()
+
+func _start_monster_test_battle(monster_id: String) -> void:
+	if not is_instance_valid(monster_editor):
+		return
+	var result: Dictionary = GameManager.request("debug_start_battle", {"monster_id": monster_id})
+	if not result.success:
+		monster_editor.show_test_battle_error(result.message)
+		return
+	_close_monster_editor()
+	debug_panel.hide()
+	page = "战斗"
+	_schedule_refresh()
 
 func toggle_debug() -> void:
 	debug_panel.visible = not debug_panel.visible
@@ -759,6 +1060,8 @@ func _sect_residence(location: String) -> void:
 	view.map_requested.connect(func():
 		world_place=location
 		_navigate("地图"))
+	view.npc_requested.connect(open_npc_interaction)
+	view.shop_requested.connect(_open_shop)
 	view.bind_data(GameManager.operations,location)
 
 func _battle_page() -> void:
@@ -782,8 +1085,19 @@ func _battle_page() -> void:
 		overlay.confirm_requested.connect(func(id: String):
 			var result: Dictionary=GameManager.request("confirm_battle_result",{"id":id})
 			if result.success:
-				world_place=GameManager.operations.snapshot().player.location
-				_navigate("地点场景"))
+				var latest: Dictionary = GameManager.operations.snapshot()
+				world_place = latest.player.location
+				if report.background.battle.has("exploration_node") and latest.get("exploration_run", {}).get("active", false):
+					_navigate("主界面")
+					if is_instance_valid(exploration_map_test):
+						exploration_map_test.resume_run()
+						exploration_map_test.show()
+					else:
+						_open_exploration_map_test(latest.exploration_run.map.map_id)
+				else:
+					if is_instance_valid(exploration_map_test):
+						_free_exploration_map_test()
+					_navigate("地点场景"))
 
 func _record_message(text: String) -> void:
 	if text.is_empty():return
@@ -843,6 +1157,20 @@ func _npc_command(action: String,args: Dictionary) -> void:
 		return
 	var result: Dictionary=GameManager.request(action,args)
 	message=result.message
+	var acted: Dictionary=GameManager.operations.snapshot()
+	if npc_overlay!=null and is_instance_valid(npc_overlay) and (not acted.get("battle", {}).is_empty() or not acted.get("battle_report", {}).get("confirmed", true)):
+		npc_overlay.queue_free()
+		npc_overlay=null
+		page="战斗"
+		_schedule_refresh()
+		return
+	if result.success and not str(result.get("open_npc", "")).is_empty():
+		var next_id := str(result.open_npc)
+		if npc_overlay!=null and is_instance_valid(npc_overlay):
+			npc_overlay.queue_free()
+			npc_overlay=null
+		open_npc_interaction(next_id)
+		return
 	if result.success and action=="npc_option" and message=="操作成功":
 		message="委托已接取，可继续交谈或查看任务进度。"
 		result.message=message

@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://ui/sect/sect_residence.gd" id="1"]
 [ext_resource type="PackedScene" path="res://ui/sect/residence_card.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://ui/sect/building_panel.tscn" id="3"]
+
+[ext_resource type="PackedScene" path="res://ui/sect/library_panel.tscn" id="4"]
 
 [sub_resource type="StyleBoxFlat" id="Frame"]
 bg_color = Color(0.92, 0.96, 0.93, 1)
@@ -246,74 +249,74 @@ theme_override_constants/v_separation = 14
 
 [node name="Card1" parent="Margin/Frame/Content/CardScroll/Cards" instance=ExtResource("2")]
 
-[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card1/Body/Row" index="0"]
+[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card1/Body/Text" index="0"]
 text = "事务殿"
 
-[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card1/Body" index="1"]
+[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card1/Body/Text" index="1"]
 text = "宗门任务 · 事务交付"
 
 [node name="Card2" parent="Margin/Frame/Content/CardScroll/Cards" instance=ExtResource("2")]
 
-[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card2/Body/Row" index="0"]
+[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card2/Body/Text" index="0"]
 text = "外门藏经阁"
 
-[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card2/Body" index="1"]
+[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card2/Body/Text" index="1"]
 text = "外门功法 · 法术研习"
 
 [node name="Card3" parent="Margin/Frame/Content/CardScroll/Cards" instance=ExtResource("2")]
 
-[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card3/Body/Row" index="0"]
+[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card3/Body/Text" index="0"]
 text = "宗门宝库"
 
-[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card3/Body" index="1"]
+[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card3/Body/Text" index="1"]
 text = "贡献兑换 · 基础资源"
 
 [node name="Card4" parent="Margin/Frame/Content/CardScroll/Cards" instance=ExtResource("2")]
 
-[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card4/Body/Row" index="0"]
+[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card4/Body/Text" index="0"]
 text = "演武场"
 
-[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card4/Body" index="1"]
+[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card4/Body/Text" index="1"]
 text = "同门切磋 · 晋升考核"
 
 [node name="Card5" parent="Margin/Frame/Content/CardScroll/Cards" instance=ExtResource("2")]
 
-[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card5/Body/Row" index="0"]
+[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card5/Body/Text" index="0"]
 text = "弟子居所"
 
-[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card5/Body" index="1"]
+[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card5/Body/Text" index="1"]
 text = "休息 · 修炼 · 同门交流"
 
 [node name="Card6" parent="Margin/Frame/Content/CardScroll/Cards" instance=ExtResource("2")]
 
-[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card6/Body/Row" index="0"]
+[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card6/Body/Text" index="0"]
 text = "炼丹房"
 
-[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card6/Body" index="1"]
+[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card6/Body/Text" index="1"]
 text = "委托炼丹 · 丹道事务"
 
 [node name="Card7" parent="Margin/Frame/Content/CardScroll/Cards" instance=ExtResource("2")]
 
-[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card7/Body/Row" index="0"]
+[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card7/Body/Text" index="0"]
 text = "药园"
 
-[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card7/Body" index="1"]
+[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card7/Body/Text" index="1"]
 text = "灵草种植 · 日常采集"
 
 [node name="Card8" parent="Margin/Frame/Content/CardScroll/Cards" instance=ExtResource("2")]
 
-[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card8/Body/Row" index="0"]
+[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card8/Body/Text" index="0"]
 text = "外门讲道堂"
 
-[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card8/Body" index="1"]
+[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card8/Body/Text" index="1"]
 text = "听道 · 修炼指点"
 
 [node name="Card9" parent="Margin/Frame/Content/CardScroll/Cards" instance=ExtResource("2")]
 
-[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card9/Body/Row" index="0"]
+[node name="CardName" parent="Margin/Frame/Content/CardScroll/Cards/Card9/Body/Text" index="0"]
 text = "山门"
 
-[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card9/Body" index="1"]
+[node name="CardDescription" parent="Margin/Frame/Content/CardScroll/Cards/Card9/Body/Text" index="1"]
 text = "接待来客 · 进出宗门"
 
 [node name="Notice" type="PanelContainer" parent="Margin/Frame/Content"]
@@ -370,3 +373,19 @@ theme_type_variation = &"AreaButton"
 [editable path="Margin/Frame/Content/CardScroll/Cards/Card7"]
 [editable path="Margin/Frame/Content/CardScroll/Cards/Card8"]
 [editable path="Margin/Frame/Content/CardScroll/Cards/Card9"]
+
+[node name="BuildingPanel" parent="." instance=ExtResource("3")]
+visible = false
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -12.0
+
+[node name="LibraryPanel" parent="." instance=ExtResource("4")]
+visible = false
+z_index = 6

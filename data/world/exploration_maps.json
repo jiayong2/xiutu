@@ -1,0 +1,9 @@
+[
+  {
+    "id": "qinglanshanwaiwei_1",
+    "location_id": "area_qinglan_outskirts",
+    "entry_label": "进入青岚山外围地图",
+    "template_path": "res://data/exploration/qinglanshanwaiwei_1.json",
+    "config_path": "res://data/exploration/qinglanshanwaiwei_1_legends.json"
+  }
+]

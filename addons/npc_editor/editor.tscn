@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://addons/npc_editor/editor.gd" id="1"]
+[ext_resource type="PackedScene" path="res://addons/npc_editor/generation_page.tscn" id="2"]
 
 [node name="NpcEditor" type="PanelContainer"]
 anchors_preset = 15
@@ -22,6 +23,10 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "仙途  /  NPC 初始定义"
+
+[node name="Batch" type="Button" parent="Frame/Header"]
+layout_mode = 2
+text = "批量生成"
 
 [node name="SelectSave" type="Button" parent="Frame/Header"]
 layout_mode = 2
@@ -72,6 +77,12 @@ text = "复制当前"
 [node name="Tabs" type="TabContainer" parent="Frame/Columns"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Generation" parent="Frame" instance=ExtResource("2")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="PreviewScroll" type="ScrollContainer" parent="Frame/Columns"]
 custom_minimum_size = Vector2(250, 0)

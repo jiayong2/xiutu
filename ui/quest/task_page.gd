@@ -41,6 +41,7 @@ func _status_label(value: String) -> String:
 	return {"LOCKED":"未解锁","AVAILABLE":"可接取","ACTIVE":"进行中","READY_TO_TURN_IN":"可交付","COMPLETED":"已完成","FAILED":"已失败","EXPIRED":"已过期"}.get(value,value)
 func _status(id: String) -> String:return quest_api.status(state,id,data)
 func _display_status(id: String, value: String) -> String:
+	if value=="COMPLETED" and str(data.quests[id].get("repeat_rule",""))=="DAILY":return "今日已完成"
 	return "进行中" if value=="READY_TO_TURN_IN" and data.quests[id].has("delivery_dialogue") else _status_label(value)
 func _status_color(value: String) -> String:
 	match value:
@@ -127,7 +128,7 @@ func _detail() -> void:
 	if q.recommended_realm > 0:
 		field("TaskType").text += " · " + _ink("建议炼气%d层" % q.recommended_realm, SUGGESTED_REALM_COLOR)
 	field("Description").text=q.description
-	var separate_clue: bool=q.has("delivery_dialogue") or q.completion_mode=="BOARD" and q.objectives.size()==1
+	var separate_clue: bool=q.has("delivery_dialogue") or q.has("dialogue") or q.completion_mode=="BOARD" and q.objectives.size()==1
 	if q.completion_mode=="BOARD":
 		field("Talk").hide()
 	var clue: String=q.objectives[0].hint if separate_clue else ""
@@ -156,6 +157,9 @@ func _detail() -> void:
 	var npc: Dictionary=state.npcs.get(q.giver_npc_id,{})
 	field("Related").text="发布者：%s · %s
 %s" % [npc.get("name","无"),_place(npc.get("location","")),"人物已故，暂不可接触" if not npc.get("alive",false) else "目标地点："+_place(current.get("target_location_id",""))]
+	if q.has("turn_in_label"):
+		field("Related").text="发布者：%s\n交付地点：%s" % [npc.get("name","无"),q.turn_in_label]
+		if not npc.get("alive",false):field("Related").text+="\n人物已故，暂不可接触"
 	if q.has("delivery_shop_id"):
 		var shop: Dictionary=data.shops[q.delivery_shop_id]
 		field("Related").text="委托人：%s\n交付地点：%s · %s" % [npc.get("name","无"),_place(shop.location),shop.name]
@@ -179,6 +183,7 @@ func _detail() -> void:
 	field("Track").text="已追踪" if state.get("tracked_quest_id","")==selected_id else "追踪任务"
 	field("Abandon").disabled=_status(selected_id) not in ["ACTIVE","READY_TO_TURN_IN"]
 	var rewards: Array[String] = ["灵石 " + _ink("×%d" % q.money, REWARD_COLOR)]
+	if int(q.get("contribution",0))>0:rewards.append("宗门贡献 " + _ink("×%d" % int(q.contribution), REWARD_COLOR))
 	for id in q.rewards:
 		rewards.append(_literal(data.items[id].name) + " " + _ink("×%d" % q.rewards[id], REWARD_COLOR))
 	field("Rewards").text="
@@ -189,4 +194,4 @@ func _primary() -> void:
 	if available.action=="report":npc_requested.emit(data.quests[selected_id].giver_npc_id)
 	else:action_requested.emit(available.action,{"id":selected_id})
 func _place(id: String) -> String:
-	return {"town_qinglan":"青岚镇","town_yunxi":"云溪城","cave_qinglan":"青岚小洞府","area_qinglan_outskirts":"青岚山外围","":"无指定地点"}.get(id,id)
+	return {"town_qinglan":"青岚镇","town_yunxi":"云溪城","cave_qinglan":"青岚小洞府","area_qinglan_outskirts":"青岚山外围","sect_qingyue_gate":"青岳山门","":"无指定地点"}.get(id,id)

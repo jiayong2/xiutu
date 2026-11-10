@@ -9,7 +9,9 @@ static func grant_trials(player: Dictionary, spells: Dictionary) -> void:
 			player.spells[id] = 1
 
 static func maximum(spell: Dictionary) -> int:
-	return spell.levels.size() if spell.has("levels") else 3
+	if spell.has("levels"):
+		return spell.levels.size()
+	return 3
 
 static func effects(spell: Dictionary, level: int) -> Dictionary:
 	var result := {}
@@ -87,6 +89,29 @@ static func affix_effect(entry: Dictionary) -> String:
 
 static func effect_lines(spell: Dictionary, level: int, config: Dictionary) -> Array:
 	var lines: Array = []
+	if spell.has("effects") and not spell.has("levels"):
+		for effect in spell.effects:
+			if not effect is Dictionary:
+				continue
+			if not bool(effect.get("enabled", true)):
+				continue
+			var kind := str(effect.get("type", ""))
+			if kind == "damage":
+				lines.append(["damage", "造成%s攻击力伤害，追加 %d 点" % [percent(float(effect.get("power", 0))), int(effect.get("flat", 0))]])
+			elif kind == "heal":
+				lines.append(["heal", "恢复 %d 点生命" % int(effect.get("amount", 0))])
+			elif kind == "shield":
+				lines.append(["guard", "获得攻击力%s的护盾" % percent(float(effect.get("power", 0)))])
+			elif kind == "status":
+				var status := str(effect.get("status", ""))
+				var name := str(config.get("statuses", {}).get(status, {}).get("name", status))
+				lines.append(["control", "%s%%概率施加%s，持续 %d 回合" % [roundi(float(effect.get("chance", 1.0)) * 100.0), name, int(effect.get("turns", 1))]])
+			elif kind == "mana":
+				var verb := "削减" if bool(effect.get("drain", false)) else "恢复"
+				lines.append(["heal", "%s %d 点灵力" % [verb, int(effect.get("amount", 0))]])
+			elif kind == "cleanse":
+				lines.append(["guard", "净化 %d 个负面状态" % int(effect.get("count", 1))])
+		return lines
 	if not spell.has("levels"):
 		if spell.heal > 0:
 			lines.append(["heal", "恢复 %d 点生命" % int(spell.heal + (level-1)*10)])

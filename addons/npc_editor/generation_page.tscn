@@ -1,0 +1,361 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/npc_editor/generation_page.gd" id="1"]
+
+[node name="NpcGenerationPage" type="PanelContainer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Body" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Side" type="VBoxContainer" parent="Layout/Body"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="TemplateCard" type="PanelContainer" parent="Layout/Body/Side"]
+layout_mode = 2
+theme_type_variation = &"GenerationCard"
+
+[node name="Content" type="VBoxContainer" parent="Layout/Body/Side/TemplateCard"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TemplateTitle" type="Label" parent="Layout/Body/Side/TemplateCard/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "生成模板"
+
+[node name="TemplateHost" type="VBoxContainer" parent="Layout/Body/Side/TemplateCard/Content"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TemplateActions" type="HBoxContainer" parent="Layout/Body/Side/TemplateCard/Content"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SaveTemplate" type="Button" parent="Layout/Body/Side/TemplateCard/Content/TemplateActions"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "保存"
+
+[node name="BatchCard" type="PanelContainer" parent="Layout/Body/Side"]
+layout_mode = 2
+theme_type_variation = &"GenerationCard"
+
+[node name="Content" type="VBoxContainer" parent="Layout/Body/Side/BatchCard"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BatchTitle" type="Label" parent="Layout/Body/Side/BatchCard/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "批量设置"
+
+[node name="BatchHost" type="VBoxContainer" parent="Layout/Body/Side/BatchCard/Content"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="RosterCard" type="PanelContainer" parent="Layout/Body/Side"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"GenerationCard"
+
+[node name="Content" type="VBoxContainer" parent="Layout/Body/Side/RosterCard"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ListHeader" type="HBoxContainer" parent="Layout/Body/Side/RosterCard/Content"]
+layout_mode = 2
+
+[node name="ListTitle" type="Label" parent="Layout/Body/Side/RosterCard/Content/ListHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "生成 NPC 列表"
+
+[node name="ListCount" type="Label" parent="Layout/Body/Side/RosterCard/Content/ListHeader"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.365, 0.478, 0.455, 1)
+theme_override_font_sizes/font_size = 17
+text = "0 人"
+
+[node name="PreviewList" type="ItemList" parent="Layout/Body/Side/RosterCard/Content"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RulesPane" type="VBoxContainer" parent="Layout/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TabButtons" type="HBoxContainer" parent="Layout/Body/RulesPane"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="基础属性" type="Button" parent="Layout/Body/RulesPane/TabButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "基础属性"
+
+[node name="修炼" type="Button" parent="Layout/Body/RulesPane/TabButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "修炼"
+
+[node name="气运" type="Button" parent="Layout/Body/RulesPane/TabButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "气运"
+
+[node name="装备法宝" type="Button" parent="Layout/Body/RulesPane/TabButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "装备法宝"
+
+[node name="功法法术" type="Button" parent="Layout/Body/RulesPane/TabButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "功法法术"
+
+[node name="RulesTabs" type="TabContainer" parent="Layout/Body/RulesPane"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="基础属性" type="ScrollContainer" parent="Layout/Body/RulesPane/RulesTabs"]
+layout_mode = 2
+horizontal_scroll_mode = 1
+
+[node name="BasicRules" type="VBoxContainer" parent="Layout/Body/RulesPane/RulesTabs/基础属性"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="BasicPlaceholder" type="Label" parent="Layout/Body/RulesPane/RulesTabs/基础属性/BasicRules"]
+layout_mode = 2
+text = "数量、模板、地点、宗门、身份、性别、年龄、寿元、灵石、性格与战斗底值"
+
+[node name="修炼" type="ScrollContainer" parent="Layout/Body/RulesPane/RulesTabs"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 1
+
+[node name="CultivationRules" type="VBoxContainer" parent="Layout/Body/RulesPane/RulesTabs/修炼"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CultivationPlaceholder" type="Label" parent="Layout/Body/RulesPane/RulesTabs/修炼/CultivationRules"]
+layout_mode = 2
+text = "法修/体修范围、修炼方向、灵根、天资与六项根基"
+
+[node name="气运" type="ScrollContainer" parent="Layout/Body/RulesPane/RulesTabs"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 1
+
+[node name="FortuneRules" type="VBoxContainer" parent="Layout/Body/RulesPane/RulesTabs/气运"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="FortunePlaceholder" type="Label" parent="Layout/Body/RulesPane/RulesTabs/气运/FortuneRules"]
+layout_mode = 2
+text = "先天与后天气运分栏：数量、品质、必带与排除"
+
+[node name="装备法宝" type="ScrollContainer" parent="Layout/Body/RulesPane/RulesTabs"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 1
+
+[node name="GearRules" type="VBoxContainer" parent="Layout/Body/RulesPane/RulesTabs/装备法宝"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="GearPlaceholder" type="Label" parent="Layout/Body/RulesPane/RulesTabs/装备法宝/GearRules"]
+layout_mode = 2
+text = "装备与法宝分栏：数量、品质、境界匹配与槽位"
+
+[node name="功法法术" type="ScrollContainer" parent="Layout/Body/RulesPane/RulesTabs"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 1
+
+[node name="SkillRules" type="VBoxContainer" parent="Layout/Body/RulesPane/RulesTabs/功法法术"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="SkillPlaceholder" type="Label" parent="Layout/Body/RulesPane/RulesTabs/功法法术/SkillRules"]
+layout_mode = 2
+text = "功法与法术分栏：已学数量、装配数量、必带与排除"
+
+[node name="PreviewPane" type="PanelContainer" parent="Layout/Body"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+theme_type_variation = &"GenerationCard"
+
+[node name="Content" type="VBoxContainer" parent="Layout/Body/PreviewPane"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PreviewHeader" type="HBoxContainer" parent="Layout/Body/PreviewPane/Content"]
+layout_mode = 2
+
+[node name="DetailTitle" type="Label" parent="Layout/Body/PreviewPane/Content/PreviewHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "NPC 人物预览"
+
+[node name="PreviewIndex" type="Label" parent="Layout/Body/PreviewPane/Content/PreviewHeader"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.365, 0.478, 0.455, 1)
+theme_override_font_sizes/font_size = 17
+text = ""
+
+[node name="Portrait" type="PanelContainer" parent="Layout/Body/PreviewPane/Content"]
+custom_minimum_size = Vector2(0, 144)
+layout_mode = 2
+
+[node name="PortraitLabel" type="Label" parent="Layout/Body/PreviewPane/Content/Portrait"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.365, 0.478, 0.455, 1)
+theme_override_font_sizes/font_size = 17
+text = "头像 / 立绘预留"
+
+[node name="PreviewName" type="Label" parent="Layout/Body/PreviewPane/Content"]
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+text = ""
+
+[node name="PreviewMeta" type="Label" parent="Layout/Body/PreviewPane/Content"]
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.365, 0.478, 0.455, 1)
+theme_override_font_sizes/font_size = 17
+text = ""
+
+[node name="DetailScroll" type="ScrollContainer" parent="Layout/Body/PreviewPane/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 1
+
+[node name="Detail" type="VBoxContainer" parent="Layout/Body/PreviewPane/Content/DetailScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SummaryRows" type="GridContainer" parent="Layout/Body/PreviewPane/Content/DetailScroll/Detail"]
+visible = false
+layout_mode = 2
+columns = 2
+theme_override_constants/v_separation = 12
+
+[node name="DetailText" type="Label" parent="Layout/Body/PreviewPane/Content/DetailScroll/Detail"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+autowrap_mode = 3
+text = "尚未生成预览。点击「生成预览」后，这里显示真实生成数据。"
+
+[node name="Actions" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LoadTemplate" type="Button" parent="Layout/Actions"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "加载模板"
+
+[node name="Generate" type="Button" parent="Layout/Actions"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "生成预览"
+
+[node name="Reroll" type="Button" parent="Layout/Actions"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "重新随机"
+
+[node name="SaveBatch" type="Button" parent="Layout/Actions"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+theme_override_font_sizes/font_size = 18
+text = "批量保存"
+
+[node name="Summary" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CountLabel" type="Label" parent="Layout/Summary"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 17
+text = "预计生成：0"
+
+[node name="PassedLabel" type="Label" parent="Layout/Summary"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 17
+text = "校验成功：0"
+
+[node name="FailedLabel" type="Label" parent="Layout/Summary"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 17
+text = "失败：0"
+
+[node name="Status" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+autowrap_mode = 3
+text = "规则未生成预览"

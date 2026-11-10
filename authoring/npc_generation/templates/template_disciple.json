@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "template_disciple",
+  "name": "宗门弟子",
+  "count": 20,
+  "identity": {
+    "location_ids": ["sect_qingyue_gate"],
+    "sect_names": ["青岳宗"],
+    "roles": ["外门弟子", "内门弟子", "守山弟子"],
+    "role_weights": [50, 30, 20],
+    "male_weight": 50,
+    "female_weight": 50,
+    "age": {"min": 16, "max": 45},
+    "lifespan": {"min": 100, "max": 150},
+    "wealth": {"min": 20, "max": 300},
+    "personalities": [],
+    "generate_names": true
+  },
+  "cultivation": {
+    "qi_realm": {"min": 1, "max": 18},
+    "body_realm": {"min": 0, "max": 18},
+    "route": "qi_primary",
+    "cultivation_ratio": {"min": 10, "max": 80},
+    "ranks": ["良才", "精英", "人杰"],
+    "rank_weights": [45, 40, 15],
+    "realm_known": true,
+    "foundation": {
+      "qi_sea": {"min": 14, "max": 32},
+      "meridians": {"min": 14, "max": 32},
+      "bones": {"min": 12, "max": 30},
+      "physique": {"min": 12, "max": 30},
+      "spirit_sea": {"min": 12, "max": 28},
+      "soul": {"min": 12, "max": 28}
+    }
+  },
+  "base_stats": {
+    "hp": {"min": 100, "max": 180},
+    "mp": {"min": 30, "max": 80},
+    "attack": {"min": 16, "max": 36},
+    "defense": {"min": 6, "max": 18},
+    "speed": {"min": 10, "max": 18}
+  }
+}

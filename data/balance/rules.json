@@ -48,13 +48,6 @@
   "foundation_loss": 200,
   "formation_start": 30,
   "formation_upkeep": 10,
-  "exploration_weights": [
-    35,
-    20,
-    10,
-    25,
-    10
-  ],
   "rest_hp": 15,
   "rest_mp": 10,
   "technique_upgrade": {

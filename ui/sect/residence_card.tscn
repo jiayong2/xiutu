@@ -22,25 +22,28 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(0, 132)
 theme_override_styles/panel = SubResource("Card")
 
-[node name="Body" type="VBoxContainer" parent="."]
-theme_override_constants/separation = 6
+[node name="Body" type="HBoxContainer" parent="."]
+theme_override_constants/separation = 16
 
-[node name="Row" type="HBoxContainer" parent="Body"]
-theme_override_constants/separation = 12
+[node name="Text" type="VBoxContainer" parent="Body"]
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 10
 
-[node name="CardName" type="Label" parent="Body/Row"]
+[node name="CardName" type="Label" parent="Body/Text"]
 text = "建筑名称"
 size_flags_horizontal = 3
 text_overrun_behavior = 3
 theme_override_font_sizes/font_size = 30
 
-[node name="CardAction" type="Button" parent="Body/Row"]
-text = "尚未开放"
-custom_minimum_size = Vector2(0, 54)
-theme_override_font_sizes/font_size = 20
-
-[node name="CardDescription" type="Label" parent="Body"]
+[node name="CardDescription" type="Label" parent="Body/Text"]
 text = "功能说明"
 autowrap_mode = 3
 theme_override_colors/font_color = Color(0.31, 0.45, 0.39, 1)
 theme_override_font_sizes/font_size = 22
+
+[node name="CardAction" type="Button" parent="Body"]
+text = "进入"
+custom_minimum_size = Vector2(136, 108)
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40

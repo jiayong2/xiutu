@@ -35,10 +35,24 @@ func _fit() -> void:
 	panel.position=(size-Vector2(960,620)*panel.scale)/2
 func bind_data(value: Dictionary,data: Dictionary) -> void:
 	report=value.duplicate(true)
-	field("ResultTitle").text={"win":"战斗胜利","lose":"战斗失败","escape":"脱离战斗"}[report.result]
-	field("ResultTitle").modulate=Color("c5e5c9") if report.result=="win" else Color("d7a3a5")
+	var battle_type := str(report.get("battle_type", ""))
+	var friendly := battle_type in ["sect_spar", "sect_exam"]
+	if friendly and str(report.get("end_reason", "")) == "surrender":
+		field("ResultTitle").text="认输" if battle_type=="sect_spar" else "考核认输"
+	elif friendly and report.result=="win":
+		field("ResultTitle").text="切磋胜利" if battle_type=="sect_spar" else "考核通过"
+	elif friendly:
+		field("ResultTitle").text="切磋失败" if battle_type=="sect_spar" else "考核未通过"
+	else:
+		field("ResultTitle").text={"win":"战斗胜利","lose":"战斗失败","escape":"脱离战斗","enemy_escape":"妖兽逃跑"}[report.result]
+	field("ResultTitle").modulate=Color("c5e5c9") if report.result=="win" else Color("d8c27c") if report.result=="enemy_escape" or (friendly and str(report.get("end_reason",""))=="surrender") else Color("d7a3a5")
 	var places: Dictionary=preload("res://ui/world/world_page.gd").PLACES
-	field("Summary").text="%s · %s · 共 %d 回合" % [places[report.location],data.monsters[report.monster].name,report.turns]
+	var testing := battle_type == "npc_test"
+	if testing or friendly:
+		var kind := "同门切磋" if battle_type=="sect_spar" else "晋升考核" if battle_type=="sect_exam" else "测试战斗"
+		field("Summary").text="%s · %s · 共 %d 回合" % [kind, str(report.get("opponent_name", "NPC")), report.turns]
+	else:
+		field("Summary").text="%s · %s · 共 %d 回合" % [places[report.location],data.monsters[report.monster].name,report.turns]
 	for key in ["GrowthList","LootGrid"]:
 		for child in field(key).get_children():field(key).remove_child(child);child.queue_free()
 	var members: Array=report.growth
@@ -50,7 +64,7 @@ func bind_data(value: Dictionary,data: Dictionary) -> void:
 		var gain:=Label.new();gain.text="+%d %s" % [member.gain,member.type];gain.modulate=Color("b5dcb9");header.add_child(gain)
 		if members.size()==1:
 			var realm:=Label.new()
-			realm.text=preload("res://gameplay/cultivation/cultivation_system.gd").realm_name(member.realm,"qi",GameManager.catalog.tables)
+			realm.text=preload("res://gameplay/cultivation/cultivation_system.gd").realm_name(member.realm,"qi",data)
 			row.add_child(realm)
 		if member.target>0:
 			var bar:=ProgressBar.new();bar.custom_minimum_size.y=14;bar.show_percentage=false;bar.max_value=member.target;bar.value=member.current
@@ -61,8 +75,15 @@ func bind_data(value: Dictionary,data: Dictionary) -> void:
 				var hint:=Label.new();hint.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 				hint.text="修为已满，可在安全地点手动晋升。" if member.current>=member.target and member.realm<9 else "修为已满，筑基仍需满足原有条件。" if member.current>=member.target else "当前战斗不奖励修为，修炼请前往安全地点。"
 				row.add_child(hint)
-	field("Money").text=("获得灵石：+%d" if report.money>=0 else "损失灵石：%d") % absi(int(report.money))
-	field("Loss").text="战败后 HP %d · MP %d\n返回：%s" % [report.hp,report.mp,places[report.return_location]] if report.result=="lose" else ""
+	if testing:
+		field("Money").text="测试战斗不发放奖励，双方状态已恢复"
+		field("Loss").text="不改变所在地、关系、装备和正式进度"
+	elif friendly:
+		field("Money").text=str(report.get("reward_text", "本次无奖励"))
+		field("Loss").text="双方生命与灵力已恢复至战前。不掉落物品，也不获得妖兽战斗奖励。"
+	else:
+		field("Money").text=("获得灵石：+%d" if report.money>=0 else "损失灵石：%d") % absi(int(report.money))
+		field("Loss").text="战败后 HP %d · MP %d\n返回：%s" % [report.hp,report.mp,places[report.return_location]] if report.result=="lose" else ""
 	for id in report.drops:
 		var item: Dictionary=data.items[id]
 		var card:=VBoxContainer.new();card.custom_minimum_size=Vector2(112,130)

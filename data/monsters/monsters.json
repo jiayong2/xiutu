@@ -7,24 +7,33 @@
     "attack": 14,
     "defense": 4,
     "speed": 9,
+    "realm": 1,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack"],
+    "behaviors": [
+      {
+        "id": "wolf_basic_attack",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
     "special_every": 0,
     "special_multiplier": 1,
-    "money": [
-      10,
-      16
-    ],
-    "drops": [
-      [
-        "material_wolf_fang",
-        1,
-        1
-      ],
-      [
-        "material_wolf_hide",
-        1,
-        0.4
+    "loot": {
+      "money": [10, 16],
+      "entries": [
+        {"item_id": "material_wolf_fang", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 1}},
+        {"item_id": "material_wolf_hide", "min": 1, "max": 1, "chance": 0.4, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 1}}
       ]
-    ]
+    }
   },
   {
     "id": "monster_mountain_boar",
@@ -34,24 +43,46 @@
     "attack": 17,
     "defense": 7,
     "speed": 6,
+    "realm": 1,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_charge"],
+    "behaviors": [
+      {
+        "id": "boar_charge",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 3}],
+        "action": "skill",
+        "skill": "beast_skill_charge",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "boar_basic_attack",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
     "special_every": 3,
     "special_multiplier": 1.3,
-    "money": [
-      14,
-      20
-    ],
-    "drops": [
-      [
-        "material_boar_tusk",
-        1,
-        1
-      ],
-      [
-        "herb_spirit_grass",
-        1,
-        0.3
+    "loot": {
+      "money": [14, 20],
+      "entries": [
+        {"item_id": "material_boar_tusk", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 1}},
+        {"item_id": "herb_spirit_grass", "min": 1, "max": 1, "chance": 0.3, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 1}}
       ]
-    ]
+    }
   },
   {
     "id": "monster_green_fox",
@@ -61,24 +92,49 @@
     "attack": 19,
     "defense": 5,
     "speed": 15,
+    "realm": 2,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_spirit_breath"],
+    "behaviors": [
+      {
+        "id": "fox_spirit_breath",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [
+          {"type": "action_every", "value": 2},
+          {"type": "mp_at_least", "value": 5}
+        ],
+        "action": "skill",
+        "skill": "beast_skill_spirit_breath",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "fox_basic_attack",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
     "special_every": 2,
     "special_multiplier": 1.2,
-    "money": [
-      18,
-      26
-    ],
-    "drops": [
-      [
-        "material_fox_tail",
-        1,
-        1
-      ],
-      [
-        "herb_calm_leaf",
-        1,
-        0.4
+    "loot": {
+      "money": [18, 26],
+      "entries": [
+        {"item_id": "material_fox_tail", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}},
+        {"item_id": "herb_calm_leaf", "min": 1, "max": 1, "chance": 0.4, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}}
       ]
-    ]
+    }
   },
   {
     "id": "monster_wolf_leader",
@@ -88,24 +144,47 @@
     "attack": 25,
     "defense": 10,
     "speed": 13,
+    "realm": 3,
+    "rank": "boss",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_leader_bite"],
+    "behaviors": [
+      {
+        "id": "leader_bite",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 3}],
+        "action": "skill",
+        "skill": "beast_skill_leader_bite",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "leader_basic_attack",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
     "special_every": 3,
     "special_multiplier": 1.4,
-    "money": [
-      45,
-      60
-    ],
-    "drops": [
-      [
-        "material_wolf_fang",
-        2,
-        1
-      ],
-      [
-        "material_wolf_hide",
-        2,
-        1
+    "loot": {
+      "money": [45, 60],
+      "entries": [
+        {"item_id": "material_wolf_fang", "min": 2, "max": 2, "chance": 1.0, "independent": true, "conditions": {"rank": ["boss"], "realm_min": 3}},
+        {"item_id": "material_wolf_hide", "min": 2, "max": 2, "chance": 1.0, "independent": true, "conditions": {"rank": ["boss"], "realm_min": 3}},
+        {"item_id": "pill_qi_gathering", "min": 1, "max": 1, "guaranteed": true, "once": "leader_first_reward", "legacy_flag": "leader_reward", "independent": true, "conditions": {"rank": ["boss"], "realm_min": 3}}
       ]
-    ]
+    }
   },
   {
     "id": "monster_iron_lizard",
@@ -115,20 +194,45 @@
     "attack": 17,
     "defense": 7,
     "speed": 6,
+    "realm": 1,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_charge"],
+    "behaviors": [
+      {
+        "id": "lizard_charge",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 3}],
+        "action": "skill",
+        "skill": "beast_skill_charge",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "lizard_basic_attack",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
     "special_every": 3,
     "special_multiplier": 1.3,
-    "money": [
-      14,
-      20
-    ],
-    "drops": [
-      [
-        "material_iron_scale",
-        1,
-        0.75,
-        3
+    "loot": {
+      "money": [14, 20],
+      "entries": [
+        {"item_id": "material_iron_scale", "min": 1, "max": 3, "chance": 0.75, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 1}}
       ]
-    ]
+    }
   },
   {
     "id": "monster_cave_bat",
@@ -138,18 +242,664 @@
     "attack": 19,
     "defense": 5,
     "speed": 15,
+    "realm": 2,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_bat_strike"],
+    "behaviors": [
+      {
+        "id": "bat_strike",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}],
+        "action": "skill",
+        "skill": "beast_skill_bat_strike",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "bat_basic_attack",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
     "special_every": 2,
     "special_multiplier": 1.2,
-    "money": [
-      18,
-      26
-    ],
-    "drops": [
-      [
-        "material_bat_membrane",
-        1,
-        0.7
+    "loot": {
+      "money": [18, 26],
+      "entries": [
+        {"item_id": "material_bat_membrane", "min": 1, "max": 1, "chance": 0.7, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}}
       ]
-    ]
+    }
+  },
+  {
+    "id": "monster_stoneback_cat",
+    "name": "石背山猫",
+    "hp": 60,
+    "mp": 0,
+    "attack": 15,
+    "defense": 3,
+    "speed": 14,
+    "realm": 1,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_rend"],
+    "behaviors": [
+      {
+        "id": "stoneback_cat_rend",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}, {"type": "target_not_status", "status": "bleed"}],
+        "action": "skill",
+        "skill": "beast_skill_rend",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "stoneback_cat_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [10, 16],
+      "entries": [
+        {"item_id": "material_stoneback_fur", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 1}},
+        {"item_id": "herb_morning_dew", "min": 1, "max": 1, "chance": 0.3, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 1}}
+      ]
+    }
+  },
+  {
+    "id": "monster_mist_hare",
+    "name": "雾隐兔",
+    "hp": 50,
+    "mp": 10,
+    "attack": 12,
+    "defense": 2,
+    "speed": 19,
+    "realm": 1,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_heal"],
+    "behaviors": [
+      {
+        "id": "mist_hare_heal",
+        "priority": 200,
+        "enabled": true,
+        "conditions": [{"type": "hp_below", "value": 40}, {"type": "skill_uses_below", "skill": "beast_skill_heal", "value": 1}],
+        "action": "skill",
+        "skill": "beast_skill_heal",
+        "target": "self",
+        "chance": 1.0,
+        "max_uses": 1,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "mist_hare_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [8, 14],
+      "entries": [
+        {"item_id": "material_mist_hare_fur", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 1}},
+        {"item_id": "herb_morning_dew", "min": 1, "max": 1, "chance": 0.4, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 1}}
+      ]
+    }
+  },
+  {
+    "id": "monster_redtail_marten",
+    "name": "赤尾火貂",
+    "hp": 65,
+    "mp": 15,
+    "attack": 20,
+    "defense": 4,
+    "speed": 17,
+    "realm": 2,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_ember_bite"],
+    "behaviors": [
+      {
+        "id": "redtail_marten_ember",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}],
+        "action": "skill",
+        "skill": "beast_skill_ember_bite",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "redtail_marten_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [20, 28],
+      "entries": [
+        {"item_id": "material_fire_marten_tail", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}},
+        {"item_id": "herb_fire_tip", "min": 1, "max": 1, "chance": 0.35, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}}
+      ]
+    }
+  },
+  {
+    "id": "monster_blackwind_wolf",
+    "name": "黑风狼",
+    "hp": 85,
+    "mp": 0,
+    "attack": 21,
+    "defense": 6,
+    "speed": 15,
+    "realm": 2,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_multi_claw"],
+    "behaviors": [
+      {
+        "id": "blackwind_wolf_claw",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}],
+        "action": "skill",
+        "skill": "beast_skill_multi_claw",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "blackwind_wolf_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [20, 30],
+      "entries": [
+        {"item_id": "material_blackwolf_fang", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}},
+        {"item_id": "material_wolf_hide", "min": 1, "max": 1, "chance": 0.4, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}}
+      ]
+    }
+  },
+  {
+    "id": "monster_night_owl",
+    "name": "夜枭",
+    "hp": 65,
+    "mp": 20,
+    "attack": 18,
+    "defense": 4,
+    "speed": 16,
+    "realm": 2,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_night_screech"],
+    "behaviors": [
+      {
+        "id": "night_owl_screech",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}],
+        "action": "skill",
+        "skill": "beast_skill_night_screech",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "night_owl_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [18, 26],
+      "entries": [
+        {"item_id": "material_owl_feather", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}},
+        {"item_id": "herb_calm_leaf", "min": 1, "max": 1, "chance": 0.35, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}}
+      ]
+    }
+  },
+  {
+    "id": "monster_jade_creek_snake",
+    "name": "碧水蛇",
+    "hp": 70,
+    "mp": 15,
+    "attack": 19,
+    "defense": 5,
+    "speed": 14,
+    "realm": 2,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_frost_bite"],
+    "behaviors": [
+      {
+        "id": "jade_snake_frost",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}],
+        "action": "skill",
+        "skill": "beast_skill_frost_bite",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "jade_snake_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [18, 26],
+      "entries": [
+        {"item_id": "material_jade_snake_scale", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}},
+        {"item_id": "herb_spirit_grass", "min": 1, "max": 1, "chance": 0.4, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}}
+      ]
+    }
+  },
+  {
+    "id": "monster_marsh_toad",
+    "name": "溪畔毒蟾",
+    "hp": 115,
+    "mp": 0,
+    "attack": 16,
+    "defense": 9,
+    "speed": 4,
+    "realm": 2,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_venom_bite"],
+    "behaviors": [
+      {
+        "id": "marsh_toad_venom",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}],
+        "action": "skill",
+        "skill": "beast_skill_venom_bite",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "marsh_toad_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [18, 26],
+      "entries": [
+        {"item_id": "material_toad_venom_sac", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}},
+        {"item_id": "herb_calm_leaf", "min": 1, "max": 1, "chance": 0.35, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}}
+      ]
+    }
+  },
+  {
+    "id": "monster_mine_spider",
+    "name": "矿穴蛛",
+    "hp": 75,
+    "mp": 10,
+    "attack": 18,
+    "defense": 6,
+    "speed": 12,
+    "realm": 2,
+    "rank": "normal",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_venom_bite"],
+    "behaviors": [
+      {
+        "id": "mine_spider_venom",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}],
+        "action": "skill",
+        "skill": "beast_skill_venom_bite",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "mine_spider_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [18, 28],
+      "entries": [
+        {"item_id": "material_mine_spider_silk", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}},
+        {"item_id": "material_spirit_iron", "min": 1, "max": 1, "chance": 0.25, "independent": true, "conditions": {"rank": ["normal"], "realm_min": 2}}
+      ]
+    }
+  },
+  {
+    "id": "monster_rock_armadillo",
+    "name": "岩甲穿山甲",
+    "hp": 150,
+    "mp": 0,
+    "attack": 17,
+    "defense": 14,
+    "speed": 5,
+    "realm": 2,
+    "rank": "elite",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_stone_guard"],
+    "passives": [
+      {"type": "stat", "stat": "defense", "value": 0.15, "turns": 99, "layers": 1}
+    ],
+    "behaviors": [
+      {
+        "id": "rock_armadillo_guard",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "hp_below", "value": 70}, {"type": "skill_uses_below", "skill": "beast_skill_stone_guard", "value": 1}],
+        "action": "skill",
+        "skill": "beast_skill_stone_guard",
+        "target": "self",
+        "chance": 1.0,
+        "max_uses": 1,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "rock_armadillo_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [40, 55],
+      "entries": [
+        {"item_id": "material_armadillo_shell", "min": 1, "max": 2, "chance": 1.0, "independent": true, "conditions": {"rank": ["elite"], "realm_min": 2}},
+        {"item_id": "material_ordinary_iron_ore", "min": 1, "max": 2, "chance": 0.6, "independent": true, "conditions": {"rank": ["elite"], "realm_min": 2}}
+      ]
+    }
+  },
+  {
+    "id": "monster_mist_wisp",
+    "name": "雾魅",
+    "hp": 120,
+    "mp": 40,
+    "attack": 20,
+    "defense": 7,
+    "speed": 16,
+    "realm": 3,
+    "rank": "elite",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_mana_drain"],
+    "passives": [
+      {"type": "stat", "stat": "speed", "value": 0.15, "turns": 99, "layers": 1}
+    ],
+    "triggers": [
+      {
+        "id": "mist_wisp_cleanse",
+        "event": "turn_start",
+        "once": false,
+        "conditions": [{"type": "self_status", "status": "seal"}],
+        "effects": [
+          {"type": "cleanse", "count": 2}
+        ]
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "mist_wisp_drain",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}],
+        "action": "skill",
+        "skill": "beast_skill_mana_drain",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "mist_wisp_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [35, 50],
+      "entries": [
+        {"item_id": "material_mist_essence", "min": 1, "max": 2, "chance": 1.0, "independent": true, "conditions": {"rank": ["elite"], "realm_min": 3}},
+        {"item_id": "herb_fire_tip", "min": 1, "max": 1, "chance": 0.4, "independent": true, "conditions": {"rank": ["elite"], "realm_min": 3}}
+      ]
+    }
+  },
+  {
+    "id": "monster_mine_wraith",
+    "name": "矿魈",
+    "hp": 160,
+    "mp": 20,
+    "attack": 26,
+    "defense": 9,
+    "speed": 11,
+    "realm": 3,
+    "rank": "elite",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_armor_break"],
+    "triggers": [
+      {
+        "id": "mine_wraith_rage",
+        "event": "hp_below",
+        "once": true,
+        "conditions": [{"type": "hp_below", "value": 50}],
+        "effects": [
+          {"type": "stat", "stat": "attack", "value": 0.25, "turns": 99, "layers": 1},
+          {"type": "stat", "stat": "defense", "value": -0.15, "turns": 99, "layers": 1},
+          {"type": "phase", "value": "berserk"}
+        ]
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "mine_wraith_break",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 3}],
+        "action": "skill",
+        "skill": "beast_skill_armor_break",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "mine_wraith_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [45, 65],
+      "entries": [
+        {"item_id": "material_mine_wraith_ore", "min": 1, "max": 2, "chance": 1.0, "independent": true, "conditions": {"rank": ["elite"], "realm_min": 3}},
+        {"item_id": "material_spirit_iron", "min": 1, "max": 2, "chance": 0.5, "independent": true, "conditions": {"rank": ["elite"], "realm_min": 3}}
+      ]
+    }
+  },
+  {
+    "id": "monster_ghostvine",
+    "name": "鬼面藤妖",
+    "hp": 200,
+    "mp": 20,
+    "attack": 22,
+    "defense": 12,
+    "speed": 5,
+    "realm": 3,
+    "rank": "boss",
+    "skill_ids": ["beast_skill_basic_attack", "beast_skill_rend", "beast_skill_root_vines"],
+    "triggers": [
+      {
+        "id": "ghostvine_rage",
+        "event": "hp_below",
+        "once": true,
+        "conditions": [{"type": "hp_below", "value": 50}],
+        "effects": [
+          {"type": "stat", "stat": "attack", "value": 0.25, "turns": 99, "layers": 1},
+          {"type": "stat", "stat": "defense", "value": -0.15, "turns": 99, "layers": 1},
+          {"type": "phase", "value": "berserk"}
+        ]
+      }
+    ],
+    "behaviors": [
+      {
+        "id": "ghostvine_root",
+        "priority": 100,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 3}],
+        "action": "skill",
+        "skill": "beast_skill_root_vines",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "ghostvine_rend",
+        "priority": 90,
+        "enabled": true,
+        "conditions": [{"type": "action_every", "value": 2}],
+        "action": "skill",
+        "skill": "beast_skill_rend",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      },
+      {
+        "id": "ghostvine_basic",
+        "priority": 10,
+        "enabled": true,
+        "conditions": [{"type": "always"}],
+        "action": "skill",
+        "skill": "beast_skill_basic_attack",
+        "target": "enemy",
+        "chance": 1.0,
+        "max_uses": 0,
+        "cooldown": 0,
+        "on_fail": "continue"
+      }
+    ],
+    "loot": {
+      "money": [60, 90],
+      "entries": [
+        {"item_id": "material_ghostvine_core", "min": 2, "max": 2, "chance": 1.0, "independent": true, "conditions": {"rank": ["boss"], "realm_min": 3}},
+        {"item_id": "herb_calm_leaf", "min": 1, "max": 1, "chance": 1.0, "independent": true, "conditions": {"rank": ["boss"], "realm_min": 3}}
+      ]
+    }
   }
 ]

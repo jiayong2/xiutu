@@ -1,0 +1,472 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://ui/skill_editor/skill_editor.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.114, 0.227, 0.235, 1)
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="Card"]
+bg_color = Color(0.188, 0.329, 0.318, 1)
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24, 0.42, 0.39, 1)
+
+[sub_resource type="Theme" id="EditorTheme"]
+default_font_size = 19
+Window/font_sizes/title_font_size = 19
+TooltipLabel/font_sizes/font_size = 19
+RichTextLabel/font_sizes/normal_font_size = 19
+RichTextLabel/font_sizes/bold_font_size = 19
+RichTextLabel/font_sizes/italics_font_size = 19
+RichTextLabel/font_sizes/bold_italics_font_size = 19
+RichTextLabel/font_sizes/mono_font_size = 19
+
+[node name="SkillEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("EditorTheme")
+script = ExtResource("1")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.066667, 0.160784, 0.168627, 1)
+
+[node name="HeaderBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 56.0
+mouse_filter = 2
+color = Color(0.15, 0.30, 0.28, 1)
+
+[node name="NavigationBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = 12.0
+offset_top = 64.0
+offset_right = -12.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.15, 0.30, 0.28, 1)
+
+[node name="StatusBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -32.0
+offset_right = -12.0
+offset_bottom = -12.0
+mouse_filter = 2
+color = Color(0.15, 0.30, 0.28, 1)
+
+[node name="Root" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Layout" type="VBoxContainer" parent="Root"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Root/Layout"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Root/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "功法·法术编辑器"
+
+[node name="HeaderSpacer" type="Control" parent="Root/Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Validate" type="Button" parent="Root/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "校验"
+
+[node name="Save" type="Button" parent="Root/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存"
+
+[node name="Close" type="Button" parent="Root/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "关闭"
+
+[node name="Toolbar" type="HBoxContainer" parent="Root/Layout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 56)
+theme_override_constants/separation = 8
+
+[node name="Tabs" type="HBoxContainer" parent="Root/Layout/Toolbar"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TabTechnique" type="Button" parent="Root/Layout/Toolbar/Tabs"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "功法管理"
+
+[node name="TabSpell" type="Button" parent="Root/Layout/Toolbar/Tabs"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "法术管理"
+
+[node name="TabEffect" type="Button" parent="Root/Layout/Toolbar/Tabs"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "效果库"
+
+[node name="TabBattle" type="Button" parent="Root/Layout/Toolbar/Tabs"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "战斗测试"
+
+[node name="LeftActions" type="HBoxContainer" parent="Root/Layout/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Spacer" type="Control" parent="Root/Layout/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Columns" type="HBoxContainer" parent="Root/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Left" type="PanelContainer" parent="Root/Layout/Columns"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 23.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="LeftBox" type="VBoxContainer" parent="Root/Layout/Columns/Left"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LeftHead" type="HBoxContainer" parent="Root/Layout/Columns/Left/LeftBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LeftTitle" type="Label" parent="Root/Layout/Columns/Left/LeftBox/LeftHead"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "功法列表"
+
+[node name="LeftCount" type="Label" parent="Root/Layout/Columns/Left/LeftBox/LeftHead"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(72, 0)
+text = "共 0 项"
+horizontal_alignment = 2
+
+[node name="SpellTools" type="VBoxContainer" parent="Root/Layout/Columns/Left/LeftBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LeftScroll" type="ScrollContainer" parent="Root/Layout/Columns/Left/LeftBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LeftBody" type="VBoxContainer" parent="Root/Layout/Columns/Left/LeftBox/LeftScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Center" type="PanelContainer" parent="Root/Layout/Columns"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 48.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="CenterBox" type="VBoxContainer" parent="Root/Layout/Columns/Center"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CenterHead" type="HBoxContainer" parent="Root/Layout/Columns/Center/CenterBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CenterTitle" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterHead"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "中央编辑区 · 纵向滚动"
+
+[node name="CenterMeta" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterHead"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = ""
+horizontal_alignment = 2
+
+[node name="CenterScroll" type="ScrollContainer" parent="Root/Layout/Columns/Center/CenterBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CenterBody" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Right" type="PanelContainer" parent="Root/Layout/Columns"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 23.0
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="RightBox" type="VBoxContainer" parent="Root/Layout/Columns/Right"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="RightTitle" type="Label" parent="Root/Layout/Columns/Right/RightBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "实时预览"
+
+[node name="RightScroll" type="ScrollContainer" parent="Root/Layout/Columns/Right/RightBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="RightBody" type="VBoxContainer" parent="Root/Layout/Columns/Right/RightBox/RightScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="StatusBar" type="Control" parent="Root/Layout"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="Status" type="Label" parent="Root/Layout/StatusBar"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.0
+anchor_right = 0.5
+offset_top = -4.0
+offset_bottom = 24.0
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 19
+text = "就绪"
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+
+[node name="ResourceContext" type="Label" parent="Root/Layout/StatusBar"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 1.0
+offset_top = -4.0
+offset_bottom = 24.0
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 19
+text = "当前资源 · 文件位置"
+text_overrun_behavior = 3
+size_flags_horizontal = 3
+
+[node name="PreviewPlaceholder" type="Label" parent="Root/Layout/Columns/Left/LeftBox/LeftScroll/LeftBody"]
+layout_mode = 2
+text = "搜索名称 / ID
+资源列表（运行时加载）"
+autowrap_mode = 3
+
+[node name="PreviewPlaceholder" type="Label" parent="Root/Layout/Columns/Right/RightBox/RightScroll/RightBody"]
+layout_mode = 2
+text = "当前资源预览
+效果汇总
+数据合法性检查"
+autowrap_mode = 3
+
+[node name="D1" type="PanelContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Box" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D1"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D1/Box"]
+layout_mode = 2
+text = "D1 基础配置"
+
+[node name="Body" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D1/Box"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PreviewPlaceholder" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D1/Box/Body"]
+layout_mode = 2
+text = "名称 / 唯一ID / 品质 / 五行 / 境界 / 类型 / 等级上限"
+autowrap_mode = 3
+
+[node name="D2" type="PanelContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Box" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D2"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D2/Box"]
+layout_mode = 2
+text = "D2 技能参数"
+
+[node name="Body" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D2/Box"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PreviewPlaceholder" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D2/Box/Body"]
+layout_mode = 2
+text = "功法：修炼参数；法术：目标 / 灵力 / 冷却 / 条件"
+autowrap_mode = 3
+
+[node name="D3" type="PanelContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Box" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D3"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D3/Box"]
+layout_mode = 2
+text = "D3 属性与效果"
+
+[node name="Body" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D3/Box"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PreviewPlaceholder" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D3/Box/Body"]
+layout_mode = 2
+text = "被动属性或主动效果 · 添加 / 编辑 / 删除 / 排序"
+autowrap_mode = 3
+
+[node name="D4" type="PanelContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Box" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D4"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D4/Box"]
+layout_mode = 2
+text = "D4 等级成长"
+
+[node name="Body" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D4/Box"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PreviewPlaceholder" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D4/Box/Body"]
+layout_mode = 2
+text = "成长规则 / 伤害 / 治疗 / 护盾 / 消耗 / 批量配置 / 等级预览"
+autowrap_mode = 3
+
+[node name="D5" type="PanelContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Box" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D5"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D5/Box"]
+layout_mode = 2
+text = "D5 技能说明"
+
+[node name="Body" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D5/Box"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PreviewPlaceholder" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D5/Box/Body"]
+layout_mode = 2
+text = "自动生成 / 手动编辑 / 说明预览（按类型提供现有能力）"
+autowrap_mode = 3
+
+[node name="D6" type="PanelContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Box" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D6"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D6/Box"]
+layout_mode = 2
+text = "D6 高级配置"
+
+[node name="Body" type="VBoxContainer" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D6/Box"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PreviewPlaceholder" type="Label" parent="Root/Layout/Columns/Center/CenterBox/CenterScroll/CenterBody/D6/Box/Body"]
+layout_mode = 2
+text = "特殊规则 / 扩展参数 / AI配置（仅现有运行时支持范围）"
+autowrap_mode = 3

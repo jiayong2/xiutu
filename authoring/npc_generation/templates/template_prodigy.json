@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "template_prodigy",
+  "name": "天骄",
+  "count": 10,
+  "identity": {
+    "location_ids": ["town_qinglan", "town_yunxi"],
+    "sect_names": ["", "青岳宗"],
+    "roles": ["年轻散修", "游历散修", "内门弟子"],
+    "role_weights": [20, 40, 40],
+    "male_weight": 50,
+    "female_weight": 50,
+    "age": {"min": 16, "max": 40},
+    "lifespan": {"min": 150, "max": 300},
+    "wealth": {"min": 80, "max": 800},
+    "personalities": [],
+    "generate_names": true
+  },
+  "cultivation": {
+    "qi_realm": {"min": 9, "max": 27},
+    "body_realm": {"min": 1, "max": 27},
+    "route": "dual",
+    "cultivation_ratio": {"min": 20, "max": 90},
+    "ranks": ["天骄", "人杰"],
+    "rank_weights": [60, 40],
+    "realm_known": true,
+    "foundation": {
+      "qi_sea": {"min": 20, "max": 40},
+      "meridians": {"min": 20, "max": 40},
+      "bones": {"min": 18, "max": 38},
+      "physique": {"min": 18, "max": 38},
+      "spirit_sea": {"min": 16, "max": 36},
+      "soul": {"min": 16, "max": 36}
+    }
+  },
+  "base_stats": {
+    "hp": {"min": 140, "max": 240},
+    "mp": {"min": 50, "max": 120},
+    "attack": {"min": 24, "max": 50},
+    "defense": {"min": 10, "max": 24},
+    "speed": {"min": 12, "max": 22}
+  }
+}

@@ -1,0 +1,280 @@
+[
+  {
+    "id": "beast_skill_basic_attack",
+    "name": "普通攻击",
+    "description": "以本体力量进行一次普通攻击。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 0,
+    "target": "enemy",
+    "ordinary": true,
+    "effects": [
+      {"type": "damage", "power": 1.0}
+    ]
+  },
+  {
+    "id": "beast_skill_bite",
+    "name": "凶牙撕咬",
+    "description": "以獠牙撕咬目标，造成120%攻击力的直接伤害。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 0,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.2}
+    ]
+  },
+  {
+    "id": "beast_skill_charge",
+    "name": "蓄力冲撞",
+    "description": "蓄力后猛烈冲撞，造成130%攻击力的直接伤害。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 0,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.3}
+    ]
+  },
+  {
+    "id": "beast_skill_leader_bite",
+    "name": "狼首撕咬",
+    "description": "狼首全力撕咬，造成140%攻击力的直接伤害。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 0,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.4}
+    ]
+  },
+  {
+    "id": "beast_skill_bat_strike",
+    "name": "阴翼扑击",
+    "description": "振翼扑击目标，造成120%攻击力的直接伤害。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 0,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.2}
+    ]
+  },
+  {
+    "id": "beast_skill_ember_bite",
+    "name": "赤焰咬",
+    "description": "灼热撕咬，造成伤害并有50%概率附加灼烧。",
+    "scope": ["monster"],
+    "mp": 5,
+    "cooldown": 1,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.1},
+      {"type": "status", "status": "burn", "chance": 0.5, "turns": 2, "layers": 1, "requires_hit": true}
+    ]
+  },
+  {
+    "id": "beast_skill_night_screech",
+    "name": "夜枭鸣",
+    "description": "尖啸扰乱目标，造成伤害并有60%概率使其迟缓。",
+    "scope": ["monster"],
+    "mp": 5,
+    "cooldown": 1,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 0.8},
+      {"type": "status", "status": "slow", "chance": 0.6, "turns": 2, "layers": 1, "value": 0.2, "requires_hit": true}
+    ]
+  },
+  {
+    "id": "beast_skill_root_vines",
+    "name": "缠身藤",
+    "description": "藤蔓缠住目标，造成伤害并可能使其无法逃跑。",
+    "scope": ["monster"],
+    "mp": 5,
+    "cooldown": 2,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 0.7},
+      {"type": "status", "status": "root", "chance": 0.6, "turns": 2, "layers": 1, "requires_hit": true}
+    ]
+  },
+  {
+    "id": "beast_skill_spirit_breath",
+    "name": "迷灵妖息",
+    "description": "喷吐妖息，造成伤害并使目标迟缓。",
+    "scope": ["monster"],
+    "mp": 5,
+    "cooldown": 0,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.2},
+      {"type": "status", "status": "slow", "chance": 0.5, "turns": 2, "layers": 1, "value": 0.2, "requires_hit": true}
+    ]
+  },
+  {
+    "id": "beast_skill_pack_howl",
+    "name": "狼首咆哮",
+    "description": "发出咆哮，自身攻击提高20%，持续3次自身行动。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 3,
+    "target": "self",
+    "effects": [
+      {"type": "stat", "stat": "attack", "value": 0.2, "turns": 3, "layers": 1, "max_layers": 2}
+    ]
+  },
+  {
+    "id": "beast_skill_venom_bite",
+    "name": "毒牙撕咬",
+    "description": "造成伤害，40%概率附加3回合中毒。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 1,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.0},
+      {"type": "status", "status": "poison", "chance": 0.4, "turns": 3, "layers": 1, "requires_hit": true}
+    ]
+  },
+  {
+    "id": "beast_skill_blood_drain",
+    "name": "吸血",
+    "description": "造成伤害并汲取实际伤害的50%恢复自身生命。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 0,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.0, "lifesteal": 0.5}
+    ]
+  },
+  {
+    "id": "beast_skill_stone_guard",
+    "name": "岩甲护体",
+    "description": "获得攻击力80%的护盾，并提高20%防御，持续2次自身行动。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 2,
+    "target": "self",
+    "effects": [
+      {"type": "shield", "power": 0.8, "turns": 2},
+      {"type": "stat", "stat": "defense", "value": 0.2, "turns": 2, "layers": 1}
+    ]
+  },
+  {
+    "id": "beast_skill_stun_ram",
+    "name": "雷角冲撞",
+    "description": "冲撞目标，30%概率使其眩晕1回合。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 2,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.1},
+      {"type": "status", "status": "stun", "chance": 0.3, "turns": 1, "requires_hit": true}
+    ]
+  },
+  {
+    "id": "beast_skill_mana_drain",
+    "name": "噬灵",
+    "description": "撕咬目标并削减5点灵力。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 1,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 0.8},
+      {"type": "mana", "target": "enemy", "amount": 5, "drain": true}
+    ]
+  },
+  {
+    "id": "beast_skill_rend",
+    "name": "裂爪",
+    "description": "撕开伤口，造成伤害并有60%概率附加流血。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 1,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 0.8},
+      {"type": "status", "status": "bleed", "chance": 0.6, "turns": 3, "layers": 1, "requires_hit": true}
+    ]
+  },
+  {
+    "id": "beast_skill_heal",
+    "name": "回春",
+    "description": "恢复自身攻击力80%的生命。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 2,
+    "target": "self",
+    "effects": [
+      {"type": "heal", "power": 0.8}
+    ]
+  },
+  {
+    "id": "beast_skill_cleanse",
+    "name": "清心",
+    "description": "驱散自身最多2个可驱散的负面状态。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 3,
+    "target": "self",
+    "effects": [
+      {"type": "cleanse", "count": 2}
+    ]
+  },
+  {
+    "id": "beast_skill_berserk",
+    "name": "狂暴",
+    "description": "进入狂暴阶段：攻击提高25%，防御降低15%，并切换战斗阶段。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 99,
+    "target": "self",
+    "effects": [
+      {"type": "stat", "stat": "attack", "value": 0.25, "turns": 99, "layers": 1},
+      {"type": "stat", "stat": "defense", "value": -0.15, "turns": 99, "layers": 1},
+      {"type": "phase", "value": "berserk"}
+    ]
+  },
+  {
+    "id": "beast_skill_multi_claw",
+    "name": "连环爪",
+    "description": "连续攻击两次，每次造成60%攻击力的伤害。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 0,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 0.6, "hits": 2}
+    ]
+  },
+  {
+    "id": "beast_skill_armor_break",
+    "name": "破甲击",
+    "description": "造成伤害并降低目标20%防御，持续2次行动。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 2,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 1.0},
+      {"type": "stat", "stat": "defense", "value": -0.2, "turns": 2, "layers": 1, "requires_hit": true}
+    ]
+  },
+  {
+    "id": "beast_skill_frost_bite",
+    "name": "寒霜咬",
+    "description": "造成伤害并使目标迟缓。",
+    "scope": ["monster"],
+    "mp": 0,
+    "cooldown": 1,
+    "target": "enemy",
+    "effects": [
+      {"type": "damage", "power": 0.9},
+      {"type": "status", "status": "slow", "chance": 0.7, "turns": 2, "layers": 1, "value": 0.25, "requires_hit": true}
+    ]
+  }
+]

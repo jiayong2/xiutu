@@ -1,6 +1,7 @@
 extends Control
 signal navigate(destination: String)
 signal action_requested(action: String,args: Dictionary)
+signal exploration_map_requested(map_id: String)
 signal npc_requested(id: String)
 signal shop_requested(id: String)
 signal auction_requested(id: String)
@@ -114,6 +115,9 @@ func _buildings() -> void:
 	_clear("Buildings")
 	var location: String=state.player.location
 	field("BuildingTitle").text="可交互地点" if location=="area_qinglan_outskirts" else "地点建筑"
+	for definition in data.get("exploration_maps", {}).values():
+		if definition.location_id == location:
+			_entry(definition.entry_label, exploration_map_requested.emit.bind(definition.id))
 	for shop in data.shops.values():
 		if shop.location!=location:continue
 		var npc: Dictionary=state.npcs[shop.npc_id]
@@ -148,6 +152,15 @@ func _buildings() -> void:
 		_entry("狼首挑战（建议二层+补给）",func():action_requested.emit("challenge",{}))
 	elif not service.sect_at_location(location).is_empty():
 		_entry("宗门驻地",func():navigate.emit("宗门驻地"),service.sect_residence_access(location))
+	for action in preload("res://gameplay/quest/quest_system.gd").new().location_actions(state,data):
+		_entry(str(action.label),_confirm_patrol.bind(action))
+func _confirm_patrol(action: Dictionary) -> void:
+	var dialog:=ConfirmationDialog.new();add_child(dialog)
+	dialog.title=str(action.label)
+	dialog.dialog_text=str(action.prompt)
+	dialog.ok_button_text=str(action.confirm)
+	dialog.confirmed.connect(func():action_requested.emit("confirm_location_objective",{"id":action.quest_id,"option":action.option_id});dialog.queue_free())
+	dialog.canceled.connect(dialog.queue_free);dialog.popup_centered(Vector2i(720,320))
 func _investigate(id: String) -> void:
 	var definition: Dictionary=data.events[id]
 	var dialog:=ConfirmationDialog.new();add_child(dialog)

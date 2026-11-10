@@ -2,11 +2,12 @@
 extends RefCounted
 var tables: Dictionary = {}
 var error := ""
-const PATHS := {"time_rules":"balance/time_rules", "progression":"cultivation/progression", "spirit_flow":"cultivation/spirit_flow", "realm_tiers":"cultivation/realm_tiers", "inns":"towns/inns", "events":"world/events", "items":"items/items", "equipment":"items/equipment", "techniques":"skills/techniques", "spells":"skills/spells", "herbs":"cave/herbs", "recipes":"cave/recipes", "monsters":"monsters/monsters", "quests":"quests/quests", "shops":"towns/shops", "realms":"cultivation/realms", "rules":"balance/rules", "prototype":"world/prototype"}
+const PATHS := {"time_rules":"balance/time_rules", "progression":"cultivation/progression", "spirit_flow":"cultivation/spirit_flow", "realm_tiers":"cultivation/realm_tiers", "inns":"towns/inns", "events":"world/events", "items":"items/items", "equipment":"items/equipment", "techniques":"skills/techniques", "spells":"skills/spells", "monster_skills":"monsters/skills", "herbs":"cave/herbs", "recipes":"cave/recipes", "monsters":"monsters/monsters", "quests":"quests/quests", "shops":"towns/shops", "realms":"cultivation/realms", "rules":"balance/rules", "prototype":"world/prototype"}
 
 func load_all(validate: bool = true) -> bool:
 	tables.clear()
 	var paths := PATHS.duplicate()
+	paths["exploration_maps"] = "world/exploration_maps"
 	paths["artifacts"] = "items/artifacts"
 	paths["announcements"] = "towns/announcements"
 	paths["sect_areas"] = "world/sect_areas"
@@ -66,18 +67,23 @@ func load_all(validate: bool = true) -> bool:
 		route_ids[route.id] = true
 		if route.has("unavailable"):
 			continue
+		if route.has("outcomes") or route.has("encounter"):
+			error = "Legacy outskirts encounter fields are not supported: " + route.id
+			return false
+		if not _valid_encounters(route.get("encounters"), tables, route):
+			error = "Invalid outskirts encounters: " + route.id
+			return false
 		if route.has("mining"):
-			if not route.mining is Array or route.mining.is_empty() or route.has("outcomes") or route.has("herbs"):
+			if not route.mining is Array or route.mining.is_empty() or route.has("herbs"):
 				error = "Invalid mining route: " + route.id
 				return false
-			if route.has("encounter"):
-				var encounter: Variant = route.encounter
-				if not encounter is Dictionary or not encounter.get("monster_id") is String or not tables.monsters.has(encounter.monster_id):
-					error = "Invalid mining encounter: " + route.id
-					return false
-				var chance: Variant = encounter.get("chance")
-				if not (chance is int or chance is float) or chance < 1 or chance > 100 or chance != int(chance):
-					error = "Invalid mining encounter chance: " + route.id
+			var encounter_chance: Variant = route.get("encounter_chance")
+			if not (encounter_chance is int or encounter_chance is float) or encounter_chance < 1 or encounter_chance > 100 or encounter_chance != int(encounter_chance):
+				error = "Invalid mining encounter chance: " + route.id
+				return false
+			for entry in route.encounters:
+				if entry.get("type") != "monster":
+					error = "Mining routes only allow monster encounters: " + route.id
 					return false
 			var ores: Dictionary = {}
 			for ore in route.mining:
@@ -90,22 +96,20 @@ func load_all(validate: bool = true) -> bool:
 					return false
 				ores[ore.item_id] = true
 			continue
-		var eligible: Dictionary = {}
-		var weight := 0
-		for outcome in route.outcomes:
-			var index := int(outcome)
-			if outcome != index or index < 0 or index > 4 or eligible.has(index):
-				error = "Invalid outskirts outcome: " + route.id
-				return false
-			eligible[index] = true
-			weight += int(tables.rules.exploration_weights[index])
-		if weight <= 0 or (eligible.has(3) and route.herbs.is_empty()):
-			error = "Empty outskirts encounter pool: " + route.id
+		if route.has("encounter_chance"):
+			error = "Exploration routes cannot set encounter_chance: " + route.id
 			return false
-		for herb in route.herbs:
+		for herb in route.get("herbs", []):
 			if not tables.herbs.has(herb) or not tables.items.has(herb):
 				error = "Invalid outskirts herb: " + str(herb)
 				return false
+	if not _valid_encounters(tables.prototype.get("outskirts_default_encounters"), tables, {"herbs": tables.prototype.get("outskirts_default_herbs", [])}):
+		error = "Invalid default outskirts encounters"
+		return false
+	for herb in tables.prototype.get("outskirts_default_herbs", []):
+		if not tables.herbs.has(herb) or not tables.items.has(herb):
+			error = "Invalid default outskirts herb: " + str(herb)
+			return false
 	for recipe in tables.recipes.values():
 		for id in recipe.materials.keys() + [recipe.output]:
 			if not tables.items.has(id):
@@ -118,15 +122,24 @@ func load_all(validate: bool = true) -> bool:
 			return false
 	if not validate:
 		return true
+	var spell_error: String = preload("res://core/skills/skill_database.gd").validate_runtime_spells(tables.spells, tables.spell_growth)
+	if not spell_error.is_empty():
+		error = spell_error
+		return false
 	if not validate_references():
 		return false
 	var authored := preload("res://core/npc_definitions.gd").load_definitions(tables)
 	error = authored.error
 	if error.is_empty():
 		tables.npc_overrides = authored.rows
+		error = preload("res://core/sect_building.gd").validate(tables)
 	return error.is_empty()
 
 func validate_references() -> bool:
+	var monster_error: String = preload("res://core/monster_config.gd").validate(tables)
+	if not monster_error.is_empty():
+		error = monster_error
+		return false
 	var auction_error: String = preload("res://gameplay/auction/auction_validation.gd").config(tables)
 	if not auction_error.is_empty():
 		error = auction_error
@@ -191,14 +204,6 @@ func validate_references() -> bool:
 		if not tables.items.has(h.id) or not tables.items.has(h.seed_id) or h.days <= 0 or h.yield_count <= 0:
 			error = "Invalid herb reference: " + h.id
 			return false
-	for monster in tables.monsters.values():
-		for drop in monster.drops:
-			if not drop is Array or drop.size() not in [3,4] or not tables.items.has(drop[0]) or drop[1] <= 0 or drop[2] < 0 or drop[2] > 1:
-				error = "Invalid drop: " + monster.id
-				return false
-			if drop.size() == 4 and (not (drop[3] is int or drop[3] is float) or drop[3] < drop[1] or drop[3] != int(drop[3])):
-				error = "Invalid drop quantity range: " + monster.id
-				return false
 	for quest in tables.quests.values():
 		if not quest.previous.is_empty() and not tables.quests.has(quest.previous):
 			error = "Invalid quest prerequisite: " + quest.id
@@ -220,7 +225,34 @@ func validate_references() -> bool:
 	error = preload("res://gameplay/quest/town_announcements.gd").validate(tables)
 	if not error.is_empty():
 		return false
+	error = preload("res://gameplay/exploration_run.gd").validate_catalog(tables)
+	if not error.is_empty():
+		return false
 	return true
+
+func _valid_encounters(value: Variant, tables: Dictionary, route: Dictionary) -> bool:
+	if not value is Array or value.is_empty():
+		return false
+	var total := 0
+	for entry in value:
+		if not entry is Dictionary:
+			return false
+		var weight: Variant = entry.get("weight")
+		if not (weight is int or weight is float) or weight < 0 or weight != int(weight):
+			return false
+		total += int(weight)
+		match str(entry.get("type", "")):
+			"monster":
+				if not entry.get("monster_id") is String or not tables.monsters.has(entry.monster_id):
+					return false
+			"gather":
+				if route.get("herbs", []).is_empty():
+					return false
+			"spring":
+				pass
+			_:
+				return false
+	return total > 0
 
 func _validate_sect_areas(sect_id: String) -> bool:
 	var areas: Variant = tables.sect_areas.get(sect_id)

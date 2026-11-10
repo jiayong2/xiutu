@@ -6,15 +6,104 @@
       "heading": "建筑一览",
       "restriction": "",
       "cards": [
-        {"id": "affairs", "name": "事务殿", "description": "宗门任务 · 事务交付"},
-        {"id": "library", "name": "外门藏经阁", "description": "外门功法 · 法术研习"},
-        {"id": "treasury", "name": "宗门宝库", "description": "贡献兑换 · 基础资源"},
-        {"id": "arena", "name": "演武场", "description": "同门切磋 · 晋升考核"},
-        {"id": "quarters", "name": "弟子居所", "description": "休息 · 修炼 · 同门交流"},
-        {"id": "alchemy", "name": "炼丹房", "description": "委托炼丹 · 丹道事务"},
-        {"id": "garden", "name": "药园", "description": "灵草种植 · 日常采集"},
-        {"id": "lecture", "name": "外门讲道堂", "description": "听道 · 修炼指点"},
-        {"id": "gate", "name": "山门", "description": "接待来客 · 进出宗门", "entry": "gate"}
+        {
+          "id": "affairs",
+          "name": "事务殿",
+          "description": "宗门任务 · 事务交付",
+          "status": "available",
+          "keepers": ["npc_han_ming", "npc_zhou_xuan"],
+          "functions": [
+            {"id": "quests", "type": "QUEST", "label": "查看宗门任务", "system": "sect_mission"},
+            {"id": "talk", "type": "NPC_INTERACT", "label": "交谈", "system": "npc"}
+          ]
+        },
+        {
+          "id": "library",
+          "name": "外门藏经阁",
+          "description": "外门功法 · 法术研习",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "library", "type": "LIBRARY", "label": "查看功法与法术", "system": "technique"}
+          ]
+        },
+        {
+          "id": "treasury",
+          "name": "宗门宝库",
+          "description": "贡献兑换 · 基础资源",
+          "status": "available",
+          "keepers": ["npc_qingyue_treasury"],
+          "functions": [
+            {"id": "exchange", "type": "EXCHANGE", "label": "贡献兑换", "system": "sect_contribution"}
+          ]
+        },
+        {
+          "id": "arena",
+          "name": "演武场",
+          "description": "同门切磋 · 晋升考核",
+          "status": "available",
+          "keepers": ["npc_han_tieshan"],
+          "functions": [
+            {"id": "spar", "type": "SPAR", "label": "同门切磋", "system": "battle"},
+            {"id": "exam", "type": "EXAM", "label": "晋升考核", "system": "sect_rank"}
+          ]
+        },
+        {
+          "id": "quarters",
+          "name": "弟子居所",
+          "description": "休息 · 修炼 · 同门交流",
+          "status": "available",
+          "keepers": ["npc_chen_yuan"],
+          "functions": [
+            {"id": "rest", "type": "REST", "label": "休息", "system": "rest"},
+            {"id": "cultivate", "type": "CULTIVATION", "label": "修炼", "system": "cultivation"}
+          ]
+        },
+        {
+          "id": "alchemy",
+          "name": "炼丹房",
+          "description": "委托炼丹 · 丹道事务",
+          "status": "available",
+          "keepers": ["npc_shen_danqiu"],
+          "functions": [
+            {"id": "talk", "type": "NPC_INTERACT", "label": "交谈", "system": "npc"},
+            {"id": "quests", "type": "QUEST", "label": "查看丹房事务", "system": "sect_mission"}
+          ]
+        },
+        {
+          "id": "garden",
+          "name": "药园",
+          "description": "灵草种植 · 日常采集",
+          "status": "available",
+          "keepers": ["npc_ye_qinghe"],
+          "functions": [
+            {"id": "quests", "type": "QUEST", "label": "查看药园事务", "system": "sect_mission"},
+            {"id": "event", "type": "EVENT", "label": "药园事务", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "lecture",
+          "name": "外门讲道堂",
+          "description": "听道 · 修炼指点",
+          "status": "available",
+          "keepers": ["npc_xuan_qingzi"],
+          "functions": [
+            {"id": "talk", "type": "NPC_INTERACT", "label": "交谈", "system": "npc"},
+            {"id": "event", "type": "EVENT", "label": "听道", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "gate",
+          "name": "山门",
+          "description": "接待来客 · 进出宗门",
+          "entry": "gate",
+          "status": "available",
+          "keepers": ["npc_li_heng"],
+          "functions": [
+            {"id": "depart", "type": "DEPART", "label": "返回世界地图", "system": "world_map"},
+            {"id": "talk", "type": "NPC_INTERACT", "label": "交谈", "system": "npc"}
+          ]
+        }
       ]
     },
     {
@@ -23,15 +112,100 @@
       "heading": "内门建筑",
       "restriction": "需要内门弟子身份或临时通行许可。当前尚无正式职级及许可数据。",
       "cards": [
-        {"id": "affairs", "name": "内门事务殿", "description": "内门委托 · 高阶宗门事务"},
-        {"id": "library", "name": "内门藏经阁", "description": "高阶功法 · 法术传承"},
-        {"id": "treasury", "name": "内门宝库", "description": "稀有丹药 · 法器兑换"},
-        {"id": "instruction", "name": "传功殿", "description": "长老传道 · 功法指点"},
-        {"id": "cavern", "name": "聚灵洞府", "description": "闭关修炼 · 灵气增益"},
-        {"id": "arena", "name": "内门演武场", "description": "同门切磋 · 排名挑战"},
-        {"id": "quarters", "name": "内门弟子居", "description": "居所修炼 · 同门往来"},
-        {"id": "alchemy", "name": "炼丹殿", "description": "高阶炼丹 · 丹道委托"},
-        {"id": "beasts", "name": "灵兽苑", "description": "灵兽培养 · 宗门驯养"}
+        {
+          "id": "affairs",
+          "name": "内门事务殿",
+          "description": "内门委托 · 高阶宗门事务",
+          "status": "available",
+          "keepers": ["npc_lu_huaiyuan"],
+          "functions": [
+            {"id": "quests", "type": "QUEST", "label": "查看内门事务", "system": "sect_mission"}
+          ]
+        },
+        {
+          "id": "library",
+          "name": "内门藏经阁",
+          "description": "高阶功法 · 法术传承",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "library", "type": "LIBRARY", "label": "查看高阶功法", "system": "technique"}
+          ]
+        },
+        {
+          "id": "treasury",
+          "name": "内门宝库",
+          "description": "稀有丹药 · 法器兑换",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "exchange", "type": "EXCHANGE", "label": "贡献兑换", "system": "sect_contribution"}
+          ]
+        },
+        {
+          "id": "instruction",
+          "name": "传功殿",
+          "description": "长老传道 · 功法指点",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "talk", "type": "NPC_INTERACT", "label": "交谈", "system": "npc"},
+            {"id": "event", "type": "EVENT", "label": "传道", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "cavern",
+          "name": "聚灵洞府",
+          "description": "闭关修炼 · 灵气增益",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "cultivate", "type": "CULTIVATION", "label": "闭关修炼", "system": "cultivation"}
+          ]
+        },
+        {
+          "id": "arena",
+          "name": "内门演武场",
+          "description": "同门切磋 · 排名挑战",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "spar", "type": "SPAR", "label": "同门切磋", "system": "battle"},
+            {"id": "exam", "type": "EXAM", "label": "排名挑战", "system": "sect_rank"}
+          ]
+        },
+        {
+          "id": "quarters",
+          "name": "内门弟子居",
+          "description": "居所修炼 · 同门往来",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "rest", "type": "REST", "label": "休息", "system": "rest"},
+            {"id": "cultivate", "type": "CULTIVATION", "label": "修炼", "system": "cultivation"}
+          ]
+        },
+        {
+          "id": "alchemy",
+          "name": "炼丹殿",
+          "description": "高阶炼丹 · 丹道委托",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "quests", "type": "QUEST", "label": "查看丹道委托", "system": "sect_mission"},
+            {"id": "talk", "type": "NPC_INTERACT", "label": "交谈", "system": "npc"}
+          ]
+        },
+        {
+          "id": "beasts",
+          "name": "灵兽苑",
+          "description": "灵兽培养 · 宗门驯养",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "灵兽事务", "system": "sect_event"}
+          ]
+        }
       ]
     },
     {
@@ -40,15 +214,100 @@
       "heading": "宗门核心建筑",
       "restriction": "需要核心区身份或授权。当前尚无正式职级及许可数据。",
       "cards": [
-        {"id": "master", "name": "宗主殿", "description": "拜见宗主 · 宗门主线"},
-        {"id": "council", "name": "长老议事堂", "description": "宗门决策 · 势力事务"},
-        {"id": "inheritance", "name": "传承秘殿", "description": "宗门绝学 · 核心传承"},
-        {"id": "quarters", "name": "真传弟子居", "description": "专属洞府 · 真传往来"},
-        {"id": "ancestral", "name": "祖师殿", "description": "宗门历史 · 祖师传承"},
-        {"id": "cavern", "name": "高级聚灵洞府", "description": "高浓度灵气 · 深度闭关"},
-        {"id": "vault", "name": "宗门秘库", "description": "珍稀资源 · 特殊兑换"},
-        {"id": "formation", "name": "护宗大阵中枢", "description": "宗门防护 · 阵法事务"},
-        {"id": "assembly", "name": "宗门议事台", "description": "重要事件 · 宗门大会"}
+        {
+          "id": "master",
+          "name": "宗主殿",
+          "description": "拜见宗主 · 宗门主线",
+          "status": "available",
+          "keepers": ["npc_gu_changfeng"],
+          "functions": [
+            {"id": "talk", "type": "NPC_INTERACT", "label": "交谈", "system": "npc"},
+            {"id": "event", "type": "EVENT", "label": "拜见宗主", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "council",
+          "name": "长老议事堂",
+          "description": "宗门决策 · 势力事务",
+          "status": "available",
+          "keepers": ["npc_xu_qingci"],
+          "functions": [
+            {"id": "manage", "type": "MANAGEMENT", "label": "宗门决策", "system": "sect_management"},
+            {"id": "event", "type": "EVENT", "label": "议事", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "inheritance",
+          "name": "传承秘殿",
+          "description": "宗门绝学 · 核心传承",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "核心传承", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "quarters",
+          "name": "真传弟子居",
+          "description": "专属洞府 · 真传往来",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "rest", "type": "REST", "label": "休息", "system": "rest"},
+            {"id": "cultivate", "type": "CULTIVATION", "label": "修炼", "system": "cultivation"}
+          ]
+        },
+        {
+          "id": "ancestral",
+          "name": "祖师殿",
+          "description": "宗门历史 · 祖师传承",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "祖师传承", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "cavern",
+          "name": "高级聚灵洞府",
+          "description": "高浓度灵气 · 深度闭关",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "cultivate", "type": "CULTIVATION", "label": "深度闭关", "system": "cultivation"}
+          ]
+        },
+        {
+          "id": "vault",
+          "name": "宗门秘库",
+          "description": "珍稀资源 · 特殊兑换",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "exchange", "type": "EXCHANGE", "label": "特殊兑换", "system": "sect_contribution"}
+          ]
+        },
+        {
+          "id": "formation",
+          "name": "护宗大阵中枢",
+          "description": "宗门防护 · 阵法事务",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "护宗大阵", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "assembly",
+          "name": "宗门议事台",
+          "description": "重要事件 · 宗门大会",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "宗门大会", "system": "sect_event"},
+            {"id": "manage", "type": "MANAGEMENT", "label": "大会事务", "system": "sect_management"}
+          ]
+        }
       ]
     },
     {
@@ -57,15 +316,105 @@
       "heading": "禁地探索区域",
       "restriction": "需要后山专项许可。当前尚无正式许可或探索解锁数据。",
       "cards": [
-        {"id": "cavern", "name": "祖师闭关洞府", "description": "闭关遗迹 · 特殊传承"},
-        {"id": "seal", "name": "镇妖封印台", "description": "封印检查 · 妖兽异动"},
-        {"id": "vein", "name": "古灵脉", "description": "灵脉探索 · 灵气异动"},
-        {"id": "cliff", "name": "试剑崖", "description": "剑意感悟 · 特殊试炼"},
-        {"id": "rift", "name": "秘境裂隙", "description": "限时秘境 · 随机事件"},
-        {"id": "valley", "name": "古药谷", "description": "稀有灵植 · 特殊采集"},
-        {"id": "pool", "name": "寒潭", "description": "淬体修炼 · 隐藏机缘"},
-        {"id": "ruins", "name": "废弃洞府", "description": "洞府探索 · 遗留线索"},
-        {"id": "depths", "name": "宗门禁制深处", "description": "未知区域 · 主线事件", "entry": "undiscovered"}
+        {
+          "id": "cavern",
+          "name": "祖师闭关洞府",
+          "description": "闭关遗迹 · 特殊传承",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "闭关遗迹", "system": "sect_event"},
+            {"id": "explore", "type": "EXPLORE", "label": "探索遗迹", "system": "exploration"}
+          ]
+        },
+        {
+          "id": "seal",
+          "name": "镇妖封印台",
+          "description": "封印检查 · 妖兽异动",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "封印检查", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "vein",
+          "name": "古灵脉",
+          "description": "灵脉探索 · 灵气异动",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "explore", "type": "EXPLORE", "label": "探索灵脉", "system": "exploration"},
+            {"id": "event", "type": "EVENT", "label": "灵气异动", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "cliff",
+          "name": "试剑崖",
+          "description": "剑意感悟 · 特殊试炼",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "剑意感悟", "system": "sect_event"},
+            {"id": "explore", "type": "EXPLORE", "label": "探索试剑崖", "system": "exploration"}
+          ]
+        },
+        {
+          "id": "rift",
+          "name": "秘境裂隙",
+          "description": "限时秘境 · 随机事件",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "裂隙事件", "system": "sect_event"},
+            {"id": "explore", "type": "EXPLORE", "label": "探索裂隙", "system": "exploration"}
+          ]
+        },
+        {
+          "id": "valley",
+          "name": "古药谷",
+          "description": "稀有灵植 · 特殊采集",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "灵植机缘", "system": "sect_event"},
+            {"id": "explore", "type": "EXPLORE", "label": "探索药谷", "system": "exploration"}
+          ]
+        },
+        {
+          "id": "pool",
+          "name": "寒潭",
+          "description": "淬体修炼 · 隐藏机缘",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "cultivate", "type": "CULTIVATION", "label": "淬体", "system": "cultivation"},
+            {"id": "event", "type": "EVENT", "label": "寒潭机缘", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "ruins",
+          "name": "废弃洞府",
+          "description": "洞府探索 · 遗留线索",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "explore", "type": "EXPLORE", "label": "探索洞府", "system": "exploration"},
+            {"id": "event", "type": "EVENT", "label": "遗留线索", "system": "sect_event"}
+          ]
+        },
+        {
+          "id": "depths",
+          "name": "宗门禁制深处",
+          "description": "未知区域 · 主线事件",
+          "entry": "undiscovered",
+          "status": "available",
+          "keepers": [],
+          "functions": [
+            {"id": "event", "type": "EVENT", "label": "禁制深处", "system": "sect_event"},
+            {"id": "explore", "type": "EXPLORE", "label": "探索深处", "system": "exploration"}
+          ]
+        }
       ]
     }
   ]

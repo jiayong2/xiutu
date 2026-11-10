@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "template_elder",
+  "name": "宗门长老",
+  "count": 8,
+  "identity": {
+    "location_ids": ["sect_qingyue_gate"],
+    "sect_names": ["青岳宗"],
+    "roles": ["外门长老", "传功长老"],
+    "role_weights": [50, 50],
+    "male_weight": 60,
+    "female_weight": 40,
+    "age": {"min": 40, "max": 180},
+    "lifespan": {"min": 300, "max": 600},
+    "wealth": {"min": 200, "max": 2000},
+    "personalities": [],
+    "generate_names": true
+  },
+  "cultivation": {
+    "qi_realm": {"min": 19, "max": 36},
+    "body_realm": {"min": 10, "max": 36},
+    "route": "qi_primary",
+    "cultivation_ratio": {"min": 10, "max": 70},
+    "ranks": ["人杰", "精英"],
+    "rank_weights": [55, 45],
+    "realm_known": true,
+    "foundation": {
+      "qi_sea": {"min": 24, "max": 48},
+      "meridians": {"min": 24, "max": 48},
+      "bones": {"min": 20, "max": 44},
+      "physique": {"min": 20, "max": 44},
+      "spirit_sea": {"min": 18, "max": 40},
+      "soul": {"min": 18, "max": 40}
+    }
+  },
+  "base_stats": {
+    "hp": {"min": 180, "max": 320},
+    "mp": {"min": 70, "max": 160},
+    "attack": {"min": 30, "max": 70},
+    "defense": {"min": 14, "max": 36},
+    "speed": {"min": 12, "max": 24}
+  }
+}

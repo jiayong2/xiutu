@@ -48,6 +48,7 @@ static func record(entry: Dictionary, definitions: Dictionary = {}) -> String:
 				"win":return colored("战斗胜利","victory")+"，战利品已结算。"
 				"lose":return colored("战斗失败，已返回青岚镇。","system")
 				"escape":return colored("逃跑成功，无战利品。","system")
+				"enemy_escape":return colored("妖兽逃跑，战斗结束，无战利品。","system")
 		"system":return colored(entry.get("text",""),"system")
 		"legacy":return escape_text(entry.get("text",""))
 	return ""

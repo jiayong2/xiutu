@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "id": "template_custom",
+  "name": "自定义",
+  "count": 1,
+  "identity": {
+    "location_ids": [],
+    "sect_names": [""],
+    "roles": [],
+    "male_weight": 50,
+    "female_weight": 50,
+    "age": {"min": 18, "max": 80},
+    "lifespan": {"min": 100, "max": 100},
+    "wealth": {"min": 0, "max": 200},
+    "personalities": [],
+    "generate_names": true
+  },
+  "cultivation": {
+    "qi_realm": {"min": 0, "max": 9},
+    "body_realm": {"min": 0, "max": 9},
+    "route": "random",
+    "cultivation_ratio": {"min": 0, "max": 80},
+    "ranks": ["普通", "良才", "精英", "人杰", "天骄", "凡人"],
+    "rank_weights": [30, 25, 20, 10, 5, 10],
+    "realm_known": true
+  }
+}

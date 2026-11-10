@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "template_rogue",
+  "name": "普通散修",
+  "count": 20,
+  "identity": {
+    "location_ids": ["town_qinglan"],
+    "sect_names": [""],
+    "roles": ["散修", "游历散修", "年轻散修", "采药散修"],
+    "role_weights": [40, 30, 20, 10],
+    "male_weight": 55,
+    "female_weight": 45,
+    "age": {"min": 18, "max": 60},
+    "lifespan": {"min": 100, "max": 100},
+    "wealth": {"min": 0, "max": 200},
+    "personalities": [],
+    "personality_weights": [],
+    "generate_names": true
+  },
+  "cultivation": {
+    "qi_realm": {"min": 0, "max": 9},
+    "body_realm": {"min": 0, "max": 9},
+    "route": "qi_primary",
+    "cultivation_ratio": {"min": 0, "max": 60},
+    "roots": [],
+    "ranks": ["普通", "良才", "精英"],
+    "rank_weights": [50, 35, 15],
+    "realm_known": true,
+    "foundation": {
+      "qi_sea": {"min": 10, "max": 24},
+      "meridians": {"min": 10, "max": 24},
+      "bones": {"min": 10, "max": 24},
+      "physique": {"min": 10, "max": 24},
+      "spirit_sea": {"min": 10, "max": 24},
+      "soul": {"min": 10, "max": 24}
+    }
+  },
+  "base_stats": {
+    "hp": {"min": 60, "max": 140},
+    "mp": {"min": 0, "max": 50},
+    "attack": {"min": 8, "max": 24},
+    "defense": {"min": 2, "max": 12},
+    "speed": {"min": 6, "max": 14}
+  }
+}

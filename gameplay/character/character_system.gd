@@ -78,8 +78,27 @@ func stats(p: Dictionary, data: Dictionary, sources: Variant = null) -> Dictiona
 		var level: int = int(p.techniques[id])
 		var label := "功法 · %s Lv.%d" % [definition.name, level] if sources != null else ""
 		for key in ["hp","defense","attack","fire"]:
-			var amount: Variant = definition[key] + definition[key + "_step"] * (level - 1)
-			_add_bonus(result, sources, key, amount, label)
+			_add_bonus(result, sources, key, technique_amount(definition, key, level), label)
+		for key in ["mp", "speed", "critical", "critical_damage"]:
+			if definition.has(key) or definition.has(key + "_step") or technique_level_row(definition, level).has(key):
+				if not result.has(key):
+					result[key] = 0
+					if sources != null:
+						sources[key] = {}
+				_add_bonus(result, sources, key, technique_amount(definition, key, level), label)
+		var percents: Variant = definition.get("percents", {})
+		if percents is Dictionary and not percents.is_empty():
+			var snapshot := {}
+			for key in percents:
+				snapshot[str(key)] = result.get(key, 0)
+			for key in percents:
+				if not result.has(key):
+					continue
+				var ratio := float(percents[key])
+				var percent_override: Dictionary = technique_level_row(definition, level).get("percents", {})
+				if percent_override.has(key):
+					ratio = float(percent_override[key])
+				_add_bonus(result, sources, key, roundi(float(snapshot[key]) * ratio), label)
 	var foundation := foundation_bonuses(p,data)
 	for key in ["hp","mp","attack","defense","blood"]:
 		_add_bonus(result, sources, key, foundation[key], "修炼根基")
@@ -142,6 +161,19 @@ func _npc_base(realm: int, data: Dictionary) -> Dictionary:
 		for index in range(NPC_BASE_KEYS.size()):
 			base[NPC_BASE_KEYS[index]] += int(growth[index])
 	return base
+
+static func technique_level_row(definition: Dictionary, level: int) -> Dictionary:
+	var table: Variant = definition.get("level_overrides", {})
+	if not table is Dictionary:
+		return {}
+	var row: Variant = table.get(str(level), {})
+	return row if row is Dictionary else {}
+
+static func technique_amount(definition: Dictionary, key: String, level: int) -> Variant:
+	var override := technique_level_row(definition, level)
+	if override.has(key):
+		return override[key]
+	return definition.get(key, 0) + definition.get(key + "_step", 0) * (level - 1)
 
 func _add_bonus(result: Dictionary, sources: Variant, key: String, amount: Variant, label: String) -> void:
 	result[key] += amount

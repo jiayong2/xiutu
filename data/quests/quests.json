@@ -355,5 +355,343 @@
         "hint": "青岚山外围 · 青石山道，探索时有机会采集青灵草。黑风林和灵溪谷也可采集，青岚镇 · 百草药铺有售。"
       }
     ]
+  },
+  {
+    "id": "quest_sect_daily_collect_001",
+    "name": "宗门药材征集",
+    "previous": "",
+    "realm": 0,
+    "target": "herb_spirit_grass",
+    "required_item": "",
+    "money": 15,
+    "contribution": 20,
+    "rewards": {},
+    "description": "宗门每日都需消耗灵草炼制丹药。事务殿正在征集三株青灵草，以供丹房日常使用。",
+    "quest_id": "quest_sect_daily_collect_001",
+    "title": "宗门药材征集",
+    "quest_type": "宗门日常",
+    "daily_type": "ITEM_DELIVERY",
+    "giver_npc_id": "npc_han_ming",
+    "recommended_realm": 0,
+    "turn_in_label": "青岳宗 · 外门事务殿",
+    "requirements": {"previous_quest_id": "", "min_realm": 0, "sect_id": "sect_qingyue", "min_sect_rank": "outer"},
+    "completion_mode": "ITEM_DELIVERY",
+    "serial": true,
+    "repeatable": true,
+    "repeat_rule": "DAILY",
+    "repeat_interval_days": 1,
+    "objectives": [
+      {
+        "objective_id": "deliver_spirit_grass",
+        "description": "向韩明提交青灵草 ×3",
+        "objective_type": "ITEM_DELIVERY",
+        "target_id": "herb_spirit_grass",
+        "target_location_id": "sect_qingyue_gate",
+        "required_count": 3,
+        "completion_condition": {"npc_id": "npc_han_ming"},
+        "hint": "青岚山外围的青石山道、黑风林、灵溪谷有机会采集青灵草，青岚镇百草药铺、云溪药阁和云溪坊市有售。"
+      }
+    ],
+    "dialogue": {
+      "group": "sect_daily",
+      "nodes": {
+        "offer": {
+          "entry": true,
+          "statuses": ["AVAILABLE"],
+          "line": "丹房今日需要补充几株青灵草，你若有闲暇，可替宗门寻三株回来。",
+          "options": [
+            {"id": "where", "label": "青灵草在哪里能找到？", "response": "青岚山外围几处山道都能寻到，若不想费时间，也可以去药铺买来。", "kind": "reply", "next": "offer_again"},
+            {"id": "accept", "label": "好，我去准备。", "response": "三株便够，凑齐后交给我即可。", "kind": "accept", "next": "close"},
+            {"id": "refuse", "label": "暂时没空。", "response": "无妨，事务殿还有其他弟子可以帮忙。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "offer_again": {
+          "statuses": ["AVAILABLE"],
+          "line": "丹房今日需要补充几株青灵草，你若有闲暇，可替宗门寻三株回来。",
+          "options": [
+            {"id": "accept", "label": "好，我去准备。", "response": "三株便够，凑齐后交给我即可。", "kind": "accept", "next": "close"},
+            {"id": "refuse", "label": "暂时没空。", "response": "无妨，事务殿还有其他弟子可以帮忙。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "active": {
+          "entry": true,
+          "statuses": ["ACTIVE"],
+          "line": "青灵草可凑齐了？",
+          "options": [
+            {"id": "short", "label": "还差一些。", "response": "不急，三株凑齐后再交给我。", "kind": "reply", "next": "close"},
+            {"id": "where", "label": "再告诉我哪里能找到。", "response": "青岚山外围几处山道都能寻到，若不想费时间，也可以去药铺买来。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "ready": {
+          "entry": true,
+          "statuses": ["READY_TO_TURN_IN"],
+          "line": "青灵草已经备齐了？",
+          "options": [
+            {"id": "deliver", "label": "这三株青灵草交给宗门。", "response": "不错，丹房正需要这些灵草。这是你的贡献和酬劳。", "kind": "delivery", "next": "close"},
+            {"id": "keep", "label": "我还想留着。", "response": "无妨，想好了再交给我便是。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "done": {
+          "entry": true,
+          "statuses": ["COMPLETED"],
+          "line": "今日的药材已经收齐了，明日若还有需要，再请你帮忙。",
+          "options": []
+        }
+      }
+    }
+  },
+  {
+    "id": "quest_sect_daily_hunt_001",
+    "name": "青岚山除妖",
+    "previous": "",
+    "realm": 0,
+    "target": "monster_gray_wolf",
+    "required_item": "",
+    "money": 20,
+    "contribution": 30,
+    "rewards": {},
+    "description": "青岚山外围近来有妖兽出没，影响往来修士的安全。事务殿委托弟子前去清剿两只妖兽。",
+    "quest_id": "quest_sect_daily_hunt_001",
+    "title": "青岚山除妖",
+    "quest_type": "宗门日常",
+    "daily_type": "KILL_TARGET",
+    "giver_npc_id": "npc_han_ming",
+    "recommended_realm": 0,
+    "turn_in_label": "青岳宗 · 外门事务殿",
+    "requirements": {"previous_quest_id": "", "min_realm": 0, "sect_id": "sect_qingyue", "min_sect_rank": "outer"},
+    "completion_mode": "KILL_TARGET",
+    "serial": true,
+    "repeatable": true,
+    "repeat_rule": "DAILY",
+    "repeat_interval_days": 1,
+    "objectives": [
+      {
+        "objective_id": "kill_gray_wolves",
+        "description": "击败灰牙野狼 ×2",
+        "objective_type": "KILL_ENEMY",
+        "target_id": "monster_gray_wolf",
+        "target_location_id": "area_qinglan_outskirts",
+        "required_count": 2,
+        "completion_condition": {},
+        "hint": "前往青岚山外围、黑风林或灵溪谷，击败灰牙野狼。直接探索青岚山外围也会遭遇。"
+      }
+    ],
+    "dialogue": {
+      "group": "sect_daily",
+      "nodes": {
+        "offer": {
+          "entry": true,
+          "statuses": ["AVAILABLE"],
+          "line": "青岚山外围近来妖兽活动频繁，你可愿前去清剿两只，为往来修士除些隐患？",
+          "options": [
+            {"id": "what", "label": "是什么妖兽？", "response": "是附近常见的灰牙野狼，在青岚山外围、黑风林和灵溪谷能够遇到。切记量力而行。", "kind": "reply", "next": "offer_again"},
+            {"id": "accept", "label": "好，我去一趟。", "response": "小心行事，击败两只后回来复命。", "kind": "accept", "next": "close"},
+            {"id": "refuse", "label": "暂时不接。", "response": "无妨，切莫为了贡献冒险。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "offer_again": {
+          "statuses": ["AVAILABLE"],
+          "line": "青岚山外围近来妖兽活动频繁，你可愿前去清剿两只，为往来修士除些隐患？",
+          "options": [
+            {"id": "accept", "label": "好，我去一趟。", "response": "小心行事，击败两只后回来复命。", "kind": "accept", "next": "close"},
+            {"id": "refuse", "label": "暂时不接。", "response": "无妨，切莫为了贡献冒险。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "active": {
+          "entry": true,
+          "statuses": ["ACTIVE"],
+          "line": "外围妖兽可清剿干净了？",
+          "options": [
+            {"id": "later", "label": "还差一些，我再去看看。", "response": "小心行事，清剿两只后再回来。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "ready": {
+          "entry": true,
+          "statuses": ["READY_TO_TURN_IN"],
+          "line": "看来你已完成这次除妖委托。",
+          "options": [
+            {"id": "deliver", "label": "两只妖兽已经清剿。", "response": "做得不错。这三十点宗门贡献和二十枚灵石，你收下吧。", "kind": "delivery", "next": "close"},
+            {"id": "later", "label": "我还有其他事情。", "response": "无妨，委托还在，办完再来复命。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "done": {
+          "entry": true,
+          "statuses": ["COMPLETED"],
+          "line": "今日除妖委托已经完成，明日再来看看是否有新的安排。",
+          "options": []
+        }
+      }
+    }
+  },
+  {
+    "id": "quest_sect_daily_patrol_001",
+    "name": "山门巡查",
+    "previous": "",
+    "realm": 0,
+    "target": "town_qinglan",
+    "required_item": "",
+    "money": 10,
+    "contribution": 15,
+    "rewards": {},
+    "description": "守山弟子需要定期巡查宗门往来道路。李衡请你前往青岚镇查看情况，再返回青岳山门确认山门安全。",
+    "quest_id": "quest_sect_daily_patrol_001",
+    "title": "山门巡查",
+    "quest_type": "宗门日常",
+    "daily_type": "VISIT_LOCATION",
+    "giver_npc_id": "npc_li_heng",
+    "recommended_realm": 0,
+    "turn_in_label": "青岳山门",
+    "requirements": {"previous_quest_id": "", "min_realm": 0, "sect_id": "sect_qingyue", "min_sect_rank": "outer"},
+    "completion_mode": "VISIT_LOCATION",
+    "serial": true,
+    "repeatable": true,
+    "repeat_rule": "DAILY",
+    "repeat_interval_days": 1,
+    "objectives": [
+      {
+        "objective_id": "patrol_route",
+        "description": "按顺序巡查青岚镇与青岳山门",
+        "objective_type": "VISIT_LOCATION",
+        "target_id": "town_qinglan",
+        "target_location_id": "",
+        "required_count": 2,
+        "completion_condition": {
+          "steps": [
+            {"location": "town_qinglan", "option_id": "patrol_town", "label": "巡查青岚镇", "prompt": "你查看了镇中道路与往来修士，暂未发现异常。", "confirm": "记录巡查结果", "response": "已记录青岚镇的巡查结果。"},
+            {"location": "sect_qingyue_gate", "option_id": "patrol_gate", "label": "检查山门周边", "prompt": "你沿山门巡视一圈，确认值守与道路均无异常。", "confirm": "完成巡查", "response": "已完成山门周边检查。"}
+          ]
+        },
+        "hint": "先前往青岚镇执行巡查，再返回青岳山门完成第二处检查。"
+      }
+    ],
+    "dialogue": {
+      "group": "sect_daily",
+      "nodes": {
+        "offer": {
+          "entry": true,
+          "statuses": ["AVAILABLE"],
+          "line": "山门人手有些不足，师弟可愿替我巡查一趟青岚镇，再回山门查看周边情况？",
+          "options": [
+            {"id": "where", "label": "需要巡查哪里？", "response": "先去青岚镇查看情况，再回来检查山门周边。两处确认无事，便算完成。", "kind": "reply", "next": "offer_again"},
+            {"id": "accept", "label": "好，我去一趟。", "response": "有劳师弟了，路上小心。", "kind": "accept", "next": "close"},
+            {"id": "refuse", "label": "今日没空。", "response": "无妨，我再安排其他弟子。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "offer_again": {
+          "statuses": ["AVAILABLE"],
+          "line": "山门人手有些不足，师弟可愿替我巡查一趟青岚镇，再回山门查看周边情况？",
+          "options": [
+            {"id": "accept", "label": "好，我去一趟。", "response": "有劳师弟了，路上小心。", "kind": "accept", "next": "close"},
+            {"id": "refuse", "label": "今日没空。", "response": "无妨，我再安排其他弟子。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "active": {
+          "entry": true,
+          "statuses": ["ACTIVE"],
+          "line": "山下和山门周边可都巡查过了？",
+          "options": [
+            {"id": "later", "label": "还没巡查完，我再去看看。", "response": "两处都确认了再回来便好。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "ready": {
+          "entry": true,
+          "statuses": ["READY_TO_TURN_IN"],
+          "line": "辛苦了，可有什么异常？",
+          "options": [
+            {"id": "deliver", "label": "两处都已检查，一切正常。", "response": "如此便好。这十五点贡献和十枚灵石，算是巡查的酬劳。", "kind": "delivery", "next": "close"},
+            {"id": "again", "label": "我再检查一遍。", "response": "好，你再确认一遍，无事再来交付。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "done": {
+          "entry": true,
+          "statuses": ["COMPLETED"],
+          "line": "今日巡查已完成，明日若有空，再来帮忙。",
+          "options": []
+        }
+      }
+    }
+  },
+  {
+    "id": "quest_sect_daily_lecture_001",
+    "name": "外门听道",
+    "previous": "",
+    "realm": 0,
+    "target": "npc_xuan_qingzi",
+    "required_item": "",
+    "money": 5,
+    "contribution": 10,
+    "rewards": {},
+    "description": "玄清子长老每日为外门弟子讲解修炼基础。认真听完一次讲道，可以获得宗门给予的修行鼓励。",
+    "quest_id": "quest_sect_daily_lecture_001",
+    "title": "外门听道",
+    "quest_type": "宗门日常",
+    "daily_type": "TALK_TO_NPC",
+    "giver_npc_id": "npc_xuan_qingzi",
+    "recommended_realm": 0,
+    "turn_in_label": "青岳宗 · 外门讲道堂",
+    "requirements": {"previous_quest_id": "", "min_realm": 0, "sect_id": "sect_qingyue", "min_sect_rank": "outer"},
+    "completion_mode": "TALK_TO_NPC",
+    "serial": true,
+    "repeatable": true,
+    "repeat_rule": "DAILY",
+    "repeat_interval_days": 1,
+    "objectives": [
+      {
+        "objective_id": "hear_lecture",
+        "description": "听完玄清子的一次讲道",
+        "objective_type": "TALK_OPTION",
+        "target_id": "npc_xuan_qingzi",
+        "target_location_id": "sect_qingyue_gate",
+        "required_count": 1,
+        "completion_condition": {"option_id": "acknowledge_lecture", "label": "弟子明白了，多谢长老。", "response": "善。今日便讲到这里，回去好生体悟。"},
+        "hint": "前往外门讲道堂，与玄清子交谈，选择听道并完成讲解。"
+      }
+    ],
+    "dialogue": {
+      "group": "sect_daily",
+      "nodes": {
+        "offer": {
+          "entry": true,
+          "statuses": ["AVAILABLE"],
+          "line": "今日讲解气海与经脉的修炼之理，你可愿留下听上一听？",
+          "options": [
+            {"id": "topic", "label": "今日讲些什么？", "response": "气海纳灵，经脉行气，二者相辅相成，乃修炼根基的重要所在。", "kind": "reply", "next": "offer_again"},
+            {"id": "accept", "label": "弟子愿意听道。", "response": "修行不可贪快。气海虽能汇聚灵力，若经脉不畅，灵力便难以运转自如。因此修炼之时，应兼顾二者，循序渐进。", "kind": "accept", "next": "listening"},
+            {"id": "leave", "label": "弟子还有其他事情。", "response": "无妨，改日再来听便是。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "offer_again": {
+          "statuses": ["AVAILABLE"],
+          "line": "今日讲解气海与经脉的修炼之理，你可愿留下听上一听？",
+          "options": [
+            {"id": "accept", "label": "弟子愿意听道。", "response": "修行不可贪快。气海虽能汇聚灵力，若经脉不畅，灵力便难以运转自如。因此修炼之时，应兼顾二者，循序渐进。", "kind": "accept", "next": "listening"},
+            {"id": "leave", "label": "弟子还有其他事情。", "response": "无妨，改日再来听便是。", "kind": "reply", "next": "close"}
+          ]
+        },
+        "listening": {
+          "entry": true,
+          "statuses": ["ACTIVE"],
+          "line": "修行不可贪快。气海虽能汇聚灵力，若经脉不畅，灵力便难以运转自如。因此修炼之时，应兼顾二者，循序渐进。",
+          "options": [
+            {"id": "acknowledge", "label": "弟子明白了，多谢长老。", "response": "善。今日便讲到这里，回去好生体悟。", "kind": "TALK_OPTION", "event_option": "acknowledge_lecture", "next": "ready"},
+            {"id": "again", "label": "弟子还想再听一遍。", "response": "修行不可贪快。气海虽能汇聚灵力，若经脉不畅，灵力便难以运转自如。因此修炼之时，应兼顾二者，循序渐进。", "kind": "reply", "next": "listening"}
+          ]
+        },
+        "ready": {
+          "entry": true,
+          "statuses": ["READY_TO_TURN_IN"],
+          "line": "今日的讲道已经听完。若还没领取鼓励，现在便可领取。",
+          "options": [
+            {"id": "claim", "label": "领取今日听道奖励。", "response": "今日便到这里。这十点贡献和五枚灵石，是宗门给认真听道的弟子的鼓励。", "kind": "delivery", "next": "close"}
+          ]
+        },
+        "done": {
+          "entry": true,
+          "statuses": ["COMPLETED"],
+          "line": "今日已听过讲道，修行贵在领悟，不必急于求成。明日再来吧。",
+          "options": []
+        }
+      }
+    }
   }
 ]

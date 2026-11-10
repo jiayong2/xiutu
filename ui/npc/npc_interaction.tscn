@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=8 format=3]
 [ext_resource type="Script" path="res://ui/npc/npc_interaction.gd" id="1"]
 [sub_resource type="StyleBoxFlat" id="Panel"]
-bg_color = Color(0.18,0.28,0.32,1)
+bg_color = Color(0.25,0.36,0.40,1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_left = 8
@@ -11,7 +11,7 @@ content_margin_right = 16.0
 content_margin_top = 12.0
 content_margin_bottom = 12.0
 [sub_resource type="StyleBoxFlat" id="Button"]
-bg_color = Color(0.27,0.39,0.44,1)
+bg_color = Color(0.32,0.47,0.51,1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_left = 8
@@ -30,6 +30,22 @@ content_margin_left = 16.0
 content_margin_right = 16.0
 content_margin_top = 12.0
 content_margin_bottom = 12.0
+[sub_resource type="StyleBoxFlat" id="Portrait"]
+bg_color = Color(0.47,0.61,0.65,1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_left = 9
+corner_radius_bottom_right = 9
+[sub_resource type="StyleBoxFlat" id="Dialogue"]
+bg_color = Color(0.20,0.30,0.34,1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_left = 9
+corner_radius_bottom_right = 9
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+content_margin_left = 16.0
+content_margin_right = 16.0
 [sub_resource type="Theme" id="Theme"]
 default_font_size = 22
 PanelContainer/styles/panel = SubResource("Panel")
@@ -38,6 +54,7 @@ Button/styles/hover = SubResource("Accent")
 Button/styles/pressed = SubResource("Accent")
 Button/styles/disabled = SubResource("Button")
 [node name="NpcInteraction" type="Control"]
+z_index = 20
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource("Theme")
@@ -47,11 +64,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.02,0.04,0.05,0.55)
 [node name="Panel" type="PanelContainer" parent="."]
-offset_left = 135.0
-offset_top = 82.5
-offset_right = 1235.0
-offset_bottom = 692.5
-scale = Vector2(1.5,1.5)
+offset_right = 1100.0
+offset_bottom = 750.0
 [node name="Column" type="VBoxContainer" parent="Panel"]
 theme_override_constants/separation = 12
 [node name="CloseRow" type="HBoxContainer" parent="Panel/Column"]
@@ -59,108 +73,99 @@ theme_override_constants/separation = 12
 [node name="Space" type="Control" parent="Panel/Column/CloseRow"]
 size_flags_horizontal = 3
 [node name="Close" type="Button" parent="Panel/Column/CloseRow"]
-text = "关闭"
-custom_minimum_size = Vector2(72,32)
+text = "×"
+tooltip_text = "关闭"
+custom_minimum_size = Vector2(48,44)
 [node name="Body" type="HBoxContainer" parent="Panel/Column"]
 size_flags_vertical = 3
 theme_override_constants/separation = 20
-[node name="Portrait" type="VBoxContainer" parent="Panel/Column/Body"]
-custom_minimum_size = Vector2(280,0)
-theme_override_constants/separation = 8
-[node name="NpcName" type="Label" parent="Panel/Column/Body/Portrait"]
-text = "人物姓名"
-theme_override_font_sizes/font_size = 28
+[node name="PlayerPortrait" type="VBoxContainer" parent="Panel/Column/Body"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+[node name="PlayerName" type="Label" parent="Panel/Column/Body/PlayerPortrait"]
+text = "玩家"
 horizontal_alignment = 1
-[node name="Figure" type="ColorRect" parent="Panel/Column/Body/Portrait"]
-size_flags_vertical = 3
-color = Color(0.47,0.61,0.67,1)
-[node name="FigureText" type="Label" parent="Panel/Column/Body/Portrait/Figure"]
-text = "人物立绘"
+theme_override_colors/font_color = Color(1,0.88,0.62,1)
 theme_override_font_sizes/font_size = 24
-anchor_right = 1.0
-anchor_bottom = 1.0
+text_overrun_behavior = 3
+[node name="PlayerRealm" type="Label" parent="Panel/Column/Body/PlayerPortrait"]
+text = "境界"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+text_overrun_behavior = 3
+[node name="PlayerFigure" type="PanelContainer" parent="Panel/Column/Body/PlayerPortrait"]
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Portrait")
+[node name="PlayerFigureText" type="Label" parent="Panel/Column/Body/PlayerPortrait/PlayerFigure"]
+text = "玩家立绘"
 horizontal_alignment = 1
 vertical_alignment = 1
-[node name="Relation" type="Label" parent="Panel/Column/Body/Portrait"]
-text = "关系：陌生"
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
-[node name="Information" type="VBoxContainer" parent="Panel/Column/Body"]
-custom_minimum_size = Vector2(220,0)
-theme_override_constants/separation = 24
-[node name="Realm" type="Label" parent="Panel/Column/Body/Information"]
-text = "境界未知"
-theme_override_font_sizes/font_size = 24
-autowrap_mode = 3
-[node name="Identity" type="Label" parent="Panel/Column/Body/Information"]
-text = "身份：未记录"
-theme_override_font_sizes/font_size = 22
-autowrap_mode = 3
 [node name="InteractionArea" type="VBoxContainer" parent="Panel/Column/Body"]
 size_flags_horizontal = 3
+alignment = 1
 [node name="Actions" type="GridContainer" parent="Panel/Column/Body/InteractionArea"]
 columns = 2
-size_flags_vertical = 3
+size_flags_vertical = 4
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 8
 [node name="Action0" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "交谈"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action1" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "打听"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action2" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "赠礼"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action3" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "交易"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action4" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "请教"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action5" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "论道"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action6" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "切磋"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action7" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "邀请"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action8" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "拜师"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action9" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
-text = "任务"
-custom_minimum_size = Vector2(0,44)
+text = "背包"
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action10" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "查看"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Action11" type="Button" parent="Panel/Column/Body/InteractionArea/Actions"]
 text = "其他"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 [node name="Subpanel" type="VBoxContainer" parent="Panel/Column/Body/InteractionArea"]
@@ -175,7 +180,29 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 12
 [node name="Continue" type="Button" parent="Panel/Column/Body/InteractionArea/Subpanel"]
 text = "继续互动"
-custom_minimum_size = Vector2(0,44)
+custom_minimum_size = Vector2(0,52)
+[node name="Portrait" type="VBoxContainer" parent="Panel/Column/Body"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+[node name="NpcName" type="Label" parent="Panel/Column/Body/Portrait"]
+text = "人物姓名"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(1,0.88,0.62,1)
+theme_override_font_sizes/font_size = 24
+text_overrun_behavior = 3
+[node name="NpcDetails" type="Label" parent="Panel/Column/Body/Portrait"]
+text = "关系：陌生 · 境界未知"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+text_overrun_behavior = 3
+[node name="Figure" type="PanelContainer" parent="Panel/Column/Body/Portrait"]
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Portrait")
+[node name="FigureText" type="Label" parent="Panel/Column/Body/Portrait/Figure"]
+text = "NPC立绘"
+horizontal_alignment = 1
+vertical_alignment = 1
 [node name="Feedback" type="RichTextLabel" parent="Panel/Column"]
+theme_override_styles/normal = SubResource("Dialogue")
 custom_minimum_size = Vector2(0,152)
 text = "请选择互动。"

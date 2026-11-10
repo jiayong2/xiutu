@@ -1,4 +1,680 @@
 {
+  "npc_03c3716cc8515435ec595d1e": {
+    "age": 44,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 265,
+    "equipment_instances": {
+      "gear_00": "equip_v1_hide_belt",
+      "gear_01": "equip_v1_gale_boots"
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+      "shoes": "gear_01",
+      "waist": "gear_00"
+    },
+    "fortune_ids": [
+      "fortune_011",
+      "fortune_006",
+      "fortune_102",
+      "trade_expert",
+      "fortune_085"
+    ],
+    "id": "npc_03c3716cc8515435ec595d1e",
+    "initial_age": 44,
+    "inventory": {
+
+    },
+    "lifespan": 106,
+    "location": "sect_qingyue_gate",
+    "name": "康华远",
+    "sect": "sect_qingyue",
+    "sect_area": "outer",
+    "sect_building": "garden",
+    "stationary": true,
+    "duty": "药园帮工",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 24,
+        "defense": 7,
+        "hp": 122,
+        "mp": 57,
+        "speed": 12
+      },
+      "body_realm": "通脉六层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 14,
+        "meridians": 22,
+        "physique": 19,
+        "qi_sea": 21,
+        "soul": 12,
+        "spirit_sea": 12
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "精明随和",
+      "rank": "良才",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 6,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_metal_edge",
+      "skill_metal_all_edges"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_mountain_sword": 1,
+      "skill_metal_sword_formation": 1
+    },
+    "technique_slots": [
+      "technique_green_wood"
+    ],
+    "techniques": {
+      "technique_green_wood": 1
+    },
+    "wealth": 134
+  },
+  "npc_108088301ababcbd3e25e84b": {
+    "age": 31,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 105,
+    "equipment_instances": {
+      "gear_00": "equip_v1_hide_belt",
+      "gear_01": "equip_v1_thunder_bracers",
+      "gear_02": "equip_cloth_robe"
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+      "armor": "gear_02",
+      "waist": "gear_00",
+      "wrist": "gear_01"
+    },
+    "fortune_ids": [
+      "fortune_010",
+      "fortune_011",
+      "fortune_058",
+      "fortune_094"
+    ],
+    "id": "npc_108088301ababcbd3e25e84b",
+    "initial_age": 31,
+    "inventory": {
+
+    },
+    "lifespan": 107,
+    "location": "sect_qingyue_gate",
+    "name": "孟钧光",
+    "sect": "sect_qingyue",
+    "sect_area": "outer",
+    "sect_building": "arena",
+    "stationary": true,
+    "duty": "外门演武",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 23,
+        "defense": 16,
+        "hp": 119,
+        "mp": 47,
+        "speed": 12
+      },
+      "body_realm": "通脉一层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 20,
+        "meridians": 32,
+        "physique": 20,
+        "qi_sea": 30,
+        "soul": 27,
+        "spirit_sea": 19
+      },
+      "gender": "男",
+      "innate_fortune": [],
+      "personality": "沉着果决",
+      "rank": "人杰",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 4,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_metal_sword_formation",
+      "skill_metal_mountain_sword"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_mountain_sword": 1,
+      "skill_metal_sword_formation": 1,
+      "skill_spirit_bolt": 1
+    },
+    "technique_slots": [],
+    "techniques": {
+
+    },
+    "wealth": 250
+  },
+  "npc_3971c6017bb83834ed79e24b": {
+    "age": 35,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 720,
+    "equipment_instances": {
+      "gear_00": "equip_v1_tortoise_armor",
+      "gear_01": "equip_v1_void_pendant",
+      "gear_02": "equip_v1_mountain_bracers"
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+      "armor": "gear_00",
+      "necklace": "gear_01",
+      "wrist": "gear_02"
+    },
+    "fortune_ids": [
+      "fortune_012",
+      "fortune_013",
+      "fortune_074",
+      "stable_foundation",
+      "fortune_095"
+    ],
+    "id": "npc_3971c6017bb83834ed79e24b",
+    "initial_age": 35,
+    "inventory": {
+
+    },
+    "lifespan": 100,
+    "location": "sect_qingyue_gate",
+    "name": "萧逸明",
+    "sect": "sect_qingyue",
+    "sect_area": "inner",
+    "sect_building": "arena",
+    "stationary": true,
+    "duty": "内门演武",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 24,
+        "defense": 15,
+        "hp": 131,
+        "mp": 58,
+        "speed": 10
+      },
+      "body_realm": "通脉七层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 29,
+        "meridians": 32,
+        "physique": 14,
+        "qi_sea": 19,
+        "soul": 19,
+        "spirit_sea": 19
+      },
+      "gender": "男",
+      "innate_fortune": [],
+      "personality": "直爽",
+      "rank": "精英",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 13,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_metal_sword_formation",
+      "skill_metal_all_edges",
+      "skill_metal_mountain_sword"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_mountain_sword": 1,
+      "skill_metal_sword_formation": 1,
+      "skill_spirit_bolt": 1
+    },
+    "technique_slots": [
+      "technique_fire_breath"
+    ],
+    "techniques": {
+      "technique_fire_breath": 1
+    },
+    "wealth": 191
+  },
+  "npc_3d0bc791aa4f497f3cd91e29": {
+    "age": 38,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 880,
+    "equipment_instances": {
+      "gear_00": "equip_v1_five_elements_ring",
+      "gear_01": "equip_iron_sword",
+      "gear_02": "equip_v1_earth_jade_belt",
+      "gear_03": "equip_v1_void_pendant",
+      "gear_04": "equip_v1_cloud_boots"
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+      "necklace": "gear_03",
+      "ring": "gear_00",
+      "shoes": "gear_04",
+      "waist": "gear_02",
+      "weapon": "gear_01"
+    },
+    "fortune_ids": [
+      "fortune_014",
+      "fortune_002",
+      "fortune_059",
+      "fortune_106",
+      "fortune_101"
+    ],
+    "id": "npc_3d0bc791aa4f497f3cd91e29",
+    "initial_age": 38,
+    "inventory": {
+
+    },
+    "lifespan": 124,
+    "location": "sect_qingyue_gate",
+    "name": "谢薇溪",
+    "sect": "sect_qingyue",
+    "sect_area": "inner",
+    "sect_building": "quarters",
+    "stationary": true,
+    "duty": "内门弟子居",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 18,
+        "defense": 13,
+        "hp": 104,
+        "mp": 36,
+        "speed": 18
+      },
+      "body_realm": "通脉四层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 23,
+        "meridians": 25,
+        "physique": 16,
+        "qi_sea": 20,
+        "soul": 28,
+        "spirit_sea": 24
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "稳重",
+      "rank": "良才",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 12,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_metal_mountain_sword",
+      "skill_metal_all_edges",
+      "skill_metal_edge"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_mountain_sword": 1
+    },
+    "technique_slots": [
+      "technique_qi_flow"
+    ],
+    "techniques": {
+      "technique_qi_flow": 1
+    },
+    "wealth": 291
+  },
+  "npc_4a1ee2793dfd74c7264a1058": {
+    "age": 35,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 1062,
+    "equipment_instances": {
+      "gear_00": "equip_v1_purple_cloud_crown",
+      "gear_01": "equip_v1_mountain_sword",
+      "gear_02": "equip_v1_earth_jade_belt"
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+      "head": "gear_00",
+      "waist": "gear_02",
+      "weapon": "gear_01"
+    },
+    "fortune_ids": [
+      "fortune_012",
+      "fortune_016",
+      "fortune_096",
+      "fortune_090",
+      "fortune_102"
+    ],
+    "id": "npc_4a1ee2793dfd74c7264a1058",
+    "initial_age": 35,
+    "inventory": {
+
+    },
+    "lifespan": 129,
+    "location": "sect_qingyue_gate",
+    "name": "唐嘉",
+    "sect": "sect_qingyue",
+    "sect_area": "inner",
+    "sect_building": "arena",
+    "stationary": true,
+    "duty": "内门演武",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 34,
+        "defense": 15,
+        "hp": 118,
+        "mp": 32,
+        "speed": 17
+      },
+      "body_realm": "通脉六层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 25,
+        "meridians": 28,
+        "physique": 20,
+        "qi_sea": 27,
+        "soul": 16,
+        "spirit_sea": 16
+      },
+      "gender": "男",
+      "innate_fortune": [],
+      "personality": "沉着果决",
+      "rank": "良才",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 13,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_spirit_bolt",
+      "skill_metal_all_edges",
+      "skill_metal_sword_formation",
+      "skill_metal_mountain_sword"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_mountain_sword": 1,
+      "skill_metal_sword_formation": 1,
+      "skill_spirit_bolt": 1
+    },
+    "technique_slots": [],
+    "techniques": {
+
+    },
+    "wealth": 140
+  },
+  "npc_4fde07ffae3d375ab90d7f72": {
+    "age": 18,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 532,
+    "equipment_instances": {
+
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+
+    },
+    "fortune_ids": [
+      "fortune_014",
+      "fortune_055",
+      "fortune_093"
+    ],
+    "id": "npc_4fde07ffae3d375ab90d7f72",
+    "initial_age": 18,
+    "inventory": {
+
+    },
+    "lifespan": 128,
+    "location": "sect_qingyue_gate",
+    "name": "褚明荷",
+    "sect": "sect_qingyue",
+    "sect_area": "inner",
+    "sect_building": "instruction",
+    "stationary": true,
+    "duty": "内门传功殿听讲",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 21,
+        "defense": 8,
+        "hp": 128,
+        "mp": 55,
+        "speed": 18
+      },
+      "body_realm": "通脉一层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 14,
+        "meridians": 20,
+        "physique": 27,
+        "qi_sea": 30,
+        "soul": 17,
+        "spirit_sea": 27
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "沉着果决",
+      "rank": "良才",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 11,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_metal_all_edges",
+      "skill_metal_mountain_sword",
+      "skill_metal_sword_formation"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_mountain_sword": 1,
+      "skill_metal_sword_formation": 1,
+      "skill_spirit_bolt": 1
+    },
+    "technique_slots": [
+      "technique_fire_breath"
+    ],
+    "techniques": {
+      "technique_fire_breath": 1
+    },
+    "wealth": 234
+  },
+  "npc_7a3eeabee98586d59eb192f0": {
+    "age": 18,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 396,
+    "equipment_instances": {
+      "gear_00": "equip_iron_sword"
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+      "weapon": "gear_00"
+    },
+    "fortune_ids": [
+      "fortune_010",
+      "fortune_104",
+      "fortune_050",
+      "fortune_094"
+    ],
+    "id": "npc_7a3eeabee98586d59eb192f0",
+    "initial_age": 18,
+    "inventory": {
+
+    },
+    "lifespan": 139,
+    "location": "sect_qingyue_gate",
+    "name": "郝昭阳",
+    "sect": "sect_qingyue",
+    "sect_area": "inner",
+    "sect_building": "arena",
+    "stationary": true,
+    "duty": "内门演武",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 34,
+        "defense": 16,
+        "hp": 102,
+        "mp": 40,
+        "speed": 11
+      },
+      "body_realm": "锻骨一层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 29,
+        "meridians": 17,
+        "physique": 18,
+        "qi_sea": 18,
+        "soul": 19,
+        "spirit_sea": 25
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "直爽",
+      "rank": "精英",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 13,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_metal_all_edges",
+      "skill_metal_edge",
+      "skill_metal_sword_formation",
+      "skill_metal_mountain_sword"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_mountain_sword": 1,
+      "skill_metal_sword_formation": 1,
+      "skill_spirit_bolt": 1
+    },
+    "technique_slots": [
+      "technique_qi_flow"
+    ],
+    "techniques": {
+      "technique_qi_flow": 1
+    },
+    "wealth": 176
+  },
   "npc_8dd8ad157c09adc2f0d980b7": {
     "age": 25.0,
     "artifact_ids": [],
@@ -105,6 +781,292 @@
       "technique_qi_flow": 3.0
     }
   },
+  "npc_a221f82fa89d14ce15bff306": {
+    "age": 20,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 100,
+    "equipment_instances": {
+      "gear_00": "equip_v1_iron_coat",
+      "gear_01": "equip_v1_bamboo_crown",
+      "gear_02": "equip_v1_thunder_bracers",
+      "gear_03": "equip_v1_jade_ring"
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+      "armor": "gear_00",
+      "head": "gear_01",
+      "ring": "gear_03",
+      "wrist": "gear_02"
+    },
+    "fortune_ids": [
+      "fortune_009",
+      "fortune_071",
+      "fortune_050",
+      "stable_foundation"
+    ],
+    "id": "npc_a221f82fa89d14ce15bff306",
+    "initial_age": 20,
+    "inventory": {
+
+    },
+    "lifespan": 145,
+    "location": "sect_qingyue_gate",
+    "name": "卫溪芷",
+    "sect": "sect_qingyue",
+    "sect_area": "outer",
+    "sect_building": "lecture",
+    "stationary": true,
+    "duty": "外门讲道堂听讲",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 30,
+        "defense": 18,
+        "hp": 140,
+        "mp": 43,
+        "speed": 10
+      },
+      "body_realm": "凡体",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 29,
+        "meridians": 14,
+        "physique": 12,
+        "qi_sea": 15,
+        "soul": 19,
+        "spirit_sea": 24
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "稳重",
+      "rank": "精英",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 5,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_metal_edge",
+      "skill_metal_all_edges",
+      "skill_spirit_bolt"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_mountain_sword": 1,
+      "skill_spirit_bolt": 1
+    },
+    "technique_slots": [
+      "technique_green_wood"
+    ],
+    "techniques": {
+      "technique_green_wood": 1
+    },
+    "wealth": 168
+  },
+  "npc_e4a242703acf1d156c90c474": {
+    "age": 28,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 1062,
+    "equipment_instances": {
+
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+
+    },
+    "fortune_ids": [
+      "fortune_010",
+      "fortune_009",
+      "fortune_077",
+      "fortune_096",
+      "fortune_087"
+    ],
+    "id": "npc_e4a242703acf1d156c90c474",
+    "initial_age": 28,
+    "inventory": {
+
+    },
+    "lifespan": 113,
+    "location": "sect_qingyue_gate",
+    "name": "曹风德",
+    "sect": "sect_qingyue",
+    "sect_area": "inner",
+    "sect_building": "affairs",
+    "stationary": true,
+    "duty": "内门事务殿差遣",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 33,
+        "defense": 17,
+        "hp": 118,
+        "mp": 55,
+        "speed": 16
+      },
+      "body_realm": "通脉七层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 24,
+        "meridians": 25,
+        "physique": 24,
+        "qi_sea": 21,
+        "soul": 27,
+        "spirit_sea": 23
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "稳重",
+      "rank": "精英",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 13,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_metal_edge",
+      "skill_metal_all_edges",
+      "skill_metal_sword_formation"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_sword_formation": 1
+    },
+    "technique_slots": [],
+    "techniques": {
+
+    },
+    "wealth": 280
+  },
+  "npc_f7aa5c317bc237f232ae28b2": {
+    "age": 41,
+    "artifact_ids": [],
+    "artifact_slots": [],
+    "authored": true,
+    "cultivation": 324,
+    "equipment_instances": {
+      "gear_00": "equip_v1_earth_jade_belt",
+      "gear_01": "equip_v1_tortoise_armor",
+      "gear_02": "equip_v1_purple_cloud_crown"
+    },
+    "equipment_nurture": {
+
+    },
+    "equipped": {
+      "armor": "gear_01",
+      "head": "gear_02",
+      "waist": "gear_00"
+    },
+    "fortune_ids": [
+      "fortune_010",
+      "fortune_094",
+      "fortune_070"
+    ],
+    "id": "npc_f7aa5c317bc237f232ae28b2",
+    "initial_age": 41,
+    "inventory": {
+
+    },
+    "lifespan": 125,
+    "location": "sect_qingyue_gate",
+    "name": "潘雪清",
+    "sect": "sect_qingyue",
+    "sect_area": "inner",
+    "sect_building": "quarters",
+    "stationary": true,
+    "duty": "内门弟子居",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 22,
+        "defense": 6,
+        "hp": 154,
+        "mp": 77,
+        "speed": 16
+      },
+      "body_realm": "通脉七层",
+      "contacts": {
+
+      },
+      "foundation": {
+        "bones": 17,
+        "meridians": 17,
+        "physique": 29,
+        "qi_sea": 19,
+        "soul": 24,
+        "spirit_sea": 20
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "直爽",
+      "rank": "良才",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {
+
+      }
+    },
+    "realm": 13,
+    "realm_known": true,
+    "relations": {
+
+    },
+    "role": "外门弟子",
+    "spell_mastery": {
+
+    },
+    "spell_slots": [
+      "skill_metal_all_edges",
+      "skill_metal_sword_formation"
+    ],
+    "spells": {
+      "skill_metal_all_edges": 1,
+      "skill_metal_edge": 1,
+      "skill_metal_mountain_sword": 1,
+      "skill_metal_sword_formation": 1,
+      "skill_spirit_bolt": 1
+    },
+    "technique_slots": [
+      "technique_qi_flow"
+    ],
+    "techniques": {
+      "technique_qi_flow": 1
+    },
+    "wealth": 265
+  },
   "npc_qingyue_supply": {
     "age": 25.0,
     "artifact_ids": [],
@@ -162,6 +1124,8 @@
     "role": "供给执事",
     "sect": "sect_qingyue",
     "sect_area": "outer",
+    "sect_building": "affairs",
+    "duty": "办理外门供给",
     "seed_on_restore": true,
     "spell_mastery": {
 
@@ -232,6 +1196,8 @@
     "role": "外门长老",
     "sect": "sect_qingyue",
     "sect_area": "outer",
+    "sect_building": "affairs",
+    "duty": "处理外门事务",
     "seed_on_restore": true,
     "spell_mastery": {
 
@@ -245,5 +1211,425 @@
     "techniques": {
 
     }
+  },
+  "npc_shen_danqiu": {
+    "age": 48,
+    "artifact_ids": [
+      "artifact_frost_mirror"
+    ],
+    "artifact_slots": [
+      "artifact_frost_mirror"
+    ],
+    "authored": true,
+    "cultivation": 252,
+    "duty": "管理炼丹事务、查验收取的炼丹材料",
+    "equipment_instances": {
+      "gear_00": "equip_v1_cloud_boots",
+      "gear_01": "equip_v1_mountain_sword"
+    },
+    "equipment_nurture": {},
+    "equipped": {
+      "shoes": "gear_00",
+      "weapon": "gear_01"
+    },
+    "fortune_ids": [
+      "fortune_022",
+      "fortune_023",
+      "fortune_066"
+    ],
+    "greeting": "沈丹秋：丹房事务繁忙，若有炼丹材料，可交由我查验。",
+    "id": "npc_shen_danqiu",
+    "initial_age": 48,
+    "inventory": {},
+    "lifespan": 150,
+    "location": "sect_qingyue_gate",
+    "name": "沈丹秋",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 28,
+        "defense": 18,
+        "hp": 153,
+        "mp": 58,
+        "speed": 11
+      },
+      "body_realm": "锻骨一层",
+      "contacts": {},
+      "foundation": {
+        "bones": 23,
+        "meridians": 37,
+        "physique": 36,
+        "qi_sea": 28,
+        "soul": 30,
+        "spirit_sea": 38
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "严谨、沉稳",
+      "rank": "精英",
+      "root": "木",
+      "sect": "青岳宗",
+      "stat_overrides": {}
+    },
+    "realm": 11,
+    "realm_known": true,
+    "relations": {},
+    "role": "炼丹房执事",
+    "sect": "sect_qingyue",
+    "sect_area": "outer",
+    "sect_building": "alchemy",
+    "seed_on_restore": true,
+    "spell_mastery": {},
+    "spell_slots": [
+      "skill_wood_heal"
+    ],
+    "spells": {
+      "skill_wood_heal": 1
+    },
+    "stationary": true,
+    "technique_slots": [
+      "technique_green_wood"
+    ],
+    "techniques": {
+      "technique_green_wood": 1
+    },
+    "wealth": 472
+  },
+  "npc_ye_qinghe": {
+    "age": 26,
+    "artifact_ids": [
+      "artifact_earth_seal"
+    ],
+    "artifact_slots": [
+      "artifact_earth_seal"
+    ],
+    "authored": true,
+    "cultivation": 440,
+    "duty": "管理药园、收集灵草和日常采集",
+    "equipment_instances": {
+      "gear_00": "equip_v1_hide_belt",
+      "gear_01": "equip_v1_bamboo_crown"
+    },
+    "equipment_nurture": {},
+    "equipped": {
+      "head": "gear_01",
+      "waist": "gear_00"
+    },
+    "fortune_ids": [
+      "fortune_008",
+      "fortune_009",
+      "battle_veteran"
+    ],
+    "greeting": "叶青禾：药园里的灵草需要细心照料，道友可是来帮忙的？",
+    "id": "npc_ye_qinghe",
+    "initial_age": 26,
+    "inventory": {},
+    "lifespan": 100,
+    "location": "sect_qingyue_gate",
+    "name": "叶青禾",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 25,
+        "defense": 9,
+        "hp": 110,
+        "mp": 31,
+        "speed": 13
+      },
+      "body_realm": "通脉四层",
+      "contacts": {},
+      "foundation": {
+        "bones": 17,
+        "meridians": 26,
+        "physique": 23,
+        "qi_sea": 32,
+        "soul": 24,
+        "spirit_sea": 28
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "温和、细心",
+      "rank": "良才",
+      "root": "木",
+      "sect": "青岳宗",
+      "stat_overrides": {}
+    },
+    "realm": 8,
+    "realm_known": true,
+    "relations": {},
+    "role": "药园管事",
+    "sect": "sect_qingyue",
+    "sect_area": "outer",
+    "sect_building": "garden",
+    "seed_on_restore": true,
+    "spell_mastery": {},
+    "spell_slots": [
+      "skill_wood_heal"
+    ],
+    "spells": {
+      "skill_wood_heal": 1
+    },
+    "stationary": true,
+    "technique_slots": [
+      "technique_green_wood"
+    ],
+    "techniques": {
+      "technique_green_wood": 1
+    },
+    "wealth": 73
+  },
+  "npc_lu_huaiyuan": {
+    "age": 76,
+    "artifact_ids": [
+      "artifact_frost_mirror"
+    ],
+    "artifact_slots": [
+      "artifact_frost_mirror"
+    ],
+    "authored": true,
+    "cultivation": 540,
+    "duty": "负责内门事务、弟子考核与资源安排",
+    "equipment_instances": {
+      "gear_00": "equip_v1_cloud_boots",
+      "gear_01": "equip_v1_mountain_sword"
+    },
+    "equipment_nurture": {},
+    "equipped": {
+      "shoes": "gear_00",
+      "weapon": "gear_01"
+    },
+    "fortune_ids": [
+      "fortune_011",
+      "fortune_012",
+      "alchemy_expert"
+    ],
+    "greeting": "陆怀远：内门事务繁杂，弟子考核与资源安排都要过目。道友所来何事？",
+    "id": "npc_lu_huaiyuan",
+    "initial_age": 76,
+    "inventory": {},
+    "lifespan": 150,
+    "location": "sect_qingyue_gate",
+    "name": "陆怀远",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 29,
+        "defense": 15,
+        "hp": 167,
+        "mp": 80,
+        "speed": 15
+      },
+      "body_realm": "锻骨三层",
+      "contacts": {},
+      "foundation": {
+        "bones": 21,
+        "meridians": 34,
+        "physique": 21,
+        "qi_sea": 26,
+        "soul": 31,
+        "spirit_sea": 33
+      },
+      "gender": "男",
+      "innate_fortune": [],
+      "personality": "稳重、精明",
+      "rank": "精英",
+      "root": "土",
+      "sect": "青岳宗",
+      "stat_overrides": {}
+    },
+    "realm": 14,
+    "realm_known": true,
+    "relations": {},
+    "role": "内门事务执事",
+    "sect": "sect_qingyue",
+    "sect_area": "inner",
+    "sect_building": "affairs",
+    "seed_on_restore": true,
+    "spell_mastery": {},
+    "spell_slots": [
+      "skill_earth_guard"
+    ],
+    "spells": {
+      "skill_earth_guard": 1
+    },
+    "stationary": true,
+    "technique_slots": [
+      "technique_qi_flow"
+    ],
+    "techniques": {
+      "technique_qi_flow": 1
+    },
+    "wealth": 890
+  },
+  "npc_han_tieshan": {
+    "age": 63,
+    "artifact_ids": [
+      "artifact_frost_mirror"
+    ],
+    "artifact_slots": [
+      "artifact_frost_mirror"
+    ],
+    "authored": true,
+    "cultivation": 464,
+    "duty": "负责外门切磋、战斗训练和宗门小比",
+    "equipment_instances": {
+      "gear_00": "equip_v1_mountain_sword",
+      "gear_01": "equip_v1_cloud_boots"
+    },
+    "equipment_nurture": {},
+    "equipped": {
+      "shoes": "gear_01",
+      "weapon": "gear_00"
+    },
+    "fortune_ids": [
+      "fortune_010",
+      "fortune_024",
+      "fortune_070"
+    ],
+    "greeting": "韩铁山：修行之人不可荒废实战，改日不妨到演武场切磋一番。",
+    "id": "npc_han_tieshan",
+    "initial_age": 63,
+    "inventory": {},
+    "lifespan": 150,
+    "location": "sect_qingyue_gate",
+    "name": "韩铁山",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 44,
+        "defense": 21,
+        "hp": 182,
+        "mp": 66,
+        "speed": 11
+      },
+      "body_realm": "锻骨三层",
+      "contacts": {},
+      "foundation": {
+        "bones": 35,
+        "meridians": 31,
+        "physique": 31,
+        "qi_sea": 23,
+        "soul": 25,
+        "spirit_sea": 24
+      },
+      "gender": "男",
+      "innate_fortune": [],
+      "personality": "直爽、好战",
+      "rank": "精英",
+      "root": "金",
+      "sect": "青岳宗",
+      "stat_overrides": {}
+    },
+    "realm": 12,
+    "realm_known": true,
+    "relations": {},
+    "role": "演武教习",
+    "sect": "sect_qingyue",
+    "sect_area": "outer",
+    "sect_building": "arena",
+    "seed_on_restore": true,
+    "spell_mastery": {},
+    "spell_slots": [
+      "skill_metal_edge"
+    ],
+    "spells": {
+      "skill_metal_edge": 1,
+      "skill_metal_sword_formation": 1
+    },
+    "stationary": true,
+    "technique_slots": [
+      "technique_iron_body",
+      "technique_qi_flow"
+    ],
+    "techniques": {
+      "technique_iron_body": 1,
+      "technique_qi_flow": 1
+    },
+    "wealth": 706
+  },
+  "npc_xu_qingci": {
+    "age": 165,
+    "artifact_ids": [
+      "artifact_frost_mirror"
+    ],
+    "artifact_slots": [
+      "artifact_frost_mirror"
+    ],
+    "authored": true,
+    "cultivation": 1088,
+    "duty": "处理宗门纪律、弟子纠纷和重大违规",
+    "equipment_instances": {
+      "gear_00": "equip_v1_cloud_boots",
+      "gear_01": "equip_v1_mountain_sword"
+    },
+    "equipment_nurture": {},
+    "equipped": {
+      "shoes": "gear_00",
+      "weapon": "gear_01"
+    },
+    "fortune_ids": [
+      "fortune_017",
+      "fortune_019",
+      "fortune_064",
+      "fortune_096"
+    ],
+    "greeting": "许清辞：宗门规矩在此。弟子纠纷与重大违规，可据实禀告。",
+    "id": "npc_xu_qingci",
+    "initial_age": 165,
+    "inventory": {},
+    "lifespan": 300,
+    "location": "sect_qingyue_gate",
+    "name": "许清辞",
+    "profile": {
+      "acquired_fortune": [],
+      "base": {
+        "attack": 51,
+        "defense": 36,
+        "hp": 306,
+        "mp": 147,
+        "speed": 13
+      },
+      "body_realm": "炼脏一层",
+      "contacts": {},
+      "foundation": {
+        "bones": 47,
+        "meridians": 33,
+        "physique": 44,
+        "qi_sea": 47,
+        "soul": 35,
+        "spirit_sea": 45
+      },
+      "gender": "女",
+      "innate_fortune": [],
+      "personality": "公正、严厉",
+      "rank": "人杰",
+      "root": "水",
+      "sect": "青岳宗",
+      "stat_overrides": {}
+    },
+    "realm": 19,
+    "realm_known": true,
+    "relations": {},
+    "role": "执法长老",
+    "sect": "sect_qingyue",
+    "sect_area": "core",
+    "sect_building": "council",
+    "seed_on_restore": true,
+    "spell_mastery": {},
+    "spell_slots": [
+      "skill_water_arrow"
+    ],
+    "spells": {
+      "skill_water_arrow": 1,
+      "skill_water_spirit_arrow": 1
+    },
+    "stationary": true,
+    "technique_slots": [
+      "technique_qi_flow"
+    ],
+    "techniques": {
+      "technique_qi_flow": 1
+    },
+    "wealth": 1687
   }
 }

@@ -1,6 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://b8lyhom25n20r"]
+
 [node name="EquipmentSlot" type="Button"]
-custom_minimum_size = Vector2(0,144)
+custom_minimum_size = Vector2(0, 144)
 size_flags_horizontal = 3
-text = "武器\n空"
+text = "武器
+空"
 text_overrun_behavior = 3

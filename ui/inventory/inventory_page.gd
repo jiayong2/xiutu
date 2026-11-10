@@ -5,7 +5,8 @@ signal selection_changed(category: String,key: String)
 const HOVER := preload("res://ui/character/equipment_hover.gd")
 const CATEGORIES: Array[String]=["全部","丹药","功法","法术","装备","材料","任务物品"]
 var service: RefCounted
-var state: Dictionary
+var inventory_holder: Dictionary
+var read_only := false
 var data: Dictionary
 var category: String="全部"
 var selected: String=""
@@ -20,8 +21,23 @@ func _ready() -> void:
 	field("Action").pressed.connect(_act)
 	field("ItemScroll").resized.connect(_columns)
 func bind_data(operations: RefCounted,saved_category: String="全部",key: String="",source: String="主界面",message: String="") -> void:
-	service=operations;state=service.snapshot();data=service.data;category=saved_category;selected=key;return_page=source
-	field("Wallet").text="灵石：%d" % state.player.spirit_stones;field("Message").text=message
+	service=operations;inventory_holder=service.snapshot().player;data=service.data;category=saved_category;selected=key;return_page=source
+	read_only = false
+	field("Title").text = "背包"
+	field("Wallet").show()
+	field("Wallet").text="灵石：%d" % inventory_holder.spirit_stones;field("Message").text=message
+	_refresh()
+func bind_npc(operations: RefCounted, npc: Dictionary, saved_category: String, key: String) -> void:
+	service = operations
+	data = service.data
+	inventory_holder = npc
+	category = saved_category
+	selected = key
+	return_page = "人物互动"
+	read_only = true
+	field("Title").text = "%s的背包" % npc.get("name", "人物")
+	field("Wallet").hide()
+	field("Message").text = ""
 	_refresh()
 func _columns() -> void:
 	field("ItemGrid").columns=maxi(1,int((field("ItemScroll").size.x-16+8)/(144+8)))
@@ -43,17 +59,19 @@ func _style(node: Control,active: bool) -> void:
 	var hover:=style.duplicate();hover.bg_color=style.bg_color.lightened(.1);node.add_theme_stylebox_override("hover",hover)
 func _refresh() -> void:
 	entries.clear();item_tiles.clear()
-	var p: Dictionary=state.player
-	for id in p.inventory:
-		var count: int=int(p.inventory[id])
+	var items: Dictionary = inventory_holder.get("inventory", {})
+	var equipment: Dictionary = inventory_holder.get("equipment_instances", {})
+	var equipped: Array = inventory_holder.get("equipped", {}).values() if not read_only else []
+	for id in items:
+		var count: int=int(items[id])
 		var stack: int=int(data.items[id].stack_limit)
 		var index:=0
 		while count>0:
 			var key: String="%s:%d" % [id,index]
-			entries[key]={"id":id,"quantity":mini(count,stack),"total":p.inventory[id],"instance":""}
+			entries[key]={"id":id,"quantity":mini(count,stack),"total":items[id],"instance":""}
 			count-=stack;index+=1
-	for instance in p.equipment_instances:
-		entries["instance:"+instance]={"id":p.equipment_instances[instance],"quantity":1,"total":1,"instance":instance}
+	for instance in equipment:
+		entries["instance:"+instance]={"id":equipment[instance],"quantity":1,"total":1,"instance":instance}
 	var visible_keys: Array=[]
 	for key in entries:
 		if category=="全部" or service.inventory.display_category(entries[key].id,data)==category:visible_keys.append(key)
@@ -68,10 +86,10 @@ func _refresh() -> void:
 		tile.text="
 
 %s
-×%d%s" % [data.items[entry.id].name,entry.quantity," · 已装备" if entry.instance in p.equipped.values() else ""]
+×%d%s" % [data.items[entry.id].name,entry.quantity," · 已装备" if entry.instance in equipped else ""]
 		tile.tooltip_text=data.items[entry.id].name;_style(tile,key==selected);tile.pressed.connect(_select.bind(key))
 		if data.equipment.has(entry.id):
-			HOVER.attach(tile,data.equipment[entry.id],p,entry.instance,data.rules)
+			HOVER.attach(tile,data.equipment[entry.id],inventory_holder,entry.instance,data.rules)
 		field("ItemGrid").add_child(tile)
 		item_tiles[key]=tile
 	if visible_keys.is_empty():
@@ -93,15 +111,18 @@ func _detail() -> void:
 	var effect: Variant=item.use_effect
 	if not entry.instance.is_empty() and data.equipment.has(entry.id):
 		var definition: Dictionary=data.equipment[entry.id]
-		lines.append_array(HOVER.details(definition,state.player,entry.instance,data.rules))
-		var equipped: bool=entry.instance in state.player.equipped.values()
-		command="unequip" if equipped else "equip";field("Action").text="卸下" if equipped else "装备"
+		lines.append_array(HOVER.details(definition,inventory_holder,entry.instance,data.rules))
+		if not read_only:
+			var equipped: bool=entry.instance in inventory_holder.equipped.values()
+			command="unequip" if equipped else "equip";field("Action").text="卸下" if equipped else "装备"
 	elif display in ["丹药","功法","法术"]:
-		command="use_item";field("Action").text="学习" if display in ["功法","法术"] else "使用"
+		if not read_only:
+			command="use_item";field("Action").text="学习" if display in ["功法","法术"] else "使用"
 		if effect is Dictionary and effect.has("learn"):
 			var definition: Dictionary=data.techniques.get(effect.learn,data.spells.get(effect.learn,{}))
 			lines.append("学习："+str(definition.name))
-			lines.append("已学习" if state.player.techniques.has(effect.learn) or state.player.spells.has(effect.learn) else "尚未学习")
+			if not read_only:
+				lines.append("已学习" if inventory_holder.techniques.has(effect.learn) or inventory_holder.spells.has(effect.learn) else "尚未学习")
 		elif effect is Dictionary and effect.has("stat"):lines.append("恢复%s %d" % ["生命" if effect.stat=="hp" else "灵力",effect.amount])
 	field("Description").text="
 

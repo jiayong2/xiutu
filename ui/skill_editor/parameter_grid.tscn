@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[node name="ParameterGrid" type="GridContainer"]
+columns = 3
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="FirstParameter" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="FirstParameter"]
+layout_mode = 2
+text = "参数一"
+theme_override_font_sizes/font_size = 19
+
+[node name="Input" type="LineEdit" parent="FirstParameter"]
+layout_mode = 2
+placeholder_text = "运行时显示现有参数"
+theme_override_font_sizes/font_size = 19
+
+[node name="SecondParameter" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="SecondParameter"]
+layout_mode = 2
+text = "参数二"
+theme_override_font_sizes/font_size = 19
+
+[node name="Input" type="LineEdit" parent="SecondParameter"]
+layout_mode = 2
+placeholder_text = "运行时显示现有参数"
+theme_override_font_sizes/font_size = 19
+
+[node name="ThirdParameter" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="ThirdParameter"]
+layout_mode = 2
+text = "参数三"
+theme_override_font_sizes/font_size = 19
+
+[node name="Input" type="LineEdit" parent="ThirdParameter"]
+layout_mode = 2
+placeholder_text = "运行时显示现有参数"
+theme_override_font_sizes/font_size = 19

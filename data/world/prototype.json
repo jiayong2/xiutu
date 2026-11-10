@@ -16,13 +16,53 @@
   "cave_upgrade_cost": 200,
   "cave_upgrade_iron": 5,
   "town_travel_days": 1,
+  "outskirts_default_encounters": [
+    {"type":"monster","monster_id":"monster_gray_wolf","weight":35},
+    {"type":"monster","monster_id":"monster_mountain_boar","weight":20},
+    {"type":"monster","monster_id":"monster_green_fox","weight":10},
+    {"type":"gather","weight":25},
+    {"type":"spring","weight":10}
+  ],
+  "outskirts_default_herbs": ["herb_morning_dew","herb_spirit_grass"],
   "outskirts_routes": [
-    {"id":"stone_path","name":"青石山道","outcomes":[1,3,4],"herbs":["herb_morning_dew","herb_spirit_grass"]},
-    {"id":"blackwind_woods","name":"黑风林","outcomes":[0,3,4],"herbs":["herb_spirit_grass","herb_morning_dew","herb_calm_leaf"]},
-    {"id":"spirit_creek","name":"灵溪谷","outcomes":[0,3,4],"herbs":["herb_spirit_grass","herb_morning_dew","herb_calm_leaf"]},
-    {"id":"rocky_slope","name":"乱石坡","encounter":{"monster_id":"monster_iron_lizard","chance":25},"mining":[{"item_id":"material_ordinary_iron_ore","chance":100}]},
-    {"id":"abandoned_mine","name":"废弃矿洞","encounter":{"monster_id":"monster_cave_bat","chance":25},"mining":[{"item_id":"material_ordinary_iron_ore","chance":100},{"item_id":"material_spirit_iron","chance":20}]},
-    {"id":"mist_woods","name":"幽雾林","outcomes":[2,3,4],"herbs":["herb_fire_tip"]}
+    {"id":"stone_path","name":"青石山道","encounters":[
+      {"type":"monster","monster_id":"monster_mountain_boar","weight":20},
+      {"type":"monster","monster_id":"monster_stoneback_cat","weight":15},
+      {"type":"monster","monster_id":"monster_redtail_marten","weight":5},
+      {"type":"gather","weight":25},
+      {"type":"spring","weight":10}
+    ],"herbs":["herb_morning_dew","herb_spirit_grass"]},
+    {"id":"blackwind_woods","name":"黑风林","encounters":[
+      {"type":"monster","monster_id":"monster_gray_wolf","weight":35},
+      {"type":"monster","monster_id":"monster_blackwind_wolf","weight":20},
+      {"type":"monster","monster_id":"monster_night_owl","weight":15},
+      {"type":"gather","weight":25},
+      {"type":"spring","weight":10}
+    ],"herbs":["herb_spirit_grass","herb_morning_dew","herb_calm_leaf"]},
+    {"id":"spirit_creek","name":"灵溪谷","encounters":[
+      {"type":"monster","monster_id":"monster_gray_wolf","weight":35},
+      {"type":"monster","monster_id":"monster_jade_creek_snake","weight":20},
+      {"type":"monster","monster_id":"monster_marsh_toad","weight":15},
+      {"type":"gather","weight":25},
+      {"type":"spring","weight":10}
+    ],"herbs":["herb_spirit_grass","herb_morning_dew","herb_calm_leaf"]},
+    {"id":"rocky_slope","name":"乱石坡","encounter_chance":25,"encounters":[
+      {"type":"monster","monster_id":"monster_iron_lizard","weight":65},
+      {"type":"monster","monster_id":"monster_rock_armadillo","weight":35}
+    ],"mining":[{"item_id":"material_ordinary_iron_ore","chance":100}]},
+    {"id":"abandoned_mine","name":"废弃矿洞","encounter_chance":25,"encounters":[
+      {"type":"monster","monster_id":"monster_cave_bat","weight":70},
+      {"type":"monster","monster_id":"monster_mine_spider","weight":25},
+      {"type":"monster","monster_id":"monster_mine_wraith","weight":5}
+    ],"mining":[{"item_id":"material_ordinary_iron_ore","chance":100},{"item_id":"material_spirit_iron","chance":20}]},
+    {"id":"mist_woods","name":"幽雾林","encounters":[
+      {"type":"monster","monster_id":"monster_green_fox","weight":10},
+      {"type":"monster","monster_id":"monster_mist_hare","weight":15},
+      {"type":"monster","monster_id":"monster_mist_wisp","weight":5},
+      {"type":"monster","monster_id":"monster_ghostvine","weight":2},
+      {"type":"gather","weight":25},
+      {"type":"spring","weight":10}
+    ],"herbs":["herb_fire_tip"]}
   ],
   "npcs": [
     {
@@ -472,6 +512,8 @@
       "realm_known": false,
       "sect": "sect_qingyue",
       "sect_area": "core",
+      "sect_building": "master",
+      "duty": "掌理青岳宗",
       "profile": {
         "sect": "青岳宗"
       }
@@ -487,6 +529,8 @@
       "realm_known": false,
       "sect": "sect_qingyue",
       "sect_area": "outer",
+      "sect_building": "affairs",
+      "duty": "处理外门事务",
       "profile": {
         "sect": "青岳宗"
       }
@@ -502,6 +546,8 @@
       "realm_known": false,
       "sect": "sect_qingyue",
       "sect_area": "outer",
+      "sect_building": "lecture",
+      "duty": "外门讲道与修炼指点",
       "profile": {
         "sect": "青岳宗"
       }
@@ -517,6 +563,8 @@
       "realm_known": false,
       "sect": "sect_qingyue",
       "sect_area": "outer",
+      "sect_building": "affairs",
+      "duty": "办理外门任务",
       "profile": {
         "sect": "青岳宗"
       }
@@ -532,6 +580,8 @@
       "realm_known": false,
       "sect": "sect_qingyue",
       "sect_area": "inner",
+      "sect_building": "arena",
+      "duty": "内门演武",
       "profile": {
         "sect": "青岳宗"
       }
@@ -547,6 +597,8 @@
       "realm_known": false,
       "sect": "sect_qingyue",
       "sect_area": "outer",
+      "sect_building": "quarters",
+      "duty": "外门弟子居所往来",
       "profile": {
         "sect": "青岳宗"
       }
@@ -562,6 +614,8 @@
       "realm_known": false,
       "sect": "sect_qingyue",
       "sect_area": "outer",
+      "sect_building": "gate",
+      "duty": "看守山门、接待来客",
       "profile": {
         "sect": "青岳宗"
       }
@@ -577,6 +631,8 @@
       "realm_known": false,
       "sect": "sect_qingyue",
       "sect_area": "outer",
+      "sect_building": "affairs",
+      "duty": "办理外门供给",
       "profile": {
         "sect": "青岳宗"
       }
@@ -592,6 +648,8 @@
       "realm_known": false,
       "sect": "sect_qingyue",
       "sect_area": "outer",
+      "sect_building": "treasury",
+      "duty": "看管外门宗门宝库",
       "profile": {
         "sect": "青岳宗"
       }

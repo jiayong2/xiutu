@@ -1,0 +1,531 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://ui/exploration/legend_editor.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="Base"]
+bg_color = Color(0.055, 0.117, 0.116, 1)
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Pane"]
+bg_color = Color(0.092, 0.194, 0.183, 1)
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Header"]
+bg_color = Color(0.122, 0.235, 0.224, 1)
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Button"]
+bg_color = Color(0.153, 0.286, 0.269, 1)
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Hover"]
+bg_color = Color(0.205, 0.372, 0.341, 1)
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Active"]
+bg_color = Color(0.258, 0.465, 0.415, 1)
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Input"]
+bg_color = Color(0.139, 0.265, 0.254, 1)
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 20
+Label/colors/font_color = Color(0.84, 0.93, 0.89, 1)
+PanelContainer/styles/panel = SubResource("Pane")
+Button/styles/normal = SubResource("Button")
+Button/styles/hover = SubResource("Hover")
+Button/styles/pressed = SubResource("Active")
+OptionButton/styles/normal = SubResource("Input")
+OptionButton/styles/hover = SubResource("Hover")
+OptionButton/styles/pressed = SubResource("Active")
+LineEdit/styles/normal = SubResource("Input")
+VBoxContainer/constants/separation = 7
+HBoxContainer/constants/separation = 8
+GridContainer/constants/h_separation = 8
+GridContainer/constants/v_separation = 7
+
+[node name="LegendEditor" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme")
+theme_override_styles/panel = SubResource("Base")
+script = ExtResource("1")
+
+[node name="Root" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+
+
+[node name="HeaderPanel" type="PanelContainer" parent="Root"]
+unique_name_in_owner = true
+theme_override_styles/panel = SubResource("Header")
+
+[node name="Header" type="HBoxContainer" parent="Root/HeaderPanel"]
+unique_name_in_owner = true
+
+
+[node name="Title" type="Label" parent="Root/HeaderPanel/Header"]
+unique_name_in_owner = true
+text = "地图图例与掉落配置"
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+
+[node name="Check" type="Button" parent="Root/HeaderPanel/Header"]
+unique_name_in_owner = true
+text = "验证"
+
+[node name="Save" type="Button" parent="Root/HeaderPanel/Header"]
+unique_name_in_owner = true
+text = "保存全部"
+
+[node name="Back" type="Button" parent="Root/HeaderPanel/Header"]
+unique_name_in_owner = true
+text = "返回"
+
+[node name="Columns" type="HBoxContainer" parent="Root"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Library" type="PanelContainer" parent="Root/Columns"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.24
+
+[node name="LibraryBody" type="VBoxContainer" parent="Root/Columns/Library"]
+unique_name_in_owner = true
+
+
+[node name="Details" type="PanelContainer" parent="Root/Columns"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.49
+
+[node name="DetailsBody" type="VBoxContainer" parent="Root/Columns/Details"]
+unique_name_in_owner = true
+
+
+[node name="MapPane" type="PanelContainer" parent="Root/Columns"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.27
+
+[node name="MapPaneBody" type="VBoxContainer" parent="Root/Columns/MapPane"]
+unique_name_in_owner = true
+
+
+[node name="LibraryTitle" type="Label" parent="Root/Columns/Library/LibraryBody"]
+unique_name_in_owner = true
+text = "图例库"
+theme_override_colors/font_color = Color(0.60, 0.86, 0.79, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="Search" type="LineEdit" parent="Root/Columns/Library/LibraryBody"]
+unique_name_in_owner = true
+placeholder_text = "搜索图例…"
+
+[node name="Filter" type="GridContainer" parent="Root/Columns/Library/LibraryBody"]
+unique_name_in_owner = true
+columns = 2
+
+[node name="LibraryRule" type="HSeparator" parent="Root/Columns/Library/LibraryBody"]
+unique_name_in_owner = true
+
+
+[node name="LibraryScroll" type="ScrollContainer" parent="Root/Columns/Library/LibraryBody"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.0
+horizontal_scroll_mode = 0
+
+[node name="List" type="VBoxContainer" parent="Root/Columns/Library/LibraryBody/LibraryScroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="Actions" type="HBoxContainer" parent="Root/Columns/Library/LibraryBody"]
+unique_name_in_owner = true
+
+
+[node name="Add" type="Button" parent="Root/Columns/Library/LibraryBody/Actions"]
+unique_name_in_owner = true
+text = "＋ 新增"
+
+[node name="Copy" type="Button" parent="Root/Columns/Library/LibraryBody/Actions"]
+unique_name_in_owner = true
+text = "复制"
+
+[node name="Remove" type="Button" parent="Root/Columns/Library/LibraryBody/Actions"]
+unique_name_in_owner = true
+text = "删除"
+
+[node name="DetailTitle" type="Label" parent="Root/Columns/Details/DetailsBody"]
+unique_name_in_owner = true
+text = "图例详情"
+theme_override_colors/font_color = Color(0.60, 0.86, 0.79, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="DetailScroll" type="ScrollContainer" parent="Root/Columns/Details/DetailsBody"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.0
+horizontal_scroll_mode = 0
+
+[node name="Fields" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="Identity" type="HBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields"]
+unique_name_in_owner = true
+
+
+[node name="PreviewPanel" type="PanelContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Identity"]
+unique_name_in_owner = true
+
+
+[node name="Preview" type="Control" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Identity/PreviewPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(92, 92)
+mouse_filter = 2
+
+[node name="DetailForm" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Identity"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Identity/DetailForm"]
+unique_name_in_owner = true
+text = "名称"
+
+
+[node name="Name" type="LineEdit" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Identity/DetailForm"]
+unique_name_in_owner = true
+
+
+[node name="SymbolLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Identity/DetailForm"]
+unique_name_in_owner = true
+text = "类型"
+
+
+[node name="Symbol" type="OptionButton" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Identity/DetailForm"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="StableId" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Identity/DetailForm"]
+unique_name_in_owner = true
+text_overrun_behavior = 3
+theme_override_font_sizes/font_size = 15
+
+[node name="Settings" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields"]
+unique_name_in_owner = true
+
+
+[node name="DetailRule" type="HSeparator" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+
+
+[node name="BasicTitle" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+text = "基础配置"
+theme_override_colors/font_color = Color(0.60, 0.86, 0.79, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="RuntimeLimits" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+text = "灰色选项尚未接入。怪物到达触发并阻挡进入，采集和奖励需在所在格交互。"
+autowrap_mode = 2
+
+[node name="BindingHeading" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+text = "已有绑定"
+
+[node name="Bindings" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+
+[node name="BasicGrid" type="GridContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+columns = 2
+
+[node name="TargetTypeCell" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="TargetTypeLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/TargetTypeCell"]
+unique_name_in_owner = true
+text = "绑定类型"
+
+
+[node name="TargetType" type="OptionButton" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/TargetTypeCell"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="TargetCell" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="TargetLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/TargetCell"]
+unique_name_in_owner = true
+text = "绑定对象"
+
+
+[node name="Target" type="OptionButton" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/TargetCell"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="AddBinding" type="Button" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/TargetCell"]
+unique_name_in_owner = true
+text = "＋ 添加绑定"
+tooltip_text = "为同一图例添加另一个对象，可分别设置数量和掉落。"
+
+[node name="LevelCell" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="LevelLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/LevelCell"]
+unique_name_in_owner = true
+text = "妖兽等级"
+
+
+[node name="Level" type="SpinBox" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/LevelCell"]
+unique_name_in_owner = true
+max_value = 999.0
+min_value = 1.0
+
+[node name="CountCell" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="CountLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/CountCell"]
+unique_name_in_owner = true
+text = "每格妖兽数量"
+
+
+[node name="Count" type="SpinBox" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/CountCell"]
+unique_name_in_owner = true
+max_value = 99.0
+min_value = 1.0
+
+[node name="TriggerCell" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="TriggerLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/TriggerCell"]
+unique_name_in_owner = true
+text = "触发方式"
+
+
+[node name="Trigger" type="OptionButton" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/TriggerCell"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="RespawnCell" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="RespawnLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/RespawnCell"]
+unique_name_in_owner = true
+text = "刷新方式"
+
+
+[node name="Respawn" type="OptionButton" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/RespawnCell"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="IntervalCell" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="IntervalLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/IntervalCell"]
+unique_name_in_owner = true
+text = "刷新间隔（游戏小时）"
+
+
+[node name="Interval" type="SpinBox" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/IntervalCell"]
+unique_name_in_owner = true
+max_value = 999999.0
+min_value = 0.0
+
+[node name="CompletionCell" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="CompletionLabel" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/CompletionCell"]
+unique_name_in_owner = true
+text = "完成后状态"
+
+
+[node name="Completion" type="OptionButton" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid/CompletionCell"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="Blocks" type="CheckBox" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+text = "阻挡通行"
+
+[node name="Repeat" type="CheckBox" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings/BasicGrid"]
+unique_name_in_owner = true
+text = "允许重复触发"
+
+[node name="LootRule" type="HSeparator" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+
+
+[node name="LootTitle" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+text = "掉落配置"
+theme_override_colors/font_color = Color(0.60, 0.86, 0.79, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="LootMode" type="OptionButton" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="LootNote" type="Label" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+text = "每条掉落独立判定。"
+autowrap_mode = 2
+
+[node name="LootRows" type="VBoxContainer" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+
+
+[node name="AddLoot" type="Button" parent="Root/Columns/Details/DetailsBody/DetailScroll/Fields/Settings"]
+unique_name_in_owner = true
+text = "＋ 添加掉落条目"
+
+[node name="MapTitle" type="Label" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+text = "地图图例数量"
+theme_override_colors/font_color = Color(0.60, 0.86, 0.79, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="Maps" type="OptionButton" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="MapSummary" type="Label" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+text = "尚无地图"
+autowrap_mode = 2
+
+[node name="MapSymbolScroll" type="ScrollContainer" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.0
+horizontal_scroll_mode = 0
+
+[node name="MapSymbols" type="VBoxContainer" parent="Root/Columns/MapPane/MapPaneBody/MapSymbolScroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="MapRule" type="HSeparator" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+
+
+[node name="AllocationTitle" type="Label" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+text = "具体分配"
+theme_override_colors/font_color = Color(0.60, 0.86, 0.79, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="AllocationType" type="OptionButton" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="TotalRow" type="HBoxContainer" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+
+
+[node name="TotalLabel" type="Label" parent="Root/Columns/MapPane/MapPaneBody/TotalRow"]
+unique_name_in_owner = true
+text = "目标格数"
+size_flags_horizontal = 3
+
+[node name="AllocationTotal" type="SpinBox" parent="Root/Columns/MapPane/MapPaneBody/TotalRow"]
+unique_name_in_owner = true
+max_value = 1000.0
+
+[node name="AllocationScroll" type="ScrollContainer" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.0
+horizontal_scroll_mode = 0
+
+[node name="Counts" type="VBoxContainer" parent="Root/Columns/MapPane/MapPaneBody/AllocationScroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+
+[node name="MapNote" type="Label" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+text = "设置数量后保存全部。"
+autowrap_mode = 2
+
+[node name="ApplyAllocation" type="Button" parent="Root/Columns/MapPane/MapPaneBody"]
+unique_name_in_owner = true
+text = "检查地图分配"
+
+[node name="Status" type="Label" parent="Root"]
+unique_name_in_owner = true
+text = ""
+autowrap_mode = 2
+
+[node name="Confirm" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true

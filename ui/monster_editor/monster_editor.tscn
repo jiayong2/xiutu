@@ -1,0 +1,2393 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://ui/monster_editor/monster_editor.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="Base"]
+bg_color = Color(0.039, 0.078, 0.078, 1)
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxFlat" id="Pane"]
+bg_color = Color(0.067, 0.145, 0.137, 1)
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Header"]
+bg_color = Color(0.098, 0.196, 0.184, 1)
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="Button"]
+bg_color = Color(0.125, 0.251, 0.231, 1)
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="Hover"]
+bg_color = Color(0.18, 0.33, 0.30, 1)
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="Active"]
+bg_color = Color(0.25, 0.46, 0.40, 1)
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="Input"]
+bg_color = Color(0.106, 0.216, 0.204, 1)
+content_margin_left = 9.0
+content_margin_top = 7.0
+content_margin_right = 9.0
+content_margin_bottom = 7.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="Focus"]
+bg_color = Color(0.106, 0.216, 0.204, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38, 0.69, 0.58, 1)
+content_margin_left = 9.0
+content_margin_top = 7.0
+content_margin_right = 9.0
+content_margin_bottom = 7.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="TreeFocus"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.38, 0.69, 0.58, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 19
+Label/colors/font_color = Color(0.82, 0.93, 0.89, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.35)
+Button/colors/font_color = Color(0.82, 0.93, 0.89, 1)
+Button/colors/font_hover_color = Color(0.95, 1, 0.97, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.48, 0.58, 0.55, 1)
+Button/styles/normal = SubResource("Button")
+Button/styles/hover = SubResource("Hover")
+Button/styles/pressed = SubResource("Active")
+Button/styles/disabled = SubResource("Button")
+Button/styles/focus = SubResource("Focus")
+OptionButton/colors/font_color = Color(0.82, 0.93, 0.89, 1)
+OptionButton/colors/font_disabled_color = Color(0.48, 0.58, 0.55, 1)
+OptionButton/styles/normal = SubResource("Input")
+OptionButton/styles/hover = SubResource("Hover")
+OptionButton/styles/pressed = SubResource("Active")
+OptionButton/styles/disabled = SubResource("Input")
+OptionButton/styles/focus = SubResource("Focus")
+LineEdit/colors/font_color = Color(0.9, 0.97, 0.94, 1)
+LineEdit/colors/font_uneditable_color = Color(0.58, 0.69, 0.66, 1)
+LineEdit/styles/normal = SubResource("Input")
+LineEdit/styles/focus = SubResource("Focus")
+LineEdit/styles/read_only = SubResource("Input")
+TextEdit/colors/font_color = Color(0.88, 0.96, 0.92, 1)
+TextEdit/colors/font_readonly_color = Color(0.58, 0.69, 0.66, 1)
+TextEdit/styles/normal = SubResource("Input")
+TextEdit/styles/focus = SubResource("Focus")
+TextEdit/styles/read_only = SubResource("Input")
+Tree/colors/font_color = Color(0.82, 0.93, 0.89, 1)
+Tree/colors/font_selected_color = Color(1, 1, 1, 1)
+Tree/colors/guide_color = Color(0.19, 0.34, 0.31, 1)
+Tree/styles/panel = SubResource("Input")
+Tree/styles/focus = SubResource("TreeFocus")
+Tree/styles/selected = SubResource("Active")
+Tree/styles/selected_focus = SubResource("Active")
+Tree/constants/item_margin = 4
+SpinBox/colors/font_color = Color(0.9, 0.97, 0.94, 1)
+RichTextLabel/colors/default_color = Color(0.82, 0.93, 0.89, 1)
+TabContainer/styles/panel = SubResource("Pane")
+TabContainer/styles/tab_selected = SubResource("Active")
+TabContainer/styles/tab_unselected = SubResource("Button")
+TabContainer/styles/tab_hovered = SubResource("Hover")
+TabContainer/styles/tab_focus = SubResource("Focus")
+TabContainer/colors/font_selected_color = Color(1, 1, 1, 1)
+TabContainer/colors/font_unselected_color = Color(0.68, 0.82, 0.78, 1)
+TabContainer/colors/font_hovered_color = Color(1, 1, 1, 1)
+VBoxContainer/constants/separation = 8
+HBoxContainer/constants/separation = 8
+GridContainer/constants/h_separation = 12
+GridContainer/constants/v_separation = 8
+HSeparator/constants/separation = 8
+
+[node name="MonsterEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme")
+script = ExtResource("1")
+
+[node name="Window" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Base")
+
+[node name="Root" type="VBoxContainer" parent="Window"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Header" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Window/Root/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "仙途 · 妖兽编辑器"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 28
+
+[node name="NewBtn" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "新建妖兽"
+
+[node name="CopyBtn" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制妖兽"
+
+[node name="DeleteBtn" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除妖兽"
+theme_override_colors/font_color = Color(0.92, 0.56, 0.52, 1)
+
+[node name="SaveBtn" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存"
+
+[node name="DiscardBtn" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "放弃修改"
+
+[node name="CloseBtn" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "关闭"
+
+[node name="StatusRow" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+
+[node name="DirtyLabel" type="Label" parent="Window/Root/StatusRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(190, 0)
+text = "无未保存修改"
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="StatusLabel" type="Label" parent="Window/Root/StatusRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "正在载入妖兽数据…"
+theme_override_colors/font_color = Color(0.72, 0.82, 0.78, 1)
+theme_override_font_sizes/font_size = 16
+text_overrun_behavior = 3
+
+[node name="DataPathLabel" type="Label" parent="Window/Root/StatusRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "data/monsters/monsters.json"
+theme_override_colors/font_color = Color(0.5, 0.62, 0.59, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="Body" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="LeftPanel" type="PanelContainer" parent="Window/Root/Body"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 0)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 23.0
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="LeftBody" type="VBoxContainer" parent="Window/Root/Body/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftHeading" type="Label" parent="Window/Root/Body/LeftPanel/LeftBody"]
+layout_mode = 2
+text = "妖兽列表"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="Search" type="LineEdit" parent="Window/Root/Body/LeftPanel/LeftBody"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "搜索妖兽名称 / ID"
+
+[node name="Filters" type="HBoxContainer" parent="Window/Root/Body/LeftPanel/LeftBody"]
+layout_mode = 2
+
+[node name="RealmFilter" type="OptionButton" parent="Window/Root/Body/LeftPanel/LeftBody/Filters"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="RankFilter" type="OptionButton" parent="Window/Root/Body/LeftPanel/LeftBody/Filters"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="ListCount" type="Label" parent="Window/Root/Body/LeftPanel/LeftBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "显示 0 只"
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="MonsterTree" type="Tree" parent="Window/Root/Body/LeftPanel/LeftBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+column_titles_visible = true
+hide_root = true
+select_mode = 0
+
+[node name="LeftNote" type="Label" parent="Window/Root/Body/LeftPanel/LeftBody"]
+layout_mode = 2
+text = "正式数据：data/monsters/monsters.json。列表顺序为数据文件顺序。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="CenterPanel" type="PanelContainer" parent="Window/Root/Body"]
+layout_mode = 2
+custom_minimum_size = Vector2(560, 0)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 54.0
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="CenterBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody"]
+layout_mode = 2
+
+[node name="EditTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/CenterHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "基础属性 · 未选择妖兽"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+text_overrun_behavior = 3
+
+[node name="EditHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/CenterHeader"]
+layout_mode = 2
+text = "切换页签不会丢失未保存修改"
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="Tabs" type="TabContainer" parent="Window/Root/Body/CenterPanel/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="BasicTab" type="ScrollContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="BasicBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BasicGrid" type="GridContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="NameField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/NameField"]
+layout_mode = 2
+text = "妖兽名称"
+
+[node name="NameEdit" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/NameField"]
+unique_name_in_owner = true
+layout_mode = 2
+max_length = 32
+
+[node name="IdField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/IdField"]
+layout_mode = 2
+text = "妖兽 ID"
+
+[node name="IdEdit" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/IdField"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "仅在新建草稿时可改"
+tooltip_text = "已保存妖兽的 ID 固定；引用关系与历史存档按 ID 记录，需要换 ID 时请复制为新生灵。"
+
+[node name="RealmField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/RealmField"]
+layout_mode = 2
+text = "妖兽境界"
+
+[node name="RealmOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/RealmField"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+text_overrun_behavior = 3
+
+[node name="RankField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/RankField"]
+layout_mode = 2
+text = "身份类型"
+
+[node name="RankOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/RankField"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="RootField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/RootField"]
+layout_mode = 2
+text = "五行 / 灵根属性（未支持）"
+
+[node name="RootOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/RootField"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+tooltip_text = "当前妖兽数据与战斗系统没有妖兽灵根字段；不写入无效配置。"
+
+[node name="IconField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/IconField"]
+layout_mode = 2
+text = "图标 / 立绘资源（未接入）"
+
+[node name="IconValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/IconField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+text = "未接入资源引用"
+tooltip_text = "战斗与列表当前没有妖兽图标字段，因此本阶段不提供无效的资源选择。"
+
+[node name="HpField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/HpField"]
+layout_mode = 2
+text = "最大生命"
+
+[node name="HpSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/HpField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 999999.0
+step = 1.0
+value = 50.0
+allow_greater = false
+allow_lesser = false
+
+[node name="MpField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/MpField"]
+layout_mode = 2
+text = "最大灵力"
+
+[node name="MpSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/MpField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 999999.0
+step = 1.0
+value = 0.0
+allow_greater = false
+allow_lesser = false
+
+[node name="AttackField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/AttackField"]
+layout_mode = 2
+text = "基础攻击"
+
+[node name="AttackSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/AttackField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 99999.0
+step = 1.0
+value = 10.0
+allow_greater = false
+allow_lesser = false
+
+[node name="DefenseField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/DefenseField"]
+layout_mode = 2
+text = "基础防御"
+
+[node name="DefenseSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/DefenseField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 99999.0
+step = 1.0
+value = 3.0
+allow_greater = false
+allow_lesser = false
+
+[node name="SpeedField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/SpeedField"]
+layout_mode = 2
+text = "基础速度"
+
+[node name="SpeedSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/SpeedField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 99999.0
+step = 1.0
+value = 10.0
+allow_greater = false
+allow_lesser = false
+
+[node name="CritChanceField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/CritChanceField"]
+layout_mode = 2
+text = "暴击率（全局规则）"
+
+[node name="CritChanceValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/CritChanceField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+text = "5%"
+tooltip_text = "当前战斗按 data/balance/rules.json 的全局暴击率结算，妖兽没有独立暴击字段；本阶段不提供不生效的编辑。"
+
+[node name="CritDamageField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/CritDamageField"]
+layout_mode = 2
+text = "暴击伤害（全局规则）"
+
+[node name="CritDamageValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/CritDamageField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+text = "150%"
+tooltip_text = "当前战斗按 data/balance/rules.json 的全局暴击倍率结算，妖兽没有独立暴击伤害字段。"
+
+[node name="BehaviorField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/BehaviorField"]
+layout_mode = 2
+text = "默认行为配置"
+
+[node name="BehaviorSummary" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/BasicGrid/BehaviorField"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 条（第三阶段开放编辑）"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="DescriptionField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/DescriptionField"]
+layout_mode = 2
+text = "妖兽描述"
+
+[node name="DescriptionEdit" type="TextEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/DescriptionField"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 96)
+wrap_mode = 1
+
+[node name="DefaultsPanel" type="PanelContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Header")
+
+[node name="DefaultsBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/DefaultsPanel"]
+layout_mode = 2
+
+[node name="LootSummary" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/DefaultsPanel/DefaultsBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "默认掉落表：0 条（第四阶段开放编辑）"
+autowrap_mode = 2
+
+[node name="BasicNote" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BasicTab/BasicBody/DefaultsPanel/DefaultsBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "本阶段只编辑基础属性。灵根、图标、独立暴击、行为、技能、被动、掉落和首领机制中的未支持部分均按真实状态标注，不写入不生效字段。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="SkillsTab" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="SkillsBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SkillHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody"]
+layout_mode = 2
+
+[node name="SkillPageTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "技能配置 — 未选择妖兽"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text_overrun_behavior = 3
+
+[node name="AddSkillBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加已有技能"
+
+[node name="NewSkillBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "新建技能"
+
+[node name="CopySkillBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制技能"
+
+[node name="RemoveSkillBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "移除技能"
+theme_override_colors/font_color = Color(0.92, 0.56, 0.52, 1)
+
+[node name="SkillHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "技能引用现有共享技能库；修改共享定义会影响所有引用者。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="SkillTree" type="Tree" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+columns = 7
+column_titles_visible = true
+hide_root = true
+select_mode = 0
+
+[node name="SkillTableNote" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody"]
+layout_mode = 2
+text = "类型：当前妖兽技能库只有主动技能；被动效果在独立页编辑。触发方式由行为规则决定；未绑定行为的技能不会被妖兽主动施放。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="SkillDetailScroll" type="ScrollContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+custom_minimum_size = Vector2(0, 260)
+horizontal_scroll_mode = 0
+
+[node name="SkillDetailBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillEditorTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择技能"
+theme_override_colors/font_color = Color(0.9, 0.97, 0.94, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="SharedSkillWarning" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="SharedConfirmCheck" type="CheckBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "我确认修改公共技能定义"
+theme_override_colors/font_color = Color(0.92, 0.72, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="SkillMetaGrid" type="GridContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="SkillNameField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillNameField"]
+layout_mode = 2
+text = "技能名称"
+
+[node name="SkillNameEdit" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillNameField"]
+unique_name_in_owner = true
+layout_mode = 2
+max_length = 32
+
+[node name="SkillIdField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillIdField"]
+layout_mode = 2
+text = "技能 ID（稳定）"
+
+[node name="SkillIdValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillIdField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+tooltip_text = "已保存技能 ID 固定；新建/复制时生成唯一 ID，避免破坏妖兽、行为和存档引用。"
+
+[node name="SkillTypeField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillTypeField"]
+layout_mode = 2
+text = "技能类型"
+
+[node name="SkillTypeValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillTypeField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+text = "主动"
+tooltip_text = "妖兽技能库目前只有主动技能；没有被动技能定义。"
+
+[node name="SkillTargetField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillTargetField"]
+layout_mode = 2
+text = "技能目标（默认）"
+
+[node name="SkillTargetOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillTargetField"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "默认效果目标；状态/属性效果可在组件内单独指定自身或敌方。直接伤害命中敌方，治疗/护盾/驱散/阶段与灵力恢复作用于自身。"
+fit_to_longest_item = false
+
+[node name="SkillMpField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillMpField"]
+layout_mode = 2
+text = "MP 消耗"
+
+[node name="SkillMpSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillMpField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 999999.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="SkillCooldownField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillCooldownField"]
+layout_mode = 2
+text = "冷却（自身行动次数）"
+
+[node name="SkillCooldownSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillCooldownField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 9999.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="SkillOrdinaryField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillOrdinaryField"]
+layout_mode = 2
+text = "普通攻击标记"
+
+[node name="SkillOrdinaryCheck" type="CheckBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillOrdinaryField"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "按普通攻击结算气运承伤"
+tooltip_text = "勾选后技能执行沿用普通攻击承伤入口；共享定义修改会影响所有引用者。"
+
+[node name="SkillScopeField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillScopeField"]
+layout_mode = 2
+text = "适用范围（只读）"
+
+[node name="SkillScopeValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillMetaGrid/SkillScopeField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+
+[node name="SkillDescriptionField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillDescriptionField"]
+layout_mode = 2
+text = "技能描述"
+
+[node name="SkillDescriptionEdit" type="TextEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillDescriptionField"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 70)
+wrap_mode = 1
+
+[node name="EffectsHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody"]
+layout_mode = 2
+
+[node name="EffectsTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/EffectsHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "效果组件"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 19
+
+[node name="AddEffectBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/EffectsHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "＋ 添加效果组件"
+
+[node name="EffectsList" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillSaveRow" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody"]
+layout_mode = 2
+
+[node name="SaveSkillBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存全部修改"
+
+[node name="SkillSaveHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/SkillsTab/SkillsBody/SkillDetailScroll/SkillDetailBody/SkillSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "保存会同时写入技能库与当前妖兽引用；共享技能修改需勾选确认。效果作用：直接伤害命中敌方；治疗/护盾/驱散/阶段/灵力恢复作用于自身；状态/属性按组件目标。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="BehaviorsTab" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="BehaviorsBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BehaviorHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody"]
+layout_mode = 2
+
+[node name="BehaviorPageTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "行为规则 — 未选择妖兽"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text_overrun_behavior = 3
+
+[node name="AddRuleBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加规则"
+
+[node name="CopyRuleBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制规则"
+
+[node name="DeleteRuleBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除规则"
+theme_override_colors/font_color = Color(0.92, 0.56, 0.52, 1)
+
+[node name="MoveUpBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "上移"
+
+[node name="MoveDownBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下移"
+
+[node name="BehaviorHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "规则按优先级从高到低检查；条件不满足、技能不可用或 MP 不足时继续下一条规则。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="BehaviorTree" type="Tree" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+columns = 9
+column_titles_visible = true
+hide_root = true
+select_mode = 0
+
+[node name="BehaviorTableNote" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody"]
+layout_mode = 2
+text = "顺序为实际检查顺序（优先级降序，同优先级按配置顺序）。所有规则都不满足时回退普通攻击，不会卡死。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="BehaviorDetailScroll" type="ScrollContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+custom_minimum_size = Vector2(0, 280)
+horizontal_scroll_mode = 0
+
+[node name="BehaviorDetailBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BehaviorEditorTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择规则"
+theme_override_colors/font_color = Color(0.9, 0.97, 0.94, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="BehaviorWarning" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="BehaviorMetaGrid" type="GridContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="BehaviorNameField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorNameField"]
+layout_mode = 2
+text = "规则名称"
+
+[node name="BehaviorNameEdit" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorNameField"]
+unique_name_in_owner = true
+layout_mode = 2
+max_length = 32
+
+[node name="BehaviorEnabledField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorEnabledField"]
+layout_mode = 2
+text = "是否启用"
+
+[node name="BehaviorEnabledCheck" type="CheckBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorEnabledField"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "启用此规则"
+
+[node name="BehaviorPriorityField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorPriorityField"]
+layout_mode = 2
+text = "优先级（数值越高越先检查）"
+
+[node name="BehaviorPrioritySpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorPriorityField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -9999.0
+max_value = 9999.0
+step = 1.0
+value = 100.0
+allow_greater = false
+allow_lesser = false
+
+[node name="BehaviorModeField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorModeField"]
+layout_mode = 2
+text = "条件组合方式"
+
+[node name="BehaviorModeOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorModeField"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="BehaviorActionField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorActionField"]
+layout_mode = 2
+text = "行动类型"
+
+[node name="BehaviorActionOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorActionField"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="BehaviorSkillField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorSkillField"]
+layout_mode = 2
+text = "使用的技能"
+
+[node name="BehaviorSkillOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorSkillField"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="BehaviorTargetField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorTargetField"]
+layout_mode = 2
+text = "目标选择"
+
+[node name="BehaviorTargetOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorTargetField"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+tooltip_text = "当前一对一战斗固定以玩家为目标；多目标/友方目标在多人战斗接入后开放。字段只读保留。"
+fit_to_longest_item = false
+
+[node name="BehaviorChanceField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorChanceField"]
+layout_mode = 2
+text = "执行概率（%）"
+
+[node name="BehaviorChanceSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorChanceField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 100.0
+allow_greater = false
+allow_lesser = false
+
+[node name="BehaviorMaxUsesField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorMaxUsesField"]
+layout_mode = 2
+text = "每场最大触发次数（0=不限）"
+
+[node name="BehaviorMaxUsesSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorMaxUsesField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 999.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="BehaviorCooldownField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorCooldownField"]
+layout_mode = 2
+text = "冷却（自身行动次数）"
+
+[node name="BehaviorCooldownSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorCooldownField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 999.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="BehaviorOnFailField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorOnFailField"]
+layout_mode = 2
+text = "技能不可用/概率失败后"
+
+[node name="BehaviorOnFailOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorMetaGrid/BehaviorOnFailField"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="ConditionsHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody"]
+layout_mode = 2
+
+[node name="ConditionsTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/ConditionsHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "触发条件"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 19
+
+[node name="AddConditionBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/ConditionsHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "＋ 添加条件"
+
+[node name="ConditionsList" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BehaviorSaveRow" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody"]
+layout_mode = 2
+
+[node name="SaveBehaviorBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存全部修改"
+
+[node name="BehaviorSaveHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/BehaviorsTab/BehaviorsBody/BehaviorDetailScroll/BehaviorDetailBody/BehaviorSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "保存会写入当前妖兽的行为规则；技能引用仍来自技能库。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="PassivesTab" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="PassivesBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PassiveHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody"]
+layout_mode = 2
+
+[node name="PassivesPageTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "被动效果 — 未选择妖兽"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text_overrun_behavior = 3
+
+[node name="AddPassiveBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加已有被动"
+
+[node name="CopyPassiveBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制被动"
+
+[node name="RemovePassiveBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "移除被动"
+theme_override_colors/font_color = Color(0.92, 0.56, 0.52, 1)
+
+[node name="PassiveHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "被动在战斗开始时按顺序作用于自身；支持属性、状态、护盾、治疗、灵力恢复、驱散自身负面、阶段。减伤可用共享状态；反伤、吸血被动不在当前通用层。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="PassiveTree" type="Tree" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+columns = 6
+column_titles_visible = true
+hide_root = true
+select_mode = 0
+
+[node name="PassiveTableNote" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody"]
+layout_mode = 2
+text = "触发条件固定为战斗开始；选中行后在下方编辑效果参数。被动效果与技能效果共用同一状态/效果引擎。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="PassiveDetailScroll" type="ScrollContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+custom_minimum_size = Vector2(0, 260)
+horizontal_scroll_mode = 0
+
+[node name="PassiveDetailBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PassiveEditorTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择被动"
+theme_override_colors/font_color = Color(0.9, 0.97, 0.94, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="PassiveWarning" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="PassiveMetaGrid" type="GridContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="PassiveTypeField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid/PassiveTypeField"]
+layout_mode = 2
+text = "效果类型"
+
+[node name="PassiveTypeOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid/PassiveTypeField"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="PassiveTargetField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid/PassiveTargetField"]
+layout_mode = 2
+text = "作用目标"
+
+[node name="PassiveTargetValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid/PassiveTargetField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+text = "自身（战斗开始时）"
+
+[node name="PassiveConditionField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid/PassiveConditionField"]
+layout_mode = 2
+text = "触发条件"
+
+[node name="PassiveConditionValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid/PassiveConditionField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+text = "战斗开始（固定）"
+
+[node name="PassiveDispelField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid/PassiveDispelField"]
+layout_mode = 2
+text = "驱散规则"
+
+[node name="PassiveDispelValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveMetaGrid/PassiveDispelField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+text = "状态效果可配置；属性/护盾按状态默认"
+
+[node name="PassiveFieldsGrid" type="GridContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="PassiveSaveRow" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody"]
+layout_mode = 2
+
+[node name="SavePassiveBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存全部修改"
+
+[node name="PassiveSaveHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/PassivesTab/PassivesBody/PassiveDetailScroll/PassiveDetailBody/PassiveSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "保存写入当前妖兽的 passives；战斗开始时按顺序执行。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="LootTab" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="LootBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LootHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody"]
+layout_mode = 2
+
+[node name="LootPageTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "掉落配置 — 未选择妖兽"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text_overrun_behavior = 3
+
+[node name="AddLootBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加掉落"
+
+[node name="ChooseLootItemBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择物品"
+
+[node name="CopyLootBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制掉落表"
+
+[node name="LootMoneyRow" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody"]
+layout_mode = 2
+
+[node name="LootMoneyLabel" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootMoneyRow"]
+layout_mode = 2
+text = "灵石区间"
+theme_override_colors/font_color = Color(0.72, 0.82, 0.78, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="LootMoneyMinSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootMoneyRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(110, 0)
+min_value = 0.0
+max_value = 999999.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="LootMoneyDash" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootMoneyRow"]
+layout_mode = 2
+text = "—"
+
+[node name="LootMoneyMaxSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootMoneyRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(110, 0)
+min_value = 0.0
+max_value = 999999.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="LootMoneyHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootMoneyRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "战斗胜利后从区间随机获得灵石；0–0 表示不掉灵石。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="LootHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "物品必须存在于现有物品库；妖丹尚未加入正式物品库，暂不可选。当前没有身份默认掉落，所有物品仅来自本表，避免双来源重复发放。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="LootTree" type="Tree" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+columns = 7
+column_titles_visible = true
+hide_root = true
+select_mode = 0
+
+[node name="LootTableNote" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody"]
+layout_mode = 2
+text = "每条独立判定；战斗胜利后按概率逐条结算。选中行后在下方编辑数量、概率、必得和条件。复制掉落表会同时复制条件与单次标记；单次标记按当前妖兽 ID 命名空间。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="LootDetailScroll" type="ScrollContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+custom_minimum_size = Vector2(0, 280)
+horizontal_scroll_mode = 0
+
+[node name="LootDetailBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LootEditorTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择掉落"
+theme_override_colors/font_color = Color(0.9, 0.97, 0.94, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="LootWarning" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="LootMetaGrid" type="GridContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="LootItemField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootItemField"]
+layout_mode = 2
+text = "物品"
+
+[node name="LootItemButton" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootItemField"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择物品"
+alignment = 0
+
+[node name="LootMinField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootMinField"]
+layout_mode = 2
+text = "最小数量"
+
+[node name="LootMinSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootMinField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 9999.0
+step = 1.0
+value = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="LootMaxField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootMaxField"]
+layout_mode = 2
+text = "最大数量"
+
+[node name="LootMaxSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootMaxField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 9999.0
+step = 1.0
+value = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="LootChanceField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootChanceField"]
+layout_mode = 2
+text = "掉落概率（%）"
+
+[node name="LootChanceSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootChanceField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 100.0
+allow_greater = false
+allow_lesser = false
+
+[node name="LootGuaranteedField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootGuaranteedField"]
+layout_mode = 2
+text = "必定掉落"
+
+[node name="LootGuaranteedCheck" type="CheckBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootGuaranteedField"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "忽略概率，必定发放"
+
+[node name="LootIndependentField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootIndependentField"]
+layout_mode = 2
+text = "判定方式"
+
+[node name="LootIndependentValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootIndependentField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+text = "独立概率判定（固定）"
+
+[node name="LootOnceField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootOnceField"]
+layout_mode = 2
+text = "单次掉落标记（只读）"
+
+[node name="LootOnceValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootOnceField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+
+[node name="LootLegacyField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootLegacyField"]
+layout_mode = 2
+text = "旧档迁移标记（只读）"
+
+[node name="LootLegacyValue" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootMetaGrid/LootLegacyField"]
+unique_name_in_owner = true
+layout_mode = 2
+editable = false
+
+[node name="LootConditionsHeader" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody"]
+layout_mode = 2
+text = "掉落条件（留空 = 任意身份/境界）"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 19
+
+[node name="LootConditionsRow" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody"]
+layout_mode = 2
+
+[node name="LootRankNormal" type="CheckBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootConditionsRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "普通"
+
+[node name="LootRankElite" type="CheckBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootConditionsRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "精英"
+
+[node name="LootRankBoss" type="CheckBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootConditionsRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "首领"
+
+[node name="LootRealmLabel" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootConditionsRow"]
+layout_mode = 2
+text = "境界 ≥"
+
+[node name="LootRealmMinSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootConditionsRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(90, 0)
+min_value = 0.0
+max_value = 9.0
+step = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="LootStaticNote" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "身份默认掉落：当前不存在；妖丹尚未加入正式物品库。所有掉落仅来自本表，因此不会与身份默认掉落重复发放同一份妖丹。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="LootSaveRow" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody"]
+layout_mode = 2
+
+[node name="DeleteLootBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除此掉落"
+theme_override_colors/font_color = Color(0.92, 0.56, 0.52, 1)
+
+[node name="SaveLootBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存全部修改"
+
+[node name="LootSaveHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/LootTab/LootBody/LootDetailScroll/LootDetailBody/LootSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "保存写入当前妖兽的 loot；战斗仍由现有 LootResolver 与背包发放。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="MechanicsTab" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="MechanicsBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MechanicHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody"]
+layout_mode = 2
+
+[node name="MechanicsPageTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "特殊机制 — 未选择妖兽"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text_overrun_behavior = 3
+
+[node name="AddTriggerBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加机制"
+
+[node name="CopyTriggerBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "复制机制"
+
+[node name="RemoveTriggerBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "删除机制"
+theme_override_colors/font_color = Color(0.92, 0.56, 0.52, 1)
+
+[node name="MechanicHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "触发器在战斗开始、生命阈值或自身行动开始时检查；效果作用于自身。支持阶段、属性、状态、护盾、治疗、灵力恢复、减伤和驱散自身。召唤、反伤、吸血、群体强化、命中降低未接入。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="TriggerTree" type="Tree" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+columns = 6
+column_titles_visible = true
+hide_root = true
+select_mode = 0
+
+[node name="MechanicTableNote" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody"]
+layout_mode = 2
+text = "事件语义：战斗开始=开战时；生命阈值=每次自身行动前检查；自身行动开始=每次自身行动前。条件全部满足才触发。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="MechanicDetailScroll" type="ScrollContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+custom_minimum_size = Vector2(0, 300)
+horizontal_scroll_mode = 0
+
+[node name="MechanicDetailBody" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TriggerEditorTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择机制"
+theme_override_colors/font_color = Color(0.9, 0.97, 0.94, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="TriggerWarning" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="TriggerMetaGrid" type="GridContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="TriggerNameField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerNameField"]
+layout_mode = 2
+text = "机制名称"
+
+[node name="TriggerNameEdit" type="LineEdit" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerNameField"]
+unique_name_in_owner = true
+layout_mode = 2
+max_length = 32
+
+[node name="TriggerEnabledField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerEnabledField"]
+layout_mode = 2
+text = "是否启用"
+
+[node name="TriggerEnabledCheck" type="CheckBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerEnabledField"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "启用此机制"
+
+[node name="TriggerEventField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerEventField"]
+layout_mode = 2
+text = "触发事件"
+
+[node name="TriggerEventOption" type="OptionButton" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerEventField"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="TriggerOnceField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerOnceField"]
+layout_mode = 2
+text = "每场仅一次"
+
+[node name="TriggerOnceCheck" type="CheckBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerOnceField"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "只触发一次"
+
+[node name="TriggerMaxUsesField" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerMaxUsesField"]
+layout_mode = 2
+text = "每场最大触发次数（0=不限）"
+
+[node name="TriggerMaxUsesSpin" type="SpinBox" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerMetaGrid/TriggerMaxUsesField"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.0
+max_value = 999.0
+step = 1.0
+value = 1.0
+allow_greater = false
+allow_lesser = false
+
+[node name="TriggerConditionsHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody"]
+layout_mode = 2
+
+[node name="TriggerConditionsTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerConditionsHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "触发条件（全部满足）"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 19
+
+[node name="AddTriggerConditionBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerConditionsHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "＋ 添加条件"
+
+[node name="TriggerConditionsList" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TriggerEffectsHeader" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody"]
+layout_mode = 2
+
+[node name="TriggerEffectsTitle" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerEffectsHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "触发效果（作用于自身）"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 19
+
+[node name="AddTriggerEffectBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerEffectsHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "＋ 添加效果"
+
+[node name="TriggerEffectsList" type="VBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TriggerSaveRow" type="HBoxContainer" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody"]
+layout_mode = 2
+
+[node name="SaveTriggerBtn" type="Button" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存全部修改"
+
+[node name="TriggerSaveHint" type="Label" parent="Window/Root/Body/CenterPanel/CenterBody/Tabs/MechanicsTab/MechanicsBody/MechanicDetailScroll/MechanicDetailBody/TriggerSaveRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "保存写入当前妖兽的 triggers；伤害型触发效果仍由校验拒绝。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="RightPanel" type="PanelContainer" parent="Window/Root/Body"]
+layout_mode = 2
+custom_minimum_size = Vector2(300, 0)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 23.0
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="RightScroll" type="ScrollContainer" parent="Window/Root/Body/RightPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="RightBody" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightHeading" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+layout_mode = 2
+text = "妖兽预览"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="PreviewFrame" type="PanelContainer" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 210)
+theme_override_styles/panel = SubResource("Header")
+
+[node name="PreviewIcon" type="ColorRect" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/PreviewFrame"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 190)
+color = Color(0.09, 0.18, 0.17, 1)
+
+[node name="PreviewIconText" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/PreviewFrame/PreviewIcon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "妖兽图标 / 立绘预留\n尚未接入资源引用"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_colors/font_color = Color(0.45, 0.58, 0.55, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="PreviewName" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择妖兽"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.9, 0.97, 0.94, 1)
+theme_override_font_sizes/font_size = 24
+text_overrun_behavior = 3
+
+[node name="PreviewMeta" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "—"
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Separator" type="HSeparator" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+layout_mode = 2
+
+[node name="AttrGrid" type="GridContainer" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+layout_mode = 2
+columns = 2
+
+[node name="HpLabel" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+layout_mode = 2
+text = "最大生命"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="PreviewHp" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "—"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="MpLabel" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+layout_mode = 2
+text = "最大灵力"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="PreviewMp" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "—"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="AttackLabel" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+layout_mode = 2
+text = "基础攻击"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="PreviewAttack" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "—"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="DefenseLabel" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+layout_mode = 2
+text = "基础防御"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="PreviewDefense" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "—"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="SpeedLabel" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+layout_mode = 2
+text = "基础速度"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="PreviewSpeed" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/AttrGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "—"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="CountGrid" type="GridContainer" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+layout_mode = 2
+columns = 2
+
+[node name="SkillsLabel" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/CountGrid"]
+layout_mode = 2
+text = "技能数量"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="CountSkills" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/CountGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="BehaviorsLabel" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/CountGrid"]
+layout_mode = 2
+text = "行为规则"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="CountBehaviors" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/CountGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="PassivesLabel" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/CountGrid"]
+layout_mode = 2
+text = "被动效果"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="CountPassives" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/CountGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="LootLabel" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/CountGrid"]
+layout_mode = 2
+text = "掉落物品"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="CountLoot" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/CountGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="Separator2" type="HSeparator" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+layout_mode = 2
+
+[node name="ValidationHeader" type="HBoxContainer" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+layout_mode = 2
+
+[node name="ValidationTitle" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/ValidationHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "数据验证"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="ValidationState" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/ValidationHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未检查"
+theme_override_colors/font_color = Color(0.62, 0.76, 0.72, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="ValidationBox" type="VBoxContainer" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 110)
+
+[node name="ValidationBody" type="RichTextLabel" parent="Window/Root/Body/RightPanel/RightScroll/RightBody/ValidationBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="CheckBtn" type="Button" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 46)
+text = "验证配置"
+
+[node name="TestBattleBtn" type="Button" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 46)
+text = "进入测试战斗"
+
+[node name="TestNote" type="Label" parent="Window/Root/Body/RightPanel/RightScroll/RightBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "测试战斗读取保存后的配置；未保存修改会先询问。"
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.7, 0.67, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="UnsavedDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "未保存修改"
+size = Vector2i(680, 280)
+ok_button_text = "保存并继续"
+
+[node name="DeleteDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "确认删除"
+ok_button_text = "确认删除"
+
+[node name="MessageDialog" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+title = "妖兽编辑器"
+
+[node name="RemoveSkillDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "移除技能"
+size = Vector2i(700, 280)
+ok_button_text = "确认移除"
+
+[node name="DeleteBehaviorDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "删除行为规则"
+size = Vector2i(700, 280)
+ok_button_text = "确认删除"
+
+[node name="SkillPickerOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Dim" type="ColorRect" parent="SkillPickerOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="PickerCenter" type="PanelContainer" parent="SkillPickerOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -300.0
+offset_right = 420.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="PickerBody" type="VBoxContainer" parent="SkillPickerOverlay/PickerCenter"]
+layout_mode = 2
+
+[node name="PickerTitle" type="Label" parent="SkillPickerOverlay/PickerCenter/PickerBody"]
+layout_mode = 2
+text = "添加已有技能"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="SkillPickerSearch" type="LineEdit" parent="SkillPickerOverlay/PickerCenter/PickerBody"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "搜索技能名称 / ID"
+
+[node name="SkillPickerList" type="ItemList" parent="SkillPickerOverlay/PickerCenter/PickerBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 360)
+
+[node name="SkillPickerInfo" type="Label" parent="SkillPickerOverlay/PickerCenter/PickerBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="PickerButtons" type="HBoxContainer" parent="SkillPickerOverlay/PickerCenter/PickerBody"]
+layout_mode = 2
+
+[node name="PickerSpacer" type="Control" parent="SkillPickerOverlay/PickerCenter/PickerBody/PickerButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkillPickerAddBtn" type="Button" parent="SkillPickerOverlay/PickerCenter/PickerBody/PickerButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "添加选中技能"
+
+[node name="SkillPickerCancelBtn" type="Button" parent="SkillPickerOverlay/PickerCenter/PickerBody/PickerButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "取消"
+
+[node name="DeleteLootDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "删除掉落"
+size = Vector2i(700, 280)
+ok_button_text = "确认删除"
+
+[node name="CopyLootDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "复制掉落表"
+size = Vector2i(760, 300)
+ok_button_text = "复制并替换"
+
+[node name="DeletePassiveDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "移除被动"
+size = Vector2i(700, 280)
+ok_button_text = "确认移除"
+
+[node name="DeleteTriggerDialog" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "删除特殊机制"
+size = Vector2i(700, 280)
+ok_button_text = "确认删除"
+
+[node name="PassivePickerMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+
+[node name="TriggerPickerMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+
+[node name="LootCopyMenu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+
+[node name="LootItemOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Dim" type="ColorRect" parent="LootItemOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="LootItemCenter" type="PanelContainer" parent="LootItemOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -300.0
+offset_right = 420.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="LootItemBody" type="VBoxContainer" parent="LootItemOverlay/LootItemCenter"]
+layout_mode = 2
+
+[node name="LootItemTitle" type="Label" parent="LootItemOverlay/LootItemCenter/LootItemBody"]
+layout_mode = 2
+text = "选择物品"
+theme_override_colors/font_color = Color(0.62, 0.88, 0.8, 1)
+theme_override_font_sizes/font_size = 24
+
+[node name="LootItemSearch" type="LineEdit" parent="LootItemOverlay/LootItemCenter/LootItemBody"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "搜索物品名称 / ID"
+
+[node name="LootItemTypeFilter" type="OptionButton" parent="LootItemOverlay/LootItemCenter/LootItemBody"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="LootItemList" type="ItemList" parent="LootItemOverlay/LootItemCenter/LootItemBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 340)
+
+[node name="LootItemInfo" type="Label" parent="LootItemOverlay/LootItemCenter/LootItemBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.76, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+
+[node name="LootItemButtons" type="HBoxContainer" parent="LootItemOverlay/LootItemCenter/LootItemBody"]
+layout_mode = 2
+
+[node name="LootItemSpacer" type="Control" parent="LootItemOverlay/LootItemCenter/LootItemBody/LootItemButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LootItemConfirmBtn" type="Button" parent="LootItemOverlay/LootItemCenter/LootItemBody/LootItemButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "确认"
+
+[node name="LootItemCancelBtn" type="Button" parent="LootItemOverlay/LootItemCenter/LootItemBody/LootItemButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "取消"

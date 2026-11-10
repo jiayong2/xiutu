@@ -1,0 +1,370 @@
+[gd_scene load_steps=18 format=3]
+[ext_resource type="Script" path="res://ui/sect/building_panel.gd" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/source_han_sans_cn/SourceHanSansCN-Regular.otf" id="2"]
+[ext_resource type="PackedScene" path="res://ui/sect/building_npc_card.tscn" id="3"]
+
+[sub_resource type="StyleBoxFlat" id="PeoplePanel"]
+bg_color = Color(0.72, 0.83, 0.77, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="ScrollTrack"]
+bg_color = Color(0.65, 0.76, 0.69, 1)
+content_margin_left = 4.0
+content_margin_right = 4.0
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="ScrollThumb"]
+bg_color = Color(0.35, 0.55, 0.44, 1)
+content_margin_left = 4.0
+content_margin_right = 4.0
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="Theme" id="PeopleScrollTheme"]
+VScrollBar/styles/scroll = SubResource("ScrollTrack")
+VScrollBar/styles/grabber = SubResource("ScrollThumb")
+VScrollBar/styles/grabber_highlight = SubResource("ScrollThumb")
+VScrollBar/styles/grabber_pressed = SubResource("ScrollThumb")
+
+[sub_resource type="StyleBoxFlat" id="ButtonNormal"]
+bg_color = Color(0.18, 0.36, 0.29, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12, 0.27, 0.21, 1)
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="ButtonHover"]
+bg_color = Color(0.24, 0.45, 0.36, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12, 0.27, 0.21, 1)
+
+[sub_resource type="StyleBoxFlat" id="ButtonPressed"]
+bg_color = Color(0.12, 0.27, 0.21, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.08, 0.20, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="ButtonDisabled"]
+bg_color = Color(0.74, 0.79, 0.76, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.62, 0.57, 1)
+
+[sub_resource type="StyleBoxFlat" id="ButtonFocus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.77, 0.58, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="ButtonBack"]
+bg_color = Color(0.80, 0.87, 0.82, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.42, 0.33, 1)
+content_margin_left = 18.0
+content_margin_top = 10.0
+content_margin_right = 18.0
+content_margin_bottom = 10.0
+
+[sub_resource type="Theme" id="BuildingTheme"]
+default_font = ExtResource("2")
+Button/colors/font_color = Color(0.98, 0.98, 0.92, 1)
+Button/colors/font_hover_color = Color(1, 1, 0.96, 1)
+Button/colors/font_pressed_color = Color(1, 1, 0.96, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 0.96, 1)
+Button/colors/font_focus_color = Color(0.98, 0.98, 0.92, 1)
+Button/colors/font_disabled_color = Color(0.33, 0.40, 0.36, 1)
+Button/font_sizes/font_size = 24
+Button/styles/normal = SubResource("ButtonNormal")
+Button/styles/hover = SubResource("ButtonHover")
+Button/styles/pressed = SubResource("ButtonPressed")
+Button/styles/hover_pressed = SubResource("ButtonPressed")
+Button/styles/disabled = SubResource("ButtonDisabled")
+Button/styles/focus = SubResource("ButtonFocus")
+BuildingBackButton/base_type = &"Button"
+BuildingBackButton/colors/font_color = Color(0.15, 0.30, 0.23, 1)
+BuildingBackButton/colors/font_focus_color = Color(0.15, 0.30, 0.23, 1)
+BuildingBackButton/styles/normal = SubResource("ButtonBack")
+
+[sub_resource type="StyleBoxFlat" id="Frame"]
+bg_color = Color(0.86, 0.91, 0.88, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_left = 16
+corner_radius_bottom_right = 16
+content_margin_left = 14.0
+content_margin_top = 14.0
+content_margin_right = 14.0
+content_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.91, 0.94, 0.92, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_left = 16
+corner_radius_bottom_right = 16
+content_margin_left = 22.0
+content_margin_top = 22.0
+content_margin_right = 22.0
+content_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxFlat" id="Scene"]
+bg_color = Color(0.81, 0.88, 0.84, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_left = 16
+corner_radius_bottom_right = 16
+content_margin_left = 18.0
+content_margin_top = 18.0
+content_margin_right = 18.0
+content_margin_bottom = 18.0
+
+[node name="BuildingPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("BuildingTheme")
+theme_override_styles/panel = SubResource("Frame")
+script = ExtResource("1")
+
+[node name="Columns" type="HBoxContainer" parent="."]
+theme_override_constants/separation = 16
+
+[node name="InfoPanel" type="PanelContainer" parent="Columns"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Panel")
+size_flags_stretch_ratio = 25.0
+
+[node name="Info" type="VBoxContainer" parent="Columns/InfoPanel"]
+theme_override_constants/separation = 18
+
+[node name="InfoTitle" type="Label" parent="Columns/InfoPanel/Info"]
+text = "藏经阁信息"
+theme_override_font_sizes/font_size = 36
+autowrap_mode = 3
+
+
+[node name="Line" type="HSeparator" parent="Columns/InfoPanel/Info"]
+
+
+[node name="InfoScroll" type="ScrollContainer" parent="Columns/InfoPanel/Info"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="InfoContent" type="VBoxContainer" parent="Columns/InfoPanel/Info/InfoScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 18
+
+[node name="InfoName" type="Label" parent="Columns/InfoPanel/Info/InfoScroll/InfoContent"]
+text = "外门藏经阁"
+theme_override_font_sizes/font_size = 32
+autowrap_mode = 3
+
+
+[node name="BuildingMeta" type="Label" parent="Columns/InfoPanel/Info/InfoScroll/InfoContent"]
+text = "所属区域：外门区域"
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 3
+
+
+[node name="BuildingDescription" type="Label" parent="Columns/InfoPanel/Info/InfoScroll/InfoContent"]
+text = "外门功法 · 法术研习"
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 3
+
+
+[node name="BuildingStatus" type="Label" parent="Columns/InfoPanel/Info/InfoScroll/InfoContent"]
+text = "开放状态：可进入"
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 3
+
+
+[node name="BuildingKeepers" type="Label" parent="Columns/InfoPanel/Info/InfoScroll/InfoContent"]
+text = "负责人物：以实际在场为准"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+
+[node name="AnnouncementTitle" type="Label" parent="Columns/InfoPanel/Info/InfoScroll/InfoContent"]
+text = "建筑公告"
+theme_override_font_sizes/font_size = 32
+autowrap_mode = 3
+
+
+[node name="Line" type="HSeparator" parent="Columns/InfoPanel/Info/InfoScroll/InfoContent"]
+
+
+[node name="Announcement" type="Label" parent="Columns/InfoPanel/Info/InfoScroll/InfoContent"]
+text = "书架陈列已有功法。研读与取出尚未开放。"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+
+[node name="BuildingClose" type="Button" parent="Columns/InfoPanel/Info"]
+custom_minimum_size = Vector2(0, 70)
+theme_type_variation = &"BuildingBackButton"
+text = "返回上级地点"
+theme_override_font_sizes/font_size = 24
+
+[node name="CenterPanel" type="PanelContainer" parent="Columns"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("Panel")
+size_flags_stretch_ratio = 50.0
+
+[node name="Center" type="VBoxContainer" parent="Columns/CenterPanel"]
+theme_override_constants/separation = 16
+
+[node name="BuildingName" type="Label" parent="Columns/CenterPanel/Center"]
+text = "外门藏经阁"
+theme_override_font_sizes/font_size = 44
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="ScenePanel" type="PanelContainer" parent="Columns/CenterPanel/Center"]
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Scene")
+
+[node name="SceneCenter" type="VBoxContainer" parent="Columns/CenterPanel/Center/ScenePanel"]
+
+
+alignment = 1
+[node name="SceneText" type="VBoxContainer" parent="Columns/CenterPanel/Center/ScenePanel/SceneCenter"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="SceneSymbol" type="Label" parent="Columns/CenterPanel/Center/ScenePanel/SceneCenter/SceneText"]
+text = "藏"
+theme_override_font_sizes/font_size = 48
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="SceneTitle" type="Label" parent="Columns/CenterPanel/Center/ScenePanel/SceneCenter/SceneText"]
+text = "藏经阁场景"
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="SceneHint" type="Label" parent="Columns/CenterPanel/Center/ScenePanel/SceneCenter/SceneText"]
+text = "建筑内部环境展示区域"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="SceneDescription" type="Label" parent="Columns/CenterPanel/Center"]
+text = "宗门典籍收藏之地。"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+
+
+[node name="ActionScroll" type="ScrollContainer" parent="Columns/CenterPanel/Center"]
+custom_minimum_size = Vector2(0, 170)
+horizontal_scroll_mode = 0
+
+[node name="BuildingActions" type="VBoxContainer" parent="Columns/CenterPanel/Center/ActionScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="PreviewSamples" type="VBoxContainer" parent="Columns/CenterPanel/Center/ActionScroll/BuildingActions"]
+size_flags_horizontal = 3
+
+[node name="ShelfPreview" type="Button" parent="Columns/CenterPanel/Center/ActionScroll/BuildingActions/PreviewSamples"]
+custom_minimum_size = Vector2(0, 56)
+text = "查看书架"
+
+[node name="Right" type="VBoxContainer" parent="Columns"]
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 25.0
+theme_override_constants/separation = 16
+
+[node name="PeoplePanel" type="PanelContainer" parent="Columns/Right"]
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("PeoplePanel")
+
+[node name="PeopleBody" type="VBoxContainer" parent="Columns/Right/PeoplePanel"]
+theme_override_constants/separation = 16
+
+[node name="PeopleTitle" type="Label" parent="Columns/Right/PeoplePanel/PeopleBody"]
+text = "附近人物 · 0人"
+theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.15, 0.30, 0.23, 1)
+autowrap_mode = 3
+
+
+[node name="Line" type="HSeparator" parent="Columns/Right/PeoplePanel/PeopleBody"]
+visible = false
+
+
+[node name="PeopleScroll" type="ScrollContainer" parent="Columns/Right/PeoplePanel/PeopleBody"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+mouse_force_pass_scroll_events = false
+theme = SubResource("PeopleScrollTheme")
+
+[node name="PeopleList" type="VBoxContainer" parent="Columns/Right/PeoplePanel/PeopleBody/PeopleScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="PersonPreview" parent="Columns/Right/PeoplePanel/PeopleBody/PeopleScroll/PeopleList" instance=ExtResource("3")]
+tooltip_text = "人物卡片预览，运行时由实际在场人物替换。"
+
+
+[node name="MessagePanel" type="PanelContainer" parent="Columns/Right"]
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Panel")
+
+[node name="MessageBody" type="VBoxContainer" parent="Columns/Right/MessagePanel"]
+theme_override_constants/separation = 18
+
+[node name="MessageTitle" type="Label" parent="Columns/Right/MessagePanel/MessageBody"]
+text = "世界消息"
+theme_override_font_sizes/font_size = 32
+autowrap_mode = 3
+
+
+[node name="Line" type="HSeparator" parent="Columns/Right/MessagePanel/MessageBody"]
+
+
+[node name="MessageScroll" type="ScrollContainer" parent="Columns/Right/MessagePanel/MessageBody"]
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="BuildingFeedback" type="Label" parent="Columns/Right/MessagePanel/MessageBody/MessageScroll"]
+text = "进入藏经阁\n\n暂无其他动态"
+theme_override_font_sizes/font_size = 22
+autowrap_mode = 3
+size_flags_horizontal = 3
+

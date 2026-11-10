@@ -1,14 +1,18 @@
 extends Control
 signal closed
 signal command(action: String,args: Dictionary)
-const PANEL_SIZE := Vector2(1100,610)
+const PANEL_SIZE := Vector2(1100,750)
 const DISPLAY_SCALE := 1.5
+const CULTIVATION := preload("res://gameplay/cultivation/cultivation_system.gd")
 var service: RefCounted
 var npc_id: String
 var api:=preload("res://world/npc_interaction.gd").new()
 var sub_kind: String=""
 var previous_option := ""
 var profile: Control
+var inventory: Control
+var inventory_category := "全部"
+var inventory_selected := ""
 var trade: Control
 var trade_shop: String=""
 var trade_state: Dictionary={}
@@ -17,7 +21,8 @@ func _ready() -> void:
 	resized.connect(_fit);_fit()
 	field("Close").pressed.connect(close)
 	field("Continue").pressed.connect(_main_options)
-	for i in range(12):field("Action"+str(i)).pressed.connect(_interact.bind(api.OPTIONS[i]))
+	for i in range(api.OPTIONS.size()):
+		field("Action"+str(i)).pressed.connect(_interact.bind(api.OPTIONS[i]))
 func bind_data(operations: RefCounted,id: String) -> void:
 	service=operations;npc_id=id;refresh_data()
 	# Initial container minimum sizes settle after entering the scene tree.
@@ -27,25 +32,29 @@ func refresh_data() -> void:
 	var info: Dictionary=api.presentation(snapshot,service.data,npc_id)
 	if profile!=null and snapshot.npcs.has(npc_id):
 		profile.bind_data(snapshot,service.data,npc_id)
-	field("NpcName").text=info.name;field("Relation").text=info.relation;field("Realm").text=info.realm;field("Identity").text="身份："+info.identity
+	if inventory != null:
+		inventory.bind_npc(service, snapshot.npcs.get(npc_id, {}), inventory_category, inventory_selected)
+	field("PlayerName").text = snapshot.player.name
+	field("PlayerRealm").text = CULTIVATION.realm_name(snapshot.player.realm, "qi", service.data)
+	field("NpcName").text = info.name
+	field("NpcName").tooltip_text = info.identity
+	field("NpcDetails").text = "%s · %s" % [info.relation, info.realm]
 func _fit() -> void:
 	var panel: Control=field("Panel")
 	panel.size=PANEL_SIZE
 	var factor: float=minf(DISPLAY_SCALE,minf((size.x-32)/PANEL_SIZE.x,(size.y-32)/PANEL_SIZE.y))
 	panel.scale=Vector2.ONE*maxf(.1,factor);panel.position=(size-PANEL_SIZE*panel.scale)/2
-func _feedback(text: String) -> void:field("Feedback").text=field("NpcName").text+"：\n"+text
+func _feedback(text: String) -> void:field("Feedback").text=field("NpcName").text+"："+text
 func _interact(kind: String) -> void:
 	var result: Dictionary=api.evaluate(service.snapshot(),service.data,npc_id,kind)
 	if result.kind=="talk":
 		previous_option=""
 		sub_kind="talk";_subview()
 		command.emit("talk",{"id":npc_id})
-		_quest_options()
-	elif result.kind=="quests":
-		previous_option=""
-		sub_kind="quests";_subview();_feedback(result.message);_quest_options()
 	elif result.kind=="trade":
 		_feedback(result.message);_trade(result.shop)
+	elif result.kind=="inventory":
+		_open_inventory()
 	elif result.kind=="info":
 		profile=preload("res://ui/npc/npc_profile.tscn").instantiate()
 		add_child(profile)
@@ -70,6 +79,24 @@ func receive(result: Dictionary, option_id: String="") -> void:
 	if not sub_kind.is_empty():_quest_options()
 	if trade!=null and is_instance_valid(trade):
 		trade.bind_data(service,trade_shop,trade_state.get("mode","购买"),trade_state.get("category","全部"),trade_state.get("key",""),int(trade_state.get("quantity",1)),result.message)
+
+func _open_inventory() -> void:
+	inventory = preload("res://ui/inventory/inventory_page.tscn").instantiate()
+	add_child(inventory)
+	inventory.navigate.connect(func(_destination: String): _close_inventory())
+	inventory.selection_changed.connect(func(category: String, key: String):
+		inventory_category = category
+		inventory_selected = key
+	)
+	field("Panel").hide()
+	refresh_data()
+
+func _close_inventory() -> void:
+	remove_child(inventory)
+	inventory.queue_free()
+	inventory = null
+	field("Panel").show()
+	field("Action9").grab_focus()
 func _trade(shop: String) -> void:
 	trade_shop=shop
 	trade=preload("res://ui/shop/shop_page.tscn").instantiate();add_child(trade)
@@ -89,7 +116,8 @@ func _close_profile() -> void:
 	field("Action10").grab_focus()
 
 func back() -> void:
-	if profile!=null:_close_profile()
+	if inventory!=null:_close_inventory()
+	elif profile!=null:_close_profile()
 	elif trade!=null and is_instance_valid(trade):_close_trade()
 	elif not sub_kind.is_empty():_main_options()
 	else:close()

@@ -216,7 +216,51 @@ static func validate(npc: Dictionary, data: Dictionary, known: Dictionary, check
 	for score in npc.relations.values():
 		if not (score is int or score is float) or not Fortune.valid_integer(score + 100) or score > 100:
 			return "好感超出范围"
+	if npc.has("duty") and not npc.duty is String:
+		return "无效职责说明"
+	var affiliation := _affiliation_error(npc, data)
+	if not affiliation.is_empty():
+		return affiliation
 	return ""
+
+static func _affiliation_error(npc: Dictionary, data: Dictionary) -> String:
+	var sect_id := ""
+	if npc.has("sect"):
+		if not npc.sect is String:
+			return "无效宗门"
+		sect_id = npc.sect
+		if not sect_id.is_empty():
+			var known_sect := false
+			for sect in data.get("prototype", {}).get("sects", []):
+				if sect.get("id") == sect_id:
+					known_sect = true
+			if not known_sect:
+				return "宗门不存在 " + sect_id
+	var area_id := ""
+	if npc.has("sect_area"):
+		if not npc.sect_area is String:
+			return "无效宗门区域"
+		area_id = npc.sect_area
+	var building_id := ""
+	if npc.has("sect_building"):
+		if not npc.sect_building is String:
+			return "无效宗门建筑"
+		building_id = npc.sect_building
+	if area_id.is_empty() and building_id.is_empty():
+		return ""
+	var matched_area: Dictionary = {}
+	for area in data.get("sect_areas", {}).get(sect_id, []):
+		if str(area.get("id", "")) == area_id:
+			matched_area = area
+			break
+	if not area_id.is_empty() and matched_area.is_empty():
+		return "宗门区域不存在 " + area_id
+	if building_id.is_empty():
+		return ""
+	for card in matched_area.get("cards", []):
+		if str(card.get("id", "")) == building_id:
+			return ""
+	return "宗门建筑不存在 " + building_id
 
 static func slots_error(slots: Array, learned: Variant, limit: int) -> String:
 	if slots.size() > limit:
@@ -230,7 +274,7 @@ static func slots_error(slots: Array, learned: Variant, limit: int) -> String:
 
 static func load_definitions(data: Dictionary, path: String = PATH) -> Dictionary:
 	if not FileAccess.file_exists(path):
-		return {"rows":{},"error":""}
+		return {"rows": {}, "error": "缺少 NPC 初始定义文件：" + path}
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		return {"error":"无法读取 NPC 初始定义"}

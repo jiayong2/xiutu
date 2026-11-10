@@ -83,19 +83,25 @@ func bind_data(operations: RefCounted,message: String="",background: Dictionary=
 		ally.blood=state.player.blood
 		ally.max_blood=stats.blood if background.is_empty() else service.character.stats(state.player,data).blood
 	var enemy: Dictionary=b.enemy.duplicate(true)
-	enemy.merge({"id":"enemy","side":"enemy","max_hp":data.monsters[b.monster].hp,"max_mp":data.monsters[b.monster].mp,"statuses":[]},true)
+	var monster_id := str(b.get("monster", ""))
+	var fallback_hp := int(data.monsters[monster_id].get("hp", 1)) if data.monsters.has(monster_id) else 1
+	var fallback_mp := int(data.monsters[monster_id].get("mp", 0)) if data.monsters.has(monster_id) else 0
+	enemy.merge({"id":"enemy","side":"enemy","max_hp":int(b.get("enemy_max_hp",fallback_hp)),"max_mp":int(b.get("enemy_max_mp",fallback_mp)),"statuses":[],"defending":bool(b.get("enemy_guard",false))},true)
 	for id in b.status:
 		var effect: Dictionary=b.status[id]
 		var entry := _status_text(id,effect)
 		if Status.is_player(id):ally.statuses.append(entry)
 		else:enemy.statuses.append(entry)
 	if b.guard:ally.statuses.append("防御 · 本轮减伤")
+	if b.get("enemy_guard",false):enemy.statuses.append("防御 · 本轮减伤")
 	var prepare: bool=b.phase=="prepare"
 	var waiting: bool=not service.battle.needs_round(b) and background.is_empty()
 	var queue: Array=service.battle.waiting_order(b) if waiting else service.battle.action_order(stats,b,data.spell_growth)
 	field("TurnOrder").set_caption("等待指令" if waiting else "待开战" if prepare else "准备行动")
 	set_units([ally,enemy],queue,false)
 	field("Begin").visible=prepare
+	var battle_type := str(b.get("battle_type", ""))
+	field("Escape").text="认输" if battle_type in ["sect_spar", "sect_exam"] else "结束测试" if battle_type=="npc_test" else "逃跑"
 	for key in ["Attack","Defend","Escape"]:field(key).disabled=not waiting
 	field("Item").disabled=not (prepare or waiting)
 	field("ActionTitle").text="战斗准备" if prepare else "轮到你行动" if waiting else "战斗操作"
@@ -135,7 +141,7 @@ func _skills() -> void:
 		if index>=equipped.size():continue
 		var id: String=equipped[index]
 		var spell: Dictionary=data.spells[id]
-		var cost := service.battle.effects.mana_cost(spell,state.battle,state.player) as int
+		var cost := service.battle.skills.preview_mana_cost(state, spell, service.stats(), data) as int
 		button.text="%s\n%d 灵力" % [spell.name,cost]
 		var b: Dictionary=state.battle
 		var reason: String=""
@@ -165,7 +171,13 @@ func _items() -> void:
 func _escape() -> void:
 	if playing:return
 	var dialog:=ConfirmationDialog.new();add_child(dialog)
-	dialog.dialog_text="尝试逃跑？成功率 %d%%，失败将按原规则结算本轮。" % int(data.rules.escape_chance*100)
+	var battle_type := str(state.battle.get("battle_type", ""))
+	if battle_type in ["sect_spar", "sect_exam"]:
+		dialog.dialog_text="认输？本场判负，不获得奖励。"
+	elif battle_type=="npc_test":
+		dialog.dialog_text="结束测试战斗？不发放奖励，并恢复双方战前状态。"
+	else:
+		dialog.dialog_text="尝试逃跑？成功率 %d%%，失败将按原规则结算本轮。" % int(data.rules.escape_chance*100)
 	dialog.confirmed.connect(_act.bind("escape",""))
 	dialog.canceled.connect(dialog.queue_free)
 	dialog.popup_centered()

@@ -1,0 +1,574 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://ui/content_manager/content_manager.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="Base"]
+bg_color = Color(0.0627451, 0.168627, 0.188235, 1)
+content_margin_left = 16.0
+content_margin_top = 12.0
+content_margin_right = 16.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="Pane"]
+bg_color = Color(0.0980392, 0.231373, 0.25098, 1)
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.239216, 0.411765, 0.396078, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
+[sub_resource type="StyleBoxFlat" id="Chip"]
+bg_color = Color(0.145098, 0.301961, 0.313726, 1)
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.278431, 0.490196, 0.458824, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="ChipOn"]
+bg_color = Color(0.223529, 0.490196, 0.439216, 1)
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.517647, 0.784314, 0.694118, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="Header"]
+bg_color = Color(0.145098, 0.337255, 0.345098, 1)
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="Input"]
+bg_color = Color(0.145098, 0.301961, 0.313726, 1)
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.239216, 0.411765, 0.396078, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="Stat"]
+bg_color = Color(0.145098, 0.301961, 0.313726, 1)
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.239216, 0.411765, 0.396078, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="TreeSel"]
+bg_color = Color(0.223529, 0.490196, 0.439216, 1)
+
+[sub_resource type="StyleBoxFlat" id="Open"]
+bg_color = Color(0.223529, 0.490196, 0.439216, 1)
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 14
+Label/colors/font_color = Color(0.882353, 0.956863, 0.917647, 1)
+Button/colors/font_color = Color(0.941176, 1, 0.960784, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.65, 0.75, 0.72, 1)
+Button/styles/normal = SubResource("Chip")
+Button/styles/hover = SubResource("ChipOn")
+Button/styles/pressed = SubResource("ChipOn")
+Button/styles/disabled = SubResource("Chip")
+Button/styles/focus = SubResource("Chip")
+LineEdit/colors/font_color = Color(0.882353, 0.956863, 0.917647, 1)
+LineEdit/colors/font_placeholder_color = Color(0.65098, 0.788235, 0.760784, 1)
+LineEdit/styles/normal = SubResource("Input")
+LineEdit/styles/focus = SubResource("Input")
+OptionButton/colors/font_color = Color(0.941176, 1, 0.960784, 1)
+OptionButton/styles/normal = SubResource("Chip")
+OptionButton/styles/hover = SubResource("ChipOn")
+OptionButton/styles/pressed = SubResource("ChipOn")
+CheckBox/colors/font_color = Color(0.65098, 0.788235, 0.760784, 1)
+Tree/colors/font_color = Color(0.882353, 0.956863, 0.917647, 1)
+Tree/colors/font_selected_color = Color(1, 1, 1, 1)
+Tree/colors/guide_color = Color(0.145098, 0.337255, 0.345098, 1)
+Tree/styles/panel = SubResource("Input")
+Tree/styles/selected = SubResource("TreeSel")
+Tree/styles/selected_focus = SubResource("TreeSel")
+Tree/constants/v_separation = 3
+HBoxContainer/constants/separation = 8
+VBoxContainer/constants/separation = 6
+
+[node name="ContentManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme")
+script = ExtResource("1")
+
+[node name="Window" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("Base")
+
+[node name="Root" type="VBoxContainer" parent="Window"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+
+[node name="TitleCol" type="VBoxContainer" parent="Window/Root/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Window/Root/Header/TitleCol"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "仙途 · 内容管理中心"
+
+[node name="Subtitle" type="Label" parent="Window/Root/Header/TitleCol"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65098, 0.788235, 0.760784, 1)
+theme_override_font_sizes/font_size = 13
+text = "游戏内容索引 / 分类统计 / 地区关联 / 内容检查"
+
+[node name="ExportKind" type="OptionButton" parent="Window/Root/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Markdown 清单"
+
+[node name="Export" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "导出目录"
+
+[node name="Refresh" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "刷新索引"
+
+[node name="Close" type="Button" parent="Window/Root/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "×"
+
+[node name="Stats" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Town" type="PanelContainer" parent="Window/Root/Stats"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("Stat")
+
+[node name="StatTown" type="Label" parent="Window/Root/Stats/Town"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "城镇 / 地图  0"
+
+[node name="Building" type="PanelContainer" parent="Window/Root/Stats"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("Stat")
+
+[node name="StatBuilding" type="Label" parent="Window/Root/Stats/Building"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "建筑  0"
+
+[node name="Npc" type="PanelContainer" parent="Window/Root/Stats"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("Stat")
+
+[node name="StatNpc" type="Label" parent="Window/Root/Stats/Npc"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "NPC / 妖兽  0"
+
+[node name="Quest" type="PanelContainer" parent="Window/Root/Stats"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("Stat")
+
+[node name="StatQuest" type="Label" parent="Window/Root/Stats/Quest"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "任务 / 事件  0"
+
+[node name="Item" type="PanelContainer" parent="Window/Root/Stats"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("Stat")
+
+[node name="StatItem" type="Label" parent="Window/Root/Stats/Item"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "物品 / 装备  0"
+
+[node name="Tech" type="PanelContainer" parent="Window/Root/Stats"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("Stat")
+
+[node name="StatTech" type="Label" parent="Window/Root/Stats/Tech"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "功法 / 气运  0"
+
+[node name="Modes" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ModeCategory" type="Button" parent="Window/Root/Modes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("ChipOn")
+text = "按分类查看"
+
+[node name="ModeRegion" type="Button" parent="Window/Root/Modes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "按地区查看"
+
+[node name="IssuesOnly" type="CheckBox" parent="Window/Root/Modes"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "仅看待检查"
+
+[node name="ExportStatus" type="Label" parent="Window/Root/Modes"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.65098, 0.788235, 0.760784, 1)
+theme_override_font_sizes/font_size = 13
+text = "工程内容索引"
+
+[node name="Columns" type="HBoxContainer" parent="Window/Root"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Left" type="PanelContainer" parent="Window/Root/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 24.0
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="LeftBody" type="VBoxContainer" parent="Window/Root/Columns/Left"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LeftTitle" type="Label" parent="Window/Root/Columns/Left/LeftBody"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "地区目录"
+
+[node name="LeftScroll" type="ScrollContainer" parent="Window/Root/Columns/Left/LeftBody"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="NavStack" type="VBoxContainer" parent="Window/Root/Columns/Left/LeftBody/LeftScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CategoryNav" type="VBoxContainer" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WorldTitle" type="Label" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/CategoryNav"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("Header")
+text = "世界与地点"
+
+[node name="WorldFlow" type="HFlowContainer" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/CategoryNav"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="TownChip" type="Button" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/CategoryNav/WorldFlow"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "城镇"
+
+[node name="SectChip" type="Button" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/CategoryNav/WorldFlow"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "宗门"
+
+[node name="WildChip" type="Button" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/CategoryNav/WorldFlow"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "野外区域"
+
+[node name="BuildChip" type="Button" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/CategoryNav/WorldFlow"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "建筑"
+
+[node name="MapChip" type="Button" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/CategoryNav/WorldFlow"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "探索地图"
+
+[node name="RegionNav" type="VBoxContainer" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TownTitle" type="Label" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/RegionNav"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("Header")
+text = "城镇"
+
+[node name="TownFlow" type="HFlowContainer" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/RegionNav"]
+layout_mode = 2
+
+[node name="Qinglan" type="Button" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/RegionNav/TownFlow"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "青岚镇"
+
+[node name="Yunxi" type="Button" parent="Window/Root/Columns/Left/LeftBody/LeftScroll/NavStack/RegionNav/TownFlow"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "其他城镇"
+
+[node name="Center" type="PanelContainer" parent="Window/Root/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 52.0
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="CenterBody" type="VBoxContainer" parent="Window/Root/Columns/Center"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CenterHead" type="HBoxContainer" parent="Window/Root/Columns/Center/CenterBody"]
+layout_mode = 2
+
+[node name="CenterTitle" type="Label" parent="Window/Root/Columns/Center/CenterBody/CenterHead"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "建筑 · 内容目录"
+
+[node name="Sort" type="OptionButton" parent="Window/Root/Columns/Center/CenterBody/CenterHead"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "名称排序"
+
+[node name="Search" type="LineEdit" parent="Window/Root/Columns/Center/CenterBody"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+placeholder_text = "搜索名称或 ID"
+
+[node name="Tags" type="HFlowContainer" parent="Window/Root/Columns/Center/CenterBody"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 4
+
+[node name="TagBuilding" type="Button" parent="Window/Root/Columns/Center/CenterBody/Tags"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "建筑 0"
+
+[node name="ListHead" type="PanelContainer" parent="Window/Root/Columns/Center/CenterBody"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Header")
+
+[node name="HeadText" type="Label" parent="Window/Root/Columns/Center/CenterBody/ListHead"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "名称          类型          地区          数据"
+
+[node name="Tree" type="Tree" parent="Window/Root/Columns/Center/CenterBody"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+column_titles_visible = true
+hide_root = true
+select_mode = 1
+
+[node name="Pager" type="HBoxContainer" parent="Window/Root/Columns/Center/CenterBody"]
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="Window/Root/Columns/Center/CenterBody/Pager"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.65098, 0.788235, 0.760784, 1)
+theme_override_font_sizes/font_size = 13
+text = "显示 0 项"
+
+[node name="Prev" type="Button" parent="Window/Root/Columns/Center/CenterBody/Pager"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "上一页"
+
+[node name="PageLabel" type="Label" parent="Window/Root/Columns/Center/CenterBody/Pager"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "1 / 1"
+
+[node name="Next" type="Button" parent="Window/Root/Columns/Center/CenterBody/Pager"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "下一页"
+
+[node name="Right" type="PanelContainer" parent="Window/Root/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 24.0
+theme_override_styles/panel = SubResource("Pane")
+
+[node name="RightBody" type="VBoxContainer" parent="Window/Root/Columns/Right"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RightTitle" type="Label" parent="Window/Root/Columns/Right/RightBody"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "内容关联"
+
+[node name="DetailCard" type="PanelContainer" parent="Window/Root/Columns/Right/RightBody"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("Header")
+
+[node name="DetailCol" type="VBoxContainer" parent="Window/Root/Columns/Right/RightBody/DetailCard"]
+layout_mode = 2
+
+[node name="DetailName" type="Label" parent="Window/Root/Columns/Right/RightBody/DetailCard/DetailCol"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "未选择"
+
+[node name="DetailMeta" type="Label" parent="Window/Root/Columns/Right/RightBody/DetailCard/DetailCol"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65098, 0.788235, 0.760784, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 3
+text = "分类 · 地区
+ID：—"
+
+[node name="RelTitle" type="Label" parent="Window/Root/Columns/Right/RightBody"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "关联内容"
+
+[node name="RelScroll" type="ScrollContainer" parent="Window/Root/Columns/Right/RightBody"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Relations" type="HFlowContainer" parent="Window/Root/Columns/Right/RightBody/RelScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+
+[node name="OpenEditor" type="Button" parent="Window/Root/Columns/Right/RightBody"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_styles/normal = SubResource("Open")
+text = "打开对应编辑器"

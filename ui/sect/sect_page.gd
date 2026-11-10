@@ -178,7 +178,7 @@ func _internal() -> void:
 	field("SectLevel").text="未开放"
 	field("SalaryStatus").text="未开放"
 	field("SummaryText").text="%s\n所在地：%s\n\n%s" % [definition.name,definition.get("residence",{}).get("name","待开放"),_introduction(definition,false)]
-	field("SalaryText").text="身份：%s · %s\n当前贡献：%d\n俸禄与晋升规则尚未开放" % [definition.name,title,state.contribution]
+	field("SalaryText").text="身份：%s · %s\n当前贡献：%d\n俸禄尚未开放。外门晋升内门由周玄考核。" % [definition.name,title,state.contribution]
 	field("ClaimSalary").disabled=true;field("ClaimSalary").tooltip_text="尚无俸禄发放规则及领取接口"
 	field("MissionSummaryText").text="当前宗门：%s　｜　宗门事务尚未开放" % definition.name
 	var result: Dictionary=service.inventory_action_quote("donate",{})
@@ -192,34 +192,52 @@ func _internal() -> void:
 	_empty("TreasuryList","暂无宗门宝库库存")
 	field("TreasuryDetail").text="宗门宝库兑换暂未开放"
 	_empty("RankList","职位与试炼暂未开放")
-	field("RankDetail").text="当前身份：%s\n晋升与试炼暂未开放" % title
+	field("RankDetail").text="当前身份：%s\n外门晋升内门：在事务殿与周玄交谈。真传、长老与宗门大比尚未开放。" % title
 	_npcs()
 
 func _empty(key: String,text: String) -> void:
 	var label:=Label.new();label.text=text;label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;field(key).add_child(label)
 func _npcs() -> void:
-	var ids: Array[String]=[]
+	var interaction := preload("res://world/npc_interaction.gd")
+	var open_ids: Array[String]=[]
+	var locked_ids: Array[String]=[]
 	for id in state.npcs:
 		var npc: Dictionary=state.npcs[id]
 		if npc.get("sect",npc.get("sect_id",""))!=state.sect:continue
 		if not npc.get("alive",true):continue
-		if preload("res://world/npc_interaction.gd").sect_area_restricted(npc,data):continue
-		ids.append(id)
-		var button:=Button.new();button.text=preload("res://world/npc_interaction.gd").new().summary(state,data,id);button.custom_minimum_size.y=84;button.clip_text=true;button.tooltip_text=button.text;button.alignment=HORIZONTAL_ALIGNMENT_LEFT;button.add_theme_font_size_override("font_size",22)
-		button.pressed.connect(func():_npc(id);npc_requested.emit(id));field("NpcList").add_child(button)
+		if interaction.sect_area_restricted(npc,data,state):locked_ids.append(id)
+		else:open_ids.append(id)
+	var ids := open_ids + locked_ids
+	for id in ids:
+		var button:=Button.new();button.text=interaction.new().summary(state,data,id);button.custom_minimum_size.y=84;button.clip_text=true;button.tooltip_text=button.text;button.alignment=HORIZONTAL_ALIGNMENT_LEFT;button.add_theme_font_size_override("font_size",22)
+		var locked := id in locked_ids
+		if locked:
+			button.text += "\n区域限制：暂不可交谈"
+			button.tooltip_text = button.text
+		button.pressed.connect(_select_npc.bind(id, not locked));field("NpcList").add_child(button)
 	if ids.is_empty():
 		field("NpcAction").disabled=true
 		_empty("NpcList","暂无已记录的宗门人物")
 		field("NpcDetail").text="暂无可交互的宗门人物。"
 	else:_npc(ids[0])
+func _select_npc(id: String, can_talk: bool) -> void:
+	_npc(id)
+	if can_talk:
+		npc_requested.emit(id)
 func _npc(id: String) -> void:
 	npc_selected=id
 	var npc: Dictionary=state.npcs[id]
-	field("NpcDetail").text="%s
-
-身份：%s
-境界：%s
-状态：%s" % [npc.name,npc.get("role","未定义"),preload("res://world/npc_interaction.gd").new().presentation(state,data,id).realm,"存活" if npc.alive else "已故"]
-	# No new dialogue or affiliation rules are invented.
-	field("NpcAction").disabled=false
-	field("NpcAction").tooltip_text="打开统一人物交互"
+	var interaction := preload("res://world/npc_interaction.gd")
+	var restricted := interaction.sect_area_restricted(npc,data,state)
+	var detail := "%s\n\n身份：%s\n境界：%s\n状态：%s" % [npc.name,npc.get("role","未定义"),interaction.new().presentation(state,data,id).realm,"存活" if npc.alive else "已故"]
+	var place := interaction.sect_place_label(npc,data)
+	if not place.is_empty():
+		detail += "\n所在：" + place
+	var duty := str(npc.get("duty",""))
+	if not duty.is_empty():
+		detail += "\n职责：" + duty
+	if restricted:
+		detail += "\n\n尚未获得此人物所在区域的通行权限。"
+	field("NpcDetail").text=detail
+	field("NpcAction").disabled=restricted
+	field("NpcAction").tooltip_text="尚未获得此人物所在区域的通行权限。" if restricted else "打开统一人物交互"
